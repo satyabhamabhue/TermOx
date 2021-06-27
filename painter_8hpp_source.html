@@ -71,117 +71,86 @@ $(function() {
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef TERMOX_PAINTER_PAINTER_HPP</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define TERMOX_PAINTER_PAINTER_HPP</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;cstddef&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;termox/painter/detail/screen_descriptor.hpp&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;termox/painter/detail/staged_changes.hpp&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;termox/widget/area.hpp&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span>ox {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">class </span>Glyph_string;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">struct </span>Point;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">struct </span>Glyph;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">class </span>Widget;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;termox/painter/brush.hpp&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;termox/widget/area.hpp&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;termox/widget/point.hpp&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>ox {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">class </span>Glyph_string;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">struct </span>Glyph;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">class </span>Widget;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}  <span class="comment">// namespace ox</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span>ox::detail {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">class </span>Canvas;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}  <span class="comment">// namespace ox::detail</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classox_1_1Painter.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1Painter.html">Painter</a> {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classox_1_1Painter.html#a56d8f4d5a6f09dbc9f8e63342f1f4208">Painter</a>(<a class="code" href="classox_1_1Widget.html">Widget</a>&amp; widg);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classox_1_1Painter.html#a56d8f4d5a6f09dbc9f8e63342f1f4208">Painter</a>(<a class="code" href="classox_1_1Painter.html">Painter</a> <span class="keyword">const</span>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="classox_1_1Painter.html#a56d8f4d5a6f09dbc9f8e63342f1f4208">Painter</a>(<a class="code" href="classox_1_1Painter.html">Painter</a>&amp;&amp;)      = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Painter.html#a8a8ab75303e6d9626db5610e9f7f4825">put</a>(<a class="code" href="structox_1_1Glyph.html">Glyph</a> tile, std::size_t x, std::size_t y);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classox_1_1Painter.html#a308a4324e074d14aeb336b15968166af">   29</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Painter.html#a308a4324e074d14aeb336b15968166af">put</a>(<a class="code" href="structox_1_1Glyph.html">Glyph</a> tile, <a class="code" href="structox_1_1Point.html">Point</a> <span class="keyword">const</span>&amp; position)</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        this-&gt;<a class="code" href="classox_1_1Painter.html#a8a8ab75303e6d9626db5610e9f7f4825">put</a>(tile, position.x, position.y);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    }</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Painter.html#a8a8ab75303e6d9626db5610e9f7f4825">put</a>(<a class="code" href="classox_1_1Glyph__string.html">Glyph_string</a> <span class="keyword">const</span>&amp; text, std::size_t x, std::size_t y);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classox_1_1Painter.html#a4ecebf5e224cf50af774c17a28584b87">   38</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Painter.html#a4ecebf5e224cf50af774c17a28584b87">put</a>(<a class="code" href="classox_1_1Glyph__string.html">Glyph_string</a> <span class="keyword">const</span>&amp; text, <a class="code" href="structox_1_1Point.html">Point</a> <span class="keyword">const</span>&amp; position)</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        this-&gt;<a class="code" href="classox_1_1Painter.html#a8a8ab75303e6d9626db5610e9f7f4825">put</a>(text, position.x, position.y);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Painter.html#ae02b43cea7c9ae4613db2989643f0e64">border</a>();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span>ox {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classox_1_1Painter.html">   21</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1Painter.html">Painter</a> {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classox_1_1Painter.html#ad4aff6ac9dce846608ec48467e103f48">Painter</a>(<a class="code" href="classox_1_1Widget.html">Widget</a>&amp; w, <a class="code" href="classox_1_1detail_1_1Canvas.html">detail::Canvas</a>&amp; canvas);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="classox_1_1Painter.html#ad4aff6ac9dce846608ec48467e103f48">Painter</a>(<a class="code" href="classox_1_1Painter.html">Painter</a> <span class="keyword">const</span>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classox_1_1Painter.html#ad4aff6ac9dce846608ec48467e103f48">Painter</a>(<a class="code" href="classox_1_1Painter.html">Painter</a>&amp;&amp;)      = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="classox_1_1Painter.html">Painter</a>&amp; operator=(<a class="code" href="classox_1_1Painter.html">Painter</a> <span class="keyword">const</span>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="classox_1_1Painter.html">Painter</a>&amp; operator=(<a class="code" href="classox_1_1Painter.html">Painter</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">auto</span> <a class="code" href="classox_1_1Painter.html#aec304c1f201a08980d551eb068312e6f">put</a>(<a class="code" href="structox_1_1Glyph.html">Glyph</a> tile, Point p) -&gt; <a class="code" href="classox_1_1Painter.html">Painter</a>&amp;;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">auto</span> <a class="code" href="classox_1_1Painter.html#aec304c1f201a08980d551eb068312e6f">put</a>(<a class="code" href="classox_1_1Glyph__string.html">Glyph_string</a> <span class="keyword">const</span>&amp; text, Point p) -&gt; <a class="code" href="classox_1_1Painter.html">Painter</a>&amp;;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classox_1_1Painter.html#a710eff9c93e13b156b0407c27dbdbc37">at</a>(Point p) <span class="keyword">const</span> -&gt; <a class="code" href="structox_1_1Glyph.html">Glyph</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classox_1_1Painter.html#a710eff9c93e13b156b0407c27dbdbc37">at</a>(Point p) -&gt; <a class="code" href="structox_1_1Glyph.html">Glyph</a>&amp;;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">auto</span> <a class="code" href="classox_1_1Painter.html#aacbf2015f7e37dd5af58b85f9aa277ef">fill</a>(<a class="code" href="structox_1_1Glyph.html">Glyph</a> tile, Point point, Area area) -&gt; <a class="code" href="classox_1_1Painter.html">Painter</a>&amp;;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">auto</span> <a class="code" href="classox_1_1Painter.html#a5178e070ffe69f9a3d07273f9603a48b">hline</a>(<a class="code" href="structox_1_1Glyph.html">Glyph</a> tile, Point a, Point b) -&gt; <a class="code" href="classox_1_1Painter.html">Painter</a>&amp;;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Painter.html#a999a0060d89c68f203a59cde67f54f1b">fill</a>(<a class="code" href="structox_1_1Glyph.html">Glyph</a> tile,</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;              std::size_t x,</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;              std::size_t y,</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;              std::size_t width,</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;              std::size_t height);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">auto</span> <a class="code" href="classox_1_1Painter.html#abd9da1ef9d9ad4aac4817cc116f44146">vline</a>(<a class="code" href="structox_1_1Glyph.html">Glyph</a> tile, Point a, Point b) -&gt; <a class="code" href="classox_1_1Painter.html">Painter</a>&amp;;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">auto</span> <a class="code" href="classox_1_1Painter.html#a95974bc5e2a49701d7961ce915cac143">wallpaper_fill</a>() -&gt; <a class="code" href="classox_1_1Painter.html">Painter</a>&amp;;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Painter.html#a999a0060d89c68f203a59cde67f54f1b">fill</a>(<a class="code" href="structox_1_1Glyph.html">Glyph</a> tile, <a class="code" href="structox_1_1Point.html">Point</a> <span class="keyword">const</span>&amp; point, <a class="code" href="structox_1_1Area.html">Area</a> <span class="keyword">const</span>&amp; area);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> put_global(<a class="code" href="structox_1_1Glyph.html">Glyph</a> tile, Point p);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Painter.html#a08ff5f0c5b54583385f3758cd6ffd657">line</a>(<a class="code" href="structox_1_1Glyph.html">Glyph</a> tile,</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;              std::size_t x1,</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;              std::size_t y1,</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;              std::size_t x2,</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;              std::size_t y2);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="classox_1_1Painter.html#ac57329fab9bd89913ef436346a5a796b">   71</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Painter.html#ac57329fab9bd89913ef436346a5a796b">line</a>(<a class="code" href="structox_1_1Glyph.html">Glyph</a> tile, <a class="code" href="structox_1_1Point.html">Point</a> <span class="keyword">const</span>&amp; a, <a class="code" href="structox_1_1Point.html">Point</a> <span class="keyword">const</span>&amp; b)</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        this-&gt;<a class="code" href="classox_1_1Painter.html#a08ff5f0c5b54583385f3758cd6ffd657">line</a>(tile, a.x, a.y, b.x, b.y);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">void</span> put_global(<a class="code" href="structox_1_1Glyph.html">Glyph</a> tile, std::size_t x, std::size_t y)</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        staged_changes_[{x, y}] = tile;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">void</span> put_global(Glyph tile, Point <span class="keyword">const</span>&amp; position)</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        this-&gt;put_global(tile, position.x, position.y);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">void</span> line_global(Glyph tile,</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                     std::size_t x1,</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                     std::size_t y1,</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                     std::size_t x2,</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                     std::size_t y2);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">void</span> line_global(Glyph tile, Point <span class="keyword">const</span>&amp; a, Point <span class="keyword">const</span>&amp; b)</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    {</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        line_global(tile, a.x, a.y, b.x, b.y);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    }</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    Widget <span class="keyword">const</span>&amp; widget_;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    Area <span class="keyword">const</span> inner_area_;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">bool</span> <span class="keyword">const</span> is_paintable_;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    detail::Screen_descriptor&amp; staged_changes_;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;};</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;}  <span class="comment">// namespace ox</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_PAINTER_PAINTER_HPP</span></div>
-<div class="ttc" id="aclassox_1_1Glyph__string_html"><div class="ttname"><a href="classox_1_1Glyph__string.html">ox::Glyph_string</a></div><div class="ttdoc">Holds a collection of Glyphs with a similar interface to std::string.</div><div class="ttdef"><b>Definition:</b> glyph_string.hpp:20</div></div>
-<div class="ttc" id="aclassox_1_1Painter_html"><div class="ttname"><a href="classox_1_1Painter.html">ox::Painter</a></div><div class="ttdoc">Contains functions to paint Glyphs to a Widget's screen area.</div><div class="ttdef"><b>Definition:</b> painter.hpp:17</div></div>
-<div class="ttc" id="aclassox_1_1Painter_html_a08ff5f0c5b54583385f3758cd6ffd657"><div class="ttname"><a href="classox_1_1Painter.html#a08ff5f0c5b54583385f3758cd6ffd657">ox::Painter::line</a></div><div class="ttdeci">void line(Glyph tile, std::size_t x1, std::size_t y1, std::size_t x2, std::size_t y2)</div><div class="ttdoc">Draw a straight line from [x1, y1] to [x2, y2] in local coordinates.</div><div class="ttdef"><b>Definition:</b> painter.cpp:198</div></div>
-<div class="ttc" id="aclassox_1_1Painter_html_a308a4324e074d14aeb336b15968166af"><div class="ttname"><a href="classox_1_1Painter.html#a308a4324e074d14aeb336b15968166af">ox::Painter::put</a></div><div class="ttdeci">void put(Glyph tile, Point const &amp;position)</div><div class="ttdoc">Put single Glyph to local coordinates, no-op if out of Widget's bounds.</div><div class="ttdef"><b>Definition:</b> painter.hpp:29</div></div>
-<div class="ttc" id="aclassox_1_1Painter_html_a4ecebf5e224cf50af774c17a28584b87"><div class="ttname"><a href="classox_1_1Painter.html#a4ecebf5e224cf50af774c17a28584b87">ox::Painter::put</a></div><div class="ttdeci">void put(Glyph_string const &amp;text, Point const &amp;position)</div><div class="ttdoc">Put Glyph_string to local coordinates, no-op if out of Widget's bounds.</div><div class="ttdef"><b>Definition:</b> painter.hpp:38</div></div>
-<div class="ttc" id="aclassox_1_1Painter_html_a56d8f4d5a6f09dbc9f8e63342f1f4208"><div class="ttname"><a href="classox_1_1Painter.html#a56d8f4d5a6f09dbc9f8e63342f1f4208">ox::Painter::Painter</a></div><div class="ttdeci">Painter(Widget &amp;widg)</div><div class="ttdoc">Construct an object ready to paint Glyphs to *widg.</div><div class="ttdef"><b>Definition:</b> painter.cpp:30</div></div>
-<div class="ttc" id="aclassox_1_1Painter_html_a8a8ab75303e6d9626db5610e9f7f4825"><div class="ttname"><a href="classox_1_1Painter.html#a8a8ab75303e6d9626db5610e9f7f4825">ox::Painter::put</a></div><div class="ttdeci">void put(Glyph tile, std::size_t x, std::size_t y)</div><div class="ttdoc">Put single Glyph to local coordinates, no-op if out of Widget's bounds.</div><div class="ttdef"><b>Definition:</b> painter.cpp:37</div></div>
-<div class="ttc" id="aclassox_1_1Painter_html_a999a0060d89c68f203a59cde67f54f1b"><div class="ttname"><a href="classox_1_1Painter.html#a999a0060d89c68f203a59cde67f54f1b">ox::Painter::fill</a></div><div class="ttdeci">void fill(Glyph tile, std::size_t x, std::size_t y, std::size_t width, std::size_t height)</div><div class="ttdoc">Fill the Widget with tile Glyphs, from the top left point (x, y).</div><div class="ttdef"><b>Definition:</b> painter.cpp:179</div></div>
-<div class="ttc" id="aclassox_1_1Painter_html_ac57329fab9bd89913ef436346a5a796b"><div class="ttname"><a href="classox_1_1Painter.html#ac57329fab9bd89913ef436346a5a796b">ox::Painter::line</a></div><div class="ttdeci">void line(Glyph tile, Point const &amp;a, Point const &amp;b)</div><div class="ttdoc">Draw a straight line from a to b, inclusive, in local coordinates.</div><div class="ttdef"><b>Definition:</b> painter.hpp:71</div></div>
-<div class="ttc" id="aclassox_1_1Painter_html_ae02b43cea7c9ae4613db2989643f0e64"><div class="ttname"><a href="classox_1_1Painter.html#ae02b43cea7c9ae4613db2989643f0e64">ox::Painter::border</a></div><div class="ttdeci">void border()</div><div class="ttdoc">Paint the Border object around the outside of the associated Widget.</div><div class="ttdef"><b>Definition:</b> painter.cpp:54</div></div>
-<div class="ttc" id="aclassox_1_1Widget_html"><div class="ttname"><a href="classox_1_1Widget.html">ox::Widget</a></div><div class="ttdef"><b>Definition:</b> widget.hpp:36</div></div>
-<div class="ttc" id="astructox_1_1Area_html"><div class="ttname"><a href="structox_1_1Area.html">ox::Area</a></div><div class="ttdoc">Convinience data structure holding Widget size dimensions.</div><div class="ttdef"><b>Definition:</b> area.hpp:8</div></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span> hline_global(<a class="code" href="structox_1_1Glyph.html">Glyph</a> tile, Point a, Point b);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span> hline_global_no_brush(<a class="code" href="structox_1_1Glyph.html">Glyph</a> tile, Point a, Point b);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">void</span> vline_global(<a class="code" href="structox_1_1Glyph.html">Glyph</a> tile, Point a, Point b);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> fill_global(<a class="code" href="structox_1_1Glyph.html">Glyph</a> tile, Point point, Area area);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">void</span> fill_global_no_brush(<a class="code" href="structox_1_1Glyph.html">Glyph</a> tile, Point point, Area area);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <a class="code" href="classox_1_1Widget.html">Widget</a> <span class="keyword">const</span>&amp; widget_;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <a class="code" href="classox_1_1detail_1_1Canvas.html">detail::Canvas</a>&amp; canvas_;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="classox_1_1Brush.html">Brush</a> brush_;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;};</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}  <span class="comment">// namespace ox</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_PAINTER_PAINTER_HPP</span></div>
+<div class="ttc" id="aclassox_1_1Brush_html"><div class="ttname"><a href="classox_1_1Brush.html">ox::Brush</a></div><div class="ttdoc">Holds the look of any paintable object with Traits and Colors.</div><div class="ttdef"><b>Definition:</b> brush.hpp:13</div></div>
+<div class="ttc" id="aclassox_1_1Glyph__string_html"><div class="ttname"><a href="classox_1_1Glyph__string.html">ox::Glyph_string</a></div><div class="ttdoc">Holds a collection of Glyphs with a similar interface to std::string.</div><div class="ttdef"><b>Definition:</b> glyph_string.hpp:19</div></div>
+<div class="ttc" id="aclassox_1_1Painter_html"><div class="ttname"><a href="classox_1_1Painter.html">ox::Painter</a></div><div class="ttdoc">Contains functions to paint Glyphs to a Widget's screen area.</div><div class="ttdef"><b>Definition:</b> painter.hpp:21</div></div>
+<div class="ttc" id="aclassox_1_1Painter_html_a5178e070ffe69f9a3d07273f9603a48b"><div class="ttname"><a href="classox_1_1Painter.html#a5178e070ffe69f9a3d07273f9603a48b">ox::Painter::hline</a></div><div class="ttdeci">auto hline(Glyph tile, Point a, Point b) -&gt; Painter &amp;</div><div class="ttdoc">Draw a horizontal line from a to b, inclusive, in local coords.</div><div class="ttdef"><b>Definition:</b> painter.cpp:59</div></div>
+<div class="ttc" id="aclassox_1_1Painter_html_a710eff9c93e13b156b0407c27dbdbc37"><div class="ttname"><a href="classox_1_1Painter.html#a710eff9c93e13b156b0407c27dbdbc37">ox::Painter::at</a></div><div class="ttdeci">auto at(Point p) const -&gt; Glyph</div><div class="ttdoc">Return a copy of the Glyph at p, is U'\0' if Glyph is not set yet.</div><div class="ttdef"><b>Definition:</b> painter.cpp:36</div></div>
+<div class="ttc" id="aclassox_1_1Painter_html_a95974bc5e2a49701d7961ce915cac143"><div class="ttname"><a href="classox_1_1Painter.html#a95974bc5e2a49701d7961ce915cac143">ox::Painter::wallpaper_fill</a></div><div class="ttdeci">auto wallpaper_fill() -&gt; Painter &amp;</div><div class="ttdoc">Fill the entire widget screen with wallpaper.</div><div class="ttdef"><b>Definition:</b> painter.cpp:73</div></div>
+<div class="ttc" id="aclassox_1_1Painter_html_aacbf2015f7e37dd5af58b85f9aa277ef"><div class="ttname"><a href="classox_1_1Painter.html#aacbf2015f7e37dd5af58b85f9aa277ef">ox::Painter::fill</a></div><div class="ttdeci">auto fill(Glyph tile, Point point, Area area) -&gt; Painter &amp;</div><div class="ttdoc">Fill the Widget with tile Glyphs starting at the top left point.</div><div class="ttdef"><b>Definition:</b> painter.cpp:48</div></div>
+<div class="ttc" id="aclassox_1_1Painter_html_abd9da1ef9d9ad4aac4817cc116f44146"><div class="ttname"><a href="classox_1_1Painter.html#abd9da1ef9d9ad4aac4817cc116f44146">ox::Painter::vline</a></div><div class="ttdeci">auto vline(Glyph tile, Point a, Point b) -&gt; Painter &amp;</div><div class="ttdoc">Draw a vertical line from a to b, inclusive, in local coords.</div><div class="ttdef"><b>Definition:</b> painter.cpp:66</div></div>
+<div class="ttc" id="aclassox_1_1Painter_html_ad4aff6ac9dce846608ec48467e103f48"><div class="ttname"><a href="classox_1_1Painter.html#ad4aff6ac9dce846608ec48467e103f48">ox::Painter::Painter</a></div><div class="ttdeci">Painter(Widget &amp;w, detail::Canvas &amp;canvas)</div><div class="ttdoc">Construct an object ready to paint Glyphs from w to canvas.</div><div class="ttdef"><b>Definition:</b> painter.cpp:12</div></div>
+<div class="ttc" id="aclassox_1_1Painter_html_aec304c1f201a08980d551eb068312e6f"><div class="ttname"><a href="classox_1_1Painter.html#aec304c1f201a08980d551eb068312e6f">ox::Painter::put</a></div><div class="ttdeci">auto put(Glyph tile, Point p) -&gt; Painter &amp;</div><div class="ttdoc">Put single Glyph to local coordinates.</div><div class="ttdef"><b>Definition:</b> painter.cpp:18</div></div>
+<div class="ttc" id="aclassox_1_1Widget_html"><div class="ttname"><a href="classox_1_1Widget.html">ox::Widget</a></div><div class="ttdef"><b>Definition:</b> widget.hpp:31</div></div>
+<div class="ttc" id="aclassox_1_1detail_1_1Canvas_html"><div class="ttname"><a href="classox_1_1detail_1_1Canvas.html">ox::detail::Canvas</a></div><div class="ttdoc">A 2D field of Glyphs, useful as a screen buffer.</div><div class="ttdef"><b>Definition:</b> canvas.hpp:18</div></div>
 <div class="ttc" id="astructox_1_1Glyph_html"><div class="ttname"><a href="structox_1_1Glyph.html">ox::Glyph</a></div><div class="ttdoc">Holds a description of a paintable tile on the screen.</div><div class="ttdef"><b>Definition:</b> glyph.hpp:11</div></div>
-<div class="ttc" id="astructox_1_1Point_html"><div class="ttname"><a href="structox_1_1Point.html">ox::Point</a></div><div class="ttdoc">Represents a 2D point in space.</div><div class="ttdef"><b>Definition:</b> point.hpp:11</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

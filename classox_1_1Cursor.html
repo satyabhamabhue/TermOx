@@ -81,22 +81,14 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9dca90a857b139f43f5863f246df582d"><td class="memItemLeft" align="right" valign="top"><a id="a9dca90a857b139f43f5863f246df582d"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Cursor.html#a9dca90a857b139f43f5863f246df582d">enabled</a> () const -&gt; bool</td></tr>
-<tr class="memdesc:a9dca90a857b139f43f5863f246df582d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query if the cursor is enabled. <br /></td></tr>
-<tr class="separator:a9dca90a857b139f43f5863f246df582d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02a477af04275536c15874f1af40aaca"><td class="memItemLeft" align="right" valign="top"><a id="a02a477af04275536c15874f1af40aaca"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Cursor.html#a02a477af04275536c15874f1af40aaca">x</a> () const -&gt; std::size_t</td></tr>
-<tr class="memdesc:a02a477af04275536c15874f1af40aaca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the local x coordinate of the cursor. <br /></td></tr>
-<tr class="separator:a02a477af04275536c15874f1af40aaca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab6799ff6209299dbc29f8065a2dfe29d"><td class="memItemLeft" align="right" valign="top"><a id="ab6799ff6209299dbc29f8065a2dfe29d"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Cursor.html#ab6799ff6209299dbc29f8065a2dfe29d">y</a> () const -&gt; std::size_t</td></tr>
-<tr class="memdesc:ab6799ff6209299dbc29f8065a2dfe29d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the local y coordinate of the cursor. <br /></td></tr>
-<tr class="separator:ab6799ff6209299dbc29f8065a2dfe29d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26577da36ddd51a13e39db83d91f4549"><td class="memItemLeft" align="right" valign="top"><a id="a26577da36ddd51a13e39db83d91f4549"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Cursor.html#a26577da36ddd51a13e39db83d91f4549">position</a> () const -&gt; <a class="el" href="structox_1_1Point.html">Point</a></td></tr>
+auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Cursor.html#a26577da36ddd51a13e39db83d91f4549">position</a> () const -&gt; Point</td></tr>
 <tr class="memdesc:a26577da36ddd51a13e39db83d91f4549"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the local position of the cursor. <br /></td></tr>
 <tr class="separator:a26577da36ddd51a13e39db83d91f4549"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e21747ab9499b4fcbd4c824a823689a"><td class="memItemLeft" align="right" valign="top"><a id="a5e21747ab9499b4fcbd4c824a823689a"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Cursor.html#a5e21747ab9499b4fcbd4c824a823689a">is_enabled</a> () const -&gt; bool</td></tr>
+<tr class="memdesc:a5e21747ab9499b4fcbd4c824a823689a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query if the cursor is enabled. <br /></td></tr>
+<tr class="separator:a5e21747ab9499b4fcbd4c824a823689a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af919cd1ef76771854a03dd09d8f63656"><td class="memItemLeft" align="right" valign="top"><a id="af919cd1ef76771854a03dd09d8f63656"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Cursor.html#af919cd1ef76771854a03dd09d8f63656">enable</a> (bool enable=true)</td></tr>
 <tr class="memdesc:af919cd1ef76771854a03dd09d8f63656"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable the cursor(show on screen). <br /></td></tr>
@@ -109,30 +101,23 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Cursor.html#a8e7d87e2af485171ce60a27c5a997ac3">toggle</a> ()</td></tr>
 <tr class="memdesc:a8e7d87e2af485171ce60a27c5a997ac3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable the cursor if disabled, or disable it if enabled. <br /></td></tr>
 <tr class="separator:a8e7d87e2af485171ce60a27c5a997ac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9552824b14524d76c480caac72897cdb"><td class="memItemLeft" align="right" valign="top"><a id="a9552824b14524d76c480caac72897cdb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Cursor.html#a9552824b14524d76c480caac72897cdb">set_x</a> (std::size_t <a class="el" href="classox_1_1Cursor.html#a02a477af04275536c15874f1af40aaca">x</a>)</td></tr>
-<tr class="memdesc:a9552824b14524d76c480caac72897cdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the local x coordinate of the cursor. <br /></td></tr>
-<tr class="separator:a9552824b14524d76c480caac72897cdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4bf8e643626f5fcd4c5b4154ede317a"><td class="memItemLeft" align="right" valign="top"><a id="af4bf8e643626f5fcd4c5b4154ede317a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Cursor.html#af4bf8e643626f5fcd4c5b4154ede317a">set_y</a> (std::size_t <a class="el" href="classox_1_1Cursor.html#ab6799ff6209299dbc29f8065a2dfe29d">y</a>)</td></tr>
-<tr class="memdesc:af4bf8e643626f5fcd4c5b4154ede317a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the local y coordinate of the cursor. <br /></td></tr>
-<tr class="separator:af4bf8e643626f5fcd4c5b4154ede317a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42dfe1a8b89d84aa61b2de96a821fb0d"><td class="memItemLeft" align="right" valign="top"><a id="a42dfe1a8b89d84aa61b2de96a821fb0d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Cursor.html#a42dfe1a8b89d84aa61b2de96a821fb0d">set_position</a> (<a class="el" href="structox_1_1Point.html">Point</a> p)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Cursor.html#a42dfe1a8b89d84aa61b2de96a821fb0d">set_position</a> (Point p)</td></tr>
 <tr class="memdesc:a42dfe1a8b89d84aa61b2de96a821fb0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the local position of the cursor. <br /></td></tr>
 <tr class="separator:a42dfe1a8b89d84aa61b2de96a821fb0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ae80091343b1ff8d544b32653145fee8c"><td class="memItemLeft" align="right" valign="top"><a id="ae80091343b1ff8d544b32653145fee8c"></a>
-sl::Signal&lt; void(<a class="el" href="structox_1_1Point.html">Point</a>)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Cursor.html#ae80091343b1ff8d544b32653145fee8c">moved</a></td></tr>
+sl::Signal&lt; void(Point)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Cursor.html#ae80091343b1ff8d544b32653145fee8c">moved</a></td></tr>
 <tr class="memdesc:ae80091343b1ff8d544b32653145fee8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal called when the cursor is moved, passing along the new position. <br /></td></tr>
 <tr class="separator:ae80091343b1ff8d544b32653145fee8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Holds and provides access to all data relevant to a <a class="el" href="classox_1_1Widget.html">Widget</a>'s cursor. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>/github/workspace/include/termox/widget/<a class="el" href="cursor_8hpp_source.html">cursor.hpp</a></li>
+<li>/github/workspace/src/widget/cursor.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

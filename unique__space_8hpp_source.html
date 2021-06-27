@@ -82,11 +82,11 @@ $(function() {
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Parameters&gt;</div>
 <div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classox_1_1layout_1_1detail_1_1Unique__space.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1layout_1_1detail_1_1Unique__space.html">Unique_space</a> {</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">using</span> Length_list   = std::vector&lt;std::size_t&gt;;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">using</span> Position_list = std::vector&lt;std::size_t&gt;;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">using</span> Length_list   = std::vector&lt;int&gt;;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">using</span> Position_list = std::vector&lt;int&gt;;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">auto</span> calculate_lengths(<a class="code" href="classox_1_1Widget.html">Widget</a>&amp; parent) -&gt; Length_list</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> calculate_lengths(<a class="code" href="classox_1_1Widget.html">Widget</a>&amp; parent) -&gt; Length_list</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    {</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">auto</span> result      = Length_list{};</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> limit = <span class="keyword">typename</span> Parameters::Secondary::get_length{}(parent);</div>
@@ -99,7 +99,7 @@ $(function() {
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                <span class="keyword">typename</span> Parameters::Secondary::get_policy{}(*begin);</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keywordflow">if</span> (limit &gt; policy.max())</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                result.push_back(policy.max());</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (limit &lt; policy.min() and !policy.can_ignore_min())</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (limit &lt; policy.min() &amp;&amp; !policy.can_ignore_min())</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                result.push_back(0);</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                result.push_back(limit);</div>
@@ -107,27 +107,27 @@ $(function() {
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">return</span> result;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">auto</span> calculate_positions(Length_list <span class="keyword">const</span>&amp; lengths) -&gt; Position_list</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordflow">return</span> Position_list(lengths.size(), 0uL);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classox_1_1layout_1_1detail_1_1Unique__space.html#abf4582c265bd98d7f8b694ec18095176">   46</a></span>&#160;    <span class="keyword">auto</span> <a class="code" href="classox_1_1layout_1_1detail_1_1Unique__space.html#abf4582c265bd98d7f8b694ec18095176">get_offset</a>() const -&gt; <a class="code" href="namespacestd.html">std</a>::<span class="keywordtype">size_t</span> { <span class="keywordflow">return</span> offset_; }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classox_1_1layout_1_1detail_1_1Unique__space.html#ae7429c2b7a051a5ae0fff0a295f4d63e">   49</a></span>&#160;    <span class="keyword">auto</span> <a class="code" href="classox_1_1layout_1_1detail_1_1Unique__space.html#ae7429c2b7a051a5ae0fff0a295f4d63e">set_offset</a>(std::size_t index) { offset_ = index; }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    std::size_t offset_ = 0uL;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;};</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}  <span class="comment">// namespace ox::layout::detail</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_WIDGET_LAYOUTS_DETAIL_UNIQUE_SPACE_HPP</span></div>
-<div class="ttc" id="aclassox_1_1Widget_html"><div class="ttname"><a href="classox_1_1Widget.html">ox::Widget</a></div><div class="ttdef"><b>Definition:</b> widget.hpp:36</div></div>
-<div class="ttc" id="aclassox_1_1Widget_html_a3efc172e4ed37a9337c165ad7c26c05f"><div class="ttname"><a href="classox_1_1Widget.html#a3efc172e4ed37a9337c165ad7c26c05f">ox::Widget::get_children</a></div><div class="ttdeci">auto get_children()</div><div class="ttdoc">Get a range containing Widget&amp; to each child.</div><div class="ttdef"><b>Definition:</b> widget.hpp:300</div></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> calculate_positions(Length_list <span class="keyword">const</span>&amp; lengths)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        -&gt; Position_list</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">return</span> Position_list(lengths.size(), 0);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classox_1_1layout_1_1detail_1_1Unique__space.html#abf4582c265bd98d7f8b694ec18095176">   47</a></span>&#160;    [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classox_1_1layout_1_1detail_1_1Unique__space.html#abf4582c265bd98d7f8b694ec18095176">get_offset</a>() const -&gt; std::<span class="keywordtype">size_t</span> { <span class="keywordflow">return</span> offset_; }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classox_1_1layout_1_1detail_1_1Unique__space.html#a82be24f9d3d7153d26cb6c0398709b09">   50</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1layout_1_1detail_1_1Unique__space.html#a82be24f9d3d7153d26cb6c0398709b09">set_offset</a>(std::size_t index) { offset_ = index; }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    std::size_t offset_ = 0;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;};</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}  <span class="comment">// namespace ox::layout::detail</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_WIDGET_LAYOUTS_DETAIL_UNIQUE_SPACE_HPP</span></div>
+<div class="ttc" id="aclassox_1_1Widget_html"><div class="ttname"><a href="classox_1_1Widget.html">ox::Widget</a></div><div class="ttdef"><b>Definition:</b> widget.hpp:31</div></div>
+<div class="ttc" id="aclassox_1_1Widget_html_a3efc172e4ed37a9337c165ad7c26c05f"><div class="ttname"><a href="classox_1_1Widget.html#a3efc172e4ed37a9337c165ad7c26c05f">ox::Widget::get_children</a></div><div class="ttdeci">auto get_children()</div><div class="ttdoc">Get a range containing Widget&amp; to each child.</div><div class="ttdef"><b>Definition:</b> widget.hpp:214</div></div>
 <div class="ttc" id="aclassox_1_1layout_1_1detail_1_1Unique__space_html"><div class="ttname"><a href="classox_1_1layout_1_1detail_1_1Unique__space.html">ox::layout::detail::Unique_space</a></div><div class="ttdoc">Gives space to child Widgets where each gets full use of the length.</div><div class="ttdef"><b>Definition:</b> unique_space.hpp:13</div></div>
-<div class="ttc" id="aclassox_1_1layout_1_1detail_1_1Unique__space_html_abf4582c265bd98d7f8b694ec18095176"><div class="ttname"><a href="classox_1_1layout_1_1detail_1_1Unique__space.html#abf4582c265bd98d7f8b694ec18095176">ox::layout::detail::Unique_space::get_offset</a></div><div class="ttdeci">auto get_offset() const -&gt; std::size_t</div><div class="ttdoc">Return the child Widget offset, the first widget included in the layout.</div><div class="ttdef"><b>Definition:</b> unique_space.hpp:46</div></div>
-<div class="ttc" id="aclassox_1_1layout_1_1detail_1_1Unique__space_html_ae7429c2b7a051a5ae0fff0a295f4d63e"><div class="ttname"><a href="classox_1_1layout_1_1detail_1_1Unique__space.html#ae7429c2b7a051a5ae0fff0a295f4d63e">ox::layout::detail::Unique_space::set_offset</a></div><div class="ttdeci">auto set_offset(std::size_t index)</div><div class="ttdoc">Sets the child Widget offset, does not do bounds checking.</div><div class="ttdef"><b>Definition:</b> unique_space.hpp:49</div></div>
-<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Custom specialization of std::hash for ox::point.</div><div class="ttdef"><b>Definition:</b> key.hpp:266</div></div>
+<div class="ttc" id="aclassox_1_1layout_1_1detail_1_1Unique__space_html_a82be24f9d3d7153d26cb6c0398709b09"><div class="ttname"><a href="classox_1_1layout_1_1detail_1_1Unique__space.html#a82be24f9d3d7153d26cb6c0398709b09">ox::layout::detail::Unique_space::set_offset</a></div><div class="ttdeci">void set_offset(std::size_t index)</div><div class="ttdoc">Sets the child Widget offset, does not do bounds checking.</div><div class="ttdef"><b>Definition:</b> unique_space.hpp:50</div></div>
+<div class="ttc" id="aclassox_1_1layout_1_1detail_1_1Unique__space_html_abf4582c265bd98d7f8b694ec18095176"><div class="ttname"><a href="classox_1_1layout_1_1detail_1_1Unique__space.html#abf4582c265bd98d7f8b694ec18095176">ox::layout::detail::Unique_space::get_offset</a></div><div class="ttdeci">auto get_offset() const -&gt; std::size_t</div><div class="ttdoc">Return the child Widget offset, the first widget included in the layout.</div><div class="ttdef"><b>Definition:</b> unique_space.hpp:47</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

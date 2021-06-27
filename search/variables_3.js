@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['edit_5ffinished_1311',['edit_finished',['../classox_1_1Line__edit.html#ac2cfe273c1eb33f893b451d2de636d8f',1,'ox::Line_edit']]],
-  ['exit_5fsignal_1312',['exit_signal',['../classox_1_1System.html#ab0e0702a295e964e9e39c9041bf06510',1,'ox::System']]]
+  ['height_5fpolicy_1302',['height_policy',['../classox_1_1Widget.html#a904577884a103fbdc7343283a5605177',1,'ox::Widget']]]
 ];

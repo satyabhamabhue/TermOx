@@ -72,75 +72,82 @@ $(function() {
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef TERMOX_SYSTEM_EVENT_LOOP_HPP</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define TERMOX_SYSTEM_EVENT_LOOP_HPP</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;atomic&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;future&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;thread&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;signals_light/signal.hpp&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;termox/painter/detail/screen.hpp&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;termox/painter/detail/staged_changes.hpp&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;future&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;termox/system/event_queue.hpp&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>ox {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span>ox {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classox_1_1Event__loop.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1Event__loop.html">Event_loop</a> {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classox_1_1Event__loop.html">Event_loop</a>() { this-&gt;connect_to_system_exit(); }</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classox_1_1Event__loop.html#a6d10ec5bb24bd61e7b81fc241f4dd2c2">   25</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classox_1_1Event__loop.html#a6d10ec5bb24bd61e7b81fc241f4dd2c2">~Event_loop</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">auto</span> <a class="code" href="classox_1_1Event__loop.html#a76a29d04cbd38fc94a99183ba4237cb6">run</a>() -&gt; int;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classox_1_1Event__loop.html#a891af5cef6bca806577ddc39d4e6fd5a">   31</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Event__loop.html#a891af5cef6bca806577ddc39d4e6fd5a">run_async</a>()</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        fut_ = std::async(std::launch::async, [<span class="keyword">this</span>] { <span class="keywordflow">return</span> this-&gt;<a class="code" href="classox_1_1Event__loop.html#a76a29d04cbd38fc94a99183ba4237cb6">run</a>(); });</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classox_1_1Event__loop.html#ad3013b813267a6dc2721e017476acd20">   42</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Event__loop.html#ad3013b813267a6dc2721e017476acd20">exit</a>(<span class="keywordtype">int</span> return_code)</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        return_code_ = return_code;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        exit_        = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classox_1_1Event__loop.html#aa6508d05586d11680589bd1a9a817d96">   51</a></span>&#160;    <span class="keyword">auto</span> <a class="code" href="classox_1_1Event__loop.html#aa6508d05586d11680589bd1a9a817d96">wait</a>() -&gt; <span class="keywordtype">int</span> { <span class="keywordflow">return</span> fut_.valid() ? fut_.get() : -1; }</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classox_1_1Event__loop.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1Event__loop.html">Event_loop</a> {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> F&gt;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classox_1_1Event__loop.html#a40fcf45aa125351ee08bf21936d7e1f5">   23</a></span>&#160;    <span class="keyword">auto</span> <a class="code" href="classox_1_1Event__loop.html#a40fcf45aa125351ee08bf21936d7e1f5">run</a>(F loop_function) -&gt; <span class="keywordtype">int</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordflow">if</span> (running_)</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        running_ = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordflow">if</span> (!exit_)</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            queue_.<a class="code" href="classox_1_1Event__queue.html#a92292ec2840428d9ae70ab7880a50458">send_all</a>();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">while</span> (!exit_) {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            loop_function(queue_);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            queue_.<a class="code" href="classox_1_1Event__queue.html#a92292ec2840428d9ae70ab7880a50458">send_all</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        running_ = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        exit_    = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordflow">return</span> return_code_;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> F&gt;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classox_1_1Event__loop.html#a5146c61d6b4db59f14a3851bba267103">   43</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Event__loop.html#a5146c61d6b4db59f14a3851bba267103">run_async</a>(F&amp;&amp; loop_function)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">if</span> (fut_.valid())</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        fut_ = std::async(std::launch::async, [<span class="keyword">this</span>, loop_function] {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">return</span> this-&gt;<a class="code" href="classox_1_1Event__loop.html#a40fcf45aa125351ee08bf21936d7e1f5">run</a>(std::move(loop_function));</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        });</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        assert(fut_.valid());</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;   <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classox_1_1Event__loop.html#a530e88f8c09275e73f258ffe92ec1c02">   56</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classox_1_1Event__loop.html#a530e88f8c09275e73f258ffe92ec1c02">loop_function</a>() = 0;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classox_1_1Event__loop.html#a6834e1fb15c3a2f35f5db1f0f9d7396f">   59</a></span>&#160;    <span class="keyword">auto</span> <a class="code" href="classox_1_1Event__loop.html#a6834e1fb15c3a2f35f5db1f0f9d7396f">exit_flag</a>() const -&gt; <span class="keywordtype">bool</span> { <span class="keywordflow">return</span> exit_; }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Event__loop.html#ad3013b813267a6dc2721e017476acd20">exit</a>(<span class="keywordtype">int</span> return_code);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">auto</span> connect_to_system_exit() -&gt; void;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    std::future&lt;int&gt; fut_;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    sl::Lifetime lifetime_;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">int</span> return_code_        = 0;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">bool</span> running_           = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    std::atomic&lt;bool&gt; exit_ = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;   <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">bool</span> is_main_thread_ = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classox_1_1System.html">System</a>;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;};</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}  <span class="comment">// namespace ox</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_SYSTEM_EVENT_LOOP_HPP</span></div>
-<div class="ttc" id="aclassox_1_1Event__loop_html"><div class="ttname"><a href="classox_1_1Event__loop.html">ox::Event_loop</a></div><div class="ttdoc">Waits on loop_function() and then notifies Event_engine if event is posted.</div><div class="ttdef"><b>Definition:</b> event_loop.hpp:20</div></div>
-<div class="ttc" id="aclassox_1_1Event__loop_html_a530e88f8c09275e73f258ffe92ec1c02"><div class="ttname"><a href="classox_1_1Event__loop.html#a530e88f8c09275e73f258ffe92ec1c02">ox::Event_loop::loop_function</a></div><div class="ttdeci">virtual void loop_function()=0</div><div class="ttdoc">Override this in derived classes to define Event_loop behavior.</div></div>
-<div class="ttc" id="aclassox_1_1Event__loop_html_a6834e1fb15c3a2f35f5db1f0f9d7396f"><div class="ttname"><a href="classox_1_1Event__loop.html#a6834e1fb15c3a2f35f5db1f0f9d7396f">ox::Event_loop::exit_flag</a></div><div class="ttdeci">auto exit_flag() const -&gt; bool</div><div class="ttdoc">Return true if the exit flag has been set.</div><div class="ttdef"><b>Definition:</b> event_loop.hpp:59</div></div>
-<div class="ttc" id="aclassox_1_1Event__loop_html_a6d10ec5bb24bd61e7b81fc241f4dd2c2"><div class="ttname"><a href="classox_1_1Event__loop.html#a6d10ec5bb24bd61e7b81fc241f4dd2c2">ox::Event_loop::~Event_loop</a></div><div class="ttdeci">virtual ~Event_loop()=default</div><div class="ttdoc">Make sure the loop has exited and returned from async functions.</div></div>
-<div class="ttc" id="aclassox_1_1Event__loop_html_a76a29d04cbd38fc94a99183ba4237cb6"><div class="ttname"><a href="classox_1_1Event__loop.html#a76a29d04cbd38fc94a99183ba4237cb6">ox::Event_loop::run</a></div><div class="ttdeci">auto run() -&gt; int</div><div class="ttdoc">Start the event loop.</div><div class="ttdef"><b>Definition:</b> event_loop.cpp:8</div></div>
-<div class="ttc" id="aclassox_1_1Event__loop_html_a891af5cef6bca806577ddc39d4e6fd5a"><div class="ttname"><a href="classox_1_1Event__loop.html#a891af5cef6bca806577ddc39d4e6fd5a">ox::Event_loop::run_async</a></div><div class="ttdeci">void run_async()</div><div class="ttdoc">Start the event loop in a separate thread.</div><div class="ttdef"><b>Definition:</b> event_loop.hpp:31</div></div>
-<div class="ttc" id="aclassox_1_1Event__loop_html_aa6508d05586d11680589bd1a9a817d96"><div class="ttname"><a href="classox_1_1Event__loop.html#aa6508d05586d11680589bd1a9a817d96">ox::Event_loop::wait</a></div><div class="ttdeci">auto wait() -&gt; int</div><div class="ttdoc">Block until the async event loop returns.</div><div class="ttdef"><b>Definition:</b> event_loop.hpp:51</div></div>
-<div class="ttc" id="aclassox_1_1Event__loop_html_ad3013b813267a6dc2721e017476acd20"><div class="ttname"><a href="classox_1_1Event__loop.html#ad3013b813267a6dc2721e017476acd20">ox::Event_loop::exit</a></div><div class="ttdeci">void exit(int return_code)</div><div class="ttdoc">Call on the loop to exit at the next exit point.</div><div class="ttdef"><b>Definition:</b> event_loop.hpp:42</div></div>
-<div class="ttc" id="aclassox_1_1System_html"><div class="ttname"><a href="classox_1_1System.html">ox::System</a></div><div class="ttdoc">Organizes the highest level of the TUI framework.</div><div class="ttdef"><b>Definition:</b> system.hpp:27</div></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">// wait, then if valid, get it</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">auto</span> <a class="code" href="classox_1_1Event__loop.html#aa6508d05586d11680589bd1a9a817d96">wait</a>() -&gt; int;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classox_1_1Event__loop.html#aa939235bdd907a3f1886ccb024428755">is_running</a>() const -&gt; <span class="keywordtype">bool</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    [[nodiscard]] auto <a class="code" href="classox_1_1Event__loop.html#a6834e1fb15c3a2f35f5db1f0f9d7396f">exit_flag</a>() const -&gt; <span class="keywordtype">bool</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    [[nodiscard]] auto <a class="code" href="classox_1_1Event__loop.html#a93766ca6564e9e90bdc961f8c700636d">event_queue</a>() -&gt; <a class="code" href="classox_1_1Event__queue.html">Event_queue</a>&amp;;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    [[nodiscard]] auto <a class="code" href="classox_1_1Event__loop.html#a93766ca6564e9e90bdc961f8c700636d">event_queue</a>() const -&gt; <a class="code" href="classox_1_1Event__queue.html">Event_queue</a> const&amp;;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;   private:</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    std::future&lt;<span class="keywordtype">int</span>&gt; fut_;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">int</span> return_code_           = 0;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    std::atomic&lt;<span class="keywordtype">bool</span>&gt; running_ = false;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    std::atomic&lt;<span class="keywordtype">bool</span>&gt; exit_    = false;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="classox_1_1Event__queue.html">Event_queue</a> queue_;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;};</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}  <span class="comment">// namespace ox</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_SYSTEM_EVENT_LOOP_HPP</span></div>
+<div class="ttc" id="aclassox_1_1Event__loop_html"><div class="ttname"><a href="classox_1_1Event__loop.html">ox::Event_loop</a></div><div class="ttdoc">Calls on loop_function(), and then processes the Event_queue.</div><div class="ttdef"><b>Definition:</b> event_loop.hpp:17</div></div>
+<div class="ttc" id="aclassox_1_1Event__loop_html_a40fcf45aa125351ee08bf21936d7e1f5"><div class="ttname"><a href="classox_1_1Event__loop.html#a40fcf45aa125351ee08bf21936d7e1f5">ox::Event_loop::run</a></div><div class="ttdeci">auto run(F loop_function) -&gt; int</div><div class="ttdoc">Start the event loop, calling loop_function on each iteration.</div><div class="ttdef"><b>Definition:</b> event_loop.hpp:23</div></div>
+<div class="ttc" id="aclassox_1_1Event__loop_html_a5146c61d6b4db59f14a3851bba267103"><div class="ttname"><a href="classox_1_1Event__loop.html#a5146c61d6b4db59f14a3851bba267103">ox::Event_loop::run_async</a></div><div class="ttdeci">void run_async(F &amp;&amp;loop_function)</div><div class="ttdoc">Start the event loop in a separate thread.</div><div class="ttdef"><b>Definition:</b> event_loop.hpp:43</div></div>
+<div class="ttc" id="aclassox_1_1Event__loop_html_a6834e1fb15c3a2f35f5db1f0f9d7396f"><div class="ttname"><a href="classox_1_1Event__loop.html#a6834e1fb15c3a2f35f5db1f0f9d7396f">ox::Event_loop::exit_flag</a></div><div class="ttdeci">auto exit_flag() const -&gt; bool</div><div class="ttdoc">Return true if the exit flag has been set.</div><div class="ttdef"><b>Definition:</b> event_loop.cpp:20</div></div>
+<div class="ttc" id="aclassox_1_1Event__loop_html_a93766ca6564e9e90bdc961f8c700636d"><div class="ttname"><a href="classox_1_1Event__loop.html#a93766ca6564e9e90bdc961f8c700636d">ox::Event_loop::event_queue</a></div><div class="ttdeci">auto event_queue() -&gt; Event_queue &amp;</div><div class="ttdoc">Return a reference to the Event_queue of this loop.</div><div class="ttdef"><b>Definition:</b> event_loop.cpp:22</div></div>
+<div class="ttc" id="aclassox_1_1Event__loop_html_aa6508d05586d11680589bd1a9a817d96"><div class="ttname"><a href="classox_1_1Event__loop.html#aa6508d05586d11680589bd1a9a817d96">ox::Event_loop::wait</a></div><div class="ttdeci">auto wait() -&gt; int</div><div class="ttdoc">Block until the async event loop returns.</div><div class="ttdef"><b>Definition:</b> event_loop.cpp:11</div></div>
+<div class="ttc" id="aclassox_1_1Event__loop_html_aa939235bdd907a3f1886ccb024428755"><div class="ttname"><a href="classox_1_1Event__loop.html#aa939235bdd907a3f1886ccb024428755">ox::Event_loop::is_running</a></div><div class="ttdeci">auto is_running() const -&gt; bool</div><div class="ttdoc">Return true if the event loop is currently running.</div><div class="ttdef"><b>Definition:</b> event_loop.cpp:18</div></div>
+<div class="ttc" id="aclassox_1_1Event__loop_html_ad3013b813267a6dc2721e017476acd20"><div class="ttname"><a href="classox_1_1Event__loop.html#ad3013b813267a6dc2721e017476acd20">ox::Event_loop::exit</a></div><div class="ttdeci">void exit(int return_code)</div><div class="ttdoc">Call on the loop to exit at the next exit point.</div><div class="ttdef"><b>Definition:</b> event_loop.cpp:5</div></div>
+<div class="ttc" id="aclassox_1_1Event__queue_html"><div class="ttname"><a href="classox_1_1Event__queue.html">ox::Event_queue</a></div><div class="ttdef"><b>Definition:</b> event_queue.hpp:63</div></div>
+<div class="ttc" id="aclassox_1_1Event__queue_html_a92292ec2840428d9ae70ab7880a50458"><div class="ttname"><a href="classox_1_1Event__queue.html#a92292ec2840428d9ae70ab7880a50458">ox::Event_queue::send_all</a></div><div class="ttdeci">void send_all()</div><div class="ttdoc">Send all events, then flush the screen if any events were actually sent.</div><div class="ttdef"><b>Definition:</b> event_queue.cpp:84</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

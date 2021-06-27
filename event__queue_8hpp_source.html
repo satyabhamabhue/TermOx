@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TermOx: /github/workspace/include/termox/system/detail/event_queue.hpp Source File</title>
+<title>TermOx: /github/workspace/include/termox/system/event_queue.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_47fb1d61be6e4564833c214436ed851c.html">termox</a></li><li class="navelem"><a class="el" href="dir_0d0049db12ab15a3e4473d6f62087cf7.html">system</a></li><li class="navelem"><a class="el" href="dir_febec5ea32ba1644195257a1e1523e3e.html">detail</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_47fb1d61be6e4564833c214436ed851c.html">termox</a></li><li class="navelem"><a class="el" href="dir_0d0049db12ab15a3e4473d6f62087cf7.html">system</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -69,165 +69,103 @@ $(function() {
 <div class="title">event_queue.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef TERMOX_SYSTEM_DETAIL_EVENT_QUEUE_HPP</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define TERMOX_SYSTEM_DETAIL_EVENT_QUEUE_HPP</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;mutex&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;set&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;variant&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef TERMOX_SYSTEM_EVENT_QUEUE_HPP</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define TERMOX_SYSTEM_EVENT_QUEUE_HPP</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;cstddef&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;termox/common/unique_queue.hpp&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;termox/system/event_fwd.hpp&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;termox/common/lockable.hpp&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;termox/system/event.hpp&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;termox/system/system.hpp&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;termox/widget/widget.hpp&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>ox {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;[[nodiscard]] <span class="keyword">auto</span> operator&lt;(Paint_event <span class="keyword">const</span>&amp; x, Paint_event <span class="keyword">const</span>&amp; y)</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    -&gt; bool;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span>ox {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">inline</span> <span class="keyword">auto</span> operator&lt;(Paint_event <span class="keyword">const</span>&amp; x, Paint_event <span class="keyword">const</span>&amp; y) -&gt; <span class="keywordtype">bool</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordflow">return</span> std::addressof(x.receiver.get()) &lt; std::addressof(y.receiver.get());</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}  <span class="comment">// namespace ox</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;[[nodiscard]] <span class="keyword">auto</span> operator==(Paint_event <span class="keyword">const</span>&amp; a, Paint_event <span class="keyword">const</span>&amp; b)</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    -&gt; bool;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}  <span class="comment">// namespace ox</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span>ox::detail {</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span>ox::detail {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classox_1_1detail_1_1Paint__queue.html">   24</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1detail_1_1Paint__queue.html">Paint_queue</a> : <span class="keyword">public</span> <a class="code" href="classox_1_1Lockable.html">Lockable</a>&lt;std::mutex&gt; {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> append(<a class="code" href="structox_1_1Paint__event.html">Paint_event</a> e)</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> lock = this-&gt;Lockable::lock();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        paints_.insert(std::move(e));</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">void</span> send_all()</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> lock = this-&gt;Lockable::lock();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; p : paints_)</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <a class="code" href="classox_1_1System.html#a4b64c308c1a8b339c9701e54835adf4a">System::send_event</a>(std::move(p));</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        paints_.clear();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    std::set&lt;Paint_event&gt; paints_;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;};</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classox_1_1detail_1_1Delete__queue.html">   44</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1detail_1_1Delete__queue.html">Delete_queue</a> : <span class="keyword">public</span> <a class="code" href="classox_1_1Lockable.html">Lockable</a>&lt;std::mutex&gt; {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> append(<a class="code" href="structox_1_1Delete__event.html">Delete_event</a> e)</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> lock = this-&gt;Lockable::lock();</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        deletes_.push_back(std::move(e));</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> send_all()</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> lock = this-&gt;Lockable::lock();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; d : deletes_)</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <a class="code" href="classox_1_1System.html#a4b64c308c1a8b339c9701e54835adf4a">System::send_event</a>(std::move(d));</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        deletes_.clear();</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::vector&lt;Delete_event&gt; deletes_;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;};</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">// Mutex/Threading Notes</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">// The main thread is the only thread that can call Event_queue::send_all()</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">// Events are removed from the queue which a lock, then processed without a lock</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">// This does not require a recursive mutex because event is processed w/o lock.</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">// Paint and Delete Events should not be accessing functions that access the</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">// queue, so they can remain locked while processing.</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classox_1_1detail_1_1Paint__queue.html">   22</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1detail_1_1Paint__queue.html">Paint_queue</a> {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> append(<a class="code" href="structox_1_1Paint__event.html">Paint_event</a> e);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">auto</span> <a class="code" href="classox_1_1detail_1_1Paint__queue.html#aca0a91176549beedd8d30d23a0d9950a">send_all</a>() -&gt; bool;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> size() <span class="keyword">const</span> -&gt; std::size_t;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="classox_1_1Unique__queue.html">Unique_queue&lt;Paint_event&gt;</a> events_;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;};</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classox_1_1detail_1_1Delete__queue.html">   35</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1detail_1_1Delete__queue.html">Delete_queue</a> {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> append(<a class="code" href="structox_1_1Delete__event.html">Delete_event</a> e);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1detail_1_1Delete__queue.html#a577cf154b7ba50ac4164c463b84712a1">send_all</a>();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> size() <span class="keyword">const</span> -&gt; std::size_t;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    std::vector&lt;Delete_event&gt; deletes_;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;};</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classox_1_1detail_1_1Basic__queue.html">   47</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1detail_1_1Basic__queue.html">Basic_queue</a> {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> append(Event e);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">auto</span> send_all() -&gt; bool;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> size() <span class="keyword">const</span> -&gt; std::size_t;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    std::vector&lt;Event&gt; basics_;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;};</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}  <span class="comment">// namespace ox::detail</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">namespace </span>ox {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classox_1_1Event__queue.html">   63</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1Event__queue.html">Event_queue</a> {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Event__queue.html#abc558af677162f6fa013c33ffb22b432">append</a>(Event e);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Event__queue.html#a92292ec2840428d9ae70ab7880a50458">send_all</a>();</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="classox_1_1detail_1_1Basic__queue.html">   71</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1detail_1_1Basic__queue.html">Basic_queue</a> : <span class="keyword">public</span> <a class="code" href="classox_1_1Lockable.html">Lockable</a>&lt;std::mutex&gt; {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span> append(Event e)</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> lock = this-&gt;Lockable::lock();</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        basics_.push_back(std::move(e));</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">void</span> send_all()</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="comment">// Allows for send(e) appending to the queue and invalidating iterators.</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> index = this-&gt;get_begin_index(); index != -1uL;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;             index      = this-&gt;increment_index(index)) {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keyword">auto</span> <span class="keyword">event</span> = this-&gt;get_event(index);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <a class="code" href="classox_1_1System.html#a4b64c308c1a8b339c9701e54835adf4a">System::send_event</a>(std::move(event));</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        }</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> lock = this-&gt;Lockable::lock();</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        basics_.clear();</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    std::vector&lt;Event&gt; basics_;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keyword">auto</span> get_event(std::size_t index) -&gt; Event</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> lock = this-&gt;Lockable::lock();</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordflow">return</span> std::move(basics_[index]);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    }</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keyword">auto</span> increment_index(std::size_t current) -&gt; std::size_t</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    {</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> lock = this-&gt;Lockable::lock();</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">return</span> current + 1uL &lt; basics_.size() ? current + 1uL : -1uL;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    }</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keyword">auto</span> get_begin_index() -&gt; std::size_t</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> lock = this-&gt;Lockable::lock();</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">return</span> basics_.empty() ? -1uL : 0uL;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    }</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;};</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="classox_1_1detail_1_1Event__queue.html">  114</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1detail_1_1Event__queue.html">Event_queue</a> {</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="classox_1_1detail_1_1Event__queue.html#ab86fb8d53e8b96e44c967299b20676f4">  117</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1detail_1_1Event__queue.html#ab86fb8d53e8b96e44c967299b20676f4">append</a>(Event e)</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    {</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        std::visit(</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            [<span class="keyword">this</span>](<span class="keyword">auto</span>&amp;&amp; e) {</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                this-&gt;add_to_a_queue(std::forward&lt;decltype(e)&gt;(e));</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            },</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            std::move(e));</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    }</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordtype">void</span> send_all()</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    {</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        basics_.send_all();</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        paints_.send_all();</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        deletes_.send_all();</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    }</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    Basic_queue basics_;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    Paint_queue paints_;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    Delete_queue deletes_;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keywordtype">void</span> add_to_a_queue(T e)</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    {</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        basics_.append(std::move(e));</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    }</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordtype">void</span> add_to_a_queue(Paint_event e) { paints_.append(std::move(e)); }</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordtype">void</span> add_to_a_queue(Delete_event e) { deletes_.append(std::move(e)); }</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;};</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;}  <span class="comment">// namespace ox::detail</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_SYSTEM_DETAIL_EVENT_QUEUE_HPP</span></div>
-<div class="ttc" id="aclassox_1_1Lockable_html"><div class="ttname"><a href="classox_1_1Lockable.html">ox::Lockable</a></div><div class="ttdef"><b>Definition:</b> lockable.hpp:8</div></div>
-<div class="ttc" id="aclassox_1_1System_html_a4b64c308c1a8b339c9701e54835adf4a"><div class="ttname"><a href="classox_1_1System.html#a4b64c308c1a8b339c9701e54835adf4a">ox::System::send_event</a></div><div class="ttdeci">static void send_event(Event e)</div><div class="ttdoc">Immediately send the event filters and then to the intended receiver.</div><div class="ttdef"><b>Definition:</b> system.cpp:72</div></div>
-<div class="ttc" id="aclassox_1_1detail_1_1Basic__queue_html"><div class="ttname"><a href="classox_1_1detail_1_1Basic__queue.html">ox::detail::Basic_queue</a></div><div class="ttdef"><b>Definition:</b> event_queue.hpp:71</div></div>
-<div class="ttc" id="aclassox_1_1detail_1_1Delete__queue_html"><div class="ttname"><a href="classox_1_1detail_1_1Delete__queue.html">ox::detail::Delete_queue</a></div><div class="ttdef"><b>Definition:</b> event_queue.hpp:44</div></div>
-<div class="ttc" id="aclassox_1_1detail_1_1Event__queue_html"><div class="ttname"><a href="classox_1_1detail_1_1Event__queue.html">ox::detail::Event_queue</a></div><div class="ttdef"><b>Definition:</b> event_queue.hpp:114</div></div>
-<div class="ttc" id="aclassox_1_1detail_1_1Event__queue_html_ab86fb8d53e8b96e44c967299b20676f4"><div class="ttname"><a href="classox_1_1detail_1_1Event__queue.html#ab86fb8d53e8b96e44c967299b20676f4">ox::detail::Event_queue::append</a></div><div class="ttdeci">void append(Event e)</div><div class="ttdoc">Adds the given event with priority for the concrete event type.</div><div class="ttdef"><b>Definition:</b> event_queue.hpp:117</div></div>
-<div class="ttc" id="aclassox_1_1detail_1_1Paint__queue_html"><div class="ttname"><a href="classox_1_1detail_1_1Paint__queue.html">ox::detail::Paint_queue</a></div><div class="ttdef"><b>Definition:</b> event_queue.hpp:24</div></div>
-<div class="ttc" id="astructox_1_1Delete__event_html"><div class="ttname"><a href="structox_1_1Delete__event.html">ox::Delete_event</a></div><div class="ttdef"><b>Definition:</b> event.hpp:66</div></div>
-<div class="ttc" id="astructox_1_1Paint__event_html"><div class="ttname"><a href="structox_1_1Paint__event.html">ox::Paint_event</a></div><div class="ttdef"><b>Definition:</b> event.hpp:17</div></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="classox_1_1detail_1_1Basic__queue.html">detail::Basic_queue</a> basics_;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="classox_1_1detail_1_1Paint__queue.html">detail::Paint_queue</a> paints_;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="classox_1_1detail_1_1Delete__queue.html">detail::Delete_queue</a> deletes_;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">void</span> add_to_a_queue(T e)</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        basics_.append(std::move(e));</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">void</span> add_to_a_queue(<a class="code" href="structox_1_1Paint__event.html">Paint_event</a> e);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">void</span> add_to_a_queue(<a class="code" href="structox_1_1Delete__event.html">Delete_event</a> e);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;};</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}  <span class="comment">// namespace ox</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_SYSTEM_EVENT_QUEUE_HPP</span></div>
+<div class="ttc" id="aclassox_1_1Event__queue_html"><div class="ttname"><a href="classox_1_1Event__queue.html">ox::Event_queue</a></div><div class="ttdef"><b>Definition:</b> event_queue.hpp:63</div></div>
+<div class="ttc" id="aclassox_1_1Event__queue_html_a92292ec2840428d9ae70ab7880a50458"><div class="ttname"><a href="classox_1_1Event__queue.html#a92292ec2840428d9ae70ab7880a50458">ox::Event_queue::send_all</a></div><div class="ttdeci">void send_all()</div><div class="ttdoc">Send all events, then flush the screen if any events were actually sent.</div><div class="ttdef"><b>Definition:</b> event_queue.cpp:84</div></div>
+<div class="ttc" id="aclassox_1_1Event__queue_html_abc558af677162f6fa013c33ffb22b432"><div class="ttname"><a href="classox_1_1Event__queue.html#abc558af677162f6fa013c33ffb22b432">ox::Event_queue::append</a></div><div class="ttdeci">void append(Event e)</div><div class="ttdoc">Adds the given event with priority for the underlying event type.</div><div class="ttdef"><b>Definition:</b> event_queue.cpp:75</div></div>
+<div class="ttc" id="aclassox_1_1Unique__queue_html"><div class="ttname"><a href="classox_1_1Unique__queue.html">ox::Unique_queue</a></div><div class="ttdoc">A Queue like container holding only unique values.</div><div class="ttdef"><b>Definition:</b> unique_queue.hpp:19</div></div>
+<div class="ttc" id="aclassox_1_1detail_1_1Basic__queue_html"><div class="ttname"><a href="classox_1_1detail_1_1Basic__queue.html">ox::detail::Basic_queue</a></div><div class="ttdef"><b>Definition:</b> event_queue.hpp:47</div></div>
+<div class="ttc" id="aclassox_1_1detail_1_1Delete__queue_html"><div class="ttname"><a href="classox_1_1detail_1_1Delete__queue.html">ox::detail::Delete_queue</a></div><div class="ttdef"><b>Definition:</b> event_queue.hpp:35</div></div>
+<div class="ttc" id="aclassox_1_1detail_1_1Delete__queue_html_a577cf154b7ba50ac4164c463b84712a1"><div class="ttname"><a href="classox_1_1detail_1_1Delete__queue.html#a577cf154b7ba50ac4164c463b84712a1">ox::detail::Delete_queue::send_all</a></div><div class="ttdeci">void send_all()</div><div class="ttdef"><b>Definition:</b> event_queue.cpp:47</div></div>
+<div class="ttc" id="aclassox_1_1detail_1_1Paint__queue_html"><div class="ttname"><a href="classox_1_1detail_1_1Paint__queue.html">ox::detail::Paint_queue</a></div><div class="ttdef"><b>Definition:</b> event_queue.hpp:22</div></div>
+<div class="ttc" id="aclassox_1_1detail_1_1Paint__queue_html_aca0a91176549beedd8d30d23a0d9950a"><div class="ttname"><a href="classox_1_1detail_1_1Paint__queue.html#aca0a91176549beedd8d30d23a0d9950a">ox::detail::Paint_queue::send_all</a></div><div class="ttdeci">auto send_all() -&gt; bool</div><div class="ttdoc">Return true if any events are actually sent.</div><div class="ttdef"><b>Definition:</b> event_queue.cpp:32</div></div>
+<div class="ttc" id="astructox_1_1Delete__event_html"><div class="ttname"><a href="structox_1_1Delete__event.html">ox::Delete_event</a></div><div class="ttdef"><b>Definition:</b> event.hpp:72</div></div>
+<div class="ttc" id="astructox_1_1Paint__event_html"><div class="ttname"><a href="structox_1_1Paint__event.html">ox::Paint_event</a></div><div class="ttdef"><b>Definition:</b> event.hpp:23</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

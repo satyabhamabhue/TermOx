@@ -68,6 +68,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classox_1_1Transform__iterator-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ox::Transform_iterator&lt; Iter, Map_fn &gt; Class Template Reference</div>  </div>
@@ -81,12 +82,12 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a6f256d5fafd91d220a9385f86c35bcde"><td class="memItemLeft" align="right" valign="top"><a id="a6f256d5fafd91d220a9385f86c35bcde"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>iterator_category</b> = std::forward_iterator_tag</td></tr>
-<tr class="separator:a6f256d5fafd91d220a9385f86c35bcde"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac89ca42751acdb6749e072e6e89de8bf"><td class="memItemLeft" align="right" valign="top"><a id="ac89ca42751acdb6749e072e6e89de8bf"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>difference_type</b> = std::ptrdiff_t</td></tr>
-<tr class="separator:ac89ca42751acdb6749e072e6e89de8bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c5a50d7ab2ba54575ec007a4e37fad3"><td class="memItemLeft" align="right" valign="top"><a id="a1c5a50d7ab2ba54575ec007a4e37fad3"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>iterator_category</b> = typename Iter::iterator_category</td></tr>
+<tr class="separator:a1c5a50d7ab2ba54575ec007a4e37fad3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48745403c50f070cd85a50ce8ae508ea"><td class="memItemLeft" align="right" valign="top"><a id="a48745403c50f070cd85a50ce8ae508ea"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>difference_type</b> = typename Iter::difference_type</td></tr>
+<tr class="separator:a48745403c50f070cd85a50ce8ae508ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf87c81a2f28ebdaba1427ab8f385677"><td class="memItemLeft" align="right" valign="top"><a id="acf87c81a2f28ebdaba1427ab8f385677"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>reference</b> = std::invoke_result_t&lt; Map_fn, typename Iter::reference &gt;</td></tr>
 <tr class="separator:acf87c81a2f28ebdaba1427ab8f385677"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,6 +121,27 @@ auto&#160;</td><td class="memItemRight" valign="bottom"><b>operator++</b> () -&g
 <tr class="memitem:a463197dff85f971b3a0878345aa8dbd7"><td class="memItemLeft" align="right" valign="top"><a id="a463197dff85f971b3a0878345aa8dbd7"></a>
 auto&#160;</td><td class="memItemRight" valign="bottom"><b>operator++</b> (int) -&gt; <a class="el" href="classox_1_1Transform__iterator.html">Transform_iterator</a></td></tr>
 <tr class="separator:a463197dff85f971b3a0878345aa8dbd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae56a91d4329def5b87f4641d7906d3c6"><td class="memItemLeft" align="right" valign="top"><a id="ae56a91d4329def5b87f4641d7906d3c6"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>operator+=</b> (difference_type n) -&gt; <a class="el" href="classox_1_1Transform__iterator.html">Transform_iterator</a> &amp;</td></tr>
+<tr class="separator:ae56a91d4329def5b87f4641d7906d3c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad04d32d3c53ba5661f2738364498a485"><td class="memItemLeft" align="right" valign="top"><a id="ad04d32d3c53ba5661f2738364498a485"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>operator+</b> (difference_type n) -&gt; <a class="el" href="classox_1_1Transform__iterator.html">Transform_iterator</a></td></tr>
+<tr class="separator:ad04d32d3c53ba5661f2738364498a485"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af615619344e8ab88268ad94f8928b37c"><td class="memItemLeft" align="right" valign="top"><a id="af615619344e8ab88268ad94f8928b37c"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>operator--</b> () -&gt; <a class="el" href="classox_1_1Transform__iterator.html">Transform_iterator</a> &amp;</td></tr>
+<tr class="separator:af615619344e8ab88268ad94f8928b37c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1cbecf2a0cc978e29cda7a1d31d3922"><td class="memItemLeft" align="right" valign="top"><a id="aa1cbecf2a0cc978e29cda7a1d31d3922"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>operator--</b> (int) -&gt; <a class="el" href="classox_1_1Transform__iterator.html">Transform_iterator</a></td></tr>
+<tr class="separator:aa1cbecf2a0cc978e29cda7a1d31d3922"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e5ec26e42835e7aa7d590dfb6d1c8ba"><td class="memItemLeft" align="right" valign="top"><a id="a6e5ec26e42835e7aa7d590dfb6d1c8ba"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>operator-=</b> (difference_type n) -&gt; <a class="el" href="classox_1_1Transform__iterator.html">Transform_iterator</a> &amp;</td></tr>
+<tr class="separator:a6e5ec26e42835e7aa7d590dfb6d1c8ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f34022cdfe4bcd919e9b8803a6a239e"><td class="memItemLeft" align="right" valign="top"><a id="a7f34022cdfe4bcd919e9b8803a6a239e"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>operator-</b> (<a class="el" href="classox_1_1Transform__iterator.html">Transform_iterator</a> const &amp;other) -&gt; difference_type</td></tr>
+<tr class="separator:a7f34022cdfe4bcd919e9b8803a6a239e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83866c9693fb33f34d306765ee45b4a2"><td class="memItemLeft" align="right" valign="top"><a id="a83866c9693fb33f34d306765ee45b4a2"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>operator-</b> (difference_type n) -&gt; <a class="el" href="classox_1_1Transform__iterator.html">Transform_iterator</a></td></tr>
+<tr class="separator:a83866c9693fb33f34d306765ee45b4a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a571fc5d659d4639b5c30a9c05e8b7841"><td class="memItemLeft" align="right" valign="top"><a id="a571fc5d659d4639b5c30a9c05e8b7841"></a>
 auto&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> () const -&gt; reference</td></tr>
 <tr class="separator:a571fc5d659d4639b5c30a9c05e8b7841"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -140,6 +162,12 @@ template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a1c5154d9759e047d23aa0c4fcf53b7f7"><td class="memItemLeft" align="right" valign="top"><a id="a1c5154d9759e047d23aa0c4fcf53b7f7"></a>
 auto&#160;</td><td class="memItemRight" valign="bottom"><b>underlying</b> () const -&gt; Iter</td></tr>
 <tr class="separator:a1c5154d9759e047d23aa0c4fcf53b7f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a47ce65cf1a4e1e32f1ab1c20cd92c4eb"><td class="memItemLeft" align="right" valign="top"><a id="a47ce65cf1a4e1e32f1ab1c20cd92c4eb"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>operator+</b> (difference_type n, <a class="el" href="classox_1_1Transform__iterator.html">Transform_iterator</a> const &amp;it) -&gt; <a class="el" href="classox_1_1Transform__iterator.html">Transform_iterator</a></td></tr>
+<tr class="separator:a47ce65cf1a4e1e32f1ab1c20cd92c4eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename Iter, typename Map_fn&gt;<br />

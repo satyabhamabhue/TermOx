@@ -85,24 +85,33 @@ Public Member Functions</h2></td></tr>
 constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structox_1_1Glyph.html#aeac4787e58d90b06e20054c2355b9d98">Glyph</a> ()=default</td></tr>
 <tr class="memdesc:aeac4787e58d90b06e20054c2355b9d98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an invisible <a class="el" href="structox_1_1Glyph.html" title="Holds a description of a paintable tile on the screen.">Glyph</a>, defaults to space and no traits/colors. <br /></td></tr>
 <tr class="separator:aeac4787e58d90b06e20054c2355b9d98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12d253d640d51d8f69189ba34558dc37"><td class="memItemLeft" align="right" valign="top"><a id="a12d253d640d51d8f69189ba34558dc37"></a>
-constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structox_1_1Glyph.html#a12d253d640d51d8f69189ba34558dc37">Glyph</a> (wchar_t sym, <a class="el" href="classox_1_1Brush.html">Brush</a> b)</td></tr>
-<tr class="memdesc:a12d253d640d51d8f69189ba34558dc37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <a class="el" href="structox_1_1Glyph.html" title="Holds a description of a paintable tile on the screen.">Glyph</a> with the provided wchar_t and <a class="el" href="classox_1_1Brush.html" title="Holds the look of any paintable object with Traits and Colors.">Brush</a>. <br /></td></tr>
-<tr class="separator:a12d253d640d51d8f69189ba34558dc37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f880fed392dca8b972f66e7d0b56923"><td class="memTemplParams" colspan="2"><a id="a4f880fed392dca8b972f66e7d0b56923"></a>
-template&lt;typename... Traits&gt; </td></tr>
-<tr class="memitem:a4f880fed392dca8b972f66e7d0b56923"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structox_1_1Glyph.html#a4f880fed392dca8b972f66e7d0b56923">Glyph</a> (wchar_t sym, Traits &amp;&amp;... traits)</td></tr>
-<tr class="memdesc:a4f880fed392dca8b972f66e7d0b56923"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct with the provided wchar_t and list of Traits and Colors. <br /></td></tr>
-<tr class="separator:a4f880fed392dca8b972f66e7d0b56923"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e5cf2bb1c35676b39d805c17882260a"><td class="memItemLeft" align="right" valign="top"><a id="a9e5cf2bb1c35676b39d805c17882260a"></a>
+constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structox_1_1Glyph.html#a9e5cf2bb1c35676b39d805c17882260a">Glyph</a> (char32_t sym, <a class="el" href="classox_1_1Brush.html">Brush</a> b)</td></tr>
+<tr class="memdesc:a9e5cf2bb1c35676b39d805c17882260a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <a class="el" href="structox_1_1Glyph.html" title="Holds a description of a paintable tile on the screen.">Glyph</a> with the provided char32_t and <a class="el" href="classox_1_1Brush.html" title="Holds the look of any paintable object with Traits and Colors.">Brush</a>. <br /></td></tr>
+<tr class="separator:a9e5cf2bb1c35676b39d805c17882260a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade549cb018f7a6b6764b3c12c29d1d48"><td class="memTemplParams" colspan="2"><a id="ade549cb018f7a6b6764b3c12c29d1d48"></a>
+template&lt;typename... Items&gt; </td></tr>
+<tr class="memitem:ade549cb018f7a6b6764b3c12c29d1d48"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structox_1_1Glyph.html#ade549cb018f7a6b6764b3c12c29d1d48">Glyph</a> (char32_t sym, Items... items)</td></tr>
+<tr class="memdesc:ade549cb018f7a6b6764b3c12c29d1d48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct with the provided char32_t and list of Traits and Colors. <br /></td></tr>
+<tr class="separator:ade549cb018f7a6b6764b3c12c29d1d48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dbd7dc8846d89d0669e1fbbf9a20b20"><td class="memItemLeft" align="right" valign="top"><a id="a2dbd7dc8846d89d0669e1fbbf9a20b20"></a>
+constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structox_1_1Glyph.html#a2dbd7dc8846d89d0669e1fbbf9a20b20">Glyph</a> (char sym, <a class="el" href="classox_1_1Brush.html">Brush</a> b)</td></tr>
+<tr class="memdesc:a2dbd7dc8846d89d0669e1fbbf9a20b20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <a class="el" href="structox_1_1Glyph.html" title="Holds a description of a paintable tile on the screen.">Glyph</a> with the provided char and <a class="el" href="classox_1_1Brush.html" title="Holds the look of any paintable object with Traits and Colors.">Brush</a>. <br /></td></tr>
+<tr class="separator:a2dbd7dc8846d89d0669e1fbbf9a20b20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a118362a780d8265f0627c7f113aa84e8"><td class="memTemplParams" colspan="2"><a id="a118362a780d8265f0627c7f113aa84e8"></a>
+template&lt;typename... Items&gt; </td></tr>
+<tr class="memitem:a118362a780d8265f0627c7f113aa84e8"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structox_1_1Glyph.html#a118362a780d8265f0627c7f113aa84e8">Glyph</a> (char sym, Items... items)</td></tr>
+<tr class="memdesc:a118362a780d8265f0627c7f113aa84e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct with the provided char32_t and list of Traits and Colors. <br /></td></tr>
+<tr class="separator:a118362a780d8265f0627c7f113aa84e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:adb98033bc44c73415b70cacd17b98d99"><td class="memItemLeft" align="right" valign="top"><a id="adb98033bc44c73415b70cacd17b98d99"></a>
-wchar_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structox_1_1Glyph.html#adb98033bc44c73415b70cacd17b98d99">symbol</a> = L' '</td></tr>
-<tr class="memdesc:adb98033bc44c73415b70cacd17b98d99"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="structox_1_1Glyph.html" title="Holds a description of a paintable tile on the screen.">Glyph</a>'s symbol is the wide character that will be displayed. <br /></td></tr>
-<tr class="separator:adb98033bc44c73415b70cacd17b98d99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a736679eb814008a9b4dd15adb19002f4"><td class="memItemLeft" align="right" valign="top"><a id="a736679eb814008a9b4dd15adb19002f4"></a>
+char32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structox_1_1Glyph.html#a736679eb814008a9b4dd15adb19002f4">symbol</a> = U'\0'</td></tr>
+<tr class="memdesc:a736679eb814008a9b4dd15adb19002f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="structox_1_1Glyph.html" title="Holds a description of a paintable tile on the screen.">Glyph</a>'s symbol is the wide character that will be displayed. <br /></td></tr>
+<tr class="separator:a736679eb814008a9b4dd15adb19002f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab653eaaa10f9f962da9957a061670a31"><td class="memItemLeft" align="right" valign="top"><a id="ab653eaaa10f9f962da9957a061670a31"></a>
-<a class="el" href="classox_1_1Brush.html">Brush</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structox_1_1Glyph.html#ab653eaaa10f9f962da9957a061670a31">brush</a> {}</td></tr>
+<a class="el" href="classox_1_1Brush.html">Brush</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structox_1_1Glyph.html#ab653eaaa10f9f962da9957a061670a31">brush</a> = <a class="el" href="classox_1_1Brush.html">Brush</a>{}</td></tr>
 <tr class="memdesc:ab653eaaa10f9f962da9957a061670a31"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classox_1_1Brush.html" title="Holds the look of any paintable object with Traits and Colors.">Brush</a> that will determine the Traits and Colors of the symbol. <br /></td></tr>
 <tr class="separator:ab653eaaa10f9f962da9957a061670a31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>

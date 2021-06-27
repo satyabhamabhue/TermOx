@@ -84,102 +84,123 @@ $(function() {
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;   <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classox_1_1Color.html">Color</a> background = Color::Background;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classox_1_1Color.html">Color</a> foreground = Color::Foreground;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="comment">// TODO wrap this in an Traits type, container of traits. then make it</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="comment">// public. Brush constructor and class just uses these objects for</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="comment">// convinience.</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">using</span> Byte_t   = <span class="keywordtype">unsigned</span> char;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    Byte_t traits_ = 0;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Traits&gt;</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classox_1_1Brush.html#aea0ab91616bbc3b82601d507ea7bf27c">   28</a></span>&#160;    constexpr <span class="keyword">explicit</span> <a class="code" href="classox_1_1Brush.html#aea0ab91616bbc3b82601d507ea7bf27c">Brush</a>(Traits... traits)</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        this-&gt;<a class="code" href="classox_1_1Brush.html#a077bdf6180ce79e15bc29389d8ad75d2">add_traits</a>(std::forward&lt;Traits&gt;(traits)...);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Head, <span class="keyword">typename</span>... Tail&gt;</div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classox_1_1Brush.html#a077bdf6180ce79e15bc29389d8ad75d2">   38</a></span>&#160;    constexpr <span class="keywordtype">void</span> <a class="code" href="classox_1_1Brush.html#a077bdf6180ce79e15bc29389d8ad75d2">add_traits</a>(Head t, Tail... ts)</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    Traits traits    = Trait::None;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Items&gt;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classox_1_1Brush.html#a613be7f619c3118f5c32b4148ec242af">   22</a></span>&#160;    <span class="keyword">explicit</span> constexpr <a class="code" href="classox_1_1Brush.html#a613be7f619c3118f5c32b4148ec242af">Brush</a>(Items... items)</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        this-&gt;add_items(items...);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    }</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Head, <span class="keyword">typename</span>... Tail&gt;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> constexpr add_items(Head t, Tail... ts)</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        this-&gt;set_item(t);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        this-&gt;add_items(ts...);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> constexpr add_items() {}</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> constexpr set_item(Background_color bg)</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        this-&gt;set_trait(t);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        this-&gt;<a class="code" href="classox_1_1Brush.html#a077bdf6180ce79e15bc29389d8ad75d2">add_traits</a>(ts...);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    constexpr <span class="keywordtype">void</span> add_traits() {}</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Head, <span class="keyword">typename</span>... Tail&gt;</div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classox_1_1Brush.html#abab7ddbe8f67093551e2486092ef768d">   48</a></span>&#160;    constexpr <span class="keywordtype">void</span> <a class="code" href="classox_1_1Brush.html#abab7ddbe8f67093551e2486092ef768d">remove_traits</a>(Head t, Tail... ts)</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        this-&gt;unset_trait(t);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        this-&gt;<a class="code" href="classox_1_1Brush.html#abab7ddbe8f67093551e2486092ef768d">remove_traits</a>(ts...);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    constexpr <span class="keywordtype">void</span> remove_traits() {}</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classox_1_1Brush.html#a46fc880aed523ca2f220825068f97623">   56</a></span>&#160;    constexpr <span class="keywordtype">void</span> <a class="code" href="classox_1_1Brush.html#a46fc880aed523ca2f220825068f97623">clear_traits</a>() { traits_ = 0; }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        background = Color{bg.value};</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> constexpr set_item(Foreground_color fg)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        foreground = Color{fg.value};</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> constexpr set_item(Trait t) { traits |= t; }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> constexpr set_item(Traits t) { traits |= t; }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;};</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">// Pipes -----------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classox_1_1Brush.html#a8ee5fe7c238640267a7090bdc7cb7680">   59</a></span>&#160;    constexpr <span class="keyword">auto</span> <a class="code" href="classox_1_1Brush.html#a8ee5fe7c238640267a7090bdc7cb7680">has_trait</a>(Trait trait) <span class="keyword">const</span> -&gt; <span class="keywordtype">bool</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> mask = 1 &lt;&lt; <span class="keyword">static_cast&lt;</span>Byte_t<span class="keyword">&gt;</span>(trait);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">return</span> (traits_ &amp; mask) != 0;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classox_1_1Brush.html#acd685abf49ad64d22305bb6fe4565d26">   66</a></span>&#160;    constexpr <span class="keyword">auto</span> <a class="code" href="classox_1_1Brush.html#acd685abf49ad64d22305bb6fe4565d26">operator==</a>(<a class="code" href="classox_1_1Brush.html">Brush</a> x) <span class="keyword">const</span> -&gt; <span class="keywordtype">bool</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">return</span> std::tie(traits_, background, foreground) ==</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;               std::tie(x.traits_, x.background, x.foreground);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    constexpr <span class="keywordtype">void</span> set_trait(<a class="code" href="structox_1_1Background__color.html">Background_color</a> bg)</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        background = <a class="code" href="classox_1_1Color.html">Color</a>{bg.value};</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    constexpr <span class="keywordtype">void</span> set_trait(Foreground_color fg)</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        foreground = Color{fg.value};</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    constexpr <span class="keywordtype">void</span> set_trait(Trait t)</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        traits_ |= 1 &lt;&lt; <span class="keyword">static_cast&lt;</span>Byte_t<span class="keyword">&gt;</span>(t);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">auto</span> constexpr operator|(Brush&amp; b, Traits ts) -&gt; Brush&amp;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    b.traits |= ts;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> b;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;[[nodiscard]] <span class="keyword">auto</span> constexpr operator|(Brush <span class="keyword">const</span>&amp; b, Traits ts) -&gt; Brush</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;{</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">auto</span> copy = b;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    copy.traits |= ts;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">return</span> copy;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;[[nodiscard]] <span class="keyword">auto</span> constexpr operator|(Brush&amp;&amp; b, Traits ts) -&gt; Brush</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;{</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    b.traits |= ts;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">return</span> std::move(b);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">auto</span> constexpr operator|(Brush&amp; b, Background_color c) -&gt; Brush&amp;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;{</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    b.background = Color{c.value};</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">return</span> b;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;[[nodiscard]] <span class="keyword">auto</span> constexpr operator|(Brush <span class="keyword">const</span>&amp; b, Background_color c)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    -&gt; Brush</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;{</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keyword">auto</span> copy       = b;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    copy.background = Color{c.value};</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">return</span> copy;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    constexpr <span class="keywordtype">void</span> unset_trait(Trait t)</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    {</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        traits_ &amp;= ~(1 &lt;&lt; <span class="keyword">static_cast&lt;</span>Byte_t<span class="keyword">&gt;</span>(t));</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;[[nodiscard]] <span class="keyword">auto</span> constexpr operator|(Brush&amp;&amp; b, Background_color c) -&gt; Brush</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;{</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    b.background = Color{c.value};</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">return</span> std::move(b);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="comment">// TODO remove as friend once Traits are public and their own type.</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keyword">friend</span> constexpr <span class="keyword">auto</span> <a class="code" href="classox_1_1Brush.html#a998fb0e8dc10aa7e1b7f79ed010b2e98">merge</a>(<a class="code" href="classox_1_1Brush.html#aea0ab91616bbc3b82601d507ea7bf27c">Brush</a>, <a class="code" href="classox_1_1Brush.html#aea0ab91616bbc3b82601d507ea7bf27c">Brush</a>) -&gt; <a class="code" href="classox_1_1Brush.html#aea0ab91616bbc3b82601d507ea7bf27c">Brush</a>;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;};</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="classox_1_1Brush.html#a998fb0e8dc10aa7e1b7f79ed010b2e98">  103</a></span>&#160;constexpr <span class="keyword">inline</span> <span class="keyword">auto</span> merge(<a class="code" href="classox_1_1Brush.html">Brush</a> primary, <a class="code" href="classox_1_1Brush.html">Brush</a> secondary) -&gt; <a class="code" href="classox_1_1Brush.html">Brush</a></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;{</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">if</span> (primary.background == Color::Background)</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        primary.background = secondary.background;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">if</span> (primary.foreground == Color::Foreground)</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        primary.foreground = secondary.foreground;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    primary.traits_ |= secondary.traits_;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">return</span> primary;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}  <span class="comment">// namespace ox</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_PAINTER_BRUSH_HPP</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">auto</span> constexpr operator|(Brush&amp; b, Foreground_color c) -&gt; Brush&amp;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;{</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    b.foreground = Color{c.value};</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">return</span> b;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;[[nodiscard]] <span class="keyword">auto</span> constexpr operator|(Brush <span class="keyword">const</span>&amp; b, Foreground_color c)</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    -&gt; Brush</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;{</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keyword">auto</span> copy       = b;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    copy.foreground = Color{c.value};</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">return</span> copy;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;[[nodiscard]] <span class="keyword">auto</span> constexpr operator|(Brush&amp;&amp; b, Foreground_color c) -&gt; Brush</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;{</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    b.foreground = Color{c.value};</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">return</span> std::move(b);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;}</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">// -----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;[[nodiscard]] <span class="keyword">auto</span> constexpr operator==(Brush a, Brush b) -&gt; <span class="keywordtype">bool</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;{</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">return</span> std::tie(a.traits, a.background, a.foreground) ==</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;           std::tie(b.traits, b.background, b.foreground);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;}</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;[[nodiscard]] <span class="keyword">auto</span> constexpr merge(Brush primary, Brush secondary) -&gt; Brush</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;{</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordflow">if</span> (primary.background == Color::Background)</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        primary.background = secondary.background;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">if</span> (primary.foreground == Color::Foreground)</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        primary.foreground = secondary.foreground;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    primary.traits |= secondary.traits;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordflow">return</span> primary;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;}</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;}  <span class="comment">// namespace ox</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_PAINTER_BRUSH_HPP</span></div>
 <div class="ttc" id="aclassox_1_1Brush_html"><div class="ttname"><a href="classox_1_1Brush.html">ox::Brush</a></div><div class="ttdoc">Holds the look of any paintable object with Traits and Colors.</div><div class="ttdef"><b>Definition:</b> brush.hpp:13</div></div>
-<div class="ttc" id="aclassox_1_1Brush_html_a077bdf6180ce79e15bc29389d8ad75d2"><div class="ttname"><a href="classox_1_1Brush.html#a077bdf6180ce79e15bc29389d8ad75d2">ox::Brush::add_traits</a></div><div class="ttdeci">constexpr void add_traits(Head t, Tail... ts)</div><div class="ttdoc">Add a variable number of Traits or Colors to the brush.</div><div class="ttdef"><b>Definition:</b> brush.hpp:38</div></div>
-<div class="ttc" id="aclassox_1_1Brush_html_a46fc880aed523ca2f220825068f97623"><div class="ttname"><a href="classox_1_1Brush.html#a46fc880aed523ca2f220825068f97623">ox::Brush::clear_traits</a></div><div class="ttdeci">constexpr void clear_traits()</div><div class="ttdoc">Remove all of the set Traits from the brush, not including colors.</div><div class="ttdef"><b>Definition:</b> brush.hpp:56</div></div>
-<div class="ttc" id="aclassox_1_1Brush_html_a8ee5fe7c238640267a7090bdc7cb7680"><div class="ttname"><a href="classox_1_1Brush.html#a8ee5fe7c238640267a7090bdc7cb7680">ox::Brush::has_trait</a></div><div class="ttdeci">constexpr auto has_trait(Trait trait) const -&gt; bool</div><div class="ttdoc">Provide a check of whether the brush has the provided Trait trait.</div><div class="ttdef"><b>Definition:</b> brush.hpp:59</div></div>
-<div class="ttc" id="aclassox_1_1Brush_html_a998fb0e8dc10aa7e1b7f79ed010b2e98"><div class="ttname"><a href="classox_1_1Brush.html#a998fb0e8dc10aa7e1b7f79ed010b2e98">ox::Brush::merge</a></div><div class="ttdeci">constexpr friend auto merge(Brush, Brush) -&gt; Brush</div><div class="ttdoc">Combines the two Brushes, using the primary Brush's Colors, if any, first.</div><div class="ttdef"><b>Definition:</b> brush.hpp:103</div></div>
-<div class="ttc" id="aclassox_1_1Brush_html_abab7ddbe8f67093551e2486092ef768d"><div class="ttname"><a href="classox_1_1Brush.html#abab7ddbe8f67093551e2486092ef768d">ox::Brush::remove_traits</a></div><div class="ttdeci">constexpr void remove_traits(Head t, Tail... ts)</div><div class="ttdoc">Remove a variable number of Traits from the brush.</div><div class="ttdef"><b>Definition:</b> brush.hpp:48</div></div>
-<div class="ttc" id="aclassox_1_1Brush_html_acd685abf49ad64d22305bb6fe4565d26"><div class="ttname"><a href="classox_1_1Brush.html#acd685abf49ad64d22305bb6fe4565d26">ox::Brush::operator==</a></div><div class="ttdeci">constexpr auto operator==(Brush x) const -&gt; bool</div><div class="ttdoc">Compares if the held traits and (back/fore)ground colors are equal.</div><div class="ttdef"><b>Definition:</b> brush.hpp:66</div></div>
-<div class="ttc" id="aclassox_1_1Brush_html_aea0ab91616bbc3b82601d507ea7bf27c"><div class="ttname"><a href="classox_1_1Brush.html#aea0ab91616bbc3b82601d507ea7bf27c">ox::Brush::Brush</a></div><div class="ttdeci">constexpr Brush(Traits... traits)</div><div class="ttdoc">Construct a Brush with given Traits and Colors.</div><div class="ttdef"><b>Definition:</b> brush.hpp:28</div></div>
-<div class="ttc" id="aclassox_1_1Color_html"><div class="ttname"><a href="classox_1_1Color.html">ox::Color</a></div><div class="ttdoc">Color numbers [0 - 180] are valid.</div><div class="ttdef"><b>Definition:</b> color.hpp:15</div></div>
-<div class="ttc" id="astructox_1_1Background__color_html"><div class="ttname"><a href="structox_1_1Background__color.html">ox::Background_color</a></div><div class="ttdef"><b>Definition:</b> color.hpp:54</div></div>
+<div class="ttc" id="aclassox_1_1Brush_html_a613be7f619c3118f5c32b4148ec242af"><div class="ttname"><a href="classox_1_1Brush.html#a613be7f619c3118f5c32b4148ec242af">ox::Brush::Brush</a></div><div class="ttdeci">constexpr Brush(Items... items)</div><div class="ttdoc">Construct a Brush with given Traits and Colors.</div><div class="ttdef"><b>Definition:</b> brush.hpp:22</div></div>
+<div class="ttc" id="aclassox_1_1Color_html"><div class="ttname"><a href="classox_1_1Color.html">ox::Color</a></div><div class="ttdoc">Color numbers [0 - 180] are valid.</div><div class="ttdef"><b>Definition:</b> color.hpp:16</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

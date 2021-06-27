@@ -78,16 +78,19 @@ $(function() {
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Mutex = std::mutex&gt;</div>
 <div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classox_1_1Lockable.html">    8</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1Lockable.html">Lockable</a> {</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">auto</span> lock() -&gt; std::scoped_lock&lt;Mutex&gt; { <span class="keywordflow">return</span> std::scoped_lock{mtx_}; }</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">auto</span> mutex() -&gt; Mutex&amp; { <span class="keywordflow">return</span> mtx_; }</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    Mutex mtx_;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;};</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}  <span class="comment">// namespace ox</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_COMMON_LOCKABLE_HPP</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> lock() <span class="keyword">const</span> -&gt; std::scoped_lock&lt;Mutex&gt;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keywordflow">return</span> std::scoped_lock{mtx_};</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    }</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> mutex() <span class="keyword">const</span> -&gt; Mutex&amp; { <span class="keywordflow">return</span> mtx_; }</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">mutable</span> Mutex mtx_;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;};</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}  <span class="comment">// namespace ox</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_COMMON_LOCKABLE_HPP</span></div>
 <div class="ttc" id="aclassox_1_1Lockable_html"><div class="ttname"><a href="classox_1_1Lockable.html">ox::Lockable</a></div><div class="ttdef"><b>Definition:</b> lockable.hpp:8</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

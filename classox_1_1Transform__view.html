@@ -96,9 +96,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8a05f9901703d8ec4eabfdc6ecfc70e4"><td class="memItemLeft" align="right" valign="top"><a id="a8a05f9901703d8ec4eabfdc6ecfc70e4"></a>
 auto&#160;</td><td class="memItemRight" valign="bottom"><b>size</b> () const -&gt; std::size_t</td></tr>
 <tr class="separator:a8a05f9901703d8ec4eabfdc6ecfc70e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9be8f0e25929429216efc3705f1df9d"><td class="memItemLeft" align="right" valign="top"><a id="ac9be8f0e25929429216efc3705f1df9d"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><b>empty</b> () const -&gt; bool</td></tr>
-<tr class="separator:ac9be8f0e25929429216efc3705f1df9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78563974fb6b4e1458636d93547a210b"><td class="memItemLeft" align="right" valign="top"><a id="a78563974fb6b4e1458636d93547a210b"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>is_empty</b> () const -&gt; bool</td></tr>
+<tr class="separator:a78563974fb6b4e1458636d93547a210b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb41a59601348d38d0555d3f90414e96"><td class="memItemLeft" align="right" valign="top"><a id="afb41a59601348d38d0555d3f90414e96"></a>
 auto&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (std::size_t i) const -&gt; Reference_const</td></tr>
 <tr class="separator:afb41a59601348d38d0555d3f90414e96"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,7 +135,7 @@ auto&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> ()</td></tr>
 class ox::Transform_view&lt; Container, Map_fn &gt;</h3>
 
 <p>Read only Container view that applies transformation to elements at access. </p>
-<p>Container is assumed to have a vector like interface. Transformation is applied at iterator dereference and operator[]. </p>
+<p>Container is assumed to have a vector like interface. Transformation is applied at iterator dereference and operator[]. This is a non-owning view, relies on passed in container being alive as long as this view is.\ </p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>/github/workspace/include/termox/common/<a class="el" href="transform__view_8hpp_source.html">transform_view.hpp</a></li>
 </ul>

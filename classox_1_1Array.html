@@ -66,7 +66,6 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classox_1_1Array-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -82,22 +81,26 @@ $(function() {
 Inheritance diagram for ox::Array&lt; Layout_t, N &gt;:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="classox_1_1Array.png" alt=""/>
- </div></div>
+  <img src="classox_1_1Array.png" usemap="#ox::Array_3C_20Layout_5Ft_2C_20N_20_3E_map" alt=""/>
+  <map id="ox::Array_3C_20Layout_5Ft_2C_20N_20_3E_map" name="ox::Array_3C_20Layout_5Ft_2C_20N_20_3E_map">
+<area href="classox_1_1detail_1_1Confirm__page.html" alt="ox::detail::Confirm_page" shape="rect" coords="0,112,154,136"/>
+  </map>
+</div></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr class="memitem:a8b5a0d042dbc6822bde395e685f4a1c9"><td class="memItemLeft" align="right" valign="top"><a id="a8b5a0d042dbc6822bde395e685f4a1c9"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>Base</b> = Layout_t</td></tr>
-<tr class="separator:a8b5a0d042dbc6822bde395e685f4a1c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a6a4bf171e65f717b01185a0cf41331f4"><td class="memTemplParams" colspan="2"><a id="a6a4bf171e65f717b01185a0cf41331f4"></a>
+<tr class="memitem:a1cbc7fbc4c1bc71649b531e6099a2e37"><td class="memTemplParams" colspan="2"><a id="a1cbc7fbc4c1bc71649b531e6099a2e37"></a>
 template&lt;typename... Args&gt; </td></tr>
-<tr class="memitem:a6a4bf171e65f717b01185a0cf41331f4"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classox_1_1Array.html#a6a4bf171e65f717b01185a0cf41331f4">Array</a> (Args const &amp;... args)</td></tr>
-<tr class="memdesc:a6a4bf171e65f717b01185a0cf41331f4"><td class="mdescLeft">&#160;</td><td class="mdescRight"><code>args</code> will be copied into each <a class="el" href="classox_1_1Widget.html">Widget</a>'s constructor call. <br /></td></tr>
-<tr class="separator:a6a4bf171e65f717b01185a0cf41331f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cbc7fbc4c1bc71649b531e6099a2e37"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classox_1_1Array.html#a1cbc7fbc4c1bc71649b531e6099a2e37">Array</a> (Args &amp;&amp;... args)</td></tr>
+<tr class="memdesc:a1cbc7fbc4c1bc71649b531e6099a2e37"><td class="mdescLeft">&#160;</td><td class="mdescRight"><code>args</code> will be copied into each <a class="el" href="classox_1_1Widget.html">Widget</a>'s constructor call. <br /></td></tr>
+<tr class="separator:a1cbc7fbc4c1bc71649b531e6099a2e37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a7ba4ece365ce96560f657e5fb82ce6"><td class="memTemplParams" colspan="2"><a id="a2a7ba4ece365ce96560f657e5fb82ce6"></a>
+template&lt;typename Child_t  = typename Layout_t::Child_t, typename  = std::enable_if_t&lt;            std::is_constructible_v&lt;Child_t, typename Child_t::Parameters&gt;,            void&gt;&gt; </td></tr>
+<tr class="memitem:a2a7ba4ece365ce96560f657e5fb82ce6"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Array</b> (std::array&lt; typename Layout_t::Child_t::Parameters, N &gt; parameters)</td></tr>
+<tr class="separator:a2a7ba4ece365ce96560f657e5fb82ce6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea8b2141f02c042dfd6bee99a980c334"><td class="memItemLeft" align="right" valign="top"><a id="aea8b2141f02c042dfd6bee99a980c334"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Array</b> (std::array&lt; std::unique_ptr&lt; typename Layout_t::Child_t &gt;, N &gt; widget_ptrs)</td></tr>
+<tr class="separator:aea8b2141f02c042dfd6bee99a980c334"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76c126e08b5825725516bdcc7954a482"><td class="memTemplParams" colspan="2"><a id="a76c126e08b5825725516bdcc7954a482"></a>
 template&lt;std::size_t Index&gt; </td></tr>
 <tr class="memitem:a76c126e08b5825725516bdcc7954a482"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classox_1_1Array.html#a76c126e08b5825725516bdcc7954a482">get</a> () -&gt; auto &amp;</td></tr>

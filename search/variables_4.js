@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['focus_5fpolicy_1313',['focus_policy',['../classox_1_1Widget.html#afeb8b3a3141a10999f31243f71ca4394',1,'ox::Widget']]]
+  ['insert_5fbrush_1303',['insert_brush',['../classox_1_1Text__view.html#a30ce15463b63be1795c9a6daea2d37b4',1,'ox::Text_view']]],
+  ['invalid_5findex_1304',['invalid_index',['../classox_1_1layout_1_1Stack.html#a7a248e4c3e8c05d099cf796e551acf79',1,'ox::layout::Stack']]]
 ];

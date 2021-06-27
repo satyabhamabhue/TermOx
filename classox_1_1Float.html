@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TermOx: ox::Float&lt; Widget_t, Layout_t &gt; Class Template Reference</title>
+<title>TermOx: ox::Float&lt; Layout_t, Widget_t &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -68,13 +68,19 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="classox_1_1Float-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">ox::Float&lt; Widget_t, Layout_t &gt; Class Template Reference</div>  </div>
+<div class="title">ox::Float&lt; Layout_t, Widget_t &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Holds a given <code>Widget_t</code> object between two empty 'buffer' Widgets.  
+ <a href="classox_1_1Float.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="float_8hpp_source.html">float.hpp</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for ox::Float&lt; Widget_t, Layout_t &gt;:</div>
+Inheritance diagram for ox::Float&lt; Layout_t, Widget_t &gt;:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classox_1_1Float.png" alt=""/>
@@ -82,24 +88,36 @@ Inheritance diagram for ox::Float&lt; Widget_t, Layout_t &gt;:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad1a2b45e3ecb60fa51055c26b23c0404"><td class="memTemplParams" colspan="2"><a id="ad1a2b45e3ecb60fa51055c26b23c0404"></a>
+<tr class="memitem:ac1ad5f7e6560a4188b26c1602d6a5195"><td class="memTemplParams" colspan="2"><a id="ac1ad5f7e6560a4188b26c1602d6a5195"></a>
 template&lt;typename... Args&gt; </td></tr>
-<tr class="memitem:ad1a2b45e3ecb60fa51055c26b23c0404"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Float</b> (Args &amp;&amp;... args)</td></tr>
-<tr class="separator:ad1a2b45e3ecb60fa51055c26b23c0404"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1ad5f7e6560a4188b26c1602d6a5195"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Float</b> (Args &amp;&amp;... args)</td></tr>
+<tr class="separator:ac1ad5f7e6560a4188b26c1602d6a5195"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a4d1734e86a8368e20eb9c6b4f2b53cba"><td class="memItemLeft" align="right" valign="top"><a id="a4d1734e86a8368e20eb9c6b4f2b53cba"></a>
-<a class="el" href="classox_1_1Widget.html">ox::Widget</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>buffer_1</b></td></tr>
-<tr class="separator:a4d1734e86a8368e20eb9c6b4f2b53cba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7314a1e2ab2fc2ec4b2c0fe39a8f524"><td class="memItemLeft" align="right" valign="top"><a id="ae7314a1e2ab2fc2ec4b2c0fe39a8f524"></a>
+<tr class="memitem:a5427bf5977ca3da09279d64ed3abd931"><td class="memItemLeft" align="right" valign="top"><a id="a5427bf5977ca3da09279d64ed3abd931"></a>
+<a class="el" href="classox_1_1Widget.html">Widget</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>buffer_1</b></td></tr>
+<tr class="separator:a5427bf5977ca3da09279d64ed3abd931"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a876a77e9b59be9ba59ccb482540a0d80"><td class="memItemLeft" align="right" valign="top"><a id="a876a77e9b59be9ba59ccb482540a0d80"></a>
 Widget_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>widget</b></td></tr>
-<tr class="separator:ae7314a1e2ab2fc2ec4b2c0fe39a8f524"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a824944655edfe3458355cd699ec9b904"><td class="memItemLeft" align="right" valign="top"><a id="a824944655edfe3458355cd699ec9b904"></a>
-<a class="el" href="classox_1_1Widget.html">ox::Widget</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>buffer_2</b></td></tr>
-<tr class="separator:a824944655edfe3458355cd699ec9b904"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a876a77e9b59be9ba59ccb482540a0d80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17d02b06a68ca5a91bb147779e9993a0"><td class="memItemLeft" align="right" valign="top"><a id="a17d02b06a68ca5a91bb147779e9993a0"></a>
+<a class="el" href="classox_1_1Widget.html">Widget</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>buffer_2</b></td></tr>
+<tr class="separator:a17d02b06a68ca5a91bb147779e9993a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a59af956d8e1cbf30379ceaf8a0fab8c8"><td class="memItemLeft" align="right" valign="top"><a id="a59af956d8e1cbf30379ceaf8a0fab8c8"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>child_polished_event</b> (<a class="el" href="classox_1_1Widget.html">Widget</a> &amp;child) -&gt; bool override</td></tr>
+<tr class="separator:a59af956d8e1cbf30379ceaf8a0fab8c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;template&lt; typename &gt; typename Layout_t, typename Widget_t&gt;<br />
+class ox::Float&lt; Layout_t, Widget_t &gt;</h3>
+
+<p>Holds a given <code>Widget_t</code> object between two empty 'buffer' Widgets. </p>
+<p>The two 'buffer' Widgets have default constructed size policies. </p>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>/github/workspace/include/termox/widget/layouts/<a class="el" href="float_8hpp_source.html">float.hpp</a></li>
 </ul>
 </div><!-- contents -->

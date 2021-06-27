@@ -71,91 +71,82 @@ $(function() {
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef TERMOX_WIDGET_WIDGETS_CONFIRM_BUTTON_HPP</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define TERMOX_WIDGET_WIDGETS_CONFIRM_BUTTON_HPP</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;signals_light/signal.hpp&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;termox/painter/color.hpp&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;termox/painter/glyph_string.hpp&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;termox/widget/layouts/horizontal.hpp&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;termox/widget/layouts/stack.hpp&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;termox/widget/pipe.hpp&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;termox/widget/widgets/button.hpp&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;termox/painter/glyph_string.hpp&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;termox/widget/array.hpp&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;termox/widget/tuple.hpp&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;termox/widget/widgets/button.hpp&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span>ox::detail {</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span>ox {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classox_1_1Confirm__button.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1Confirm__button.html">Confirm_button</a> : <span class="keyword">public</span> <a class="code" href="classox_1_1layout_1_1Stack.html">layout::Stack</a>&lt;&gt; {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">class </span>Confirm_page : <span class="keyword">public</span> <a class="code" href="classox_1_1layout_1_1detail_1_1Linear__layout.html">layout::Horizontal</a>&lt;Button&gt; {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;       <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <a class="code" href="classox_1_1Widget.html">Child_t</a>&amp; confirm_btn;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <a class="code" href="classox_1_1Widget.html">Child_t</a>&amp; exit_btn = this-&gt;<a class="code" href="classox_1_1layout_1_1Layout.html#ad476ffccd0a8595a1a4affd04cdd99b0">make_child</a>(L<span class="stringliteral">&quot;X&quot;</span>);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;       <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">explicit</span> Confirm_page(<a class="code" href="classox_1_1Glyph__string.html">Glyph_string</a> confirm_text)</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            : confirm_btn{this-&gt;<a class="code" href="classox_1_1layout_1_1Layout.html#ad476ffccd0a8595a1a4affd04cdd99b0">make_child</a>(std::move(confirm_text))}</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keyword">using namespace </span>pipe;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            confirm_btn | bg(Color::Blue) | fg(Color::Black);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            exit_btn | bg(Color::Gray) | fg(Color::Black) | fixed_width(3);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        }</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    };</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classox_1_1Confirm__button.html#aead4192a499ca0429c0e2ed855fcce32">   37</a></span>&#160;    sl::Signal&lt;void()&gt; <a class="code" href="classox_1_1Confirm__button.html#aead4192a499ca0429c0e2ed855fcce32">pressed</a>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="classox_1_1Button.html">Button</a>&amp; main_btn;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    Confirm_page&amp; confirm_page;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classox_1_1detail_1_1Confirm__page.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1detail_1_1Confirm__page.html">Confirm_page</a> : <span class="keyword">public</span> <a class="code" href="classox_1_1Array.html">HArray</a>&lt;Button, 2&gt; {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structox_1_1detail_1_1Confirm__page_1_1Parameters.html">   16</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structox_1_1detail_1_1Confirm__page_1_1Parameters.html">Parameters</a> {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <a class="code" href="classox_1_1Glyph__string.html">Glyph_string</a> confirm_text;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    };</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classox_1_1Button.html">Button</a>&amp; confirm_btn = this-&gt;get&lt;0&gt;();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classox_1_1Button.html">Button</a>&amp; exit_btn    = this-&gt;get&lt;1&gt;();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classox_1_1detail_1_1Confirm__page.html">Confirm_page</a>(<a class="code" href="classox_1_1Glyph__string.html">Glyph_string</a> confirm_text);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classox_1_1detail_1_1Confirm__page.html">Confirm_page</a>(<a class="code" href="structox_1_1detail_1_1Confirm__page_1_1Parameters.html">Parameters</a> p);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;};</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}  <span class="comment">// namespace ox::detail</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">namespace </span>ox {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classox_1_1Confirm__button.html">   36</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1Confirm__button.html">Confirm_button</a> : <span class="keyword">public</span> <a class="code" href="classox_1_1Tuple.html">STuple</a>&lt;Button, detail::Confirm_page&gt; {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structox_1_1Confirm__button_1_1Parameters.html">   38</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structox_1_1Confirm__button_1_1Parameters.html">Parameters</a> {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="classox_1_1Glyph__string.html">Glyph_string</a> label        = U<span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="classox_1_1Glyph__string.html">Glyph_string</a> confirm_text = U<span class="stringliteral">&quot;Confirm&quot;</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    };</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classox_1_1Confirm__button.html#a9cfe2994c359fd4f9cc3f38b0f40656a">   45</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classox_1_1Confirm__button.html#a9cfe2994c359fd4f9cc3f38b0f40656a">Confirm_button</a>(<a class="code" href="classox_1_1Glyph__string.html">Glyph_string</a> label,</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                            <a class="code" href="classox_1_1Glyph__string.html">Glyph_string</a> confirm_text = <span class="stringliteral">&quot;Confirm&quot;</span>)</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        : main_btn{this-&gt;<a class="code" href="classox_1_1layout_1_1Stack.html#afd33fc050921313380a3473cb4df8cb6">make_page</a>&lt;<a class="code" href="classox_1_1Button.html">Button</a>&gt;(<a class="code" href="namespacestd.html">std</a>::move(label))},</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;          confirm_page{this-&gt;<a class="code" href="classox_1_1layout_1_1Stack.html#afd33fc050921313380a3473cb4df8cb6">make_page</a>&lt;Confirm_page&gt;(<a class="code" href="namespacestd.html">std</a>::move(confirm_text))}</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">using namespace </span>pipe;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        *<span class="keyword">this</span> | fixed_height(1) | active_page(front_page_);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        this-&gt;<a class="code" href="classox_1_1layout_1_1Stack.html#a8b07ffcfe86ba7efd253dce9bc3193c9">give_focus_on_change</a>(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        main_btn |</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            on_left_click([<span class="keyword">this</span>] { *<span class="keyword">this</span> | active_page(confirm_page_); });</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        confirm_page.confirm_btn | on_left_click([<span class="keyword">this</span>] {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <a class="code" href="classox_1_1Confirm__button.html#aead4192a499ca0429c0e2ed855fcce32">pressed</a>();</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            *<span class="keyword">this</span> | active_page(front_page_);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        });</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        confirm_page.exit_btn |</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            on_left_click([<span class="keyword">this</span>] { *<span class="keyword">this</span> | active_page(front_page_); });</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">static</span> <span class="keyword">auto</span> constexpr front_page_   = 0uL;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">static</span> <span class="keyword">auto</span> constexpr confirm_page_ = 1uL;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;};</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keyword">auto</span> confirm_button(Args&amp;&amp;... args) -&gt; std::unique_ptr&lt;Confirm_button&gt;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;{</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;Confirm_button&gt;(std::forward&lt;Args&gt;(args)...);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}  <span class="comment">// namespace ox</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_WIDGET_WIDGETS_CONFIRM_BUTTON_HPP</span></div>
-<div class="ttc" id="aclassox_1_1Button_html"><div class="ttname"><a href="classox_1_1Button.html">ox::Button</a></div><div class="ttdoc">Button widget that emits Signal on a left mouse button press.</div><div class="ttdef"><b>Definition:</b> button.hpp:17</div></div>
-<div class="ttc" id="aclassox_1_1Confirm__button_html"><div class="ttname"><a href="classox_1_1Confirm__button.html">ox::Confirm_button</a></div><div class="ttdoc">A Button with a confirm screen after the initial press.</div><div class="ttdef"><b>Definition:</b> confirm_button.hpp:18</div></div>
-<div class="ttc" id="aclassox_1_1Confirm__button_html_a9cfe2994c359fd4f9cc3f38b0f40656a"><div class="ttname"><a href="classox_1_1Confirm__button.html#a9cfe2994c359fd4f9cc3f38b0f40656a">ox::Confirm_button::Confirm_button</a></div><div class="ttdeci">Confirm_button(Glyph_string label, Glyph_string confirm_text=&quot;Confirm&quot;)</div><div class="ttdoc">Construct a Button with label and corresponding confirm_text.</div><div class="ttdef"><b>Definition:</b> confirm_button.hpp:45</div></div>
-<div class="ttc" id="aclassox_1_1Confirm__button_html_aead4192a499ca0429c0e2ed855fcce32"><div class="ttname"><a href="classox_1_1Confirm__button.html#aead4192a499ca0429c0e2ed855fcce32">ox::Confirm_button::pressed</a></div><div class="ttdeci">sl::Signal&lt; void()&gt; pressed</div><div class="ttdoc">Emitted once confirmation has been made.</div><div class="ttdef"><b>Definition:</b> confirm_button.hpp:37</div></div>
-<div class="ttc" id="aclassox_1_1Glyph__string_html"><div class="ttname"><a href="classox_1_1Glyph__string.html">ox::Glyph_string</a></div><div class="ttdoc">Holds a collection of Glyphs with a similar interface to std::string.</div><div class="ttdef"><b>Definition:</b> glyph_string.hpp:20</div></div>
-<div class="ttc" id="aclassox_1_1Widget_html"><div class="ttname"><a href="classox_1_1Widget.html">ox::Widget</a></div><div class="ttdef"><b>Definition:</b> widget.hpp:36</div></div>
-<div class="ttc" id="aclassox_1_1layout_1_1Layout_html_ad476ffccd0a8595a1a4affd04cdd99b0"><div class="ttname"><a href="classox_1_1layout_1_1Layout.html#ad476ffccd0a8595a1a4affd04cdd99b0">ox::layout::Layout&lt; Widget &gt;::make_child</a></div><div class="ttdeci">auto make_child(Args &amp;&amp;... args) -&gt; Widget_t &amp;</div><div class="ttdoc">Create a Widget and append it to the child container.</div><div class="ttdef"><b>Definition:</b> layout.hpp:96</div></div>
-<div class="ttc" id="aclassox_1_1layout_1_1Stack_html"><div class="ttname"><a href="classox_1_1layout_1_1Stack.html">ox::layout::Stack</a></div><div class="ttdoc">A Layout enabling only a single Widget at a time.</div><div class="ttdef"><b>Definition:</b> stack.hpp:29</div></div>
-<div class="ttc" id="aclassox_1_1layout_1_1Stack_html_a8b07ffcfe86ba7efd253dce9bc3193c9"><div class="ttname"><a href="classox_1_1layout_1_1Stack.html#a8b07ffcfe86ba7efd253dce9bc3193c9">ox::layout::Stack::give_focus_on_change</a></div><div class="ttdeci">void give_focus_on_change(bool sets_focus=true)</div><div class="ttdoc">Set whether Focus is given to a child Widget when it becomes active.</div><div class="ttdef"><b>Definition:</b> stack.hpp:55</div></div>
-<div class="ttc" id="aclassox_1_1layout_1_1Stack_html_afd33fc050921313380a3473cb4df8cb6"><div class="ttname"><a href="classox_1_1layout_1_1Stack.html#afd33fc050921313380a3473cb4df8cb6">ox::layout::Stack::make_page</a></div><div class="ttdeci">auto make_page(Args &amp;&amp;... args) -&gt; Widget_t &amp;</div><div class="ttdoc">Construct and append a page to the Stack.</div><div class="ttdef"><b>Definition:</b> stack.hpp:65</div></div>
-<div class="ttc" id="aclassox_1_1layout_1_1detail_1_1Linear__layout_html"><div class="ttname"><a href="classox_1_1layout_1_1detail_1_1Linear__layout.html">ox::layout::detail::Linear_layout</a></div><div class="ttdoc">Lays out Widgets in 2D, sharing space in a primary dimension.</div><div class="ttdef"><b>Definition:</b> linear_layout.hpp:37</div></div>
-<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdoc">Custom specialization of std::hash for ox::point.</div><div class="ttdef"><b>Definition:</b> key.hpp:266</div></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classox_1_1Confirm__button.html#aead4192a499ca0429c0e2ed855fcce32">   45</a></span>&#160;    sl::Signal&lt;void()&gt; <a class="code" href="classox_1_1Confirm__button.html#aead4192a499ca0429c0e2ed855fcce32">pressed</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="classox_1_1Button.html">Button</a>&amp; main_btn                   = this-&gt;get&lt;0&gt;();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="classox_1_1detail_1_1Confirm__page.html">detail::Confirm_page</a>&amp; confirm_page = this-&gt;get&lt;1&gt;();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classox_1_1Confirm__button.html#ad8496686a3dd561bf3fd5f8b5fec862a">Confirm_button</a>(<a class="code" href="classox_1_1Glyph__string.html">Glyph_string</a> label        = U<span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                            <a class="code" href="classox_1_1Glyph__string.html">Glyph_string</a> confirm_text = U<span class="stringliteral">&quot;Confirm&quot;</span>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classox_1_1Confirm__button.html#ad8496686a3dd561bf3fd5f8b5fec862a">Confirm_button</a>(<a class="code" href="structox_1_1Confirm__button_1_1Parameters.html">Parameters</a> p);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">static</span> <span class="keyword">auto</span> constexpr front_page_   = 0uL;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">static</span> <span class="keyword">auto</span> constexpr confirm_page_ = 1uL;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;};</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;[[nodiscard]] <span class="keyword">auto</span> confirm_button(<a class="code" href="classox_1_1Glyph__string.html">Glyph_string</a> label        = U<span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                                  <a class="code" href="classox_1_1Glyph__string.html">Glyph_string</a> confirm_text = U<span class="stringliteral">&quot;Confirm&quot;</span>)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    -&gt; std::unique_ptr&lt;Confirm_button&gt;;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;[[nodiscard]] <span class="keyword">auto</span> confirm_button(<a class="code" href="structox_1_1Confirm__button_1_1Parameters.html">Confirm_button::Parameters</a> p)</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    -&gt; std::unique_ptr&lt;Confirm_button&gt;;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}  <span class="comment">// namespace ox</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_WIDGET_WIDGETS_CONFIRM_BUTTON_HPP</span></div>
+<div class="ttc" id="aclassox_1_1Array_html"><div class="ttname"><a href="classox_1_1Array.html">ox::Array</a></div><div class="ttdoc">Homogeneous collection of Widgets within a Layout_t&lt;Widget_t&gt;.</div><div class="ttdef"><b>Definition:</b> array.hpp:18</div></div>
+<div class="ttc" id="aclassox_1_1Button_html"><div class="ttname"><a href="classox_1_1Button.html">ox::Button</a></div><div class="ttdoc">Button widget that emits Signal on a left mouse button press.</div><div class="ttdef"><b>Definition:</b> button.hpp:18</div></div>
+<div class="ttc" id="aclassox_1_1Confirm__button_html"><div class="ttname"><a href="classox_1_1Confirm__button.html">ox::Confirm_button</a></div><div class="ttdoc">A Button with a confirm screen after the initial press.</div><div class="ttdef"><b>Definition:</b> confirm_button.hpp:36</div></div>
+<div class="ttc" id="aclassox_1_1Confirm__button_html_ad8496686a3dd561bf3fd5f8b5fec862a"><div class="ttname"><a href="classox_1_1Confirm__button.html#ad8496686a3dd561bf3fd5f8b5fec862a">ox::Confirm_button::Confirm_button</a></div><div class="ttdeci">Confirm_button(Glyph_string label=U&quot;&quot;, Glyph_string confirm_text=U&quot;Confirm&quot;)</div><div class="ttdoc">Construct a Button with label and corresponding confirm_text.</div><div class="ttdef"><b>Definition:</b> confirm_button.cpp:30</div></div>
+<div class="ttc" id="aclassox_1_1Confirm__button_html_aead4192a499ca0429c0e2ed855fcce32"><div class="ttname"><a href="classox_1_1Confirm__button.html#aead4192a499ca0429c0e2ed855fcce32">ox::Confirm_button::pressed</a></div><div class="ttdeci">sl::Signal&lt; void()&gt; pressed</div><div class="ttdoc">Emitted once confirmation has been made.</div><div class="ttdef"><b>Definition:</b> confirm_button.hpp:45</div></div>
+<div class="ttc" id="aclassox_1_1Glyph__string_html"><div class="ttname"><a href="classox_1_1Glyph__string.html">ox::Glyph_string</a></div><div class="ttdoc">Holds a collection of Glyphs with a similar interface to std::string.</div><div class="ttdef"><b>Definition:</b> glyph_string.hpp:19</div></div>
+<div class="ttc" id="aclassox_1_1Tuple_html"><div class="ttname"><a href="classox_1_1Tuple.html">ox::Tuple</a></div><div class="ttdoc">Heterogeneous collection of Widgets within a Layout_t.</div><div class="ttdef"><b>Definition:</b> tuple.hpp:17</div></div>
+<div class="ttc" id="aclassox_1_1detail_1_1Confirm__page_html"><div class="ttname"><a href="classox_1_1detail_1_1Confirm__page.html">ox::detail::Confirm_page</a></div><div class="ttdef"><b>Definition:</b> confirm_button.hpp:14</div></div>
+<div class="ttc" id="astructox_1_1Confirm__button_1_1Parameters_html"><div class="ttname"><a href="structox_1_1Confirm__button_1_1Parameters.html">ox::Confirm_button::Parameters</a></div><div class="ttdef"><b>Definition:</b> confirm_button.hpp:38</div></div>
+<div class="ttc" id="astructox_1_1detail_1_1Confirm__page_1_1Parameters_html"><div class="ttname"><a href="structox_1_1detail_1_1Confirm__page_1_1Parameters.html">ox::detail::Confirm_page::Parameters</a></div><div class="ttdef"><b>Definition:</b> confirm_button.hpp:16</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

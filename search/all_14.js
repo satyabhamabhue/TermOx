@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['value_634',['value',['../classox_1_1detail_1_1Slider__logic.html#a618ede2950539a42a4752514058541d6',1,'ox::detail::Slider_logic::value()'],['../classox_1_1Vertical__slider.html#afcdfbb8b31e53c050dd67c6ab0cd1c7b',1,'ox::Vertical_slider::value()']]],
-  ['value_5fchanged_635',['value_changed',['../classox_1_1detail_1_1Slider__logic.html#a538f40576ca31d05513563f7f237161d',1,'ox::detail::Slider_logic::value_changed()'],['../classox_1_1Vertical__slider.html#a9d9166be379d5579675c4951e99a92da',1,'ox::Vertical_slider::value_changed()']]],
-  ['value_5fset_636',['value_set',['../classox_1_1Number__edit.html#a5dbb3db70e4054b6413e5900cb983860',1,'ox::Number_edit::value_set()'],['../classox_1_1Labeled__number__edit.html#a971751b3f591cd2f59d333759c6ce1bc',1,'ox::Labeled_number_edit::value_set()']]],
-  ['veil_5ftext_637',['veil_text',['../classox_1_1Text__display.html#accd34874891afea89e204a48017c1530',1,'ox::Text_display::veil_text()'],['../classox_1_1Line__edit.html#accd34874891afea89e204a48017c1530',1,'ox::Line_edit::veil_text()']]],
-  ['vertical_5fslider_638',['Vertical_slider',['../classox_1_1Vertical__slider.html',1,'ox::Vertical_slider'],['../classox_1_1Vertical__slider.html#a4a024e69bc9389771e0b687b4bbdc7da',1,'ox::Vertical_slider::Vertical_slider()']]]
+  ['validator_625',['validator',['../classox_1_1Line__edit.html#a60dbf1df8fb8978c3f3f61edb10d4c50',1,'ox::Line_edit']]],
+  ['value_626',['value',['../classox_1_1detail_1_1Slider__logic.html#a618ede2950539a42a4752514058541d6',1,'ox::detail::Slider_logic::value()'],['../classox_1_1Number__edit.html#a622d1f74092305defa5d2653fb522ea3',1,'ox::Number_edit::value()'],['../classox_1_1Number__view.html#af02803bcf9a02764671a790bc1567c6d',1,'ox::Number_view::value()'],['../classox_1_1Slider.html#a785a9ea3f51b3d89a1d0d92bd6512460',1,'ox::Slider::value()']]],
+  ['value_5fchanged_627',['value_changed',['../classox_1_1detail_1_1Slider__logic.html#a538f40576ca31d05513563f7f237161d',1,'ox::detail::Slider_logic::value_changed()'],['../classox_1_1Slider.html#a63252ec718b57c9a85d67731ce168d46',1,'ox::Slider::value_changed()']]],
+  ['value_5fmodified_628',['value_modified',['../classox_1_1Number__edit.html#a6867d94d2138af7f1ebd6bfa61e8808b',1,'ox::Number_edit']]],
+  ['vline_629',['vline',['../classox_1_1Painter.html#abd9da1ef9d9ad4aac4817cc116f44146',1,'ox::Painter']]]
 ];

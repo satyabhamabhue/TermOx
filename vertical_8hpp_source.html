@@ -73,111 +73,124 @@ $(function() {
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define TERMOX_WIDGET_LAYOUTS_VERTICAL_HPP</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;cstddef&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;detail/linear_layout.hpp&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span>ox::layout::v_detail {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structox_1_1layout_1_1v__detail_1_1Get__area.html">   11</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structox_1_1layout_1_1v__detail_1_1Get__area.html">Get_area</a> {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">auto</span> operator()(std::size_t primary, std::size_t secondary) <span class="keyword">const</span> -&gt; <a class="code" href="structox_1_1Area.html">Area</a></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordflow">return</span> {secondary, primary};</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    }</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;};</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="structox_1_1layout_1_1v__detail_1_1Get__point.html">   18</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structox_1_1layout_1_1v__detail_1_1Get__point.html">Get_point</a> {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">auto</span> operator()(std::size_t primary, std::size_t secondary) <span class="keyword">const</span> -&gt; <a class="code" href="structox_1_1Point.html">Point</a></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordflow">return</span> {secondary, primary};</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    }</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;};</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structox_1_1layout_1_1v__detail_1_1Primary__policy.html">   25</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structox_1_1layout_1_1v__detail_1_1Primary__policy.html">Primary_policy</a> {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">auto</span> operator()(<a class="code" href="classox_1_1Widget.html">Widget</a> <span class="keyword">const</span>&amp; w) <span class="keyword">const</span> -&gt; <a class="code" href="classox_1_1Size__policy.html">Size_policy</a> <span class="keyword">const</span>&amp;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordflow">return</span> w.height_policy;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;};</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structox_1_1layout_1_1v__detail_1_1Primary__length.html">   32</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structox_1_1layout_1_1v__detail_1_1Primary__length.html">Primary_length</a> {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">auto</span> operator()(<a class="code" href="classox_1_1Widget.html">Widget</a> <span class="keyword">const</span>&amp; w) <span class="keyword">const</span> -&gt; std::size_t { <span class="keywordflow">return</span> w.height(); }</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;};</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structox_1_1layout_1_1v__detail_1_1Primary__offset.html">   36</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structox_1_1layout_1_1v__detail_1_1Primary__offset.html">Primary_offset</a> {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">auto</span> operator()(<a class="code" href="classox_1_1Widget.html">Widget</a> <span class="keyword">const</span>&amp; w) <span class="keyword">const</span> -&gt; std::size_t</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">return</span> w.inner_y();</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;};</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structox_1_1layout_1_1v__detail_1_1Secondary__policy.html">   43</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structox_1_1layout_1_1v__detail_1_1Secondary__policy.html">Secondary_policy</a> {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">auto</span> operator()(<a class="code" href="classox_1_1Widget.html">Widget</a> <span class="keyword">const</span>&amp; w) <span class="keyword">const</span> -&gt; <a class="code" href="classox_1_1Size__policy.html">Size_policy</a> <span class="keyword">const</span>&amp;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">return</span> w.width_policy;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;};</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="structox_1_1layout_1_1v__detail_1_1Secondary__length.html">   50</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structox_1_1layout_1_1v__detail_1_1Secondary__length.html">Secondary_length</a> {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">auto</span> operator()(<a class="code" href="classox_1_1Widget.html">Widget</a> <span class="keyword">const</span>&amp; w) <span class="keyword">const</span> -&gt; std::size_t { <span class="keywordflow">return</span> w.width(); }</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;termox/widget/layouts/detail/linear_layout.hpp&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>ox::layout::v_detail {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structox_1_1layout_1_1v__detail_1_1Get__area.html">   12</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structox_1_1layout_1_1v__detail_1_1Get__area.html">Get_area</a> {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> operator()(<span class="keywordtype">int</span> primary, <span class="keywordtype">int</span> secondary) <span class="keyword">const</span> -&gt; Area</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordflow">return</span> {secondary, primary};</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    }</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;};</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structox_1_1layout_1_1v__detail_1_1Get__point.html">   19</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structox_1_1layout_1_1v__detail_1_1Get__point.html">Get_point</a> {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> operator()(<span class="keywordtype">int</span> primary, <span class="keywordtype">int</span> secondary) <span class="keyword">const</span> -&gt; Point</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordflow">return</span> {secondary, primary};</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structox_1_1layout_1_1v__detail_1_1Primary__policy.html">   26</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structox_1_1layout_1_1v__detail_1_1Primary__policy.html">Primary_policy</a> {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> operator()(<a class="code" href="classox_1_1Widget.html">Widget</a> <span class="keyword">const</span>&amp; w) <span class="keyword">const</span> -&gt; <a class="code" href="classox_1_1Size__policy.html">Size_policy</a> <span class="keyword">const</span>&amp;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">return</span> w.<a class="code" href="classox_1_1Widget.html#a904577884a103fbdc7343283a5605177">height_policy</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;};</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structox_1_1layout_1_1v__detail_1_1Primary__length.html">   33</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structox_1_1layout_1_1v__detail_1_1Primary__length.html">Primary_length</a> {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> operator()(<a class="code" href="classox_1_1Widget.html">Widget</a> <span class="keyword">const</span>&amp; w) <span class="keyword">const</span> -&gt; <span class="keywordtype">int</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordflow">return</span> w.<a class="code" href="classox_1_1Widget.html#af65e121e7734e50a8c9051a66df2cced">area</a>().height;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;};</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structox_1_1layout_1_1v__detail_1_1Primary__offset.html">   40</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structox_1_1layout_1_1v__detail_1_1Primary__offset.html">Primary_offset</a> {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> operator()(<a class="code" href="classox_1_1Widget.html">Widget</a> <span class="keyword">const</span>&amp; w) <span class="keyword">const</span> -&gt; <span class="keywordtype">int</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">return</span> w.<a class="code" href="classox_1_1Widget.html#a1f86fd95acc96a60e48b70a896394c4a">top_left</a>().y;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;};</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="structox_1_1layout_1_1v__detail_1_1Secondary__policy.html">   47</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structox_1_1layout_1_1v__detail_1_1Secondary__policy.html">Secondary_policy</a> {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> operator()(<a class="code" href="classox_1_1Widget.html">Widget</a> <span class="keyword">const</span>&amp; w) <span class="keyword">const</span> -&gt; <a class="code" href="classox_1_1Size__policy.html">Size_policy</a> <span class="keyword">const</span>&amp;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">return</span> w.<a class="code" href="classox_1_1Widget.html#ae39a9294231f16e95871535c8456b87b">width_policy</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;};</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structox_1_1layout_1_1v__detail_1_1Secondary__offset.html">   54</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structox_1_1layout_1_1v__detail_1_1Secondary__offset.html">Secondary_offset</a> {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">auto</span> operator()(<a class="code" href="classox_1_1Widget.html">Widget</a> <span class="keyword">const</span>&amp; w) <span class="keyword">const</span> -&gt; std::size_t</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structox_1_1layout_1_1v__detail_1_1Secondary__length.html">   54</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structox_1_1layout_1_1v__detail_1_1Secondary__length.html">Secondary_length</a> {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> operator()(<a class="code" href="classox_1_1Widget.html">Widget</a> <span class="keyword">const</span>&amp; w) <span class="keyword">const</span> -&gt; <span class="keywordtype">int</span></div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">return</span> w.inner_x();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">return</span> w.<a class="code" href="classox_1_1Widget.html#af65e121e7734e50a8c9051a66df2cced">area</a>().width;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;};</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">using</span> <a class="code" href="structox_1_1layout_1_1detail_1_1Dimension__parameters.html">Primary</a> = <a class="code" href="structox_1_1layout_1_1detail_1_1Dimension__parameters.html">detail::Dimension_parameters</a>&lt;<a class="code" href="structox_1_1layout_1_1v__detail_1_1Primary__policy.html">Primary_policy</a>,</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                                             <a class="code" href="structox_1_1layout_1_1v__detail_1_1Primary__length.html">Primary_length</a>,</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                                             <a class="code" href="structox_1_1layout_1_1v__detail_1_1Primary__offset.html">Primary_offset</a>,</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                                             Policy_direction::Vertical&gt;;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">using</span> <a class="code" href="structox_1_1layout_1_1detail_1_1Dimension__parameters.html">Secondary</a> = <a class="code" href="structox_1_1layout_1_1detail_1_1Dimension__parameters.html">detail::Dimension_parameters</a>&lt;<a class="code" href="structox_1_1layout_1_1v__detail_1_1Secondary__policy.html">Secondary_policy</a>,</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                                               <a class="code" href="structox_1_1layout_1_1v__detail_1_1Secondary__length.html">Secondary_length</a>,</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                               <a class="code" href="structox_1_1layout_1_1v__detail_1_1Secondary__offset.html">Secondary_offset</a>,</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                               Policy_direction::Horizontal&gt;;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="structox_1_1layout_1_1v__detail_1_1Secondary__offset.html">   61</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structox_1_1layout_1_1v__detail_1_1Secondary__offset.html">Secondary_offset</a> {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> operator()(<a class="code" href="classox_1_1Widget.html">Widget</a> <span class="keyword">const</span>&amp; w) <span class="keyword">const</span> -&gt; <span class="keywordtype">int</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">return</span> w.<a class="code" href="classox_1_1Widget.html#a1f86fd95acc96a60e48b70a896394c4a">top_left</a>().x;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;};</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">using</span> <a class="code" href="structox_1_1layout_1_1detail_1_1Dimension__parameters.html">Primary</a> = detail::</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    Dimension_parameters&lt;Primary_policy, Primary_length, Primary_offset&gt;;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">using</span> <a class="code" href="structox_1_1layout_1_1detail_1_1Linear__layout__parameters.html">Vertical_parameters</a> =</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="structox_1_1layout_1_1detail_1_1Linear__layout__parameters.html">detail::Linear_layout_parameters&lt;Primary, Secondary, Get_area, Get_point&gt;</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">using</span> <a class="code" href="structox_1_1layout_1_1detail_1_1Dimension__parameters.html">Secondary</a> = detail::</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    Dimension_parameters&lt;Secondary_policy, Secondary_length, Secondary_offset&gt;;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}  <span class="comment">// namespace ox::layout::v_detail</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">namespace </span>ox::layout {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Child_t = W<span class="keywordtype">id</span>get&gt;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">using</span> <a class="code" href="classox_1_1layout_1_1detail_1_1Linear__layout.html">Vertical</a> = <a class="code" href="classox_1_1layout_1_1detail_1_1Linear__layout.html">detail::Linear_layout&lt;Child_t, v_detail::Vertical_parameters&gt;</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">using</span> <a class="code" href="structox_1_1layout_1_1detail_1_1Linear__layout__parameters.html">Vertical_parameters</a> =</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="structox_1_1layout_1_1detail_1_1Linear__layout__parameters.html">detail::Linear_layout_parameters&lt;Primary, Secondary, Get_area, Get_point&gt;</a>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}  <span class="comment">// namespace ox::layout::v_detail</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">namespace </span>ox::layout {</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Widget_t = <a class="code" href="classox_1_1Widget.html">Widget</a>, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">auto</span> vertical(Args&amp;&amp;... args) -&gt; std::unique_ptr&lt;Vertical&lt;Widget_t&gt;&gt;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;{</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;Vertical&lt;Widget_t&gt;&gt;(std::forward&lt;Args&gt;(args)...);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Layout_t&gt;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keyword">inline</span> constexpr <span class="keywordtype">bool</span> is_vertical_v = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Child_t = W<span class="keywordtype">id</span>get&gt;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">using</span> <a class="code" href="classox_1_1layout_1_1detail_1_1Linear__layout.html">Vertical</a> = <a class="code" href="classox_1_1layout_1_1detail_1_1Linear__layout.html">detail::Linear_layout&lt;Child_t, v_detail::Vertical_parameters&gt;</a>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Widget_t = <a class="code" href="classox_1_1Widget.html">Widget</a>, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;[[nodiscard]] <span class="keyword">auto</span> vertical(Args&amp;&amp;... args)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    -&gt; std::unique_ptr&lt;Vertical&lt;Widget_t&gt;&gt;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;{</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;Vertical&lt;Widget_t&gt;&gt;(std::forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keyword">namespace </span>detail {</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Child_t&gt;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keyword">inline</span> constexpr <span class="keywordtype">bool</span> is_vertical_v&lt;layout::Vertical&lt;Child_t&gt;&gt; = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keyword">auto</span> is_vertical_impl(<a class="code" href="classox_1_1layout_1_1detail_1_1Linear__layout.html">layout::Vertical&lt;Child_t&gt;</a>&amp;) -&gt; std::true_type;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}  <span class="comment">// namespace ox::layout</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_WIDGET_LAYOUTS_VERTICAL_HPP</span></div>
-<div class="ttc" id="aclassox_1_1Size__policy_html"><div class="ttname"><a href="classox_1_1Size__policy.html">ox::Size_policy</a></div><div class="ttdoc">Defines how a Layout should resize a Widget in one length Dimension.</div><div class="ttdef"><b>Definition:</b> size_policy.hpp:12</div></div>
-<div class="ttc" id="aclassox_1_1Widget_html"><div class="ttname"><a href="classox_1_1Widget.html">ox::Widget</a></div><div class="ttdef"><b>Definition:</b> widget.hpp:36</div></div>
-<div class="ttc" id="aclassox_1_1layout_1_1detail_1_1Linear__layout_html"><div class="ttname"><a href="classox_1_1layout_1_1detail_1_1Linear__layout.html">ox::layout::detail::Linear_layout</a></div><div class="ttdoc">Lays out Widgets in 2D, sharing space in a primary dimension.</div><div class="ttdef"><b>Definition:</b> linear_layout.hpp:37</div></div>
-<div class="ttc" id="astructox_1_1Area_html"><div class="ttname"><a href="structox_1_1Area.html">ox::Area</a></div><div class="ttdoc">Convinience data structure holding Widget size dimensions.</div><div class="ttdef"><b>Definition:</b> area.hpp:8</div></div>
-<div class="ttc" id="astructox_1_1Point_html"><div class="ttname"><a href="structox_1_1Point.html">ox::Point</a></div><div class="ttdoc">Represents a 2D point in space.</div><div class="ttdef"><b>Definition:</b> point.hpp:11</div></div>
-<div class="ttc" id="astructox_1_1layout_1_1detail_1_1Dimension__parameters_html"><div class="ttname"><a href="structox_1_1layout_1_1detail_1_1Dimension__parameters.html">ox::layout::detail::Dimension_parameters</a></div><div class="ttdef"><b>Definition:</b> linear_layout.hpp:16</div></div>
-<div class="ttc" id="astructox_1_1layout_1_1detail_1_1Linear__layout__parameters_html"><div class="ttname"><a href="structox_1_1layout_1_1detail_1_1Linear__layout__parameters.html">ox::layout::detail::Linear_layout_parameters</a></div><div class="ttdef"><b>Definition:</b> linear_layout.hpp:27</div></div>
-<div class="ttc" id="astructox_1_1layout_1_1v__detail_1_1Get__area_html"><div class="ttname"><a href="structox_1_1layout_1_1v__detail_1_1Get__area.html">ox::layout::v_detail::Get_area</a></div><div class="ttdef"><b>Definition:</b> vertical.hpp:11</div></div>
-<div class="ttc" id="astructox_1_1layout_1_1v__detail_1_1Get__point_html"><div class="ttname"><a href="structox_1_1layout_1_1v__detail_1_1Get__point.html">ox::layout::v_detail::Get_point</a></div><div class="ttdef"><b>Definition:</b> vertical.hpp:18</div></div>
-<div class="ttc" id="astructox_1_1layout_1_1v__detail_1_1Primary__length_html"><div class="ttname"><a href="structox_1_1layout_1_1v__detail_1_1Primary__length.html">ox::layout::v_detail::Primary_length</a></div><div class="ttdef"><b>Definition:</b> vertical.hpp:32</div></div>
-<div class="ttc" id="astructox_1_1layout_1_1v__detail_1_1Primary__offset_html"><div class="ttname"><a href="structox_1_1layout_1_1v__detail_1_1Primary__offset.html">ox::layout::v_detail::Primary_offset</a></div><div class="ttdef"><b>Definition:</b> vertical.hpp:36</div></div>
-<div class="ttc" id="astructox_1_1layout_1_1v__detail_1_1Primary__policy_html"><div class="ttname"><a href="structox_1_1layout_1_1v__detail_1_1Primary__policy.html">ox::layout::v_detail::Primary_policy</a></div><div class="ttdef"><b>Definition:</b> vertical.hpp:25</div></div>
-<div class="ttc" id="astructox_1_1layout_1_1v__detail_1_1Secondary__length_html"><div class="ttname"><a href="structox_1_1layout_1_1v__detail_1_1Secondary__length.html">ox::layout::v_detail::Secondary_length</a></div><div class="ttdef"><b>Definition:</b> vertical.hpp:50</div></div>
-<div class="ttc" id="astructox_1_1layout_1_1v__detail_1_1Secondary__offset_html"><div class="ttname"><a href="structox_1_1layout_1_1v__detail_1_1Secondary__offset.html">ox::layout::v_detail::Secondary_offset</a></div><div class="ttdef"><b>Definition:</b> vertical.hpp:54</div></div>
-<div class="ttc" id="astructox_1_1layout_1_1v__detail_1_1Secondary__policy_html"><div class="ttname"><a href="structox_1_1layout_1_1v__detail_1_1Secondary__policy.html">ox::layout::v_detail::Secondary_policy</a></div><div class="ttdef"><b>Definition:</b> vertical.hpp:43</div></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keyword">auto</span> is_vertical_impl(...) -&gt; std::false_type;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}  <span class="comment">// namespace detail</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword">using</span> Is_vertical = decltype(detail::is_vertical_impl(std::declval&lt;T&amp;&gt;()));</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> constexpr is_vertical_v = Is_vertical&lt;T&gt;::value;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}  <span class="comment">// namespace ox::layout</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_WIDGET_LAYOUTS_VERTICAL_HPP</span></div>
+<div class="ttc" id="aclassox_1_1Size__policy_html"><div class="ttname"><a href="classox_1_1Size__policy.html">ox::Size_policy</a></div><div class="ttdoc">Defines how a Layout should resize a Widget in one length Dimension.</div><div class="ttdef"><b>Definition:</b> size_policy.hpp:11</div></div>
+<div class="ttc" id="aclassox_1_1Widget_html"><div class="ttname"><a href="classox_1_1Widget.html">ox::Widget</a></div><div class="ttdef"><b>Definition:</b> widget.hpp:31</div></div>
+<div class="ttc" id="aclassox_1_1Widget_html_a1f86fd95acc96a60e48b70a896394c4a"><div class="ttname"><a href="classox_1_1Widget.html#a1f86fd95acc96a60e48b70a896394c4a">ox::Widget::top_left</a></div><div class="ttdeci">auto top_left() const -&gt; Point</div><div class="ttdoc">Return the global top left corner of this widget.</div><div class="ttdef"><b>Definition:</b> widget.cpp:106</div></div>
+<div class="ttc" id="aclassox_1_1Widget_html_a904577884a103fbdc7343283a5605177"><div class="ttname"><a href="classox_1_1Widget.html#a904577884a103fbdc7343283a5605177">ox::Widget::height_policy</a></div><div class="ttdeci">Size_policy height_policy</div><div class="ttdoc">Describes how the height of this Widget should be modified by a Layout.</div><div class="ttdef"><b>Definition:</b> widget.hpp:102</div></div>
+<div class="ttc" id="aclassox_1_1Widget_html_ae39a9294231f16e95871535c8456b87b"><div class="ttname"><a href="classox_1_1Widget.html#ae39a9294231f16e95871535c8456b87b">ox::Widget::width_policy</a></div><div class="ttdeci">Size_policy width_policy</div><div class="ttdoc">Describes how the width of this Widget should be modified by a Layout.</div><div class="ttdef"><b>Definition:</b> widget.hpp:99</div></div>
+<div class="ttc" id="aclassox_1_1Widget_html_af65e121e7734e50a8c9051a66df2cced"><div class="ttname"><a href="classox_1_1Widget.html#af65e121e7734e50a8c9051a66df2cced">ox::Widget::area</a></div><div class="ttdeci">auto area() const -&gt; Area</div><div class="ttdoc">Return the area the widget occupies.</div><div class="ttdef"><b>Definition:</b> widget.cpp:108</div></div>
+<div class="ttc" id="aclassox_1_1layout_1_1detail_1_1Linear__layout_html"><div class="ttname"><a href="classox_1_1layout_1_1detail_1_1Linear__layout.html">ox::layout::detail::Linear_layout</a></div><div class="ttdoc">Lays out Widgets in 2D, sharing space in a primary dimension.</div><div class="ttdef"><b>Definition:</b> linear_layout.hpp:35</div></div>
+<div class="ttc" id="astructox_1_1layout_1_1detail_1_1Dimension__parameters_html"><div class="ttname"><a href="structox_1_1layout_1_1detail_1_1Dimension__parameters.html">ox::layout::detail::Dimension_parameters</a></div><div class="ttdef"><b>Definition:</b> linear_layout.hpp:15</div></div>
+<div class="ttc" id="astructox_1_1layout_1_1detail_1_1Linear__layout__parameters_html"><div class="ttname"><a href="structox_1_1layout_1_1detail_1_1Linear__layout__parameters.html">ox::layout::detail::Linear_layout_parameters</a></div><div class="ttdef"><b>Definition:</b> linear_layout.hpp:25</div></div>
+<div class="ttc" id="astructox_1_1layout_1_1v__detail_1_1Get__area_html"><div class="ttname"><a href="structox_1_1layout_1_1v__detail_1_1Get__area.html">ox::layout::v_detail::Get_area</a></div><div class="ttdef"><b>Definition:</b> vertical.hpp:12</div></div>
+<div class="ttc" id="astructox_1_1layout_1_1v__detail_1_1Get__point_html"><div class="ttname"><a href="structox_1_1layout_1_1v__detail_1_1Get__point.html">ox::layout::v_detail::Get_point</a></div><div class="ttdef"><b>Definition:</b> vertical.hpp:19</div></div>
+<div class="ttc" id="astructox_1_1layout_1_1v__detail_1_1Primary__length_html"><div class="ttname"><a href="structox_1_1layout_1_1v__detail_1_1Primary__length.html">ox::layout::v_detail::Primary_length</a></div><div class="ttdef"><b>Definition:</b> vertical.hpp:33</div></div>
+<div class="ttc" id="astructox_1_1layout_1_1v__detail_1_1Primary__offset_html"><div class="ttname"><a href="structox_1_1layout_1_1v__detail_1_1Primary__offset.html">ox::layout::v_detail::Primary_offset</a></div><div class="ttdef"><b>Definition:</b> vertical.hpp:40</div></div>
+<div class="ttc" id="astructox_1_1layout_1_1v__detail_1_1Primary__policy_html"><div class="ttname"><a href="structox_1_1layout_1_1v__detail_1_1Primary__policy.html">ox::layout::v_detail::Primary_policy</a></div><div class="ttdef"><b>Definition:</b> vertical.hpp:26</div></div>
+<div class="ttc" id="astructox_1_1layout_1_1v__detail_1_1Secondary__length_html"><div class="ttname"><a href="structox_1_1layout_1_1v__detail_1_1Secondary__length.html">ox::layout::v_detail::Secondary_length</a></div><div class="ttdef"><b>Definition:</b> vertical.hpp:54</div></div>
+<div class="ttc" id="astructox_1_1layout_1_1v__detail_1_1Secondary__offset_html"><div class="ttname"><a href="structox_1_1layout_1_1v__detail_1_1Secondary__offset.html">ox::layout::v_detail::Secondary_offset</a></div><div class="ttdef"><b>Definition:</b> vertical.hpp:61</div></div>
+<div class="ttc" id="astructox_1_1layout_1_1v__detail_1_1Secondary__policy_html"><div class="ttname"><a href="structox_1_1layout_1_1v__detail_1_1Secondary__policy.html">ox::layout::v_detail::Secondary_policy</a></div><div class="ttdef"><b>Definition:</b> vertical.hpp:47</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

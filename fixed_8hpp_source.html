@@ -71,71 +71,135 @@ $(function() {
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef TERMOX_WIDGET_LAYOUT_FIXED_HPP</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define TERMOX_WIDGET_LAYOUT_FIXED_HPP</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;cstddef&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;termox/system/system.hpp&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;termox/widget/layout/layout.hpp&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span>cppurse::layout {</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;termox/widget/layouts/horizontal.hpp&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;termox/widget/layouts/vertical.hpp&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;termox/widget/pipe.hpp&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;termox/widget/widget.hpp&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> W<span class="keywordtype">id</span>get_t&gt;</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classcppurse_1_1layout_1_1Fixed__horizontal.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="classcppurse_1_1layout_1_1Fixed__horizontal.html">Fixed_horizontal</a> : <span class="keyword">public</span> ox::Layout {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> W = Widget_t, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classcppurse_1_1layout_1_1Fixed__horizontal.html">Fixed_horizontal</a>(std::size_t left_offset, std::size_t right_offset)</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        : offset_l_{left_offset},</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;          offset_r_{right_offset},</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;          widget_{&amp;(this-&gt;make_child&lt;W&gt;(std::forward&lt;Args&gt;(args)...))}</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    {}</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> W = Widget_t, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classcppurse_1_1layout_1_1Fixed__horizontal.html">Fixed_horizontal</a>(std::size_t offset)</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        : offset_l_{offset},</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;          offset_r_{offset},</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;          widget_{&amp;(this-&gt;make_child&lt;W&gt;(std::forward&lt;Args&gt;(args)...))}</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    {}</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">auto</span> widget() -&gt; Widget_t&amp; { <span class="keywordflow">return</span> *widget_; }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="comment">// TODO new name, or is there a simpler way to handle the internal widget?</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> W = Widget_t, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">auto</span> replace_widget(Args&amp;&amp;... args)</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>ox {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">template</span> &lt;<span class="keyword">typename</span>&gt; <span class="keyword">typename</span> Layout_t, <span class="keyword">typename</span> Widget_t&gt;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classox_1_1Fixed.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1Fixed.html">Fixed</a> : <span class="keyword">public</span> Layout_t&lt;Widget&gt; {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">using</span> Base_t = Layout_t&lt;Widget&gt;;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">static</span> <span class="keyword">auto</span> constexpr is_horizontal = layout::is_horizontal_v&lt;Base_t&gt;;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classox_1_1Widget.html">Widget</a>&amp; buffer_1;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    Widget_t&amp; widget;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="classox_1_1Widget.html">Widget</a>&amp; buffer_2;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classox_1_1Fixed.html">Fixed</a>(<span class="keywordtype">int</span> offset_1, <span class="keywordtype">int</span> offset_2, Args&amp;&amp;... args)</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        : buffer_1{this-&gt;<span class="keyword">template</span> make_child()},</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;          widget{</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;              this-&gt;<span class="keyword">template</span> make_child&lt;Widget_t&gt;(std::forward&lt;Args&gt;(args)...)},</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;          buffer_2{this-&gt;<span class="keyword">template</span> make_child()},</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;          offset_1_{offset_1},</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;          offset_2_{offset_2}</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        this-&gt;remove_child(widget_);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        widget_ = &amp;(this-&gt;make_child&lt;W&gt;(std::forward&lt;Args&gt;(args)...));</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;   <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> update_geometry()<span class="keyword"> override</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="comment">// position</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="comment">// TODO make sure x position doesn&#39;t go off the end of widget, if it</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="comment">// does, then disable it? will that happen automatically? probably not.</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keyword">auto</span> <span class="keyword">const</span> pos =</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                Point{this-&gt;inner_x() + offset_l_, this-&gt;inner_y()};</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            System::post_event(Move_event{*widget_}, pos;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="comment">// size</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="comment">// TODO make sure the offset additions don&#39;t make width go below</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="comment">// zero.</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keyword">auto</span> <span class="keyword">const</span> area =</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                Area{this-&gt;width() - (offset_l_ + offset_r_), this-&gt;height()};</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            System::post_event(Resize_event{*widget_, area};</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        assert(offset_1_ &gt;= 0 &amp;&amp; offset_2_ &gt;= 0);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        this-&gt;update_policies(offset_1_, offset_2_);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">if</span> constexpr (is_horizontal) {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            buffer_1 | pipe::fixed_width(offset_1_);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            buffer_2 | pipe::fixed_width(offset_2_);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            buffer_1 | pipe::fixed_height(offset_1_);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            buffer_2 | pipe::fixed_height(offset_2_);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="classox_1_1Fixed.html">Fixed</a>(<span class="keywordtype">int</span> offset, Args&amp;&amp;... args)</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        : <a class="code" href="classox_1_1Fixed.html">Fixed</a>{offset, offset, std::forward&lt;Args&gt;(args)...}</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    {}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;   <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">auto</span> child_polished_event(<a class="code" href="classox_1_1Widget.html">Widget</a>&amp; child) -&gt; <span class="keywordtype">bool</span> <span class="keyword">override</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">if</span> (&amp;child == &amp;widget)</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            this-&gt;update_policies(offset_1_, offset_2_);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">return</span> Base_t::child_polished_event(child);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::size_t offset_l_;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    std::size_t offset_r_;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    Widget_t* widget_;  <span class="comment">// class invariant: this must always point to a valid w.</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;};</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}  <span class="comment">// namespace cppurse::layout</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_WIDGET_LAYOUT_FIXED_HPP</span></div>
-<div class="ttc" id="aclasscppurse_1_1layout_1_1Fixed__horizontal_html"><div class="ttname"><a href="classcppurse_1_1layout_1_1Fixed__horizontal.html">cppurse::layout::Fixed_horizontal</a></div><div class="ttdoc">Fixed offset on left and right sides of Widget_t object.</div><div class="ttdef"><b>Definition:</b> fixed.hpp:12</div></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">int</span> offset_1_;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">int</span> offset_2_;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span> update_policies(<span class="keywordtype">int</span> offset_1, <span class="keywordtype">int</span> offset_2)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> offset_policy = [=](<a class="code" href="classox_1_1Size__policy.html">Size_policy</a>&amp; sp) {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keyword">auto</span> <span class="keyword">const</span> offset_total = offset_1 + offset_2;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            sp.hint(sp.hint() + offset_total);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            sp.min(sp.min() + offset_total);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordflow">if</span> (sp.max() != <a class="code" href="classox_1_1Size__policy.html#aee18ed7fc260524d044bb7d719bdbd35">Size_policy::maximum_max</a>)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                sp.max(sp.max() + offset_total);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        };</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        this-&gt;height_policy = widget.height_policy;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        this-&gt;width_policy  = widget.width_policy;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">if</span> constexpr (is_horizontal)</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            offset_policy(this-&gt;width_policy);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            offset_policy(this-&gt;width_policy);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;};</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> W<span class="keywordtype">id</span>get_t&gt;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">using</span> <a class="code" href="classox_1_1Fixed.html">HFixed</a> = <a class="code" href="classox_1_1Fixed.html">Fixed&lt;layout::Horizontal, Widget_t&gt;</a>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Widget_t, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;[[nodiscard]] <span class="keyword">inline</span> <span class="keyword">auto</span> hfixed(Args&amp;&amp;... args)</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    -&gt; std::unique_ptr&lt;HFixed&lt;Widget_t&gt;&gt;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;{</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;HFixed&lt;Widget_t&gt;&gt;(std::forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> W<span class="keywordtype">id</span>get_t&gt;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keyword">using</span> VFixed = Fixed&lt;layout::Vertical, Widget_t&gt;;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Widget_t, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;[[nodiscard]] <span class="keyword">inline</span> <span class="keyword">auto</span> vfixed(Args&amp;&amp;... args)</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    -&gt; std::unique_ptr&lt;VFixed&lt;Widget_t&gt;&gt;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;{</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;VFixed&lt;Widget_t&gt;&gt;(std::forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> W<span class="keywordtype">id</span>get_t&gt;</div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="classox_1_1Fixed__2d.html">  106</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1Fixed__2d.html">Fixed_2d</a> : <span class="keyword">public</span> <a class="code" href="classox_1_1Fixed.html">HFixed</a>&lt;VFixed&lt;Widget_t&gt;&gt; {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keyword">using</span> Base_t = <a class="code" href="classox_1_1Fixed.html">HFixed&lt;VFixed&lt;Widget_t&gt;</a>&gt;;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <a class="code" href="classox_1_1Fixed__2d.html">Fixed_2d</a>(<span class="keywordtype">int</span> north, <span class="keywordtype">int</span> south, <span class="keywordtype">int</span> east, <span class="keywordtype">int</span> west, Args&amp;&amp;... args)</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        : Base_t{west, east, north, south, std::forward&lt;Args&gt;(args)...}</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    {}</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    Widget_t&amp; widget = this-&gt;Base_t::widget.widget;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;};</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Widget_t, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;[[nodiscard]] <span class="keyword">inline</span> <span class="keyword">auto</span> fixed_2d(Args&amp;&amp;... args)</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    -&gt; std::unique_ptr&lt;Fixed_2d&lt;Widget_t&gt;&gt;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;{</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;Fixed_2d&lt;Widget_t&gt;&gt;(std::forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;}</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;}  <span class="comment">// namespace ox</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_WIDGET_LAYOUT_FIXED_HPP</span></div>
+<div class="ttc" id="aclassox_1_1Fixed__2d_html"><div class="ttname"><a href="classox_1_1Fixed__2d.html">ox::Fixed_2d</a></div><div class="ttdef"><b>Definition:</b> fixed.hpp:106</div></div>
+<div class="ttc" id="aclassox_1_1Fixed_html"><div class="ttname"><a href="classox_1_1Fixed.html">ox::Fixed</a></div><div class="ttdoc">Fixed offset before and after Widget_t object.</div><div class="ttdef"><b>Definition:</b> fixed.hpp:14</div></div>
+<div class="ttc" id="aclassox_1_1Size__policy_html"><div class="ttname"><a href="classox_1_1Size__policy.html">ox::Size_policy</a></div><div class="ttdoc">Defines how a Layout should resize a Widget in one length Dimension.</div><div class="ttdef"><b>Definition:</b> size_policy.hpp:11</div></div>
+<div class="ttc" id="aclassox_1_1Size__policy_html_aee18ed7fc260524d044bb7d719bdbd35"><div class="ttname"><a href="classox_1_1Size__policy.html#aee18ed7fc260524d044bb7d719bdbd35">ox::Size_policy::maximum_max</a></div><div class="ttdeci">static constexpr auto maximum_max</div><div class="ttdoc">Largest possible value for max().</div><div class="ttdef"><b>Definition:</b> size_policy.hpp:26</div></div>
+<div class="ttc" id="aclassox_1_1Widget_html"><div class="ttname"><a href="classox_1_1Widget.html">ox::Widget</a></div><div class="ttdef"><b>Definition:</b> widget.hpp:31</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

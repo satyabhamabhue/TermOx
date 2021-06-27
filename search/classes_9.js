@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['key_5fpress_5fevent_751',['Key_press_event',['../structox_1_1Key__press__event.html',1,'ox']]]
+  ['just_5fa_5fbutton_5flist_746',['Just_a_button_list',['../classox_1_1detail_1_1Just__a__button__list.html',1,'ox::detail']]],
+  ['just_5fa_5fbutton_5flist_5fand_5fbuffer_747',['Just_a_button_list_and_buffer',['../structox_1_1detail_1_1Just__a__button__list__and__buffer.html',1,'ox::detail']]]
 ];

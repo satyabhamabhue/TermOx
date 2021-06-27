@@ -71,228 +71,549 @@ $(function() {
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef TERMOX_WIDGET_WIDGETS_GRAPH_HPP</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define TERMOX_WIDGET_WIDGETS_GRAPH_HPP</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;cstddef&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;iterator&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;termox/painter/glyph.hpp&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;termox/painter/painter.hpp&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;termox/widget/point.hpp&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;termox/widget/widget.hpp&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span>ox {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Number_t = <span class="keywordtype">double</span>&gt;</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classox_1_1Graph.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1Graph.html">Graph</a> : <span class="keyword">public</span> <a class="code" href="classox_1_1Widget.html">Widget</a> {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structox_1_1Graph_1_1Coordinates.html">   20</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structox_1_1Graph_1_1Coordinates.html">Coordinates</a> {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        Number_t x;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        Number_t y;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    };</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="comment">// Half Open Range [west, east) [north, south)</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structox_1_1Graph_1_1Boundary.html">   26</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structox_1_1Graph_1_1Boundary.html">Boundary</a> {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        Number_t west  = 0;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        Number_t east  = 0;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        Number_t north = 0;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        Number_t south = 0;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    };</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classox_1_1Graph.html">Graph</a>(<a class="code" href="structox_1_1Graph_1_1Boundary.html">Boundary</a> <span class="keyword">const</span>&amp; b = {}) : boundary_{b} {}</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Range_t&gt;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> add(Range_t <span class="keyword">const</span>&amp; values)</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        this-&gt;add(std::cbegin(values), std::cend(values));</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Iter_t&gt;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> add(Iter_t first, Iter_t last)</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        static_assert(</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            std::is_same_v&lt;<span class="keyword">typename</span> std::iterator_traits&lt;Iter_t&gt;::value_type,</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                           Coordinates&gt;,</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="stringliteral">&quot;Must add with a container of Coordinates.&quot;</span>);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordflow">for</span> (; first != last; ++first)</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            this-&gt;add(*first);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> add(Coordinates <span class="keyword">const</span>&amp; c)</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        coordinates_.push_back(c);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        this-&gt;initialize_bitmap(c);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> set_boundary(Boundary <span class="keyword">const</span>&amp; b)</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        boundary_ = b;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        this-&gt;regenerate_map();</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span> clear()</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;iterator&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;termox/painter/color.hpp&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;termox/painter/glyph.hpp&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;termox/painter/painter.hpp&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;termox/widget/boundary.hpp&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;termox/widget/point.hpp&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;termox/widget/widget.hpp&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span>ox {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Number_t = <span class="keywordtype">double</span>&gt;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classox_1_1Graph.html">   27</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1Graph.html">Graph</a> : <span class="keyword">public</span> <a class="code" href="classox_1_1Widget.html">Widget</a> {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structox_1_1Graph_1_1Coordinate.html">   30</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structox_1_1Graph_1_1Coordinate.html">Coordinate</a> {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        Number_t x;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        Number_t y;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    };</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structox_1_1Graph_1_1Parameters.html">   36</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structox_1_1Graph_1_1Parameters.html">Parameters</a> {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="structox_1_1Boundary.html">Boundary&lt;Number_t&gt;</a> boundary         = {};</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        std::vector&lt;Coordinate&gt; coordinates = {};</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    };</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classox_1_1Graph.html#a0cd78a485c59ca26bd2805138be259be">   43</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classox_1_1Graph.html#a0cd78a485c59ca26bd2805138be259be">Graph</a>(<a class="code" href="structox_1_1Boundary.html">Boundary&lt;Number_t&gt;</a> b = {}, std::vector&lt;Coordinate&gt; x = {})</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        : boundary_{b}, coordinates_{std::move(x)}</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        assert(b.west &lt; b.east &amp;&amp; b.south &lt; b.north);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keyword">auto</span> constexpr empty_braille = U<span class="stringliteral">&#39;⠀&#39;</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        this-&gt;<a class="code" href="classox_1_1Widget.html#a20dd1ebc7a19dbe586cb2079b39e9d4d">set_wallpaper</a>(empty_braille);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="classox_1_1Graph.html#a63843a4a2cb558df094484d8fc381496">   52</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classox_1_1Graph.html#a63843a4a2cb558df094484d8fc381496">Graph</a>(<a class="code" href="structox_1_1Graph_1_1Parameters.html">Parameters</a> p) : <a class="code" href="classox_1_1Graph.html">Graph</a>{p.<a class="code" href="classox_1_1Graph.html#af9d1415f2cce1de423be2a2b0ed04c94">boundary</a>, std::move(p.<a class="code" href="classox_1_1Graph.html#aebb4b1fa4493bdad2872b470bc1080ba">coordinates</a>)}</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    {}</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classox_1_1Graph.html#ae490aa91cf457ed66e723873728c42cc">   57</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Graph.html#ae490aa91cf457ed66e723873728c42cc">set_boundary</a>(<a class="code" href="structox_1_1Boundary.html">Boundary&lt;Number_t&gt;</a> b)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        assert(b.west &lt; b.east &amp;&amp; b.south &lt; b.north);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        boundary_ = b;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        this-&gt;<a class="code" href="classox_1_1Widget.html#aa47136a1e6ae9cda1ab044a1cd6485f1">update</a>();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classox_1_1Graph.html#af9d1415f2cce1de423be2a2b0ed04c94">   65</a></span>&#160;    [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classox_1_1Graph.html#af9d1415f2cce1de423be2a2b0ed04c94">boundary</a>() const -&gt; <a class="code" href="structox_1_1Boundary.html">Boundary</a>&lt;Number_t&gt;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        coordinates_.clear();</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        map_.clear();</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        this-&gt;<a class="code" href="classox_1_1Widget.html#aa47136a1e6ae9cda1ab044a1cd6485f1">update</a>();</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="comment">// void set_anchors(Number_t north, Number_t south, Number_t east, ...west);</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">// // change the resolution by scaling the anchors, maybe have a scale</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="comment">// helper</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">// // method to do this by a multiple.</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">return</span> boundary_;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="classox_1_1Graph.html#a7d602f4931b48c2ed8f4efd049d8ece8">   71</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Graph.html#a7d602f4931b48c2ed8f4efd049d8ece8">reset</a>(std::vector&lt;Coordinate&gt; x)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        coordinates_ = std::move(x);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        this-&gt;<a class="code" href="classox_1_1Widget.html#aa47136a1e6ae9cda1ab044a1cd6485f1">update</a>();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="comment">// void scale(Number_t multiple) // multiply each anchor by this.</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="comment">// // above one will zoom out, below one will zoom in.</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">// void scroll_horizontal(Number_t distance) (should be able to be negative</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="comment">// even if number_t is unsigned... or create four overloads, that is better)</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment">// // this scroll will add the value distance to east and west</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;   <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="classox_1_1Graph.html#a4cab14a5c54d2a3da0a85583517f7c85">   84</a></span>&#160;    <span class="keyword">auto</span> <a class="code" href="classox_1_1Graph.html#a4cab14a5c54d2a3da0a85583517f7c85">paint_event</a>() -&gt; <span class="keywordtype">bool</span> <span class="keyword">override</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    {</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="comment">// Only relies on map_, call regenerate_map() if you need a new size</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keyword">auto</span> p = <a class="code" href="classox_1_1Painter.html">Painter</a>{*<span class="keyword">this</span>};</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> <span class="keyword">const</span>&amp; [point, bitmap] : map_)</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            p.put(to_symbol(bitmap), point);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classox_1_1Widget.html#af0c1544fe8f866c566a4615f058c11e6">Widget::paint_event</a>();</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="classox_1_1Graph.html#af7732875168c3852364c07ede31ba21a">   93</a></span>&#160;    <span class="keyword">auto</span> <a class="code" href="classox_1_1Graph.html#af7732875168c3852364c07ede31ba21a">resize_event</a>(<a class="code" href="structox_1_1Area.html">Area</a> new_size, <a class="code" href="structox_1_1Area.html">Area</a> old_size) -&gt; <span class="keywordtype">bool</span> <span class="keyword">override</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        this-&gt;regenerate_map();</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classox_1_1Widget.html#a91f7754578a7eb3b2f753d46b6a0af1c">Widget::resize_event</a>(new_size, old_size);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    }</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keyword">class </span>Bitmap {</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;       <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordtype">void</span> clear() { bits_ = std::byte{0}; }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Iter1_t, <span class="keyword">typename</span> Iter2_t&gt;</div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="classox_1_1Graph.html#a3124d4e4a5004d0f5d189a66ab725fea">   79</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Graph.html#a3124d4e4a5004d0f5d189a66ab725fea">reset</a>(Iter1_t first, Iter2_t last)</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        static_assert(</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            std::is_same_v&lt;<span class="keyword">typename</span> std::iterator_traits&lt;Iter1_t&gt;::value_type,</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                           <a class="code" href="structox_1_1Graph_1_1Coordinate.html">Coordinate</a>&gt;,</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="stringliteral">&quot;Must add with a iterators pointing to Coordinates.&quot;</span>);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        coordinates_.clear();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        std::copy(first, last, std::back_inserter(coordinates_));</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        this-&gt;<a class="code" href="classox_1_1Widget.html#aa47136a1e6ae9cda1ab044a1cd6485f1">update</a>();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="classox_1_1Graph.html#a590b642f69c0c0c40ba4ee65444f5ae0">   91</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Graph.html#a590b642f69c0c0c40ba4ee65444f5ae0">add</a>(<a class="code" href="structox_1_1Graph_1_1Coordinate.html">Coordinate</a> c)</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        coordinates_.push_back(c);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        this-&gt;<a class="code" href="classox_1_1Widget.html#aa47136a1e6ae9cda1ab044a1cd6485f1">update</a>();</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="classox_1_1Graph.html#a84eab74c63ba9a0c74e45db9e72ba42e">   98</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Graph.html#a84eab74c63ba9a0c74e45db9e72ba42e">clear</a>()</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        coordinates_.clear();</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        this-&gt;<a class="code" href="classox_1_1Widget.html#aa47136a1e6ae9cda1ab044a1cd6485f1">update</a>();</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classox_1_1Widget.html#ad287845150e881494fd581c9bf9e3440">set_top_left</a>() { bits_ |= std::byte{0b00000001}; }</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordtype">void</span> set_top_right() { bits_ |= std::byte{0b00001000}; }</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keywordtype">void</span> set_mid_top_left() { bits_ |= std::byte{0b00000010}; }</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keywordtype">void</span> set_mid_top_right() { bits_ |= std::byte{0b00010000}; }</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordtype">void</span> set_mid_bottom_left() { bits_ |= std::byte{0b00000100}; }</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordtype">void</span> set_mid_bottom_right() { bits_ |= std::byte{0b00100000}; }</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordtype">void</span> set_bottom_left() { bits_ |= std::byte{0b01000000}; }</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordtype">void</span> set_bottom_right() { bits_ |= std::byte{0b10000000}; }</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keyword">auto</span> get() const -&gt; <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        {</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="keywordflow">return</span> std::to_integer&lt;unsigned char&gt;(bits_);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        }</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;       <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        std::byte bits_{0};</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    };</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    std::unordered_map&lt;Point, Bitmap&gt; map_;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    std::vector&lt;Coordinates&gt; coordinates_;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    Boundary boundary_;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    Number_t interval_w_ = 0;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    Number_t interval_h_ = 0;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keyword">static</span> <span class="keyword">auto</span> to_symbol(Bitmap b) -&gt; Glyph</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    {</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keyword">auto</span> constexpr initial_braille = L<span class="stringliteral">&#39;⠀&#39;</span>;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keywordflow">return</span> <span class="keywordtype">wchar_t</span>{initial_braille + b.get()};</div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="classox_1_1Graph.html#aebb4b1fa4493bdad2872b470bc1080ba">  105</a></span>&#160;    [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classox_1_1Graph.html#aebb4b1fa4493bdad2872b470bc1080ba">coordinates</a>() const -&gt; std::vector&lt;<a class="code" href="structox_1_1Graph_1_1Coordinate.html">Coordinate</a>&gt; const&amp;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keywordflow">return</span> coordinates_;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;   <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="classox_1_1Graph.html#a01b6309d75d303a328a40ace2f29a97a">  111</a></span>&#160;    <span class="keyword">auto</span> <a class="code" href="classox_1_1Graph.html#a01b6309d75d303a328a40ace2f29a97a">paint_event</a>(<a class="code" href="classox_1_1Painter.html">Painter</a>&amp; p) -&gt; <span class="keywordtype">bool</span> <span class="keyword">override</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> <a class="code" href="classox_1_1Widget.html#af65e121e7734e50a8c9051a66df2cced">area</a> = this-&gt;<a class="code" href="classox_1_1Widget.html#af65e121e7734e50a8c9051a66df2cced">area</a>();</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> h_ratio =</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            (double)<a class="code" href="classox_1_1Widget.html#af65e121e7734e50a8c9051a66df2cced">area</a>.width / distance(boundary_.west, boundary_.east);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> v_ratio =</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            (double)<a class="code" href="classox_1_1Widget.html#af65e121e7734e50a8c9051a66df2cced">area</a>.height / distance(boundary_.south, boundary_.north);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> <span class="keyword">const</span> c : coordinates_) {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keyword">auto</span> <span class="keyword">const</span> h_offset = h_ratio * distance(boundary_.west, c.x);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <span class="keyword">auto</span> <span class="keyword">const</span> v_offset =</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                <a class="code" href="classox_1_1Widget.html#af65e121e7734e50a8c9051a66df2cced">area</a>.height - v_ratio * distance(boundary_.south, c.y);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <span class="keywordflow">if</span> (h_offset &gt;= <a class="code" href="classox_1_1Widget.html#af65e121e7734e50a8c9051a66df2cced">area</a>.width)  <span class="comment">// h_offset already can&#39;t be negative.</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <span class="keywordflow">if</span> (v_offset &gt;= <a class="code" href="classox_1_1Widget.html#af65e121e7734e50a8c9051a66df2cced">area</a>.height || v_offset &lt; 0)</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keyword">auto</span> <span class="keyword">const</span> point = Point{(int)h_offset, (<span class="keywordtype">int</span>)v_offset};</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            <span class="keyword">auto</span> <span class="keyword">const</span> mask  = this-&gt;to_cell_mask(h_offset, v_offset);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <span class="keyword">auto</span> current     = p.at(point);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            current.symbol   = combine(current.symbol, mask);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            p.put(current, point);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classox_1_1Widget.html#a0a84ff24968ee695df0ba53b25666287">Widget::paint_event</a>(p);</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    }</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keyword">static</span> <span class="keyword">auto</span> distance(Number_t smaller, Number_t larger) -&gt; Number_t</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    {</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordflow">return</span> larger - smaller;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    }</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="comment">// Update horizontal and vertical intervals used for bitmap calcs.</span></div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="comment">/* Called by resize_event and boundary change. This _will_ be incorrect for</span></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment">     * border changes, but that should be rare, since border updates from resize</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="comment">     * events should be accounted for. */</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordtype">void</span> update_intervals()</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    {</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> domain_w = distance(boundary_.west, boundary_.east);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        interval_w_         = domain_w / this-&gt;<a class="code" href="classox_1_1Widget.html#a9487020c7b139d87536bb9375596a758">width</a>();</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> domain_h = distance(boundary_.north, boundary_.south);</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        interval_h_         = domain_h / this-&gt;<a class="code" href="classox_1_1Widget.html#a0328ca3e0a36c1fd11280977538749f2">height</a>();</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    }</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordtype">void</span> initialize_bitmap(Coordinates <span class="keyword">const</span>&amp; c)</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    {</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> visual_width  = this-&gt;<a class="code" href="classox_1_1Widget.html#a9487020c7b139d87536bb9375596a758">width</a>();</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> visual_height = this-&gt;<a class="code" href="classox_1_1Widget.html#a0328ca3e0a36c1fd11280977538749f2">height</a>();</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="keywordflow">if</span> (visual_width == 0 || visual_height == 0)</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> horizontal_offset =</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            interval_w_ == 0 ? 0 : distance(boundary_.west, c.x) / interval_w_;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> distance_from_bottom =</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            interval_h_ == 0 ? 0 : distance(boundary_.north, c.y) / interval_h_;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> vertical_offset = visual_height - distance_from_bottom;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="keyword">auto</span>&amp; bitmap = map_[{<span class="keyword">static_cast&lt;</span>std::size_t<span class="keyword">&gt;</span>(horizontal_offset),</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                             <span class="keyword">static_cast&lt;</span>std::size_t<span class="keyword">&gt;</span>(vertical_offset)}];</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> h_dec = std::fmod(horizontal_offset, 1.);</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> v_dec = std::fmod(vertical_offset, 1.);</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keywordflow">if</span> (h_dec &lt; 0.5) {</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            <span class="keywordflow">if</span> (v_dec &lt; 0.25)</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                bitmap.set_top_left();</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (v_dec &lt; 0.5)</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                bitmap.set_mid_top_left();</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (v_dec &lt; 0.75)</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                bitmap.set_mid_bottom_left();</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                bitmap.set_bottom_left();</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        }</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            <span class="keywordflow">if</span> (v_dec &lt; 0.25)</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                bitmap.set_top_right();</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (v_dec &lt; 0.5)</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                bitmap.set_mid_top_right();</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (v_dec &lt; 0.75)</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                bitmap.set_mid_bottom_right();</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                bitmap.set_bottom_right();</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        }</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    }</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordtype">void</span> regenerate_map()</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    {</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        this-&gt;update_intervals();</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        map_.clear();</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> coord : coordinates_)</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            this-&gt;initialize_bitmap(coord);</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    }</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;};</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <a class="code" href="structox_1_1Boundary.html">Boundary&lt;Number_t&gt;</a> boundary_;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    std::vector&lt;Coordinate&gt; coordinates_;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    [[nodiscard]] <span class="keyword">static</span> <span class="keyword">auto</span> distance(Number_t smaller, Number_t larger)</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        -&gt; Number_t</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="keywordflow">return</span> larger - smaller;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    }</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    [[nodiscard]] <span class="keyword">static</span> <span class="keyword">auto</span> to_cell_mask(<span class="keywordtype">double</span> h_offset, <span class="keywordtype">double</span> v_offset)</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        -&gt; std::uint8_t</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> h_cell = h_offset - std::floor(h_offset);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> v_cell = v_offset - std::floor(v_offset);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <span class="keywordflow">if</span> (h_cell &lt; 0.5) {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            <span class="keywordflow">if</span> (v_cell &lt; 0.25)</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                <span class="keywordflow">return</span> 0b00000001;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (v_cell &lt; 0.5)</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                <span class="keywordflow">return</span> 0b00000010;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (v_cell &lt; 0.75)</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                <span class="keywordflow">return</span> 0b00000100;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                <span class="keywordflow">return</span> 0b01000000;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        }</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            <span class="keywordflow">if</span> (v_cell &lt; 0.25)</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                <span class="keywordflow">return</span> 0b00001000;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (v_cell &lt; 0.5)</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                <span class="keywordflow">return</span> 0b00010000;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (v_cell &lt; 0.75)</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                <span class="keywordflow">return</span> 0b00100000;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                <span class="keywordflow">return</span> 0b10000000;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        }</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    }</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    [[nodiscard]] <span class="keyword">static</span> <span class="keyword">auto</span> combine(char32_t braille, std::uint8_t mask)</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        -&gt; char32_t</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    {</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <span class="keywordflow">return</span> braille | mask;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;};</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Number_t = <span class="keywordtype">double</span>&gt;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;[[nodiscard]] <span class="keyword">auto</span> graph(</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    Boundary&lt;Number_t&gt; b                                = {},</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    std::vector&lt;typename Graph&lt;Number_t&gt;::Coordinate&gt; x = {})</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    -&gt; std::unique_ptr&lt;Graph&lt;Number_t&gt;&gt;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;{</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;Graph&lt;Number_t&gt;&gt;(b, std::move(x));</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;}</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Number_t = <span class="keywordtype">double</span>&gt;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;[[nodiscard]] <span class="keyword">auto</span> graph(<span class="keyword">typename</span> Graph&lt;Number_t&gt;::Parameters p)</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    -&gt; std::unique_ptr&lt;Graph&lt;Number_t&gt;&gt;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;{</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;Graph&lt;Number_t&gt;&gt;(std::move(p));</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;}</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Number_t = double, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="keyword">auto</span> graph(Args&amp;&amp;... args) -&gt; std::unique_ptr&lt;Graph&lt;Number_t&gt;&gt;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;{</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;Graph&lt;Number_t&gt;&gt;(std::forward&lt;Args&gt;(args)...);</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;}</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160; </div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;}  <span class="comment">// namespace ox</span></div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_WIDGET_WIDGETS_GRAPH_HPP</span></div>
-<div class="ttc" id="aclassox_1_1Graph_html"><div class="ttname"><a href="classox_1_1Graph.html">ox::Graph</a></div><div class="ttdef"><b>Definition:</b> graph.hpp:18</div></div>
-<div class="ttc" id="aclassox_1_1Graph_html_a4cab14a5c54d2a3da0a85583517f7c85"><div class="ttname"><a href="classox_1_1Graph.html#a4cab14a5c54d2a3da0a85583517f7c85">ox::Graph::paint_event</a></div><div class="ttdeci">auto paint_event() -&gt; bool override</div><div class="ttdoc">Handles Paint_event objects.</div><div class="ttdef"><b>Definition:</b> graph.hpp:84</div></div>
-<div class="ttc" id="aclassox_1_1Graph_html_af7732875168c3852364c07ede31ba21a"><div class="ttname"><a href="classox_1_1Graph.html#af7732875168c3852364c07ede31ba21a">ox::Graph::resize_event</a></div><div class="ttdeci">auto resize_event(Area new_size, Area old_size) -&gt; bool override</div><div class="ttdoc">Handles Resize_event objects.</div><div class="ttdef"><b>Definition:</b> graph.hpp:93</div></div>
-<div class="ttc" id="aclassox_1_1Painter_html"><div class="ttname"><a href="classox_1_1Painter.html">ox::Painter</a></div><div class="ttdoc">Contains functions to paint Glyphs to a Widget's screen area.</div><div class="ttdef"><b>Definition:</b> painter.hpp:17</div></div>
-<div class="ttc" id="aclassox_1_1Widget_html"><div class="ttname"><a href="classox_1_1Widget.html">ox::Widget</a></div><div class="ttdef"><b>Definition:</b> widget.hpp:36</div></div>
-<div class="ttc" id="aclassox_1_1Widget_html_a0328ca3e0a36c1fd11280977538749f2"><div class="ttname"><a href="classox_1_1Widget.html#a0328ca3e0a36c1fd11280977538749f2">ox::Widget::height</a></div><div class="ttdeci">auto height() const -&gt; std::size_t</div><div class="ttdoc">Return the inner height dimension, this does not include Border space.</div><div class="ttdef"><b>Definition:</b> widget.hpp:225</div></div>
-<div class="ttc" id="aclassox_1_1Widget_html_a91f7754578a7eb3b2f753d46b6a0af1c"><div class="ttname"><a href="classox_1_1Widget.html#a91f7754578a7eb3b2f753d46b6a0af1c">ox::Widget::resize_event</a></div><div class="ttdeci">virtual auto resize_event(Area new_size, Area old_size) -&gt; bool</div><div class="ttdoc">Handles Resize_event objects.</div><div class="ttdef"><b>Definition:</b> widget.hpp:413</div></div>
-<div class="ttc" id="aclassox_1_1Widget_html_a9487020c7b139d87536bb9375596a758"><div class="ttname"><a href="classox_1_1Widget.html#a9487020c7b139d87536bb9375596a758">ox::Widget::width</a></div><div class="ttdeci">auto width() const -&gt; std::size_t</div><div class="ttdoc">Return the inner width dimension, this does not include Border space.</div><div class="ttdef"><b>Definition:</b> widget.hpp:218</div></div>
-<div class="ttc" id="aclassox_1_1Widget_html_aa47136a1e6ae9cda1ab044a1cd6485f1"><div class="ttname"><a href="classox_1_1Widget.html#aa47136a1e6ae9cda1ab044a1cd6485f1">ox::Widget::update</a></div><div class="ttdeci">virtual void update()</div><div class="ttdoc">Post a paint event to this Widget.</div><div class="ttdef"><b>Definition:</b> widget.cpp:54</div></div>
-<div class="ttc" id="aclassox_1_1Widget_html_ad287845150e881494fd581c9bf9e3440"><div class="ttname"><a href="classox_1_1Widget.html#ad287845150e881494fd581c9bf9e3440">ox::Widget::set_top_left</a></div><div class="ttdeci">void set_top_left(Point p)</div><div class="ttdoc">Should only be used by Move_event send() function.</div><div class="ttdef"><b>Definition:</b> widget.hpp:674</div></div>
-<div class="ttc" id="aclassox_1_1Widget_html_af0c1544fe8f866c566a4615f058c11e6"><div class="ttname"><a href="classox_1_1Widget.html#af0c1544fe8f866c566a4615f058c11e6">ox::Widget::paint_event</a></div><div class="ttdeci">virtual auto paint_event() -&gt; bool</div><div class="ttdoc">Handles Paint_event objects.</div><div class="ttdef"><b>Definition:</b> widget.hpp:484</div></div>
-<div class="ttc" id="astructox_1_1Area_html"><div class="ttname"><a href="structox_1_1Area.html">ox::Area</a></div><div class="ttdoc">Convinience data structure holding Widget size dimensions.</div><div class="ttdef"><b>Definition:</b> area.hpp:8</div></div>
-<div class="ttc" id="astructox_1_1Graph_1_1Boundary_html"><div class="ttname"><a href="structox_1_1Graph_1_1Boundary.html">ox::Graph::Boundary</a></div><div class="ttdef"><b>Definition:</b> graph.hpp:26</div></div>
-<div class="ttc" id="astructox_1_1Graph_1_1Coordinates_html"><div class="ttname"><a href="structox_1_1Graph_1_1Coordinates.html">ox::Graph::Coordinates</a></div><div class="ttdef"><b>Definition:</b> graph.hpp:20</div></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Number_t = <span class="keywordtype">double</span>&gt;</div>
+<div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="classox_1_1Color__graph.html">  207</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1Color__graph.html">Color_graph</a> : <span class="keyword">public</span> <a class="code" href="classox_1_1Widget.html">Widget</a> {</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00210"></a><span class="lineno"><a class="line" href="structox_1_1Color__graph_1_1Coordinate.html">  210</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structox_1_1Color__graph_1_1Coordinate.html">Coordinate</a> {</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        Number_t x;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        Number_t y;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    };</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00216"></a><span class="lineno"><a class="line" href="structox_1_1Color__graph_1_1Parameters.html">  216</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structox_1_1Color__graph_1_1Parameters.html">Parameters</a> {</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        <a class="code" href="structox_1_1Boundary.html">Boundary&lt;Number_t&gt;</a> boundary                           = {};</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        std::vector&lt;std::pair&lt;Coordinate, Color&gt;&gt; coordinates = {};</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    };</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00223"></a><span class="lineno"><a class="line" href="classox_1_1Color__graph.html#adb0589454d0743b4c2e4cc38842013c0">  223</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classox_1_1Color__graph.html#adb0589454d0743b4c2e4cc38842013c0">Color_graph</a>(<a class="code" href="structox_1_1Boundary.html">Boundary&lt;Number_t&gt;</a> b                        = {},</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                         std::vector&lt;std::pair&lt;Coordinate, Color&gt;&gt; x = {})</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        : boundary_{b}, coordinates_{std::move(x)}</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    {</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        assert(b.west &lt; b.east &amp;&amp; b.south &lt; b.north);</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    }</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
+<div class="line"><a name="l00231"></a><span class="lineno"><a class="line" href="classox_1_1Color__graph.html#a684cc0a0401ee8fbe2a3e755774a00ba">  231</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classox_1_1Color__graph.html#a684cc0a0401ee8fbe2a3e755774a00ba">Color_graph</a>(<a class="code" href="structox_1_1Color__graph_1_1Parameters.html">Parameters</a> p)</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        : <a class="code" href="classox_1_1Color__graph.html">Color_graph</a>{p.<a class="code" href="classox_1_1Color__graph.html#af4389c80b16cce2a56a3bbdad74e2596">boundary</a>, std::move(p.<a class="code" href="classox_1_1Color__graph.html#a37a19805c4de72df4488ec50199d1f74">coordinates</a>)}</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    {}</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00237"></a><span class="lineno"><a class="line" href="classox_1_1Color__graph.html#af5b9f2f8c44c50d9b20d21016c254475">  237</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Color__graph.html#af5b9f2f8c44c50d9b20d21016c254475">set_boundary</a>(<a class="code" href="structox_1_1Boundary.html">Boundary&lt;Number_t&gt;</a> b)</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    {</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        assert(b.west &lt; b.east &amp;&amp; b.south &lt; b.north);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        boundary_ = b;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        this-&gt;<a class="code" href="classox_1_1Widget.html#aa47136a1e6ae9cda1ab044a1cd6485f1">update</a>();</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    }</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
+<div class="line"><a name="l00245"></a><span class="lineno"><a class="line" href="classox_1_1Color__graph.html#af4389c80b16cce2a56a3bbdad74e2596">  245</a></span>&#160;    [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classox_1_1Color__graph.html#af4389c80b16cce2a56a3bbdad74e2596">boundary</a>() const -&gt; <a class="code" href="structox_1_1Boundary.html">Boundary</a>&lt;Number_t&gt;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    {</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        <span class="keywordflow">return</span> boundary_;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    }</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
+<div class="line"><a name="l00251"></a><span class="lineno"><a class="line" href="classox_1_1Color__graph.html#a5420196e3a1a214fb8181bb94a7199ec">  251</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Color__graph.html#a5420196e3a1a214fb8181bb94a7199ec">reset</a>(std::vector&lt;std::pair&lt;Coordinate, Color&gt;&gt; x)</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    {</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        coordinates_ = std::move(x);</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        this-&gt;<a class="code" href="classox_1_1Widget.html#aa47136a1e6ae9cda1ab044a1cd6485f1">update</a>();</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    }</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Iter1_t, <span class="keyword">typename</span> Iter2_t&gt;</div>
+<div class="line"><a name="l00260"></a><span class="lineno"><a class="line" href="classox_1_1Color__graph.html#af8a9a7f99d6b499708779d8ac6cbb077">  260</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Color__graph.html#af8a9a7f99d6b499708779d8ac6cbb077">reset</a>(Iter1_t first, Iter2_t last)</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    {</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        static_assert(</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            std::is_same_v&lt;<span class="keyword">typename</span> std::iterator_traits&lt;Iter1_t&gt;::value_type,</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                           std::pair&lt;Coordinate, Color&gt;&gt;,</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            <span class="stringliteral">&quot;Must add with a iterators pointing to Coordinates, Color pair.&quot;</span>);</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        coordinates_.clear();</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        std::copy(first, last, std::back_inserter(coordinates_));</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        this-&gt;<a class="code" href="classox_1_1Widget.html#aa47136a1e6ae9cda1ab044a1cd6485f1">update</a>();</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    }</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
+<div class="line"><a name="l00272"></a><span class="lineno"><a class="line" href="classox_1_1Color__graph.html#a70e9acebf35a2e50e90be183a41cd5d9">  272</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Color__graph.html#a70e9acebf35a2e50e90be183a41cd5d9">add</a>(std::pair&lt;Coordinate, Color&gt; p)</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    {</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        coordinates_.push_back(p);</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        this-&gt;<a class="code" href="classox_1_1Widget.html#aa47136a1e6ae9cda1ab044a1cd6485f1">update</a>();</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    }</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
+<div class="line"><a name="l00279"></a><span class="lineno"><a class="line" href="classox_1_1Color__graph.html#a555479e64ca982ab5f58f780893eb47e">  279</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Color__graph.html#a555479e64ca982ab5f58f780893eb47e">clear</a>()</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    {</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        coordinates_.clear();</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        this-&gt;<a class="code" href="classox_1_1Widget.html#aa47136a1e6ae9cda1ab044a1cd6485f1">update</a>();</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    }</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160; </div>
+<div class="line"><a name="l00286"></a><span class="lineno"><a class="line" href="classox_1_1Color__graph.html#a37a19805c4de72df4488ec50199d1f74">  286</a></span>&#160;    [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classox_1_1Color__graph.html#a37a19805c4de72df4488ec50199d1f74">coordinates</a>() const</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        -&gt; std::vector&lt;std::pair&lt;<a class="code" href="structox_1_1Color__graph_1_1Coordinate.html">Coordinate</a>, <a class="code" href="classox_1_1Color.html">Color</a>&gt;&gt; const&amp;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    {</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        <span class="keywordflow">return</span> coordinates_;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    }</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; </div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;   <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00293"></a><span class="lineno"><a class="line" href="classox_1_1Color__graph.html#a375b9ce4d92a15e655a971d906d9504a">  293</a></span>&#160;    <span class="keyword">auto</span> <a class="code" href="classox_1_1Color__graph.html#a375b9ce4d92a15e655a971d906d9504a">paint_event</a>(<a class="code" href="classox_1_1Painter.html">Painter</a>&amp; p) -&gt; <span class="keywordtype">bool</span> <span class="keyword">override</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    {</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> <a class="code" href="classox_1_1Widget.html#af65e121e7734e50a8c9051a66df2cced">area</a> = this-&gt;<a class="code" href="classox_1_1Widget.html#af65e121e7734e50a8c9051a66df2cced">area</a>();</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> h_ratio =</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            (double)<a class="code" href="classox_1_1Widget.html#af65e121e7734e50a8c9051a66df2cced">area</a>.width / distance(boundary_.west, boundary_.east);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> v_ratio =</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            (double)<a class="code" href="classox_1_1Widget.html#af65e121e7734e50a8c9051a66df2cced">area</a>.height / distance(boundary_.south, boundary_.north);</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160; </div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> <span class="keyword">const</span>&amp; [coord, color] : coordinates_) {</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;            <span class="keyword">auto</span> <span class="keyword">const</span> h_offset = h_ratio * distance(boundary_.west, coord.x);</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            <span class="keyword">auto</span> <span class="keyword">const</span> v_offset =</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                <a class="code" href="classox_1_1Widget.html#af65e121e7734e50a8c9051a66df2cced">area</a>.height - v_ratio * distance(boundary_.south, coord.y);</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            <span class="keywordflow">if</span> (h_offset &gt;= <a class="code" href="classox_1_1Widget.html#af65e121e7734e50a8c9051a66df2cced">area</a>.width)  <span class="comment">// h_offset already can&#39;t be negative.</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            <span class="keywordflow">if</span> (v_offset &gt;= <a class="code" href="classox_1_1Widget.html#af65e121e7734e50a8c9051a66df2cced">area</a>.height || v_offset &lt; 0)</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            <span class="keyword">auto</span> <span class="keyword">const</span> point  = Point{(int)h_offset, (<span class="keywordtype">int</span>)v_offset};</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            <span class="keyword">auto</span> <span class="keyword">const</span> is_top = is_top_region(v_offset);</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            <span class="keyword">auto</span> <span class="keyword">const</span> glyph  = combine(p.at(point), is_top, color);</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            p.put(glyph, point);</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        }</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classox_1_1Widget.html#a0a84ff24968ee695df0ba53b25666287">Widget::paint_event</a>(p);</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    }</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <a class="code" href="structox_1_1Boundary.html">Boundary&lt;Number_t&gt;</a> boundary_;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    std::vector&lt;std::pair&lt;Coordinate, Color&gt;&gt; coordinates_;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    [[nodiscard]] <span class="keyword">static</span> <span class="keyword">auto</span> distance(Number_t smaller, Number_t larger)</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        -&gt; Number_t</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    {</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        <span class="keywordflow">return</span> larger - smaller;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    }</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160; </div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    [[nodiscard]] <span class="keyword">static</span> <span class="keyword">auto</span> is_top_region(<span class="keywordtype">double</span> v_offset) -&gt; <span class="keywordtype">bool</span></div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    {</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        <span class="keywordflow">return</span> (v_offset - std::floor(v_offset)) &lt; 0.5;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    }</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    [[nodiscard]] <span class="keyword">static</span> <span class="keyword">auto</span> combine(Glyph current, <span class="keywordtype">bool</span> is_top, Color c)</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        -&gt; Glyph</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    {</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        <span class="keywordflow">if</span> (current.symbol == U<span class="charliteral">&#39; &#39;</span>)</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            current = U<span class="stringliteral">&#39;▀&#39;</span> | fg(Color::Background);</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        <span class="keywordflow">if</span> (is_top)</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;            current |= fg(c);</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;            current |= bg(c);</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        <span class="keywordflow">return</span> current;</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    }</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;};</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160; </div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Number_t = <span class="keywordtype">double</span>&gt;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;[[nodiscard]] <span class="keyword">auto</span> color_graph(</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    Boundary&lt;Number_t&gt; b = {},</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    std::vector&lt;std::pair&lt;typename Color_graph&lt;Number_t&gt;::Coordinate, Color&gt;&gt;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;        x = {}) -&gt; std::unique_ptr&lt;Color_graph&lt;Number_t&gt;&gt;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;{</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;Color_graph&lt;Number_t&gt;&gt;(b, std::move(x));</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;}</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160; </div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Number_t = <span class="keywordtype">double</span>&gt;</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;[[nodiscard]] <span class="keyword">auto</span> color_graph(<span class="keyword">typename</span> Color_graph&lt;Number_t&gt;::Parameters p)</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    -&gt; std::unique_ptr&lt;Color_graph&lt;Number_t&gt;&gt;</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;{</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;Color_graph&lt;Number_t&gt;&gt;(std::move(p));</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;}</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160; </div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160; </div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Number_t,</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;          Number_t west,</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;          Number_t east,</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;          Number_t north,</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;          Number_t south&gt;</div>
+<div class="line"><a name="l00377"></a><span class="lineno"><a class="line" href="classox_1_1Color__graph__static__bounds.html">  377</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1Color__graph__static__bounds.html">Color_graph_static_bounds</a> : <span class="keyword">public</span> <a class="code" href="classox_1_1Widget.html">Widget</a> {</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    static_assert(west &lt; east &amp;&amp; south &lt; north);</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160; </div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00382"></a><span class="lineno"><a class="line" href="structox_1_1Color__graph__static__bounds_1_1Coordinate.html">  382</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structox_1_1Color__graph__static__bounds_1_1Coordinate.html">Coordinate</a> {</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        Number_t x;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        Number_t y;</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    };</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160; </div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00388"></a><span class="lineno"><a class="line" href="structox_1_1Color__graph__static__bounds_1_1Parameters.html">  388</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structox_1_1Color__graph__static__bounds_1_1Parameters.html">Parameters</a> {</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        std::vector&lt;std::pair&lt;Coordinate, Color&gt;&gt; coordinates = {};</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    };</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160; </div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00394"></a><span class="lineno"><a class="line" href="classox_1_1Color__graph__static__bounds.html#a70760c6b3f884d73e3a1b9ed7be332f0">  394</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classox_1_1Color__graph__static__bounds.html#a70760c6b3f884d73e3a1b9ed7be332f0">Color_graph_static_bounds</a>(</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;        std::vector&lt;std::pair&lt;Coordinate, Color&gt;&gt; x = {})</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;        : coordinates_{std::move(x)}</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    {}</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160; </div>
+<div class="line"><a name="l00400"></a><span class="lineno"><a class="line" href="classox_1_1Color__graph__static__bounds.html#a288dc9678e7c83411db8472a992477d2">  400</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classox_1_1Color__graph__static__bounds.html#a288dc9678e7c83411db8472a992477d2">Color_graph_static_bounds</a>(<a class="code" href="structox_1_1Color__graph__static__bounds_1_1Parameters.html">Parameters</a> p)</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        : <a class="code" href="classox_1_1Color__graph__static__bounds.html">Color_graph_static_bounds</a>{std::move(p.<a class="code" href="classox_1_1Color__graph__static__bounds.html#ac565a026cf78afb06f9d59a08b426a0c">coordinates</a>)}</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    {}</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160; </div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00406"></a><span class="lineno"><a class="line" href="classox_1_1Color__graph__static__bounds.html#a3e72edfd5ac6e6b2d53fbd6f85cef34c">  406</a></span>&#160;    [[nodiscard]] <span class="keyword">static</span> constexpr <span class="keyword">auto</span> <a class="code" href="classox_1_1Color__graph__static__bounds.html#a3e72edfd5ac6e6b2d53fbd6f85cef34c">boundary</a>() -&gt; <a class="code" href="structox_1_1Boundary.html">Boundary&lt;Number_t&gt;</a></div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    {</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        <span class="keywordflow">return</span> boundary_;</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    }</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160; </div>
+<div class="line"><a name="l00412"></a><span class="lineno"><a class="line" href="classox_1_1Color__graph__static__bounds.html#a18c095fb2fb3d3f6a227b823443ee0ae">  412</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Color__graph__static__bounds.html#a18c095fb2fb3d3f6a227b823443ee0ae">reset</a>(std::vector&lt;std::pair&lt;Coordinate, Color&gt;&gt; x)</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    {</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;        coordinates_ = std::move(x);</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;        this-&gt;<a class="code" href="classox_1_1Widget.html#aa47136a1e6ae9cda1ab044a1cd6485f1">update</a>();</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    }</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160; </div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160; </div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Iter1_t, <span class="keyword">typename</span> Iter2_t&gt;</div>
+<div class="line"><a name="l00421"></a><span class="lineno"><a class="line" href="classox_1_1Color__graph__static__bounds.html#a0b895d2f6588ace69138d1e23c165f8d">  421</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Color__graph__static__bounds.html#a0b895d2f6588ace69138d1e23c165f8d">reset</a>(Iter1_t first, Iter2_t last)</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    {</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;        static_assert(</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;            std::is_same_v&lt;<span class="keyword">typename</span> std::iterator_traits&lt;Iter1_t&gt;::value_type,</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;                           std::pair&lt;Coordinate, Color&gt;&gt;,</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;            <span class="stringliteral">&quot;Must add with a iterators pointing to Coordinates, Color pair.&quot;</span>);</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;        coordinates_.clear();</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;        std::copy(first, last, std::back_inserter(coordinates_));</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;        this-&gt;<a class="code" href="classox_1_1Widget.html#aa47136a1e6ae9cda1ab044a1cd6485f1">update</a>();</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    }</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160; </div>
+<div class="line"><a name="l00433"></a><span class="lineno"><a class="line" href="classox_1_1Color__graph__static__bounds.html#abd5bf8439a029b9cc84f709a7a49dbfe">  433</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Color__graph__static__bounds.html#abd5bf8439a029b9cc84f709a7a49dbfe">add</a>(std::pair&lt;Coordinate, Color&gt; p)</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    {</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;        coordinates_.push_back(p);</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;        this-&gt;<a class="code" href="classox_1_1Widget.html#aa47136a1e6ae9cda1ab044a1cd6485f1">update</a>();</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    }</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160; </div>
+<div class="line"><a name="l00440"></a><span class="lineno"><a class="line" href="classox_1_1Color__graph__static__bounds.html#a73f001660ed8c9f2578077d128cb2ea3">  440</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Color__graph__static__bounds.html#a73f001660ed8c9f2578077d128cb2ea3">clear</a>()</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    {</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;        coordinates_.clear();</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;        this-&gt;<a class="code" href="classox_1_1Widget.html#aa47136a1e6ae9cda1ab044a1cd6485f1">update</a>();</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    }</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160; </div>
+<div class="line"><a name="l00447"></a><span class="lineno"><a class="line" href="classox_1_1Color__graph__static__bounds.html#ac565a026cf78afb06f9d59a08b426a0c">  447</a></span>&#160;    [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classox_1_1Color__graph__static__bounds.html#ac565a026cf78afb06f9d59a08b426a0c">coordinates</a>() const</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;        -&gt; std::vector&lt;std::pair&lt;<a class="code" href="structox_1_1Color__graph__static__bounds_1_1Coordinate.html">Coordinate</a>, <a class="code" href="classox_1_1Color.html">Color</a>&gt;&gt; const&amp;</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;    {</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;        <span class="keywordflow">return</span> coordinates_;</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;    }</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160; </div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;   <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00454"></a><span class="lineno"><a class="line" href="classox_1_1Color__graph__static__bounds.html#ac23b57de7f3d3dd9585042a27350d7e1">  454</a></span>&#160;    <span class="keyword">auto</span> <a class="code" href="classox_1_1Color__graph__static__bounds.html#ac23b57de7f3d3dd9585042a27350d7e1">paint_event</a>(<a class="code" href="classox_1_1Painter.html">Painter</a>&amp; p) -&gt; <span class="keywordtype">bool</span> <span class="keyword">override</span></div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    {</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;        constexpr <span class="keywordtype">double</span> h_distance = distance(boundary_.west, boundary_.east);</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;        constexpr <span class="keywordtype">double</span> v_distance =</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;            distance(boundary_.south, boundary_.north);</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160; </div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> <a class="code" href="classox_1_1Widget.html#af65e121e7734e50a8c9051a66df2cced">area</a>    = this-&gt;<a class="code" href="classox_1_1Widget.html#af65e121e7734e50a8c9051a66df2cced">area</a>();</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> h_ratio = (double)<a class="code" href="classox_1_1Widget.html#af65e121e7734e50a8c9051a66df2cced">area</a>.width / h_distance;</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> v_ratio = (<span class="keywordtype">double</span>)<a class="code" href="classox_1_1Widget.html#af65e121e7734e50a8c9051a66df2cced">area</a>.height / v_distance;</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160; </div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> <span class="keyword">const</span>&amp; [coord, color] : coordinates_) {</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;            <span class="keyword">auto</span> <span class="keyword">const</span> h_offset = h_ratio * distance(boundary_.west, coord.x);</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;            <span class="keyword">auto</span> <span class="keyword">const</span> v_offset =</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;                <a class="code" href="classox_1_1Widget.html#af65e121e7734e50a8c9051a66df2cced">area</a>.height - (v_ratio * distance(boundary_.south, coord.y));</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;            <span class="keywordflow">if</span> (h_offset &gt;= <a class="code" href="classox_1_1Widget.html#af65e121e7734e50a8c9051a66df2cced">area</a>.width)  <span class="comment">// h_offset already can&#39;t be negative.</span></div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;            <span class="keywordflow">if</span> (v_offset &gt;= <a class="code" href="classox_1_1Widget.html#af65e121e7734e50a8c9051a66df2cced">area</a>.height || v_offset &lt; 0)</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;            <span class="keyword">auto</span> <span class="keyword">const</span> point  = Point{(int)h_offset, (<span class="keywordtype">int</span>)v_offset};</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;            <span class="keyword">auto</span> <span class="keyword">const</span> is_top = is_top_region(v_offset);</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;            <span class="keyword">auto</span> <span class="keyword">const</span> glyph  = combine(p.at(point), is_top, color);</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;            p.put(glyph, point);</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;        }</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classox_1_1Widget.html#a0a84ff24968ee695df0ba53b25666287">Widget::paint_event</a>(p);</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;    }</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160; </div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;    <span class="keyword">static</span> constexpr <span class="keyword">auto</span> boundary_ =</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;        <a class="code" href="structox_1_1Boundary.html">Boundary&lt;Number_t&gt;</a>{west, east, north, south};</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160; </div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;    std::vector&lt;std::pair&lt;Coordinate, Color&gt;&gt; coordinates_;</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160; </div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;    [[nodiscard]] <span class="keyword">static</span> constexpr <span class="keyword">auto</span> distance(Number_t smaller,</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;                                                 Number_t larger) -&gt; Number_t</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;    {</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;        <span class="keywordflow">return</span> larger - smaller;</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;    }</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160; </div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160; </div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;    [[nodiscard]] <span class="keyword">static</span> <span class="keyword">auto</span> is_top_region(<span class="keywordtype">double</span> v_offset) -&gt; <span class="keywordtype">bool</span></div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;    {</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;        <span class="keywordflow">return</span> (v_offset - std::floor(v_offset)) &lt; 0.5;</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;    }</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160; </div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;    [[nodiscard]] <span class="keyword">static</span> <span class="keyword">auto</span> combine(Glyph current, <span class="keywordtype">bool</span> is_top, Color c)</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;        -&gt; Glyph</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;    {</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;        <span class="keywordflow">if</span> (current.symbol == U<span class="charliteral">&#39; &#39;</span>)</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;            current = U<span class="stringliteral">&#39;▀&#39;</span> | fg(Color::Background);</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;        <span class="keywordflow">if</span> (is_top)</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;            current |= fg(c);</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;            current |= bg(c);</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;        <span class="keywordflow">return</span> current;</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;    }</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;};</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160; </div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Number_t,</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;          Number_t west,</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;          Number_t east,</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;          Number_t north,</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;          Number_t south&gt;</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;[[nodiscard]] <span class="keyword">auto</span> color_graph_static_bounds(</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;    std::vector&lt;std::pair&lt;</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;        <span class="keyword">typename</span> Color_graph_static_bounds&lt;Number_t, west, east, north, south&gt;::</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;            Coordinate,</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;        Color&gt;&gt; x = {})</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;    -&gt; std::unique_ptr&lt;</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;        Color_graph_static_bounds&lt;Number_t, west, east, north, south&gt;&gt;</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;{</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;        Color_graph_static_bounds&lt;Number_t, west, east, north, south&gt;&gt;(</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;        std::move(x));</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;}</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160; </div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Number_t,</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;          Number_t west,</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;          Number_t east,</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;          Number_t north,</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;          Number_t south&gt;</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;[[nodiscard]] <span class="keyword">auto</span> color_graph_static_bounds(</div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;    <span class="keyword">typename</span> Color_graph_static_bounds&lt;Number_t, west, east, north, south&gt;::</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;        Parameters p)</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;    -&gt; std::unique_ptr&lt;</div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;        Color_graph_static_bounds&lt;Number_t, west, east, north, south&gt;&gt;</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;{</div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;        Color_graph_static_bounds&lt;Number_t, west, east, north, south&gt;&gt;(</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;        std::move(p));</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;}</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160; </div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;}  <span class="comment">// namespace ox</span></div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_WIDGET_WIDGETS_GRAPH_HPP</span></div>
+<div class="ttc" id="aclassox_1_1Color__graph__static__bounds_html"><div class="ttname"><a href="classox_1_1Color__graph__static__bounds.html">ox::Color_graph_static_bounds</a></div><div class="ttdoc">Bounded box that can display added Color Coordinates within a static Bound.</div><div class="ttdef"><b>Definition:</b> graph.hpp:377</div></div>
+<div class="ttc" id="aclassox_1_1Color__graph__static__bounds_html_a0b895d2f6588ace69138d1e23c165f8d"><div class="ttname"><a href="classox_1_1Color__graph__static__bounds.html#a0b895d2f6588ace69138d1e23c165f8d">ox::Color_graph_static_bounds::reset</a></div><div class="ttdeci">void reset(Iter1_t first, Iter2_t last)</div><div class="ttdoc">Replace with copies of &lt;Coordinate, Color&gt;s given by iterators.</div><div class="ttdef"><b>Definition:</b> graph.hpp:421</div></div>
+<div class="ttc" id="aclassox_1_1Color__graph__static__bounds_html_a18c095fb2fb3d3f6a227b823443ee0ae"><div class="ttname"><a href="classox_1_1Color__graph__static__bounds.html#a18c095fb2fb3d3f6a227b823443ee0ae">ox::Color_graph_static_bounds::reset</a></div><div class="ttdeci">void reset(std::vector&lt; std::pair&lt; Coordinate, Color &gt;&gt; x)</div><div class="ttdoc">Replace the current state with the given Coordinates vector x.</div><div class="ttdef"><b>Definition:</b> graph.hpp:412</div></div>
+<div class="ttc" id="aclassox_1_1Color__graph__static__bounds_html_a288dc9678e7c83411db8472a992477d2"><div class="ttname"><a href="classox_1_1Color__graph__static__bounds.html#a288dc9678e7c83411db8472a992477d2">ox::Color_graph_static_bounds::Color_graph_static_bounds</a></div><div class="ttdeci">Color_graph_static_bounds(Parameters p)</div><div class="ttdoc">Create a Color_graph_static_bounds with given Parameters.</div><div class="ttdef"><b>Definition:</b> graph.hpp:400</div></div>
+<div class="ttc" id="aclassox_1_1Color__graph__static__bounds_html_a3e72edfd5ac6e6b2d53fbd6f85cef34c"><div class="ttname"><a href="classox_1_1Color__graph__static__bounds.html#a3e72edfd5ac6e6b2d53fbd6f85cef34c">ox::Color_graph_static_bounds::boundary</a></div><div class="ttdeci">static constexpr auto boundary() -&gt; Boundary&lt; Number_t &gt;</div><div class="ttdoc">Return the currently set Boundary.</div><div class="ttdef"><b>Definition:</b> graph.hpp:406</div></div>
+<div class="ttc" id="aclassox_1_1Color__graph__static__bounds_html_a70760c6b3f884d73e3a1b9ed7be332f0"><div class="ttname"><a href="classox_1_1Color__graph__static__bounds.html#a70760c6b3f884d73e3a1b9ed7be332f0">ox::Color_graph_static_bounds::Color_graph_static_bounds</a></div><div class="ttdeci">Color_graph_static_bounds(std::vector&lt; std::pair&lt; Coordinate, Color &gt;&gt; x={})</div><div class="ttdoc">Create a Color_graph_static_bounds with given Coordinates and Colors.</div><div class="ttdef"><b>Definition:</b> graph.hpp:394</div></div>
+<div class="ttc" id="aclassox_1_1Color__graph__static__bounds_html_a73f001660ed8c9f2578077d128cb2ea3"><div class="ttname"><a href="classox_1_1Color__graph__static__bounds.html#a73f001660ed8c9f2578077d128cb2ea3">ox::Color_graph_static_bounds::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">Remove all points from the Graph and repaint.</div><div class="ttdef"><b>Definition:</b> graph.hpp:440</div></div>
+<div class="ttc" id="aclassox_1_1Color__graph__static__bounds_html_abd5bf8439a029b9cc84f709a7a49dbfe"><div class="ttname"><a href="classox_1_1Color__graph__static__bounds.html#abd5bf8439a029b9cc84f709a7a49dbfe">ox::Color_graph_static_bounds::add</a></div><div class="ttdeci">void add(std::pair&lt; Coordinate, Color &gt; p)</div><div class="ttdoc">Add a single &lt;Coordinate, Color&gt; to the Graph.</div><div class="ttdef"><b>Definition:</b> graph.hpp:433</div></div>
+<div class="ttc" id="aclassox_1_1Color__graph__static__bounds_html_ac23b57de7f3d3dd9585042a27350d7e1"><div class="ttname"><a href="classox_1_1Color__graph__static__bounds.html#ac23b57de7f3d3dd9585042a27350d7e1">ox::Color_graph_static_bounds::paint_event</a></div><div class="ttdeci">auto paint_event(Painter &amp;p) -&gt; bool override</div><div class="ttdoc">Handles Paint_event objects.</div><div class="ttdef"><b>Definition:</b> graph.hpp:454</div></div>
+<div class="ttc" id="aclassox_1_1Color__graph__static__bounds_html_ac565a026cf78afb06f9d59a08b426a0c"><div class="ttname"><a href="classox_1_1Color__graph__static__bounds.html#ac565a026cf78afb06f9d59a08b426a0c">ox::Color_graph_static_bounds::coordinates</a></div><div class="ttdeci">auto coordinates() const -&gt; std::vector&lt; std::pair&lt; Coordinate, Color &gt;&gt; const &amp;</div><div class="ttdoc">Return a reference to the current container of Coordinates.</div><div class="ttdef"><b>Definition:</b> graph.hpp:447</div></div>
+<div class="ttc" id="aclassox_1_1Color__graph_html"><div class="ttname"><a href="classox_1_1Color__graph.html">ox::Color_graph</a></div><div class="ttdoc">Bounded box that can display added Color Coordinates within the Boundary.</div><div class="ttdef"><b>Definition:</b> graph.hpp:207</div></div>
+<div class="ttc" id="aclassox_1_1Color__graph_html_a375b9ce4d92a15e655a971d906d9504a"><div class="ttname"><a href="classox_1_1Color__graph.html#a375b9ce4d92a15e655a971d906d9504a">ox::Color_graph::paint_event</a></div><div class="ttdeci">auto paint_event(Painter &amp;p) -&gt; bool override</div><div class="ttdoc">Handles Paint_event objects.</div><div class="ttdef"><b>Definition:</b> graph.hpp:293</div></div>
+<div class="ttc" id="aclassox_1_1Color__graph_html_a37a19805c4de72df4488ec50199d1f74"><div class="ttname"><a href="classox_1_1Color__graph.html#a37a19805c4de72df4488ec50199d1f74">ox::Color_graph::coordinates</a></div><div class="ttdeci">auto coordinates() const -&gt; std::vector&lt; std::pair&lt; Coordinate, Color &gt;&gt; const &amp;</div><div class="ttdoc">Return a reference to the current container of Coordinates.</div><div class="ttdef"><b>Definition:</b> graph.hpp:286</div></div>
+<div class="ttc" id="aclassox_1_1Color__graph_html_a5420196e3a1a214fb8181bb94a7199ec"><div class="ttname"><a href="classox_1_1Color__graph.html#a5420196e3a1a214fb8181bb94a7199ec">ox::Color_graph::reset</a></div><div class="ttdeci">void reset(std::vector&lt; std::pair&lt; Coordinate, Color &gt;&gt; x)</div><div class="ttdoc">Replace the current state with the given Coordinates vector x.</div><div class="ttdef"><b>Definition:</b> graph.hpp:251</div></div>
+<div class="ttc" id="aclassox_1_1Color__graph_html_a555479e64ca982ab5f58f780893eb47e"><div class="ttname"><a href="classox_1_1Color__graph.html#a555479e64ca982ab5f58f780893eb47e">ox::Color_graph::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">Remove all points from the Graph and repaint.</div><div class="ttdef"><b>Definition:</b> graph.hpp:279</div></div>
+<div class="ttc" id="aclassox_1_1Color__graph_html_a684cc0a0401ee8fbe2a3e755774a00ba"><div class="ttname"><a href="classox_1_1Color__graph.html#a684cc0a0401ee8fbe2a3e755774a00ba">ox::Color_graph::Color_graph</a></div><div class="ttdeci">Color_graph(Parameters p)</div><div class="ttdoc">Create a Color_graph with given Parameters.</div><div class="ttdef"><b>Definition:</b> graph.hpp:231</div></div>
+<div class="ttc" id="aclassox_1_1Color__graph_html_a70e9acebf35a2e50e90be183a41cd5d9"><div class="ttname"><a href="classox_1_1Color__graph.html#a70e9acebf35a2e50e90be183a41cd5d9">ox::Color_graph::add</a></div><div class="ttdeci">void add(std::pair&lt; Coordinate, Color &gt; p)</div><div class="ttdoc">Add a single &lt;Coordinate, Color&gt; to the Graph.</div><div class="ttdef"><b>Definition:</b> graph.hpp:272</div></div>
+<div class="ttc" id="aclassox_1_1Color__graph_html_adb0589454d0743b4c2e4cc38842013c0"><div class="ttname"><a href="classox_1_1Color__graph.html#adb0589454d0743b4c2e4cc38842013c0">ox::Color_graph::Color_graph</a></div><div class="ttdeci">Color_graph(Boundary&lt; Number_t &gt; b={}, std::vector&lt; std::pair&lt; Coordinate, Color &gt;&gt; x={})</div><div class="ttdoc">Create a Color_graph with given Boundary and Coordinates, Colors.</div><div class="ttdef"><b>Definition:</b> graph.hpp:223</div></div>
+<div class="ttc" id="aclassox_1_1Color__graph_html_af4389c80b16cce2a56a3bbdad74e2596"><div class="ttname"><a href="classox_1_1Color__graph.html#af4389c80b16cce2a56a3bbdad74e2596">ox::Color_graph::boundary</a></div><div class="ttdeci">auto boundary() const -&gt; Boundary&lt; Number_t &gt;</div><div class="ttdoc">Return the currently set Boundary.</div><div class="ttdef"><b>Definition:</b> graph.hpp:245</div></div>
+<div class="ttc" id="aclassox_1_1Color__graph_html_af5b9f2f8c44c50d9b20d21016c254475"><div class="ttname"><a href="classox_1_1Color__graph.html#af5b9f2f8c44c50d9b20d21016c254475">ox::Color_graph::set_boundary</a></div><div class="ttdeci">void set_boundary(Boundary&lt; Number_t &gt; b)</div><div class="ttdoc">Set a new Boundary and repaint the Widget.</div><div class="ttdef"><b>Definition:</b> graph.hpp:237</div></div>
+<div class="ttc" id="aclassox_1_1Color__graph_html_af8a9a7f99d6b499708779d8ac6cbb077"><div class="ttname"><a href="classox_1_1Color__graph.html#af8a9a7f99d6b499708779d8ac6cbb077">ox::Color_graph::reset</a></div><div class="ttdeci">void reset(Iter1_t first, Iter2_t last)</div><div class="ttdoc">Replace with copies of &lt;Coordinate, Color&gt;s given by iterators.</div><div class="ttdef"><b>Definition:</b> graph.hpp:260</div></div>
+<div class="ttc" id="aclassox_1_1Color_html"><div class="ttname"><a href="classox_1_1Color.html">ox::Color</a></div><div class="ttdoc">Color numbers [0 - 180] are valid.</div><div class="ttdef"><b>Definition:</b> color.hpp:16</div></div>
+<div class="ttc" id="aclassox_1_1Graph_html"><div class="ttname"><a href="classox_1_1Graph.html">ox::Graph</a></div><div class="ttdoc">Bounded box that can display added Coordinates within the Boundary.</div><div class="ttdef"><b>Definition:</b> graph.hpp:27</div></div>
+<div class="ttc" id="aclassox_1_1Graph_html_a01b6309d75d303a328a40ace2f29a97a"><div class="ttname"><a href="classox_1_1Graph.html#a01b6309d75d303a328a40ace2f29a97a">ox::Graph::paint_event</a></div><div class="ttdeci">auto paint_event(Painter &amp;p) -&gt; bool override</div><div class="ttdoc">Handles Paint_event objects.</div><div class="ttdef"><b>Definition:</b> graph.hpp:111</div></div>
+<div class="ttc" id="aclassox_1_1Graph_html_a0cd78a485c59ca26bd2805138be259be"><div class="ttname"><a href="classox_1_1Graph.html#a0cd78a485c59ca26bd2805138be259be">ox::Graph::Graph</a></div><div class="ttdeci">Graph(Boundary&lt; Number_t &gt; b={}, std::vector&lt; Coordinate &gt; x={})</div><div class="ttdoc">Create a Graph with given Boundary and Coordinates.</div><div class="ttdef"><b>Definition:</b> graph.hpp:43</div></div>
+<div class="ttc" id="aclassox_1_1Graph_html_a3124d4e4a5004d0f5d189a66ab725fea"><div class="ttname"><a href="classox_1_1Graph.html#a3124d4e4a5004d0f5d189a66ab725fea">ox::Graph::reset</a></div><div class="ttdeci">void reset(Iter1_t first, Iter2_t last)</div><div class="ttdoc">Replace the current state with copies of Coordinates given by iterators.</div><div class="ttdef"><b>Definition:</b> graph.hpp:79</div></div>
+<div class="ttc" id="aclassox_1_1Graph_html_a590b642f69c0c0c40ba4ee65444f5ae0"><div class="ttname"><a href="classox_1_1Graph.html#a590b642f69c0c0c40ba4ee65444f5ae0">ox::Graph::add</a></div><div class="ttdeci">void add(Coordinate c)</div><div class="ttdoc">Add a single Coordinate to the Graph.</div><div class="ttdef"><b>Definition:</b> graph.hpp:91</div></div>
+<div class="ttc" id="aclassox_1_1Graph_html_a63843a4a2cb558df094484d8fc381496"><div class="ttname"><a href="classox_1_1Graph.html#a63843a4a2cb558df094484d8fc381496">ox::Graph::Graph</a></div><div class="ttdeci">Graph(Parameters p)</div><div class="ttdoc">Create a Graph with given Parameters.</div><div class="ttdef"><b>Definition:</b> graph.hpp:52</div></div>
+<div class="ttc" id="aclassox_1_1Graph_html_a7d602f4931b48c2ed8f4efd049d8ece8"><div class="ttname"><a href="classox_1_1Graph.html#a7d602f4931b48c2ed8f4efd049d8ece8">ox::Graph::reset</a></div><div class="ttdeci">void reset(std::vector&lt; Coordinate &gt; x)</div><div class="ttdoc">Replace the current state with the given Coordinates vector x.</div><div class="ttdef"><b>Definition:</b> graph.hpp:71</div></div>
+<div class="ttc" id="aclassox_1_1Graph_html_a84eab74c63ba9a0c74e45db9e72ba42e"><div class="ttname"><a href="classox_1_1Graph.html#a84eab74c63ba9a0c74e45db9e72ba42e">ox::Graph::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">Remove all points from the Graph and repaint.</div><div class="ttdef"><b>Definition:</b> graph.hpp:98</div></div>
+<div class="ttc" id="aclassox_1_1Graph_html_ae490aa91cf457ed66e723873728c42cc"><div class="ttname"><a href="classox_1_1Graph.html#ae490aa91cf457ed66e723873728c42cc">ox::Graph::set_boundary</a></div><div class="ttdeci">void set_boundary(Boundary&lt; Number_t &gt; b)</div><div class="ttdoc">Set a new Boundary and repaint the Widget.</div><div class="ttdef"><b>Definition:</b> graph.hpp:57</div></div>
+<div class="ttc" id="aclassox_1_1Graph_html_aebb4b1fa4493bdad2872b470bc1080ba"><div class="ttname"><a href="classox_1_1Graph.html#aebb4b1fa4493bdad2872b470bc1080ba">ox::Graph::coordinates</a></div><div class="ttdeci">auto coordinates() const -&gt; std::vector&lt; Coordinate &gt; const &amp;</div><div class="ttdoc">Return a reference to the current container of Coordinates.</div><div class="ttdef"><b>Definition:</b> graph.hpp:105</div></div>
+<div class="ttc" id="aclassox_1_1Graph_html_af9d1415f2cce1de423be2a2b0ed04c94"><div class="ttname"><a href="classox_1_1Graph.html#af9d1415f2cce1de423be2a2b0ed04c94">ox::Graph::boundary</a></div><div class="ttdeci">auto boundary() const -&gt; Boundary&lt; Number_t &gt;</div><div class="ttdoc">Return the currently set Boundary.</div><div class="ttdef"><b>Definition:</b> graph.hpp:65</div></div>
+<div class="ttc" id="aclassox_1_1Painter_html"><div class="ttname"><a href="classox_1_1Painter.html">ox::Painter</a></div><div class="ttdoc">Contains functions to paint Glyphs to a Widget's screen area.</div><div class="ttdef"><b>Definition:</b> painter.hpp:21</div></div>
+<div class="ttc" id="aclassox_1_1Widget_html"><div class="ttname"><a href="classox_1_1Widget.html">ox::Widget</a></div><div class="ttdef"><b>Definition:</b> widget.hpp:31</div></div>
+<div class="ttc" id="aclassox_1_1Widget_html_a0a84ff24968ee695df0ba53b25666287"><div class="ttname"><a href="classox_1_1Widget.html#a0a84ff24968ee695df0ba53b25666287">ox::Widget::paint_event</a></div><div class="ttdeci">virtual auto paint_event(Painter &amp;p) -&gt; bool</div><div class="ttdoc">Handles Paint_event objects.</div><div class="ttdef"><b>Definition:</b> widget.cpp:248</div></div>
+<div class="ttc" id="aclassox_1_1Widget_html_a20dd1ebc7a19dbe586cb2079b39e9d4d"><div class="ttname"><a href="classox_1_1Widget.html#a20dd1ebc7a19dbe586cb2079b39e9d4d">ox::Widget::set_wallpaper</a></div><div class="ttdeci">void set_wallpaper(Glyph g)</div><div class="ttdoc">Used to fill in empty space that is not filled in by paint_event().</div><div class="ttdef"><b>Definition:</b> widget.cpp:81</div></div>
+<div class="ttc" id="aclassox_1_1Widget_html_aa47136a1e6ae9cda1ab044a1cd6485f1"><div class="ttname"><a href="classox_1_1Widget.html#aa47136a1e6ae9cda1ab044a1cd6485f1">ox::Widget::update</a></div><div class="ttdeci">virtual void update()</div><div class="ttdoc">Post a paint event to this Widget.</div><div class="ttdef"><b>Definition:</b> widget.cpp:110</div></div>
+<div class="ttc" id="aclassox_1_1Widget_html_af65e121e7734e50a8c9051a66df2cced"><div class="ttname"><a href="classox_1_1Widget.html#af65e121e7734e50a8c9051a66df2cced">ox::Widget::area</a></div><div class="ttdeci">auto area() const -&gt; Area</div><div class="ttdoc">Return the area the widget occupies.</div><div class="ttdef"><b>Definition:</b> widget.cpp:108</div></div>
+<div class="ttc" id="astructox_1_1Boundary_html"><div class="ttname"><a href="structox_1_1Boundary.html">ox::Boundary</a></div><div class="ttdoc">Four point Boundary, edges are inclusive.</div><div class="ttdef"><b>Definition:</b> boundary.hpp:10</div></div>
+<div class="ttc" id="astructox_1_1Color__graph_1_1Coordinate_html"><div class="ttname"><a href="structox_1_1Color__graph_1_1Coordinate.html">ox::Color_graph::Coordinate</a></div><div class="ttdoc">x is horizontal, y is vertical.</div><div class="ttdef"><b>Definition:</b> graph.hpp:210</div></div>
+<div class="ttc" id="astructox_1_1Color__graph_1_1Parameters_html"><div class="ttname"><a href="structox_1_1Color__graph_1_1Parameters.html">ox::Color_graph::Parameters</a></div><div class="ttdef"><b>Definition:</b> graph.hpp:216</div></div>
+<div class="ttc" id="astructox_1_1Color__graph__static__bounds_1_1Coordinate_html"><div class="ttname"><a href="structox_1_1Color__graph__static__bounds_1_1Coordinate.html">ox::Color_graph_static_bounds::Coordinate</a></div><div class="ttdoc">x is horizontal, y is vertical.</div><div class="ttdef"><b>Definition:</b> graph.hpp:382</div></div>
+<div class="ttc" id="astructox_1_1Color__graph__static__bounds_1_1Parameters_html"><div class="ttname"><a href="structox_1_1Color__graph__static__bounds_1_1Parameters.html">ox::Color_graph_static_bounds::Parameters</a></div><div class="ttdef"><b>Definition:</b> graph.hpp:388</div></div>
+<div class="ttc" id="astructox_1_1Graph_1_1Coordinate_html"><div class="ttname"><a href="structox_1_1Graph_1_1Coordinate.html">ox::Graph::Coordinate</a></div><div class="ttdoc">x is horizontal, y is vertical.</div><div class="ttdef"><b>Definition:</b> graph.hpp:30</div></div>
+<div class="ttc" id="astructox_1_1Graph_1_1Parameters_html"><div class="ttname"><a href="structox_1_1Graph_1_1Parameters.html">ox::Graph::Parameters</a></div><div class="ttdef"><b>Definition:</b> graph.hpp:36</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

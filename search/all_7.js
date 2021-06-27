@@ -1,20 +1,14 @@
 var searchData=
 [
-  ['handle_5fwheel_236',['handle_wheel',['../classox_1_1Scrollbar.html#a97eb75a825c5e6bb478d64f7bfb46862',1,'ox::Scrollbar']]],
-  ['has_5fcolor_237',['has_color',['../classox_1_1Terminal.html#a2c5f7edf75d2055243ac91cdc418ab40',1,'ox::Terminal']]],
-  ['has_5fextended_5fcolors_238',['has_extended_colors',['../classox_1_1Terminal.html#a4bb769412ab243389325fb4e1f43c385',1,'ox::Terminal']]],
-  ['has_5fselected_5fchild_239',['has_selected_child',['../classox_1_1layout_1_1Selecting.html#a8e14d08c88f5fccf6059a32521a3ec1e',1,'ox::layout::Selecting']]],
-  ['has_5ftrait_240',['has_trait',['../classox_1_1Brush.html#a8ee5fe7c238640267a7090bdc7cb7680',1,'ox::Brush']]],
-  ['hash_3c_20ox_3a_3akey_20_3e_241',['hash&lt; ox::Key &gt;',['../structstd_1_1hash_3_01ox_1_1Key_01_4.html',1,'std']]],
-  ['hash_3c_20ox_3a_3apoint_20_3e_242',['hash&lt; ox::Point &gt;',['../structstd_1_1hash_3_01ox_1_1Point_01_4.html',1,'std']]],
-  ['head_243',['head',['../classox_1_1System.html#a31c448a638f007a5bfd4a03665f07963',1,'ox::System']]],
-  ['height_244',['height',['../classox_1_1Glyph__matrix.html#a43a0cde5e7fc9fa0fdf9d39390903c4b',1,'ox::Glyph_matrix::height()'],['../classox_1_1Terminal.html#ad7cd6f83c11226cd180d1d55f70ef2e1',1,'ox::Terminal::height()'],['../classox_1_1Widget.html#a0328ca3e0a36c1fd11280977538749f2',1,'ox::Widget::height() const -&gt; std::size_t']]],
-  ['height_5fpolicy_245',['height_policy',['../classox_1_1Widget.html#a904577884a103fbdc7343283a5605177',1,'ox::Widget']]],
-  ['hide_246',['hide',['../classox_1_1Hideable.html#a6f0d5f7f404ee4da552a178746dc127f',1,'ox::Hideable']]],
-  ['hide_5fline_5fbreak_247',['hide_line_break',['../classox_1_1Menu.html#a560e215ccf5510995434d473434a16ad',1,'ox::Menu']]],
-  ['hide_5ftitle_248',['hide_title',['../classox_1_1Menu.html#a50dd628b4ba5a690733d216b98b8ce90',1,'ox::Menu']]],
-  ['hideable_249',['Hideable',['../classox_1_1Hideable.html#af390ced2f2fa349c126c0a07d12375f6',1,'ox::Hideable::Hideable()'],['../classox_1_1Hideable.html',1,'ox::Hideable&lt; Widget_t &gt;']]],
-  ['hint_250',['hint',['../classox_1_1Size__policy.html#a313ee3c4d476abf423538ecaca475480',1,'ox::Size_policy::hint(std::size_t value)'],['../classox_1_1Size__policy.html#a3621f447c7b81cdcd954b1e41e0c6d23',1,'ox::Size_policy::hint() const -&gt; std::size_t']]],
-  ['horizontal_5fslider_251',['Horizontal_slider',['../classox_1_1Horizontal__slider.html',1,'ox']]],
-  ['hsl_252',['HSL',['../structox_1_1HSL.html',1,'ox']]]
+  ['handle_5fsignint_232',['handle_signint',['../classox_1_1Terminal.html#ae453c17f01441a898ab18ec788e0d839',1,'ox::Terminal']]],
+  ['handle_5fwheel_233',['handle_wheel',['../classox_1_1Scrollbar.html#a97eb75a825c5e6bb478d64f7bfb46862',1,'ox::Scrollbar']]],
+  ['has_5ftext_5finput_234',['has_text_input',['../classox_1_1Textbox.html#a2e3854fd3eba22fdc93b781099d3939b',1,'ox::Textbox']]],
+  ['has_5ftrue_5fcolor_235',['has_true_color',['../classox_1_1Terminal.html#aee05123d51dc17dc8e047773094efd7c',1,'ox::Terminal']]],
+  ['head_236',['head',['../classox_1_1System.html#ad4534338f548dac27d6a485cd5214de1',1,'ox::System']]],
+  ['height_237',['height',['../classox_1_1Glyph__matrix.html#ad2f8187e9a73ebbb665447d256752946',1,'ox::Glyph_matrix']]],
+  ['height_5fpolicy_238',['height_policy',['../classox_1_1Widget.html#a904577884a103fbdc7343283a5605177',1,'ox::Widget']]],
+  ['hide_239',['hide',['../classox_1_1Hideable.html#a6f0d5f7f404ee4da552a178746dc127f',1,'ox::Hideable']]],
+  ['hideable_240',['Hideable',['../classox_1_1Hideable.html#a1aa7ae992dc6cc9e482baf8d6cad91bd',1,'ox::Hideable::Hideable()'],['../classox_1_1Hideable.html',1,'ox::Hideable&lt; Widget_t &gt;']]],
+  ['hint_241',['hint',['../classox_1_1Size__policy.html#ada20401b6809b5eaa048cd2b7563a397',1,'ox::Size_policy::hint(int value)'],['../classox_1_1Size__policy.html#aac264a1f67616693a59cb2df907ac63f',1,'ox::Size_policy::hint() const -&gt; int']]],
+  ['hline_242',['hline',['../classox_1_1Painter.html#a5178e070ffe69f9a3d07273f9603a48b',1,'ox::Painter']]]
 ];

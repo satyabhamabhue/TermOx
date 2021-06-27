@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['scrolled_5fdown_1329',['scrolled_down',['../classox_1_1Text__display.html#a2d796cd8e902bb4e221f814837fe3926',1,'ox::Text_display']]],
-  ['scrolled_5fto_1330',['scrolled_to',['../classox_1_1Text__display.html#ae34566531c15e6ff81087f4d29f60707',1,'ox::Text_display']]],
-  ['scrolled_5fup_1331',['scrolled_up',['../classox_1_1Text__display.html#ab4d1dfa354ba35d08ab9fcda088b5058',1,'ox::Text_display']]],
-  ['segments_1332',['segments',['../classox_1_1Border.html#a0cd59c938d26672c087f454bfa95f7d8',1,'ox::Border']]],
-  ['symbol_1333',['symbol',['../structox_1_1Glyph.html#adb98033bc44c73415b70cacd17b98d99',1,'ox::Glyph']]]
+  ['value_5fchanged_1325',['value_changed',['../classox_1_1detail_1_1Slider__logic.html#a538f40576ca31d05513563f7f237161d',1,'ox::detail::Slider_logic::value_changed()'],['../classox_1_1Slider.html#a63252ec718b57c9a85d67731ce168d46',1,'ox::Slider::value_changed()']]],
+  ['value_5fmodified_1326',['value_modified',['../classox_1_1Number__edit.html#a6867d94d2138af7f1ebd6bfa61e8808b',1,'ox::Number_edit']]]
 ];

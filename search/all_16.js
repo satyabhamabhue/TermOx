@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['x_649',['x',['../classox_1_1Cursor.html#a02a477af04275536c15874f1af40aaca',1,'ox::Cursor::x()'],['../classox_1_1Widget.html#aea9cd0f6f4b17b846f2b3e8cfd6d0682',1,'ox::Widget::x()']]]
+  ['_7elistener_5fthread_639',['~Listener_thread',['../classox_1_1Listener__thread.html#a58fc56bfa3b6a9fafea7198bad71e0aa',1,'ox::Listener_thread']]]
 ];

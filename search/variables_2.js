@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['device_5fid_1310',['device_id',['../structox_1_1Mouse.html#a43e5d0686e3efbab93034915cd01c39b',1,'ox::Mouse']]]
+  ['focus_5fpolicy_1301',['focus_policy',['../classox_1_1Widget.html#afeb8b3a3141a10999f31243f71ca4394',1,'ox::Widget']]]
 ];

@@ -67,87 +67,59 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a> &#124;
-<a href="#friends">Friends</a> &#124;
 <a href="classox_1_1Event__loop-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">ox::Event_loop Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+<div class="title">ox::Event_loop Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Waits on <a class="el" href="classox_1_1Event__loop.html#a530e88f8c09275e73f258ffe92ec1c02" title="Override this in derived classes to define Event_loop behavior.">loop_function()</a> and then notifies Event_engine if event is posted.  
+<p>Calls on loop_function(), and then processes the <a class="el" href="classox_1_1Event__queue.html">Event_queue</a>.  
  <a href="classox_1_1Event__loop.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="event__loop_8hpp_source.html">event_loop.hpp</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for ox::Event_loop:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="classox_1_1Event__loop.png" usemap="#ox::Event_5Floop_map" alt=""/>
-  <map id="ox::Event_5Floop_map" name="ox::Event_5Floop_map">
-<area href="classox_1_1detail_1_1Interval__event__loop.html" title="loop_function() waits for a given time interval, then returns." alt="ox::detail::Interval_event_loop" shape="rect" coords="115,56,336,80"/>
-<area href="classox_1_1detail_1_1User__input__event__loop.html" title="Event loop that blocks for user input on each iteration." alt="ox::detail::User_input_event_loop" shape="rect" coords="346,56,567,80"/>
-<area href="classox_1_1detail_1_1Dynamic__color__event__loop.html" alt="ox::detail::Dynamic_color_event_loop" shape="rect" coords="0,112,221,136"/>
-<area href="classox_1_1detail_1_1Timer__event__loop.html" title="Event loop for sending Timer_events at a given interval." alt="ox::detail::Timer_event_loop" shape="rect" coords="231,112,452,136"/>
-  </map>
-</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a6d10ec5bb24bd61e7b81fc241f4dd2c2"><td class="memItemLeft" align="right" valign="top"><a id="a6d10ec5bb24bd61e7b81fc241f4dd2c2"></a>
-virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Event__loop.html#a6d10ec5bb24bd61e7b81fc241f4dd2c2">~Event_loop</a> ()=default</td></tr>
-<tr class="memdesc:a6d10ec5bb24bd61e7b81fc241f4dd2c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make sure the loop has exited and returned from async functions. <br /></td></tr>
-<tr class="separator:a6d10ec5bb24bd61e7b81fc241f4dd2c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76a29d04cbd38fc94a99183ba4237cb6"><td class="memItemLeft" align="right" valign="top"><a id="a76a29d04cbd38fc94a99183ba4237cb6"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Event__loop.html#a76a29d04cbd38fc94a99183ba4237cb6">run</a> () -&gt; int</td></tr>
-<tr class="memdesc:a76a29d04cbd38fc94a99183ba4237cb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the event loop. <br /></td></tr>
-<tr class="separator:a76a29d04cbd38fc94a99183ba4237cb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a891af5cef6bca806577ddc39d4e6fd5a"><td class="memItemLeft" align="right" valign="top"><a id="a891af5cef6bca806577ddc39d4e6fd5a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Event__loop.html#a891af5cef6bca806577ddc39d4e6fd5a">run_async</a> ()</td></tr>
-<tr class="memdesc:a891af5cef6bca806577ddc39d4e6fd5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the event loop in a separate thread. <br /></td></tr>
-<tr class="separator:a891af5cef6bca806577ddc39d4e6fd5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40fcf45aa125351ee08bf21936d7e1f5"><td class="memTemplParams" colspan="2">template&lt;typename F &gt; </td></tr>
+<tr class="memitem:a40fcf45aa125351ee08bf21936d7e1f5"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classox_1_1Event__loop.html#a40fcf45aa125351ee08bf21936d7e1f5">run</a> (F loop_function) -&gt; int</td></tr>
+<tr class="memdesc:a40fcf45aa125351ee08bf21936d7e1f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the event loop, calling <code>loop_function</code> on each iteration.  <a href="classox_1_1Event__loop.html#a40fcf45aa125351ee08bf21936d7e1f5">More...</a><br /></td></tr>
+<tr class="separator:a40fcf45aa125351ee08bf21936d7e1f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5146c61d6b4db59f14a3851bba267103"><td class="memTemplParams" colspan="2">template&lt;typename F &gt; </td></tr>
+<tr class="memitem:a5146c61d6b4db59f14a3851bba267103"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classox_1_1Event__loop.html#a5146c61d6b4db59f14a3851bba267103">run_async</a> (F &amp;&amp;loop_function)</td></tr>
+<tr class="memdesc:a5146c61d6b4db59f14a3851bba267103"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the event loop in a separate thread.  <a href="classox_1_1Event__loop.html#a5146c61d6b4db59f14a3851bba267103">More...</a><br /></td></tr>
+<tr class="separator:a5146c61d6b4db59f14a3851bba267103"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3013b813267a6dc2721e017476acd20"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Event__loop.html#ad3013b813267a6dc2721e017476acd20">exit</a> (int return_code)</td></tr>
 <tr class="memdesc:ad3013b813267a6dc2721e017476acd20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call on the loop to exit at the next exit point.  <a href="classox_1_1Event__loop.html#ad3013b813267a6dc2721e017476acd20">More...</a><br /></td></tr>
 <tr class="separator:ad3013b813267a6dc2721e017476acd20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6508d05586d11680589bd1a9a817d96"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Event__loop.html#aa6508d05586d11680589bd1a9a817d96">wait</a> () -&gt; int</td></tr>
 <tr class="memdesc:aa6508d05586d11680589bd1a9a817d96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Block until the async event loop returns.  <a href="classox_1_1Event__loop.html#aa6508d05586d11680589bd1a9a817d96">More...</a><br /></td></tr>
 <tr class="separator:aa6508d05586d11680589bd1a9a817d96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
-Protected Member Functions</h2></td></tr>
-<tr class="memitem:a530e88f8c09275e73f258ffe92ec1c02"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Event__loop.html#a530e88f8c09275e73f258ffe92ec1c02">loop_function</a> ()=0</td></tr>
-<tr class="memdesc:a530e88f8c09275e73f258ffe92ec1c02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Override this in derived classes to define <a class="el" href="classox_1_1Event__loop.html" title="Waits on loop_function() and then notifies Event_engine if event is posted.">Event_loop</a> behavior.  <a href="classox_1_1Event__loop.html#a530e88f8c09275e73f258ffe92ec1c02">More...</a><br /></td></tr>
-<tr class="separator:a530e88f8c09275e73f258ffe92ec1c02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa939235bdd907a3f1886ccb024428755"><td class="memItemLeft" align="right" valign="top"><a id="aa939235bdd907a3f1886ccb024428755"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Event__loop.html#aa939235bdd907a3f1886ccb024428755">is_running</a> () const -&gt; bool</td></tr>
+<tr class="memdesc:aa939235bdd907a3f1886ccb024428755"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if the event loop is currently running. <br /></td></tr>
+<tr class="separator:aa939235bdd907a3f1886ccb024428755"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6834e1fb15c3a2f35f5db1f0f9d7396f"><td class="memItemLeft" align="right" valign="top"><a id="a6834e1fb15c3a2f35f5db1f0f9d7396f"></a>
 auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Event__loop.html#a6834e1fb15c3a2f35f5db1f0f9d7396f">exit_flag</a> () const -&gt; bool</td></tr>
 <tr class="memdesc:a6834e1fb15c3a2f35f5db1f0f9d7396f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if the exit flag has been set. <br /></td></tr>
 <tr class="separator:a6834e1fb15c3a2f35f5db1f0f9d7396f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr class="memitem:a6548698c9fca3516592af82731cfdea3"><td class="memItemLeft" align="right" valign="top"><a id="a6548698c9fca3516592af82731cfdea3"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_main_thread_</b> = false</td></tr>
-<tr class="separator:a6548698c9fca3516592af82731cfdea3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
-Friends</h2></td></tr>
-<tr class="memitem:af18a9ee98e70982bfe2975391d7221a5"><td class="memItemLeft" align="right" valign="top"><a id="af18a9ee98e70982bfe2975391d7221a5"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>System</b></td></tr>
-<tr class="separator:af18a9ee98e70982bfe2975391d7221a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93766ca6564e9e90bdc961f8c700636d"><td class="memItemLeft" align="right" valign="top"><a id="a93766ca6564e9e90bdc961f8c700636d"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Event__loop.html#a93766ca6564e9e90bdc961f8c700636d">event_queue</a> () -&gt; <a class="el" href="classox_1_1Event__queue.html">Event_queue</a> &amp;</td></tr>
+<tr class="memdesc:a93766ca6564e9e90bdc961f8c700636d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a reference to the <a class="el" href="classox_1_1Event__queue.html">Event_queue</a> of this loop. <br /></td></tr>
+<tr class="separator:a93766ca6564e9e90bdc961f8c700636d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f7f091b43c0cf3b18305e7d50637e26"><td class="memItemLeft" align="right" valign="top"><a id="a6f7f091b43c0cf3b18305e7d50637e26"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Event__loop.html#a6f7f091b43c0cf3b18305e7d50637e26">event_queue</a> () const -&gt; <a class="el" href="classox_1_1Event__queue.html">Event_queue</a> const &amp;</td></tr>
+<tr class="memdesc:a6f7f091b43c0cf3b18305e7d50637e26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a const reference to the <a class="el" href="classox_1_1Event__queue.html">Event_queue</a> of this loop. <br /></td></tr>
+<tr class="separator:a6f7f091b43c0cf3b18305e7d50637e26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Waits on <a class="el" href="classox_1_1Event__loop.html#a530e88f8c09275e73f258ffe92ec1c02" title="Override this in derived classes to define Event_loop behavior.">loop_function()</a> and then notifies Event_engine if event is posted. </p>
-<p>Specialized by providing a loop_function to be run at each iteration. The owner of the event loop is responsible for making sure its async thread is shutdown: <a class="el" href="classox_1_1Event__loop.html#ad3013b813267a6dc2721e017476acd20" title="Call on the loop to exit at the next exit point.">exit()</a> then <a class="el" href="classox_1_1Event__loop.html#aa6508d05586d11680589bd1a9a817d96" title="Block until the async event loop returns.">wait()</a>. </p>
+<div class="textblock"><p>Calls on loop_function(), and then processes the <a class="el" href="classox_1_1Event__queue.html">Event_queue</a>. </p>
+<p>Specialized by providing a loop_function to be run at each iteration. The owner of the event loop is responsible for making sure its async thread is shutdown: <a class="el" href="classox_1_1Event__loop.html#ad3013b813267a6dc2721e017476acd20" title="Call on the loop to exit at the next exit point.">exit()</a> then <a class="el" href="classox_1_1Event__loop.html#aa6508d05586d11680589bd1a9a817d96" title="Block until the async event loop returns.">wait()</a> before any potentially posted to Widgets are destroyed. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ad3013b813267a6dc2721e017476acd20"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad3013b813267a6dc2721e017476acd20">&#9670;&nbsp;</a></span>exit()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void ox::Event_loop::exit </td>
@@ -157,6 +129,33 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>System</b></td></tr>
           <td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+<p>Call on the loop to exit at the next exit point. </p>
+<p>The return code value is used when returning from <a class="el" href="classox_1_1Event__loop.html#a40fcf45aa125351ee08bf21936d7e1f5" title="Start the event loop, calling loop_function on each iteration.">run()</a> or <a class="el" href="classox_1_1Event__loop.html#aa6508d05586d11680589bd1a9a817d96" title="Block until the async event loop returns.">wait()</a>. This will wait for the calling loop_function to return before exiting. Implement a timeout loop_function() if you need to exit quickly. Not valid to call this method if <a class="el" href="classox_1_1Event__loop.html#a40fcf45aa125351ee08bf21936d7e1f5" title="Start the event loop, calling loop_function on each iteration.">run()</a> is not currently executing. Only valid to call once per call to <a class="el" href="classox_1_1Event__loop.html#a40fcf45aa125351ee08bf21936d7e1f5" title="Start the event loop, calling loop_function on each iteration.">run()</a>. </p>
+
+</div>
+</div>
+<a id="a40fcf45aa125351ee08bf21936d7e1f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40fcf45aa125351ee08bf21936d7e1f5">&#9670;&nbsp;</a></span>run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename F &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto ox::Event_loop::run </td>
+          <td>(</td>
+          <td class="paramtype">F&#160;</td>
+          <td class="paramname"><em>loop_function</em></td><td>)</td>
+          <td> -&gt; int
+    </td>
+        </tr>
+      </table>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">inline</span></span>  </td>
@@ -164,38 +163,39 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>System</b></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Call on the loop to exit at the next exit point. </p>
-<p>The return code value is used when returning from <a class="el" href="classox_1_1Event__loop.html#a76a29d04cbd38fc94a99183ba4237cb6" title="Start the event loop.">run()</a> or <a class="el" href="classox_1_1Event__loop.html#aa6508d05586d11680589bd1a9a817d96" title="Block until the async event loop returns.">wait()</a>. This will wait for the calling loop_function to return before exiting. Implement a timeout <a class="el" href="classox_1_1Event__loop.html#a530e88f8c09275e73f258ffe92ec1c02" title="Override this in derived classes to define Event_loop behavior.">loop_function()</a> if you need to exit quickly. Not valid to call this method if <a class="el" href="classox_1_1Event__loop.html#a76a29d04cbd38fc94a99183ba4237cb6" title="Start the event loop.">run()</a> is not currently executing. Only valid to call once per call to <a class="el" href="classox_1_1Event__loop.html#a76a29d04cbd38fc94a99183ba4237cb6" title="Start the event loop.">run()</a>. </p>
+<p>Start the event loop, calling <code>loop_function</code> on each iteration. </p>
+<p>loop_function should have signature: void(Event_queue&amp;). It should probably append an Event to the provided queue. </p>
 
 </div>
 </div>
-<a id="a530e88f8c09275e73f258ffe92ec1c02"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a530e88f8c09275e73f258ffe92ec1c02">&#9670;&nbsp;</a></span>loop_function()</h2>
+<a id="a5146c61d6b4db59f14a3851bba267103"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5146c61d6b4db59f14a3851bba267103">&#9670;&nbsp;</a></span>run_async()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename F &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void ox::Event_loop::loop_function </td>
+          <td class="memname">void ox::Event_loop::run_async </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">F &amp;&amp;&#160;</td>
+          <td class="paramname"><em>loop_function</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Override this in derived classes to define <a class="el" href="classox_1_1Event__loop.html" title="Waits on loop_function() and then notifies Event_engine if event is posted.">Event_loop</a> behavior. </p>
-<p>This function will be called on once every loop iteration. </p>
-
-<p>Implemented in <a class="el" href="classox_1_1detail_1_1Dynamic__color__event__loop.html#a39197a04b3a32cd65904fd8ba48a5edd">ox::detail::Dynamic_color_event_loop</a>, <a class="el" href="classox_1_1detail_1_1User__input__event__loop.html#a8d18f2e6b5169d7bf657093d16a9258e">ox::detail::User_input_event_loop</a>, <a class="el" href="classox_1_1detail_1_1Timer__event__loop.html#aacb545fe09309c85d85785fcffc4a32c">ox::detail::Timer_event_loop</a>, and <a class="el" href="classox_1_1detail_1_1Interval__event__loop.html#a18fa0a3627c1a290758cc4d15c7c8f82">ox::detail::Interval_event_loop</a>.</p>
+<p>Start the event loop in a separate thread. </p>
+<p>loop_function should have signature: void(Event_queue&amp;). It should probably append an Event to the provided queue. </p>
 
 </div>
 </div>
@@ -204,22 +204,14 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>System</b></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">auto ox::Event_loop::wait </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> -&gt; int </td>
+          <td> -&gt; int</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Block until the async event loop returns. </p>

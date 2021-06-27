@@ -72,101 +72,72 @@ $(function() {
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef TERMOX_WIDGET_WIDGETS_COLOR_SELECT_HPP</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define TERMOX_WIDGET_WIDGETS_COLOR_SELECT_HPP</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;signals_light/signal.hpp&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;signals_light/signal.hpp&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;termox/painter/color.hpp&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;termox/painter/glyph_string.hpp&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;termox/painter/painter.hpp&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;termox/widget/layouts/horizontal.hpp&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;termox/widget/layouts/vertical.hpp&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;termox/widget/pipe.hpp&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;termox/widget/widgets/button.hpp&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span>ox {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classox_1_1Color__tile.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1Color__tile.html">Color_tile</a> : <span class="keyword">public</span> <a class="code" href="classox_1_1Button.html">Button</a> {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classox_1_1Color__tile.html">Color_tile</a>(<a class="code" href="classox_1_1Color.html">Color</a> c, <span class="keywordtype">bool</span> display_number)</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        : color_{std::to_wstring(c.value) | fg(Color::Foreground)},</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;          number_{display_number}</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keyword">using namespace </span>ox::pipe;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        *<span class="keyword">this</span> | bg(c) | fg(Color::Foreground);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    }</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;termox/painter/color.hpp&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;termox/widget/layouts/horizontal.hpp&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;termox/widget/layouts/vertical.hpp&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;termox/widget/widgets/button.hpp&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span>ox {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classox_1_1Color__tile.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1Color__tile.html">Color_tile</a> : <span class="keyword">public</span> <a class="code" href="classox_1_1Button.html">Button</a> {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">enum class</span> Display { None, Number };</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="structox_1_1Color__tile_1_1Parameters.html">   18</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structox_1_1Color__tile_1_1Parameters.html">Parameters</a> {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="classox_1_1Color.html">Color</a> color;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        Display display = Display::None;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    };</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classox_1_1Color__tile.html">Color_tile</a>(<a class="code" href="classox_1_1Color.html">Color</a> c, Display display = Display::None);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classox_1_1Color__tile.html">Color_tile</a>(<a class="code" href="structox_1_1Color__tile_1_1Parameters.html">Parameters</a> p);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;};</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;   <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classox_1_1Color__tile.html#aa6e37635342f79e48066772327bf63e7">   30</a></span>&#160;    <span class="keyword">auto</span> <a class="code" href="classox_1_1Color__tile.html#aa6e37635342f79e48066772327bf63e7">paint_event</a>() -&gt; <span class="keywordtype">bool</span> <span class="keyword">override</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">if</span> (number_)</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <a class="code" href="classox_1_1Painter.html">Painter</a>{*<span class="keyword">this</span>}.<a class="code" href="classox_1_1Painter.html#a8a8ab75303e6d9626db5610e9f7f4825">put</a>(color_, {0uL, 0uL});</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classox_1_1Button.html#a06d9d03335cb55ecc185791e149fe07c">Button::paint_event</a>();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="classox_1_1Glyph__string.html">Glyph_string</a> color_;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">bool</span> number_;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;};</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using</span> <a class="code" href="classox_1_1layout_1_1detail_1_1Linear__layout.html">Color_line</a> = <a class="code" href="classox_1_1layout_1_1detail_1_1Linear__layout.html">layout::Horizontal&lt;Color_tile&gt;</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classox_1_1Color__select.html">   33</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1Color__select.html">Color_select</a> : <span class="keyword">public</span> <a class="code" href="classox_1_1layout_1_1detail_1_1Linear__layout.html">layout::Vertical</a>&lt;Color_line&gt; {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structox_1_1Color__select_1_1Parameters.html">   35</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structox_1_1Color__select_1_1Parameters.html">Parameters</a> {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        Color_tile::Display display = Color_tile::Display::None;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    };</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    sl::Signal&lt;void(<a class="code" href="classox_1_1Color.html">Color</a>)&gt; color_selected;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">using</span> Color_line = layout::Horizontal&lt;Color_tile&gt;;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classox_1_1Color__select.html">Color_select</a>(</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        Color_tile::Display display = Color_tile::Display::None);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classox_1_1Color__select.html">   46</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1Color__select.html">Color_select</a> : <span class="keyword">public</span> <a class="code" href="classox_1_1layout_1_1detail_1_1Linear__layout.html">layout::Vertical</a>&lt;Color_line&gt; {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    sl::Signal&lt;void(<a class="code" href="classox_1_1Color.html">Color</a>)&gt; color_selected;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classox_1_1Color__select.html">Color_select</a>(<span class="keywordtype">bool</span> display_numbers = <span class="keyword">false</span>)</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        : numbers_{display_numbers}</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="classox_1_1System.html#aeb6e14b98669d441d86d4b50d7a89cc3">System::terminal</a>.palette_changed.connect(</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            [<span class="keyword">this</span>](<span class="keyword">auto</span> <span class="keyword">const</span>&amp; pal) { this-&gt;set_palette(pal); });</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> set_palette(Palette <span class="keyword">const</span>&amp; pal)</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        this-&gt;delete_all_children();</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> size           = pal.size();</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keyword">auto</span> constexpr row_length = 8uL;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keyword">auto</span> count                = 0uL;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">while</span> (count != size) {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keyword">auto</span>&amp; color_line = this-&gt;make_child();</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0uL; i &lt; row_length &amp;&amp; count != size; ++i, ++count) {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <span class="keyword">using namespace </span>ox::pipe;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                <span class="keyword">auto</span> <span class="keyword">const</span> color = pal[count].color;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                color_line.make_child(color, numbers_) |</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                    on_press([<span class="keyword">this</span>, color]() { color_selected(color); });</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">bool</span> numbers_;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;};</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">auto</span> color_select(Args&amp;&amp;... args) -&gt; std::unique_ptr&lt;Color_select&gt;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;{</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;Color_select&gt;(std::forward&lt;Args&gt;(args)...);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}  <span class="comment">// namespace ox</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_WIDGET_WIDGETS_COLOR_SELECT_HPP</span></div>
-<div class="ttc" id="aclassox_1_1Button_html"><div class="ttname"><a href="classox_1_1Button.html">ox::Button</a></div><div class="ttdoc">Button widget that emits Signal on a left mouse button press.</div><div class="ttdef"><b>Definition:</b> button.hpp:17</div></div>
-<div class="ttc" id="aclassox_1_1Button_html_a06d9d03335cb55ecc185791e149fe07c"><div class="ttname"><a href="classox_1_1Button.html#a06d9d03335cb55ecc185791e149fe07c">ox::Button::paint_event</a></div><div class="ttdeci">auto paint_event() -&gt; bool override</div><div class="ttdoc">Handles Paint_event objects.</div><div class="ttdef"><b>Definition:</b> button.hpp:56</div></div>
-<div class="ttc" id="aclassox_1_1Color__select_html"><div class="ttname"><a href="classox_1_1Color__select.html">ox::Color_select</a></div><div class="ttdoc">Displays each color of the current palette.</div><div class="ttdef"><b>Definition:</b> color_select.hpp:46</div></div>
-<div class="ttc" id="aclassox_1_1Color__tile_html"><div class="ttname"><a href="classox_1_1Color__tile.html">ox::Color_tile</a></div><div class="ttdef"><b>Definition:</b> color_select.hpp:19</div></div>
-<div class="ttc" id="aclassox_1_1Color__tile_html_aa6e37635342f79e48066772327bf63e7"><div class="ttname"><a href="classox_1_1Color__tile.html#aa6e37635342f79e48066772327bf63e7">ox::Color_tile::paint_event</a></div><div class="ttdeci">auto paint_event() -&gt; bool override</div><div class="ttdoc">Handles Paint_event objects.</div><div class="ttdef"><b>Definition:</b> color_select.hpp:30</div></div>
-<div class="ttc" id="aclassox_1_1Color_html"><div class="ttname"><a href="classox_1_1Color.html">ox::Color</a></div><div class="ttdoc">Color numbers [0 - 180] are valid.</div><div class="ttdef"><b>Definition:</b> color.hpp:15</div></div>
-<div class="ttc" id="aclassox_1_1Glyph__string_html"><div class="ttname"><a href="classox_1_1Glyph__string.html">ox::Glyph_string</a></div><div class="ttdoc">Holds a collection of Glyphs with a similar interface to std::string.</div><div class="ttdef"><b>Definition:</b> glyph_string.hpp:20</div></div>
-<div class="ttc" id="aclassox_1_1Painter_html"><div class="ttname"><a href="classox_1_1Painter.html">ox::Painter</a></div><div class="ttdoc">Contains functions to paint Glyphs to a Widget's screen area.</div><div class="ttdef"><b>Definition:</b> painter.hpp:17</div></div>
-<div class="ttc" id="aclassox_1_1Painter_html_a8a8ab75303e6d9626db5610e9f7f4825"><div class="ttname"><a href="classox_1_1Painter.html#a8a8ab75303e6d9626db5610e9f7f4825">ox::Painter::put</a></div><div class="ttdeci">void put(Glyph tile, std::size_t x, std::size_t y)</div><div class="ttdoc">Put single Glyph to local coordinates, no-op if out of Widget's bounds.</div><div class="ttdef"><b>Definition:</b> painter.cpp:37</div></div>
-<div class="ttc" id="aclassox_1_1System_html_aeb6e14b98669d441d86d4b50d7a89cc3"><div class="ttname"><a href="classox_1_1System.html#aeb6e14b98669d441d86d4b50d7a89cc3">ox::System::terminal</a></div><div class="ttdeci">static Terminal terminal</div><div class="ttdoc">Provides access to and modification of global terminal properties.</div><div class="ttdef"><b>Definition:</b> system.hpp:37</div></div>
-<div class="ttc" id="aclassox_1_1layout_1_1detail_1_1Linear__layout_html"><div class="ttname"><a href="classox_1_1layout_1_1detail_1_1Linear__layout.html">ox::layout::detail::Linear_layout</a></div><div class="ttdoc">Lays out Widgets in 2D, sharing space in a primary dimension.</div><div class="ttdef"><b>Definition:</b> linear_layout.hpp:37</div></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classox_1_1Color__select.html">Color_select</a>(<a class="code" href="structox_1_1Color__select_1_1Parameters.html">Parameters</a> p);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> set_palette(Palette <span class="keyword">const</span>&amp; pal);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    Color_tile::Display display_;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;};</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;[[nodiscard]] <span class="keyword">auto</span> color_select(</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    Color_tile::Display display = Color_tile::Display::None)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    -&gt; std::unique_ptr&lt;Color_select&gt;;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;[[nodiscard]] <span class="keyword">auto</span> color_select(<a class="code" href="structox_1_1Color__select_1_1Parameters.html">Color_select::Parameters</a> p)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    -&gt; std::unique_ptr&lt;Color_select&gt;;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}  <span class="comment">// namespace ox</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_WIDGET_WIDGETS_COLOR_SELECT_HPP</span></div>
+<div class="ttc" id="aclassox_1_1Button_html"><div class="ttname"><a href="classox_1_1Button.html">ox::Button</a></div><div class="ttdoc">Button widget that emits Signal on a left mouse button press.</div><div class="ttdef"><b>Definition:</b> button.hpp:18</div></div>
+<div class="ttc" id="aclassox_1_1Color__select_html"><div class="ttname"><a href="classox_1_1Color__select.html">ox::Color_select</a></div><div class="ttdoc">Displays each color of the current palette.</div><div class="ttdef"><b>Definition:</b> color_select.hpp:33</div></div>
+<div class="ttc" id="aclassox_1_1Color__tile_html"><div class="ttname"><a href="classox_1_1Color__tile.html">ox::Color_tile</a></div><div class="ttdef"><b>Definition:</b> color_select.hpp:14</div></div>
+<div class="ttc" id="aclassox_1_1Color_html"><div class="ttname"><a href="classox_1_1Color.html">ox::Color</a></div><div class="ttdoc">Color numbers [0 - 180] are valid.</div><div class="ttdef"><b>Definition:</b> color.hpp:16</div></div>
+<div class="ttc" id="aclassox_1_1layout_1_1detail_1_1Linear__layout_html"><div class="ttname"><a href="classox_1_1layout_1_1detail_1_1Linear__layout.html">ox::layout::detail::Linear_layout</a></div><div class="ttdoc">Lays out Widgets in 2D, sharing space in a primary dimension.</div><div class="ttdef"><b>Definition:</b> linear_layout.hpp:35</div></div>
+<div class="ttc" id="astructox_1_1Color__select_1_1Parameters_html"><div class="ttname"><a href="structox_1_1Color__select_1_1Parameters.html">ox::Color_select::Parameters</a></div><div class="ttdef"><b>Definition:</b> color_select.hpp:35</div></div>
+<div class="ttc" id="astructox_1_1Color__tile_1_1Parameters_html"><div class="ttname"><a href="structox_1_1Color__tile_1_1Parameters.html">ox::Color_tile::Parameters</a></div><div class="ttdef"><b>Definition:</b> color_select.hpp:18</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,6 +1,19 @@
 var searchData=
 [
-  ['unique_5fspace_887',['Unique_space',['../classox_1_1layout_1_1detail_1_1Unique__space.html',1,'ox::layout::detail']]],
-  ['unscramble_888',['Unscramble',['../classox_1_1animator_1_1Unscramble.html',1,'ox::animator']]],
-  ['user_5finput_5fevent_5floop_889',['User_input_event_loop',['../classox_1_1detail_1_1User__input__event__loop.html',1,'ox::detail']]]
+  ['terminal_881',['Terminal',['../classox_1_1Terminal.html',1,'ox']]],
+  ['text_5fview_882',['Text_view',['../classox_1_1Text__view.html',1,'ox']]],
+  ['textbox_883',['Textbox',['../classox_1_1Textbox.html',1,'ox']]],
+  ['textbox_5fbase_884',['Textbox_base',['../classox_1_1detail_1_1Textbox__base.html',1,'ox::detail']]],
+  ['textline_5fbase_885',['Textline_base',['../classox_1_1detail_1_1Textline__base.html',1,'ox::detail']]],
+  ['textline_5fcore_886',['Textline_core',['../classox_1_1detail_1_1Textline__core.html',1,'ox::detail']]],
+  ['thin_5fbutton_887',['Thin_button',['../classox_1_1Thin__button.html',1,'ox']]],
+  ['tile_888',['Tile',['../classox_1_1Tile.html',1,'ox']]],
+  ['timer_889',['Timer',['../classox_1_1Timer.html',1,'ox']]],
+  ['timer_5fevent_890',['Timer_event',['../structox_1_1Timer__event.html',1,'ox']]],
+  ['titlebar_891',['Titlebar',['../classox_1_1Titlebar.html',1,'ox']]],
+  ['toggle_5fbutton_892',['Toggle_button',['../classox_1_1Toggle__button.html',1,'ox']]],
+  ['transform_5fiterator_893',['Transform_iterator',['../classox_1_1Transform__iterator.html',1,'ox']]],
+  ['transform_5fview_894',['Transform_view',['../classox_1_1Transform__view.html',1,'ox']]],
+  ['triangle_895',['Triangle',['../classox_1_1dynamic_1_1Triangle.html',1,'ox::dynamic']]],
+  ['tuple_896',['Tuple',['../classox_1_1Tuple.html',1,'ox']]]
 ];

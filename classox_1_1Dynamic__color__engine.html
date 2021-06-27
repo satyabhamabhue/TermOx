@@ -66,45 +66,136 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="classox_1_1Dynamic__color__engine-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ox::Dynamic_color_engine Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Event loop that manages posting of Dynamic_color_events.  
+ <a href="classox_1_1Dynamic__color__engine.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="dynamic__color__engine_8hpp_source.html">dynamic_color_engine.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for ox::Dynamic_color_engine:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classox_1_1Dynamic__color__engine.png" usemap="#ox::Dynamic_5Fcolor_5Fengine_map" alt=""/>
+  <map id="ox::Dynamic_5Fcolor_5Fengine_map" name="ox::Dynamic_5Fcolor_5Fengine_map">
+<area href="classox_1_1Lockable.html" alt="ox::Lockable&lt; std::mutex &gt;" shape="rect" coords="0,0,161,24"/>
+  </map>
+</div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structox_1_1Dynamic__color__engine_1_1Registered__data.html">Registered_data</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a7d33b6515a8931dc8347cfc04cfa82ff"><td class="memItemLeft" align="right" valign="top"><a id="a7d33b6515a8931dc8347cfc04cfa82ff"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>Period_t</b> = detail::Dynamic_color_event_loop::Period_t</td></tr>
-<tr class="separator:a7d33b6515a8931dc8347cfc04cfa82ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab69c8cb868b7b9bd1a4545b81eae7aa8"><td class="memItemLeft" align="right" valign="top"><a id="ab69c8cb868b7b9bd1a4545b81eae7aa8"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>Clock_t</b> = Timer::Clock_t</td></tr>
+<tr class="separator:ab69c8cb868b7b9bd1a4545b81eae7aa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53c01663caf82c82f6ce564f2e5b48df"><td class="memItemLeft" align="right" valign="top"><a id="a53c01663caf82c82f6ce564f2e5b48df"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>Interval_t</b> = Timer::Interval_t</td></tr>
+<tr class="separator:a53c01663caf82c82f6ce564f2e5b48df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b5482ad0920b7753a1758614cf349ad"><td class="memItemLeft" align="right" valign="top"><a id="a2b5482ad0920b7753a1758614cf349ad"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>Time_point</b> = Timer::Time_point</td></tr>
+<tr class="separator:a2b5482ad0920b7753a1758614cf349ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5c5e4fe02e050e40f9262be6e56a963e"><td class="memItemLeft" align="right" valign="top"><a id="a5c5e4fe02e050e40f9262be6e56a963e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Dynamic__color__engine.html#a5c5e4fe02e050e40f9262be6e56a963e">register_color</a> (<a class="el" href="structox_1_1ANSI.html">ANSI</a> ansi, <a class="el" href="structox_1_1Dynamic__color.html">Dynamic_color</a> const &amp;dynamic)</td></tr>
-<tr class="memdesc:a5c5e4fe02e050e40f9262be6e56a963e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a dynamic color at <code>interval</code>. <br /></td></tr>
-<tr class="separator:a5c5e4fe02e050e40f9262be6e56a963e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4d7bcf62dcdccf92a57a5158f9127a2"><td class="memItemLeft" align="right" valign="top"><a id="af4d7bcf62dcdccf92a57a5158f9127a2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Dynamic__color__engine.html#af4d7bcf62dcdccf92a57a5158f9127a2">unregister_color</a> (<a class="el" href="structox_1_1ANSI.html">ANSI</a> ansi)</td></tr>
-<tr class="memdesc:af4d7bcf62dcdccf92a57a5158f9127a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a dynamic color from the system. <br /></td></tr>
-<tr class="separator:af4d7bcf62dcdccf92a57a5158f9127a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6b3ba2cac2aaa795b77b55f7cf6353b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Dynamic__color__engine.html#ac6b3ba2cac2aaa795b77b55f7cf6353b">register_color</a> (<a class="el" href="classox_1_1Color.html">Color</a> color, <a class="el" href="structox_1_1Dynamic__color.html">Dynamic_color</a> const &amp;dynamic)</td></tr>
+<tr class="memdesc:ac6b3ba2cac2aaa795b77b55f7cf6353b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a dynamic color linked to <code>color</code>.  <a href="classox_1_1Dynamic__color__engine.html#ac6b3ba2cac2aaa795b77b55f7cf6353b">More...</a><br /></td></tr>
+<tr class="separator:ac6b3ba2cac2aaa795b77b55f7cf6353b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad12c0c6a2a803600db3fb20812ae97ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Dynamic__color__engine.html#ad12c0c6a2a803600db3fb20812ae97ee">unregister_color</a> (<a class="el" href="classox_1_1Color.html">Color</a> color)</td></tr>
+<tr class="memdesc:ad12c0c6a2a803600db3fb20812ae97ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the <a class="el" href="structox_1_1Dynamic__color.html" title="Defines an animated color.">Dynamic_color</a> linked to <code>color</code>.  <a href="classox_1_1Dynamic__color__engine.html#ad12c0c6a2a803600db3fb20812ae97ee">More...</a><br /></td></tr>
+<tr class="separator:ad12c0c6a2a803600db3fb20812ae97ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab523db61fa99bce68ec26c7b59a7ac7f"><td class="memItemLeft" align="right" valign="top"><a id="ab523db61fa99bce68ec26c7b59a7ac7f"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Dynamic__color__engine.html#ab523db61fa99bce68ec26c7b59a7ac7f">clear</a> ()</td></tr>
 <tr class="memdesc:ab523db61fa99bce68ec26c7b59a7ac7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove all registered colors. <br /></td></tr>
 <tr class="separator:ab523db61fa99bce68ec26c7b59a7ac7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a4f24b90bf68da8e95054648ad69877"><td class="memItemLeft" align="right" valign="top"><a id="a7a4f24b90bf68da8e95054648ad69877"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Dynamic__color__engine.html#a7a4f24b90bf68da8e95054648ad69877">startup</a> ()</td></tr>
-<tr class="memdesc:a7a4f24b90bf68da8e95054648ad69877"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start a thread for each framerate. <br /></td></tr>
-<tr class="separator:a7a4f24b90bf68da8e95054648ad69877"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4e2c7e41e4b9c6ead838885f8ac3dc0"><td class="memItemLeft" align="right" valign="top"><a id="ab4e2c7e41e4b9c6ead838885f8ac3dc0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Dynamic__color__engine.html#ab4e2c7e41e4b9c6ead838885f8ac3dc0">shutdown</a> ()</td></tr>
-<tr class="memdesc:ab4e2c7e41e4b9c6ead838885f8ac3dc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop all threads. <br /></td></tr>
-<tr class="separator:ab4e2c7e41e4b9c6ead838885f8ac3dc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a36fa64355abd2d94633cbe0449d9a9"><td class="memItemLeft" align="right" valign="top"><a id="a2a36fa64355abd2d94633cbe0449d9a9"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Dynamic__color__engine.html#a2a36fa64355abd2d94633cbe0449d9a9">is_empty</a> () const -&gt; bool</td></tr>
+<tr class="memdesc:a2a36fa64355abd2d94633cbe0449d9a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if there are no registered widgets. <br /></td></tr>
+<tr class="separator:a2a36fa64355abd2d94633cbe0449d9a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaeaa42ccdeaafe713878318a50229959"><td class="memItemLeft" align="right" valign="top"><a id="aaeaa42ccdeaafe713878318a50229959"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Dynamic__color__engine.html#aaeaa42ccdeaafe713878318a50229959">start</a> ()</td></tr>
+<tr class="memdesc:aaeaa42ccdeaafe713878318a50229959"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start another thread that waits on intervals and sents Events. <br /></td></tr>
+<tr class="separator:aaeaa42ccdeaafe713878318a50229959"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3d8858320f917f6cb73eeea354d1453"><td class="memItemLeft" align="right" valign="top"><a id="ab3d8858320f917f6cb73eeea354d1453"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Dynamic__color__engine.html#ab3d8858320f917f6cb73eeea354d1453">stop</a> ()</td></tr>
+<tr class="memdesc:ab3d8858320f917f6cb73eeea354d1453"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends exit signal and waits for animation thread to exit. <br /></td></tr>
+<tr class="separator:ab3d8858320f917f6cb73eeea354d1453"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a46a8522d4d5437bf811455f06dbdaaf3"><td class="memItemLeft" align="right" valign="top"><a id="a46a8522d4d5437bf811455f06dbdaaf3"></a>
+static constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><b>default_interval</b> = Interval_t{100}</td></tr>
+<tr class="separator:a46a8522d4d5437bf811455f06dbdaaf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Event loop that manages posting of Dynamic_color_events. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac6b3ba2cac2aaa795b77b55f7cf6353b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6b3ba2cac2aaa795b77b55f7cf6353b">&#9670;&nbsp;</a></span>register_color()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ox::Dynamic_color_engine::register_color </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classox_1_1Color.html">Color</a>&#160;</td>
+          <td class="paramname"><em>color</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structox_1_1Dynamic__color.html">Dynamic_color</a> const &amp;&#160;</td>
+          <td class="paramname"><em>dynamic</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add a dynamic color linked to <code>color</code>. </p>
+<p>Does not check for duplicates. </p>
+
+</div>
+</div>
+<a id="ad12c0c6a2a803600db3fb20812ae97ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad12c0c6a2a803600db3fb20812ae97ee">&#9670;&nbsp;</a></span>unregister_color()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ox::Dynamic_color_engine::unregister_color </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classox_1_1Color.html">Color</a>&#160;</td>
+          <td class="paramname"><em>color</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Removes the <a class="el" href="structox_1_1Dynamic__color.html" title="Defines an animated color.">Dynamic_color</a> linked to <code>color</code>. </p>
+<p>Function does nothing if <a class="el" href="classox_1_1Color.html" title="Color numbers [0 - 180] are valid.">Color</a> is not found. </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>/github/workspace/include/termox/terminal/<a class="el" href="dynamic__color__engine_8hpp_source.html">dynamic_color_engine.hpp</a></li>
+<li>/github/workspace/src/terminal/dynamic_color_engine.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

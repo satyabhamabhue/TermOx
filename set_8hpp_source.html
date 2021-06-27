@@ -121,7 +121,7 @@ $(function() {
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classox_1_1layout_1_1Set.html#af2504ae2a7d06b8b4040b0b3ae4a94e8">   60</a></span>&#160;    <span class="keyword">auto</span> <a class="code" href="classox_1_1layout_1_1Set.html#af2504ae2a7d06b8b4040b0b3ae4a94e8">find_child</a>(Key_t <span class="keyword">const</span>&amp; key) -&gt; Child_t*</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classox_1_1layout_1_1Set.html#af2504ae2a7d06b8b4040b0b3ae4a94e8">   60</a></span>&#160;    [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classox_1_1layout_1_1Set.html#af2504ae2a7d06b8b4040b0b3ae4a94e8">find_child</a>(Key_t <span class="keyword">const</span>&amp; key) -&gt; Child_t*</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    {</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">return</span> this-&gt;get_children().find(</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            [&amp;key](<span class="keyword">auto</span> <span class="keyword">const</span>&amp; c) { <span class="keywordflow">return</span> Projection{}(c) == key; });</div>
@@ -138,14 +138,15 @@ $(function() {
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                                   std::add_const_t&lt;std::add_lvalue_reference_t&lt;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                                       <span class="keyword">typename</span> Layout_t::Child_t&gt;&gt;&gt;&gt;,</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;          <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">auto</span> set(Args&amp;&amp;... args) -&gt; std::unique_ptr&lt;Set&lt;Projection, Comparison&gt;&gt;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;{</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;Set&lt;Projection, Comparison&gt;&gt;(</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        std::forward&lt;Args&gt;(args)...);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}  <span class="comment">// namespace ox::layout</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_WIDGET_LAYOUTS_SET_HPP</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;[[nodiscard]] <span class="keyword">auto</span> set(Args&amp;&amp;... args)</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    -&gt; std::unique_ptr&lt;Set&lt;Projection, Comparison&gt;&gt;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;{</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;Set&lt;Projection, Comparison&gt;&gt;(</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        std::forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}  <span class="comment">// namespace ox::layout</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_WIDGET_LAYOUTS_SET_HPP</span></div>
 <div class="ttc" id="aclassox_1_1layout_1_1Set_html"><div class="ttname"><a href="classox_1_1layout_1_1Set.html">ox::layout::Set</a></div><div class="ttdoc">Provides a set-like interface to Layout_t.</div><div class="ttdef"><b>Definition:</b> set.hpp:22</div></div>
 <div class="ttc" id="aclassox_1_1layout_1_1Set_html_a0372efeed73995fe177a0a5101462701"><div class="ttname"><a href="classox_1_1layout_1_1Set.html#a0372efeed73995fe177a0a5101462701">ox::layout::Set::insert_child</a></div><div class="ttdeci">auto insert_child(std::unique_ptr&lt; Child_t &gt; child) -&gt; Child_t &amp;</div><div class="ttdoc">Insert child into correct position based on Projection and Comparison.</div><div class="ttdef"><b>Definition:</b> set.hpp:33</div></div>
 <div class="ttc" id="aclassox_1_1layout_1_1Set_html_a351d8bce1620bb84fe02e15158ac8fee"><div class="ttname"><a href="classox_1_1layout_1_1Set.html#a351d8bce1620bb84fe02e15158ac8fee">ox::layout::Set::make_child</a></div><div class="ttdeci">auto make_child(Args &amp;&amp;... args) -&gt; Widget_t &amp;</div><div class="ttdoc">Create a Widget and insert it into the list of children.</div><div class="ttdef"><b>Definition:</b> set.hpp:48</div></div>

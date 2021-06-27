@@ -66,68 +66,87 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="classox_1_1Animation__engine-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ox::Animation_engine Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Manages all Timer_event_loops, grouping by period.  
+<p>Registers Widgets with intervals to send timer events.  
  <a href="classox_1_1Animation__engine.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="animation__engine_8hpp_source.html">animation_engine.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for ox::Animation_engine:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classox_1_1Animation__engine.png" usemap="#ox::Animation_5Fengine_map" alt=""/>
+  <map id="ox::Animation_5Fengine_map" name="ox::Animation_5Fengine_map">
+<area href="classox_1_1Lockable.html" alt="ox::Lockable&lt; std::recursive_mutex &gt;" shape="rect" coords="0,0,221,24"/>
+  </map>
+</div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structox_1_1Animation__engine_1_1Registered__data.html">Registered_data</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a077123831f6e503a97e89aa98dcc7620"><td class="memItemLeft" align="right" valign="top"><a id="a077123831f6e503a97e89aa98dcc7620"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>Period_t</b> = detail::Timer_event_loop::Period_t</td></tr>
-<tr class="separator:a077123831f6e503a97e89aa98dcc7620"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86a527e0e3198bbf00103fec5c87aa94"><td class="memItemLeft" align="right" valign="top"><a id="a86a527e0e3198bbf00103fec5c87aa94"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>Clock_t</b> = Timer::Clock_t</td></tr>
+<tr class="separator:a86a527e0e3198bbf00103fec5c87aa94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46425c5962269835b6ed978a1fabed98"><td class="memItemLeft" align="right" valign="top"><a id="a46425c5962269835b6ed978a1fabed98"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>Interval_t</b> = Timer::Interval_t</td></tr>
+<tr class="separator:a46425c5962269835b6ed978a1fabed98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19ec395b6d3462f33dd59d6d03fa354d"><td class="memItemLeft" align="right" valign="top"><a id="a19ec395b6d3462f33dd59d6d03fa354d"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>Time_point</b> = Timer::Time_point</td></tr>
+<tr class="separator:a19ec395b6d3462f33dd59d6d03fa354d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3f194208dba71d5dca958f27baf2c9fc"><td class="memItemLeft" align="right" valign="top"><a id="a3f194208dba71d5dca958f27baf2c9fc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Animation__engine.html#a3f194208dba71d5dca958f27baf2c9fc">register_widget</a> (<a class="el" href="classox_1_1Widget.html">Widget</a> &amp;w, Period_t interval)</td></tr>
-<tr class="memdesc:a3f194208dba71d5dca958f27baf2c9fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begins posting Timer_events to the given <a class="el" href="classox_1_1Widget.html">Widget</a> every period. <br /></td></tr>
-<tr class="separator:a3f194208dba71d5dca958f27baf2c9fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09be0c5682c9346b6d824e7478fc5945"><td class="memItemLeft" align="right" valign="top"><a id="a09be0c5682c9346b6d824e7478fc5945"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Animation__engine.html#a09be0c5682c9346b6d824e7478fc5945">register_widget</a> (<a class="el" href="classox_1_1Widget.html">Widget</a> &amp;w, Interval_t interval)</td></tr>
+<tr class="memdesc:a09be0c5682c9346b6d824e7478fc5945"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register to start sending Timer_events to <code>w</code> every <code>interval</code>. <br /></td></tr>
+<tr class="separator:a09be0c5682c9346b6d824e7478fc5945"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cc9d03f77ab04521af64f2d70b5f74d"><td class="memItemLeft" align="right" valign="top"><a id="a0cc9d03f77ab04521af64f2d70b5f74d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Animation__engine.html#a0cc9d03f77ab04521af64f2d70b5f74d">register_widget</a> (<a class="el" href="classox_1_1Widget.html">Widget</a> &amp;w, <a class="el" href="structox_1_1FPS.html">FPS</a> fps)</td></tr>
-<tr class="memdesc:a0cc9d03f77ab04521af64f2d70b5f74d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begins posting Timer_events to the given <a class="el" href="classox_1_1Widget.html">Widget</a> at <code>fps</code>. <br /></td></tr>
+<tr class="memdesc:a0cc9d03f77ab04521af64f2d70b5f74d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register to start sending Timer_events to <code>w</code> at <code>fps</code>. <br /></td></tr>
 <tr class="separator:a0cc9d03f77ab04521af64f2d70b5f74d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6b2fd929c214919a28cf47fc62854fc"><td class="memItemLeft" align="right" valign="top"><a id="ae6b2fd929c214919a28cf47fc62854fc"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Animation__engine.html#ae6b2fd929c214919a28cf47fc62854fc">unregister_widget</a> (<a class="el" href="classox_1_1Widget.html">Widget</a> &amp;w)</td></tr>
-<tr class="memdesc:ae6b2fd929c214919a28cf47fc62854fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop posting Timer_events to a given <a class="el" href="classox_1_1Widget.html">Widget</a>. <br /></td></tr>
+<tr class="memdesc:ae6b2fd929c214919a28cf47fc62854fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop the given <a class="el" href="classox_1_1Widget.html">Widget</a> from being sent Timer_events. <br /></td></tr>
 <tr class="separator:ae6b2fd929c214919a28cf47fc62854fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6b106bc5166110a0ec1542595a1d352"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Animation__engine.html#af6b106bc5166110a0ec1542595a1d352">startup</a> ()</td></tr>
-<tr class="separator:af6b106bc5166110a0ec1542595a1d352"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31520f94086102c83199b6da6f5f310f"><td class="memItemLeft" align="right" valign="top"><a id="a31520f94086102c83199b6da6f5f310f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Animation__engine.html#a31520f94086102c83199b6da6f5f310f">shutdown</a> ()</td></tr>
-<tr class="memdesc:a31520f94086102c83199b6da6f5f310f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send stop signals to all event loops and wait for them to exit. <br /></td></tr>
-<tr class="separator:a31520f94086102c83199b6da6f5f310f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a426ae089b562eb63d8d4c79abfa63758"><td class="memItemLeft" align="right" valign="top"><a id="a426ae089b562eb63d8d4c79abfa63758"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Animation__engine.html#a426ae089b562eb63d8d4c79abfa63758">is_empty</a> () const -&gt; bool</td></tr>
+<tr class="memdesc:a426ae089b562eb63d8d4c79abfa63758"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if there are no registered widgets. <br /></td></tr>
+<tr class="separator:a426ae089b562eb63d8d4c79abfa63758"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51e36b6186d0f10769dcc6a3d3f0a047"><td class="memItemLeft" align="right" valign="top"><a id="a51e36b6186d0f10769dcc6a3d3f0a047"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Animation__engine.html#a51e36b6186d0f10769dcc6a3d3f0a047">start</a> ()</td></tr>
+<tr class="memdesc:a51e36b6186d0f10769dcc6a3d3f0a047"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start another thread that waits on intervals and sents timer events. <br /></td></tr>
+<tr class="separator:a51e36b6186d0f10769dcc6a3d3f0a047"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb62817ea83d2c2944f1cc717b2a8d69"><td class="memItemLeft" align="right" valign="top"><a id="abb62817ea83d2c2944f1cc717b2a8d69"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Animation__engine.html#abb62817ea83d2c2944f1cc717b2a8d69">stop</a> ()</td></tr>
+<tr class="memdesc:abb62817ea83d2c2944f1cc717b2a8d69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends exit signal and waits for animation thread to exit. <br /></td></tr>
+<tr class="separator:abb62817ea83d2c2944f1cc717b2a8d69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cbdb1bed9ba5004030a600c733769c4"><td class="memItemLeft" align="right" valign="top"><a id="a1cbdb1bed9ba5004030a600c733769c4"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Animation__engine.html#a1cbdb1bed9ba5004030a600c733769c4">is_running</a> () const -&gt; bool</td></tr>
+<tr class="memdesc:a1cbdb1bed9ba5004030a600c733769c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if <a class="el" href="classox_1_1Animation__engine.html#a51e36b6186d0f10769dcc6a3d3f0a047" title="Start another thread that waits on intervals and sents timer events.">start()</a> has been called, and hasn't been exited. <br /></td></tr>
+<tr class="separator:a1cbdb1bed9ba5004030a600c733769c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:afffcaa93a13d0cd09b73d6b45dce7421"><td class="memItemLeft" align="right" valign="top"><a id="afffcaa93a13d0cd09b73d6b45dce7421"></a>
+static constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><b>default_interval</b> = Interval_t{100}</td></tr>
+<tr class="separator:afffcaa93a13d0cd09b73d6b45dce7421"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Manages all Timer_event_loops, grouping by period. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="af6b106bc5166110a0ec1542595a1d352"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af6b106bc5166110a0ec1542595a1d352">&#9670;&nbsp;</a></span>startup()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ox::Animation_engine::startup </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Only needed if <a class="el" href="classox_1_1Animation__engine.html#a31520f94086102c83199b6da6f5f310f" title="Send stop signals to all event loops and wait for them to exit.">shutdown()</a> has been called. </p>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<div class="textblock"><p>Registers Widgets with intervals to send timer events. </p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>/github/workspace/include/termox/system/<a class="el" href="animation__engine_8hpp_source.html">animation_engine.hpp</a></li>
 <li>/github/workspace/src/system/animation_engine.cpp</li>
 </ul>

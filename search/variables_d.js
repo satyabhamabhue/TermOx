@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ratio_5fchanged_1328',['ratio_changed',['../classox_1_1detail_1_1Slider__logic.html#afd271ed5abfd1749e8feb775c3222982',1,'ox::detail::Slider_logic::ratio_changed()'],['../classox_1_1Vertical__slider.html#a89e3d969156b971e69f595118261bb17',1,'ox::Vertical_slider::ratio_changed()']]]
+  ['unchecked_1324',['unchecked',['../classox_1_1Checkbox.html#a16997bdbc699f08073dff0beab42d5ef',1,'ox::Checkbox']]]
 ];

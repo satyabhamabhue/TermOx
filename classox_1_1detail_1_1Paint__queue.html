@@ -72,34 +72,43 @@ $(function() {
 <div class="title">ox::detail::Paint_queue Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="dynheader">
-Inheritance diagram for ox::detail::Paint_queue:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="classox_1_1detail_1_1Paint__queue.png" usemap="#ox::detail::Paint_5Fqueue_map" alt=""/>
-  <map id="ox::detail::Paint_5Fqueue_map" name="ox::detail::Paint_5Fqueue_map">
-<area href="classox_1_1Lockable.html" alt="ox::Lockable&lt; std::mutex &gt;" shape="rect" coords="0,0,160,24"/>
-  </map>
-</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a35187a542b2d9c3c10380dced2f465b3"><td class="memItemLeft" align="right" valign="top"><a id="a35187a542b2d9c3c10380dced2f465b3"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>append</b> (<a class="el" href="structox_1_1Paint__event.html">Paint_event</a> e)</td></tr>
 <tr class="separator:a35187a542b2d9c3c10380dced2f465b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0abaf4bba6a20a5ad717422425f4e5e7"><td class="memItemLeft" align="right" valign="top"><a id="a0abaf4bba6a20a5ad717422425f4e5e7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>send_all</b> ()</td></tr>
-<tr class="separator:a0abaf4bba6a20a5ad717422425f4e5e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classox_1_1Lockable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classox_1_1Lockable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classox_1_1Lockable.html">ox::Lockable&lt; std::mutex &gt;</a></td></tr>
-<tr class="memitem:a9915ebcbd4bc72fea07d5aa146ce1182 inherit pub_methods_classox_1_1Lockable"><td class="memItemLeft" align="right" valign="top"><a id="a9915ebcbd4bc72fea07d5aa146ce1182"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><b>lock</b> () -&gt; std::scoped_lock&lt; std::mutex &gt;</td></tr>
-<tr class="separator:a9915ebcbd4bc72fea07d5aa146ce1182 inherit pub_methods_classox_1_1Lockable"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a631839d45c9cbb17bc669c93cafb896b inherit pub_methods_classox_1_1Lockable"><td class="memItemLeft" align="right" valign="top"><a id="a631839d45c9cbb17bc669c93cafb896b"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><b>mutex</b> () -&gt; std::mutex &amp;</td></tr>
-<tr class="separator:a631839d45c9cbb17bc669c93cafb896b inherit pub_methods_classox_1_1Lockable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca0a91176549beedd8d30d23a0d9950a"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1detail_1_1Paint__queue.html#aca0a91176549beedd8d30d23a0d9950a">send_all</a> () -&gt; bool</td></tr>
+<tr class="memdesc:aca0a91176549beedd8d30d23a0d9950a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if any events are actually sent.  <a href="classox_1_1detail_1_1Paint__queue.html#aca0a91176549beedd8d30d23a0d9950a">More...</a><br /></td></tr>
+<tr class="separator:aca0a91176549beedd8d30d23a0d9950a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70c02ca6cbe1f8aebfe4394d73f9ac1c"><td class="memItemLeft" align="right" valign="top"><a id="a70c02ca6cbe1f8aebfe4394d73f9ac1c"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>size</b> () const -&gt; std::size_t</td></tr>
+<tr class="separator:a70c02ca6cbe1f8aebfe4394d73f9ac1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>/github/workspace/include/termox/system/detail/<a class="el" href="event__queue_8hpp_source.html">event_queue.hpp</a></li>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aca0a91176549beedd8d30d23a0d9950a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca0a91176549beedd8d30d23a0d9950a">&#9670;&nbsp;</a></span>send_all()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto ox::detail::Paint_queue::send_all </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt; bool</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return true if any events are actually sent. </p>
+<p>Processing Paint_events should not post more Paint_events.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>/github/workspace/include/termox/system/<a class="el" href="event__queue_8hpp_source.html">event_queue.hpp</a></li>
+<li>/github/workspace/src/system/event_queue.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -102,9 +102,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_increment_scroll_
 <tr class="memitem:a6272b824eb0e6973bea2ed2b00e0ef5a"><td class="memItemLeft" align="right" valign="top"><a id="a6272b824eb0e6973bea2ed2b00e0ef5a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>set_decrement_scroll_keys</b> (Key_codes keys)</td></tr>
 <tr class="separator:a6272b824eb0e6973bea2ed2b00e0ef5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e14d08c88f5fccf6059a32521a3ec1e"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1layout_1_1Selecting.html#a8e14d08c88f5fccf6059a32521a3ec1e">has_selected_child</a> () const -&gt; bool</td></tr>
-<tr class="memdesc:a8e14d08c88f5fccf6059a32521a3ec1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return whether or not a child widget is currently selected.  <a href="classox_1_1layout_1_1Selecting.html#a8e14d08c88f5fccf6059a32521a3ec1e">More...</a><br /></td></tr>
-<tr class="separator:a8e14d08c88f5fccf6059a32521a3ec1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adef70212699a30375dfb67f8789f78f7"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1layout_1_1Selecting.html#adef70212699a30375dfb67f8789f78f7">is_child_selected</a> () const -&gt; bool</td></tr>
+<tr class="memdesc:adef70212699a30375dfb67f8789f78f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return whether or not a child widget is currently selected.  <a href="classox_1_1layout_1_1Selecting.html#adef70212699a30375dfb67f8789f78f7">More...</a><br /></td></tr>
+<tr class="separator:adef70212699a30375dfb67f8789f78f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1858e210b10c62e298fa373b12cdccd5"><td class="memItemLeft" align="right" valign="top"><a id="a1858e210b10c62e298fa373b12cdccd5"></a>
 auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1layout_1_1Selecting.html#a1858e210b10c62e298fa373b12cdccd5">selected_child</a> () const -&gt; typename Layout_t::Child_t const &amp;</td></tr>
 <tr class="memdesc:a1858e210b10c62e298fa373b12cdccd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the currently selected child, UB if no children in <a class="el" href="classox_1_1layout_1_1Layout.html" title="Provided as a uniform interface for arranging child Widgets.">Layout</a>. <br /></td></tr>
@@ -126,8 +126,14 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a8828ee75aaf23e645281343b57e530d9"><td class="memItemLeft" align="right" valign="top"><a id="a8828ee75aaf23e645281343b57e530d9"></a>
 auto&#160;</td><td class="memItemRight" valign="bottom"><b>key_press_event</b> (Key k) -&gt; bool override</td></tr>
 <tr class="separator:a8828ee75aaf23e645281343b57e530d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa30e6838c79c5eb0ff20a9c3c3ad684"><td class="memItemLeft" align="right" valign="top"><a id="afa30e6838c79c5eb0ff20a9c3c3ad684"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>mouse_wheel_event_filter</b> (<a class="el" href="classox_1_1Widget.html">Widget</a> &amp;, Mouse const &amp;m) -&gt; bool override</td></tr>
+<tr class="separator:afa30e6838c79c5eb0ff20a9c3c3ad684"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a901163bb969d1755cf873d454e1cfad4"><td class="memItemLeft" align="right" valign="top"><a id="a901163bb969d1755cf873d454e1cfad4"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>mouse_press_event_filter</b> (<a class="el" href="classox_1_1Widget.html">Widget</a> &amp;w, Mouse const &amp;m) -&gt; bool override</td></tr>
+<tr class="separator:a901163bb969d1755cf873d454e1cfad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1a56f6682e57a05fd97ac28ea29e9f2"><td class="memItemLeft" align="right" valign="top"><a id="af1a56f6682e57a05fd97ac28ea29e9f2"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1layout_1_1Selecting.html#af1a56f6682e57a05fd97ac28ea29e9f2">resize_event</a> (<a class="el" href="structox_1_1Area.html">ox::Area</a> new_size, <a class="el" href="structox_1_1Area.html">ox::Area</a> old_size) -&gt; bool override</td></tr>
+auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1layout_1_1Selecting.html#af1a56f6682e57a05fd97ac28ea29e9f2">resize_event</a> (ox::Area new_size, ox::Area old_size) -&gt; bool override</td></tr>
 <tr class="memdesc:af1a56f6682e57a05fd97ac28ea29e9f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the selected child if needed. <br /></td></tr>
 <tr class="separator:af1a56f6682e57a05fd97ac28ea29e9f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60b83c83823053b1b235b43380db5589"><td class="memItemLeft" align="right" valign="top"><a id="a60b83c83823053b1b235b43380db5589"></a>
@@ -142,6 +148,9 @@ auto&#160;</td><td class="memItemRight" valign="bottom"><b>enable_event</b> () -
 <tr class="memitem:aa4b96e838028b9d3db0e5204c9464d96"><td class="memItemLeft" align="right" valign="top"><a id="aa4b96e838028b9d3db0e5204c9464d96"></a>
 auto&#160;</td><td class="memItemRight" valign="bottom"><b>disable_event</b> () -&gt; bool override</td></tr>
 <tr class="separator:aa4b96e838028b9d3db0e5204c9464d96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a296fbf49374c83a9ee56a62a083cd86a"><td class="memItemLeft" align="right" valign="top"><a id="a296fbf49374c83a9ee56a62a083cd86a"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>child_added_event</b> (<a class="el" href="classox_1_1Widget.html">Widget</a> &amp;child) -&gt; bool override</td></tr>
+<tr class="separator:a296fbf49374c83a9ee56a62a083cd86a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1508fecc3d56ab3f75fb646587855f3c"><td class="memItemLeft" align="right" valign="top"><a id="a1508fecc3d56ab3f75fb646587855f3c"></a>
 auto&#160;</td><td class="memItemRight" valign="bottom"><b>child_removed_event</b> (<a class="el" href="classox_1_1Widget.html">Widget</a> &amp;child) -&gt; bool override</td></tr>
 <tr class="separator:a1508fecc3d56ab3f75fb646587855f3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -153,8 +162,8 @@ class ox::layout::Selecting&lt; Layout_t, unselect_on_focus_out &gt;</h3>
 <p>Adds a 'Selected Child' concept to Layout_t. </p>
 <p>There is only a single selected child at a time. Keyboard and mouse selecting ability, scrolls when selection is off screeen. Depends on the Child Widgets of Layout_t to have a select() and unselect() method. Inherit from this and override key_press_event to perform actions on the <a class="el" href="classox_1_1layout_1_1Selecting.html#a9bc283aeef437a8c891d31cae2160aa9" title="Return the currently selected child, UB if no children in Layout.">selected_child()</a>. Scroll action also moves the selected child index. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a8e14d08c88f5fccf6059a32521a3ec1e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e14d08c88f5fccf6059a32521a3ec1e">&#9670;&nbsp;</a></span>has_selected_child()</h2>
+<a id="adef70212699a30375dfb67f8789f78f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adef70212699a30375dfb67f8789f78f7">&#9670;&nbsp;</a></span>is_child_selected()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -165,10 +174,11 @@ template&lt;typename Layout_t , bool unselect_on_focus_out = true&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto <a class="el" href="classox_1_1layout_1_1Selecting.html">ox::layout::Selecting</a>&lt; Layout_t, unselect_on_focus_out &gt;::has_selected_child </td>
+          <td class="memname">auto <a class="el" href="classox_1_1layout_1_1Selecting.html">ox::layout::Selecting</a>&lt; Layout_t, unselect_on_focus_out &gt;::is_child_selected </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const -&gt; bool </td>
+          <td> const -&gt; bool
+    </td>
         </tr>
       </table>
   </td>

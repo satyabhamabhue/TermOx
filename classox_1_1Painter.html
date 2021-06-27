@@ -80,80 +80,66 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a56d8f4d5a6f09dbc9f8e63342f1f4208"><td class="memItemLeft" align="right" valign="top"><a id="a56d8f4d5a6f09dbc9f8e63342f1f4208"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Painter.html#a56d8f4d5a6f09dbc9f8e63342f1f4208">Painter</a> (<a class="el" href="classox_1_1Widget.html">Widget</a> &amp;widg)</td></tr>
-<tr class="memdesc:a56d8f4d5a6f09dbc9f8e63342f1f4208"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an object ready to paint Glyphs to <code>*widg</code>. <br /></td></tr>
-<tr class="separator:a56d8f4d5a6f09dbc9f8e63342f1f4208"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4aff6ac9dce846608ec48467e103f48"><td class="memItemLeft" align="right" valign="top"><a id="ad4aff6ac9dce846608ec48467e103f48"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Painter.html#ad4aff6ac9dce846608ec48467e103f48">Painter</a> (<a class="el" href="classox_1_1Widget.html">Widget</a> &amp;w, <a class="el" href="classox_1_1detail_1_1Canvas.html">detail::Canvas</a> &amp;canvas)</td></tr>
+<tr class="memdesc:ad4aff6ac9dce846608ec48467e103f48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an object ready to paint Glyphs from <code>w</code> to <code>canvas</code>. <br /></td></tr>
+<tr class="separator:ad4aff6ac9dce846608ec48467e103f48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8656bc29ad543714c492b3f7cf6bb0a7"><td class="memItemLeft" align="right" valign="top"><a id="a8656bc29ad543714c492b3f7cf6bb0a7"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Painter</b> (<a class="el" href="classox_1_1Painter.html">Painter</a> const &amp;)=delete</td></tr>
 <tr class="separator:a8656bc29ad543714c492b3f7cf6bb0a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62f8616cbf6d24c84ef737be235bd033"><td class="memItemLeft" align="right" valign="top"><a id="a62f8616cbf6d24c84ef737be235bd033"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Painter</b> (<a class="el" href="classox_1_1Painter.html">Painter</a> &amp;&amp;)=delete</td></tr>
 <tr class="separator:a62f8616cbf6d24c84ef737be235bd033"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a8ab75303e6d9626db5610e9f7f4825"><td class="memItemLeft" align="right" valign="top"><a id="a8a8ab75303e6d9626db5610e9f7f4825"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Painter.html#a8a8ab75303e6d9626db5610e9f7f4825">put</a> (<a class="el" href="structox_1_1Glyph.html">Glyph</a> tile, std::size_t x, std::size_t y)</td></tr>
-<tr class="memdesc:a8a8ab75303e6d9626db5610e9f7f4825"><td class="mdescLeft">&#160;</td><td class="mdescRight">Put single <a class="el" href="structox_1_1Glyph.html" title="Holds a description of a paintable tile on the screen.">Glyph</a> to local coordinates, no-op if out of <a class="el" href="classox_1_1Widget.html">Widget</a>'s bounds. <br /></td></tr>
-<tr class="separator:a8a8ab75303e6d9626db5610e9f7f4825"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a308a4324e074d14aeb336b15968166af"><td class="memItemLeft" align="right" valign="top"><a id="a308a4324e074d14aeb336b15968166af"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Painter.html#a308a4324e074d14aeb336b15968166af">put</a> (<a class="el" href="structox_1_1Glyph.html">Glyph</a> tile, <a class="el" href="structox_1_1Point.html">Point</a> const &amp;position)</td></tr>
-<tr class="memdesc:a308a4324e074d14aeb336b15968166af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Put single <a class="el" href="structox_1_1Glyph.html" title="Holds a description of a paintable tile on the screen.">Glyph</a> to local coordinates, no-op if out of <a class="el" href="classox_1_1Widget.html">Widget</a>'s bounds. <br /></td></tr>
-<tr class="separator:a308a4324e074d14aeb336b15968166af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23c55b3e93b08773a64c0741f77f8505"><td class="memItemLeft" align="right" valign="top"><a id="a23c55b3e93b08773a64c0741f77f8505"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Painter.html#a23c55b3e93b08773a64c0741f77f8505">put</a> (<a class="el" href="classox_1_1Glyph__string.html">Glyph_string</a> const &amp;text, std::size_t x, std::size_t y)</td></tr>
-<tr class="memdesc:a23c55b3e93b08773a64c0741f77f8505"><td class="mdescLeft">&#160;</td><td class="mdescRight">Put <a class="el" href="classox_1_1Glyph__string.html" title="Holds a collection of Glyphs with a similar interface to std::string.">Glyph_string</a> to local coordinates, no-op if out of <a class="el" href="classox_1_1Widget.html">Widget</a>'s bounds. <br /></td></tr>
-<tr class="separator:a23c55b3e93b08773a64c0741f77f8505"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ecebf5e224cf50af774c17a28584b87"><td class="memItemLeft" align="right" valign="top"><a id="a4ecebf5e224cf50af774c17a28584b87"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Painter.html#a4ecebf5e224cf50af774c17a28584b87">put</a> (<a class="el" href="classox_1_1Glyph__string.html">Glyph_string</a> const &amp;text, <a class="el" href="structox_1_1Point.html">Point</a> const &amp;position)</td></tr>
-<tr class="memdesc:a4ecebf5e224cf50af774c17a28584b87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Put <a class="el" href="classox_1_1Glyph__string.html" title="Holds a collection of Glyphs with a similar interface to std::string.">Glyph_string</a> to local coordinates, no-op if out of <a class="el" href="classox_1_1Widget.html">Widget</a>'s bounds. <br /></td></tr>
-<tr class="separator:a4ecebf5e224cf50af774c17a28584b87"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae02b43cea7c9ae4613db2989643f0e64"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Painter.html#ae02b43cea7c9ae4613db2989643f0e64">border</a> ()</td></tr>
-<tr class="memdesc:ae02b43cea7c9ae4613db2989643f0e64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Paint the <a class="el" href="classox_1_1Border.html" title="Provides representation of a Widget&#39;s visible, surrounding border.">Border</a> object around the outside of the associated <a class="el" href="classox_1_1Widget.html">Widget</a>.  <a href="classox_1_1Painter.html#ae02b43cea7c9ae4613db2989643f0e64">More...</a><br /></td></tr>
-<tr class="separator:ae02b43cea7c9ae4613db2989643f0e64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a999a0060d89c68f203a59cde67f54f1b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Painter.html#a999a0060d89c68f203a59cde67f54f1b">fill</a> (<a class="el" href="structox_1_1Glyph.html">Glyph</a> tile, std::size_t x, std::size_t y, std::size_t width, std::size_t height)</td></tr>
-<tr class="memdesc:a999a0060d89c68f203a59cde67f54f1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill the <a class="el" href="classox_1_1Widget.html">Widget</a> with <code>tile</code> Glyphs, from the top left point (x, y).  <a href="classox_1_1Painter.html#a999a0060d89c68f203a59cde67f54f1b">More...</a><br /></td></tr>
-<tr class="separator:a999a0060d89c68f203a59cde67f54f1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60915c46f361bf85d41dd89f0e16f86b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Painter.html#a60915c46f361bf85d41dd89f0e16f86b">fill</a> (<a class="el" href="structox_1_1Glyph.html">Glyph</a> tile, <a class="el" href="structox_1_1Point.html">Point</a> const &amp;point, <a class="el" href="structox_1_1Area.html">Area</a> const &amp;area)</td></tr>
-<tr class="memdesc:a60915c46f361bf85d41dd89f0e16f86b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill the <a class="el" href="classox_1_1Widget.html">Widget</a> with <code>tile</code> Glyphs starting at the top left <code>point</code>.  <a href="classox_1_1Painter.html#a60915c46f361bf85d41dd89f0e16f86b">More...</a><br /></td></tr>
-<tr class="separator:a60915c46f361bf85d41dd89f0e16f86b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08ff5f0c5b54583385f3758cd6ffd657"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Painter.html#a08ff5f0c5b54583385f3758cd6ffd657">line</a> (<a class="el" href="structox_1_1Glyph.html">Glyph</a> tile, std::size_t x1, std::size_t y1, std::size_t x2, std::size_t y2)</td></tr>
-<tr class="memdesc:a08ff5f0c5b54583385f3758cd6ffd657"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a straight line from [x1, y1] to [x2, y2] in local coordinates.  <a href="classox_1_1Painter.html#a08ff5f0c5b54583385f3758cd6ffd657">More...</a><br /></td></tr>
-<tr class="separator:a08ff5f0c5b54583385f3758cd6ffd657"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac57329fab9bd89913ef436346a5a796b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Painter.html#ac57329fab9bd89913ef436346a5a796b">line</a> (<a class="el" href="structox_1_1Glyph.html">Glyph</a> tile, <a class="el" href="structox_1_1Point.html">Point</a> const &amp;a, <a class="el" href="structox_1_1Point.html">Point</a> const &amp;b)</td></tr>
-<tr class="memdesc:ac57329fab9bd89913ef436346a5a796b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a straight line from <code>a</code> to <code>b</code>, inclusive, in local coordinates.  <a href="classox_1_1Painter.html#ac57329fab9bd89913ef436346a5a796b">More...</a><br /></td></tr>
-<tr class="separator:ac57329fab9bd89913ef436346a5a796b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63c5319f895aa97b22d425f3c571b874"><td class="memItemLeft" align="right" valign="top"><a id="a63c5319f895aa97b22d425f3c571b874"></a>
+<a class="el" href="classox_1_1Painter.html">Painter</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classox_1_1Painter.html">Painter</a> const &amp;)=delete</td></tr>
+<tr class="separator:a63c5319f895aa97b22d425f3c571b874"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ebaa352b93ca8a9b69acdd49a146076"><td class="memItemLeft" align="right" valign="top"><a id="a5ebaa352b93ca8a9b69acdd49a146076"></a>
+<a class="el" href="classox_1_1Painter.html">Painter</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classox_1_1Painter.html">Painter</a> &amp;&amp;)=delete</td></tr>
+<tr class="separator:a5ebaa352b93ca8a9b69acdd49a146076"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec304c1f201a08980d551eb068312e6f"><td class="memItemLeft" align="right" valign="top"><a id="aec304c1f201a08980d551eb068312e6f"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Painter.html#aec304c1f201a08980d551eb068312e6f">put</a> (<a class="el" href="structox_1_1Glyph.html">Glyph</a> tile, Point p) -&gt; <a class="el" href="classox_1_1Painter.html">Painter</a> &amp;</td></tr>
+<tr class="memdesc:aec304c1f201a08980d551eb068312e6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Put single <a class="el" href="structox_1_1Glyph.html" title="Holds a description of a paintable tile on the screen.">Glyph</a> to local coordinates. <br /></td></tr>
+<tr class="separator:aec304c1f201a08980d551eb068312e6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a6933bd0642903edb495444ac8ed2f7"><td class="memItemLeft" align="right" valign="top"><a id="a1a6933bd0642903edb495444ac8ed2f7"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Painter.html#a1a6933bd0642903edb495444ac8ed2f7">put</a> (<a class="el" href="classox_1_1Glyph__string.html">Glyph_string</a> const &amp;text, Point p) -&gt; <a class="el" href="classox_1_1Painter.html">Painter</a> &amp;</td></tr>
+<tr class="memdesc:a1a6933bd0642903edb495444ac8ed2f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Put <a class="el" href="classox_1_1Glyph__string.html" title="Holds a collection of Glyphs with a similar interface to std::string.">Glyph_string</a> to local coordinates. <br /></td></tr>
+<tr class="separator:a1a6933bd0642903edb495444ac8ed2f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a710eff9c93e13b156b0407c27dbdbc37"><td class="memItemLeft" align="right" valign="top"><a id="a710eff9c93e13b156b0407c27dbdbc37"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Painter.html#a710eff9c93e13b156b0407c27dbdbc37">at</a> (Point p) const -&gt; <a class="el" href="structox_1_1Glyph.html">Glyph</a></td></tr>
+<tr class="memdesc:a710eff9c93e13b156b0407c27dbdbc37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a copy of the <a class="el" href="structox_1_1Glyph.html" title="Holds a description of a paintable tile on the screen.">Glyph</a> at <code>p</code>, is U'\0' if <a class="el" href="structox_1_1Glyph.html" title="Holds a description of a paintable tile on the screen.">Glyph</a> is not set yet. <br /></td></tr>
+<tr class="separator:a710eff9c93e13b156b0407c27dbdbc37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d41b5f3bbbe6b4f610114ae997d1dd0"><td class="memItemLeft" align="right" valign="top"><a id="a5d41b5f3bbbe6b4f610114ae997d1dd0"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Painter.html#a5d41b5f3bbbe6b4f610114ae997d1dd0">at</a> (Point p) -&gt; <a class="el" href="structox_1_1Glyph.html">Glyph</a> &amp;</td></tr>
+<tr class="memdesc:a5d41b5f3bbbe6b4f610114ae997d1dd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a reference of the <a class="el" href="structox_1_1Glyph.html" title="Holds a description of a paintable tile on the screen.">Glyph</a> at <code>p</code>, is U'\0' if <a class="el" href="structox_1_1Glyph.html" title="Holds a description of a paintable tile on the screen.">Glyph</a> not set yet. <br /></td></tr>
+<tr class="separator:a5d41b5f3bbbe6b4f610114ae997d1dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacbf2015f7e37dd5af58b85f9aa277ef"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Painter.html#aacbf2015f7e37dd5af58b85f9aa277ef">fill</a> (<a class="el" href="structox_1_1Glyph.html">Glyph</a> tile, Point point, Area area) -&gt; <a class="el" href="classox_1_1Painter.html">Painter</a> &amp;</td></tr>
+<tr class="memdesc:aacbf2015f7e37dd5af58b85f9aa277ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill the <a class="el" href="classox_1_1Widget.html">Widget</a> with <code>tile</code> Glyphs starting at the top left <code>point</code>.  <a href="classox_1_1Painter.html#aacbf2015f7e37dd5af58b85f9aa277ef">More...</a><br /></td></tr>
+<tr class="separator:aacbf2015f7e37dd5af58b85f9aa277ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5178e070ffe69f9a3d07273f9603a48b"><td class="memItemLeft" align="right" valign="top"><a id="a5178e070ffe69f9a3d07273f9603a48b"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Painter.html#a5178e070ffe69f9a3d07273f9603a48b">hline</a> (<a class="el" href="structox_1_1Glyph.html">Glyph</a> tile, Point a, Point b) -&gt; <a class="el" href="classox_1_1Painter.html">Painter</a> &amp;</td></tr>
+<tr class="memdesc:a5178e070ffe69f9a3d07273f9603a48b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a horizontal line from <code>a</code> to <code>b</code>, inclusive, in local coords. <br /></td></tr>
+<tr class="separator:a5178e070ffe69f9a3d07273f9603a48b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd9da1ef9d9ad4aac4817cc116f44146"><td class="memItemLeft" align="right" valign="top"><a id="abd9da1ef9d9ad4aac4817cc116f44146"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Painter.html#abd9da1ef9d9ad4aac4817cc116f44146">vline</a> (<a class="el" href="structox_1_1Glyph.html">Glyph</a> tile, Point a, Point b) -&gt; <a class="el" href="classox_1_1Painter.html">Painter</a> &amp;</td></tr>
+<tr class="memdesc:abd9da1ef9d9ad4aac4817cc116f44146"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a vertical line from <code>a</code> to <code>b</code>, inclusive, in local coords. <br /></td></tr>
+<tr class="separator:abd9da1ef9d9ad4aac4817cc116f44146"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95974bc5e2a49701d7961ce915cac143"><td class="memItemLeft" align="right" valign="top"><a id="a95974bc5e2a49701d7961ce915cac143"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Painter.html#a95974bc5e2a49701d7961ce915cac143">wallpaper_fill</a> () -&gt; <a class="el" href="classox_1_1Painter.html">Painter</a> &amp;</td></tr>
+<tr class="memdesc:a95974bc5e2a49701d7961ce915cac143"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill the entire widget screen with wallpaper. <br /></td></tr>
+<tr class="separator:a95974bc5e2a49701d7961ce915cac143"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Contains functions to paint Glyphs to a <a class="el" href="classox_1_1Widget.html">Widget</a>'s screen area. </p>
-<p>For use within <a class="el" href="classox_1_1Widget.html#af0c1544fe8f866c566a4615f058c11e6" title="Handles Paint_event objects.">Widget::paint_event()</a>, and virtual overrides. </p>
+<p>For use within Widget::paint_event(...), and virtual overrides. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="ae02b43cea7c9ae4613db2989643f0e64"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae02b43cea7c9ae4613db2989643f0e64">&#9670;&nbsp;</a></span>border()</h2>
+<a id="aacbf2015f7e37dd5af58b85f9aa277ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacbf2015f7e37dd5af58b85f9aa277ef">&#9670;&nbsp;</a></span>fill()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ox::Painter::border </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Paint the <a class="el" href="classox_1_1Border.html" title="Provides representation of a Widget&#39;s visible, surrounding border.">Border</a> object around the outside of the associated <a class="el" href="classox_1_1Widget.html">Widget</a>. </p>
-<p>Borders own the perimeter defined by <a class="el" href="classox_1_1Widget.html#aea9cd0f6f4b17b846f2b3e8cfd6d0682" title="x coordinate for the top left point of this Widget.">Widget::x()</a>, <a class="el" href="classox_1_1Widget.html#ae5a7e6e5903866f85d373ce83e4f0c58" title="y coordinate for the top left point of this Widget.">Widget::y()</a> and <a class="el" href="classox_1_1Widget.html#aa2e5cab1b228768e47d458d317a3f62c" title="Return the width dimension, this includes Border space.">Widget::outer_width()</a>, <a class="el" href="classox_1_1Widget.html#a7c097b7aa1f0aca9bf0ec9ecfd587c8c" title="Return the height dimension, this includes Border space.">Widget::outer_height()</a>. <a class="el" href="classox_1_1Border.html" title="Provides representation of a Widget&#39;s visible, surrounding border.">Border</a> is owned by widget_ </p>
-
-</div>
-</div>
-<a id="a60915c46f361bf85d41dd89f0e16f86b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a60915c46f361bf85d41dd89f0e16f86b">&#9670;&nbsp;</a></span>fill() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ox::Painter::fill </td>
+          <td class="memname">auto ox::Painter::fill </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structox_1_1Glyph.html">Glyph</a>&#160;</td>
           <td class="paramname"><em>tile</em>, </td>
@@ -161,168 +147,25 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structox_1_1Point.html">Point</a> const &amp;&#160;</td>
+          <td class="paramtype">Point&#160;</td>
           <td class="paramname"><em>point</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structox_1_1Area.html">Area</a> const &amp;&#160;</td>
+          <td class="paramtype">Area&#160;</td>
           <td class="paramname"><em>area</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td>
+          <td></td><td> -&gt; <a class="el" href="classox_1_1Painter.html">Painter</a>&amp;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Fill the <a class="el" href="classox_1_1Widget.html">Widget</a> with <code>tile</code> Glyphs starting at the top left <code>point</code>. </p>
 <p><code>point</code> is in <a class="el" href="classox_1_1Widget.html">Widget</a> local coordinates. </p>
-
-</div>
-</div>
-<a id="a999a0060d89c68f203a59cde67f54f1b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a999a0060d89c68f203a59cde67f54f1b">&#9670;&nbsp;</a></span>fill() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ox::Painter::fill </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structox_1_1Glyph.html">Glyph</a>&#160;</td>
-          <td class="paramname"><em>tile</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>y</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>width</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>height</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Fill the <a class="el" href="classox_1_1Widget.html">Widget</a> with <code>tile</code> Glyphs, from the top left point (x, y). </p>
-<p><code>x</code> and <code>y</code> are in <a class="el" href="classox_1_1Widget.html">Widget</a> local coordinates. </p>
-
-</div>
-</div>
-<a id="ac57329fab9bd89913ef436346a5a796b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac57329fab9bd89913ef436346a5a796b">&#9670;&nbsp;</a></span>line() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ox::Painter::line </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structox_1_1Glyph.html">Glyph</a>&#160;</td>
-          <td class="paramname"><em>tile</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structox_1_1Point.html">Point</a> const &amp;&#160;</td>
-          <td class="paramname"><em>a</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structox_1_1Point.html">Point</a> const &amp;&#160;</td>
-          <td class="paramname"><em>b</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Draw a straight line from <code>a</code> to <code>b</code>, inclusive, in local coordinates. </p>
-<p>Diagonal lines are not implemented yet. </p>
-
-</div>
-</div>
-<a id="a08ff5f0c5b54583385f3758cd6ffd657"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a08ff5f0c5b54583385f3758cd6ffd657">&#9670;&nbsp;</a></span>line() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ox::Painter::line </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structox_1_1Glyph.html">Glyph</a>&#160;</td>
-          <td class="paramname"><em>tile</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>x1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>y1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>x2</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>y2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Draw a straight line from [x1, y1] to [x2, y2] in local coordinates. </p>
-<p>Diagonal lines are not implemented yet. </p>
 
 </div>
 </div>

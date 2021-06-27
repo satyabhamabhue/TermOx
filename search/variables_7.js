@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['insert_5fbrush_1316',['insert_brush',['../classox_1_1Text__display.html#afab5fc88011c022d12f9a75634ae7541',1,'ox::Text_display']]],
-  ['invalid_5findex_1317',['invalid_index',['../classox_1_1layout_1_1Stack.html#a7a248e4c3e8c05d099cf796e551acf79',1,'ox::layout::Stack']]]
+  ['npos_1309',['npos',['../classox_1_1Glyph__string.html#a597a16cc700a58a5a3e9edde964f56e5',1,'ox::Glyph_string']]]
 ];
