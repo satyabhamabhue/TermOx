@@ -128,35 +128,36 @@ $(function() {
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    };</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="classox_1_1Button__list.html">Button_list</a>();</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classox_1_1Button__list.html">Button_list</a>(<a class="code" href="structox_1_1Button__list_1_1Parameters.html">Parameters</a> p);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">auto</span> <a class="code" href="classox_1_1Button__list.html#adba443a23f6adbf571328ec17df4f025">add_button</a>(std::u32string <span class="keyword">const</span>&amp; name) -&gt; <a class="code" href="classox_1_1Button.html">Button</a>&amp;;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Button__list.html#a32ec6a1ede44a059a7d26b518e79b584">set_scrollbar_bg</a>(<a class="code" href="classox_1_1Color.html">Color</a> c);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Button__list.html#a5a5030f0f40acb3777f24060751e33b1">set_scrollbar_fg</a>(<a class="code" href="classox_1_1Color.html">Color</a> c);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;};</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">template</span> &lt;<span class="keyword">typename</span>&gt; <span class="keyword">class </span>Layout_t&gt;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;[[nodiscard]] <span class="keyword">auto</span> button_list(</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keyword">typename</span> <a class="code" href="structox_1_1Button__list_1_1Parameters.html">Button_list&lt;Layout_t&gt;::Parameters</a> p = {})</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    -&gt; std::unique_ptr&lt;Button_list&lt;Layout_t&gt;&gt;;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">using</span> VButton_list = Button_list&lt;layout::Vertical&gt;;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">using</span> HButton_list = Button_list&lt;layout::Horizontal&gt;;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;[[nodiscard]] <span class="keyword">auto</span> vbutton_list(VButton_list::Parameters p = {})</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    -&gt; std::unique_ptr&lt;VButton_list&gt;;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;[[nodiscard]] <span class="keyword">auto</span> hbutton_list(HButton_list::Parameters p = {})</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    -&gt; std::unique_ptr&lt;HButton_list&gt;;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}  <span class="comment">// namespace ox</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_WIDGET_WIDGETS_BUTTON_LIST_HPP</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classox_1_1Button__list.html">Button_list</a>(<a class="code" href="classox_1_1Color.html">Color</a> scrollbar_bg = Color::Background,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                         <a class="code" href="classox_1_1Color.html">Color</a> scrollbar_fg = Color::Foreground);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classox_1_1Button__list.html">Button_list</a>(<a class="code" href="structox_1_1Button__list_1_1Parameters.html">Parameters</a> p);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">auto</span> <a class="code" href="classox_1_1Button__list.html#adba443a23f6adbf571328ec17df4f025">add_button</a>(std::u32string <span class="keyword">const</span>&amp; name) -&gt; <a class="code" href="classox_1_1Button.html">Button</a>&amp;;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Button__list.html#a32ec6a1ede44a059a7d26b518e79b584">set_scrollbar_bg</a>(<a class="code" href="classox_1_1Color.html">Color</a> c);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Button__list.html#a5a5030f0f40acb3777f24060751e33b1">set_scrollbar_fg</a>(<a class="code" href="classox_1_1Color.html">Color</a> c);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;};</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">template</span> &lt;<span class="keyword">typename</span>&gt; <span class="keyword">class </span>Layout_t&gt;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;[[nodiscard]] <span class="keyword">auto</span> button_list(</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">typename</span> <a class="code" href="structox_1_1Button__list_1_1Parameters.html">Button_list&lt;Layout_t&gt;::Parameters</a> p = {})</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    -&gt; std::unique_ptr&lt;Button_list&lt;Layout_t&gt;&gt;;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">using</span> VButton_list = Button_list&lt;layout::Vertical&gt;;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">using</span> HButton_list = Button_list&lt;layout::Horizontal&gt;;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;[[nodiscard]] <span class="keyword">auto</span> vbutton_list(VButton_list::Parameters p = {})</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    -&gt; std::unique_ptr&lt;VButton_list&gt;;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;[[nodiscard]] <span class="keyword">auto</span> hbutton_list(HButton_list::Parameters p = {})</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    -&gt; std::unique_ptr&lt;HButton_list&gt;;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}  <span class="comment">// namespace ox</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_WIDGET_WIDGETS_BUTTON_LIST_HPP</span></div>
 <div class="ttc" id="aclassox_1_1Button__list_html"><div class="ttname"><a href="classox_1_1Button__list.html">ox::Button_list</a></div><div class="ttdoc">A list of buttons with connected scrollbar.</div><div class="ttdef"><b>Definition:</b> button_list.hpp:45</div></div>
 <div class="ttc" id="aclassox_1_1Button__list_html_a32ec6a1ede44a059a7d26b518e79b584"><div class="ttname"><a href="classox_1_1Button__list.html#a32ec6a1ede44a059a7d26b518e79b584">ox::Button_list::set_scrollbar_bg</a></div><div class="ttdeci">void set_scrollbar_bg(Color c)</div><div class="ttdoc">Set the background color of the Scrollbar.</div><div class="ttdef"><b>Definition:</b> button_list.cpp:49</div></div>
 <div class="ttc" id="aclassox_1_1Button__list_html_a5a5030f0f40acb3777f24060751e33b1"><div class="ttname"><a href="classox_1_1Button__list.html#a5a5030f0f40acb3777f24060751e33b1">ox::Button_list::set_scrollbar_fg</a></div><div class="ttdeci">void set_scrollbar_fg(Color c)</div><div class="ttdoc">Set the foreground color of the Scrollbar.</div><div class="ttdef"><b>Definition:</b> button_list.cpp:55</div></div>

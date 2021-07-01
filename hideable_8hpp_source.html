@@ -95,48 +95,47 @@ $(function() {
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    }</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classox_1_1Hideable.html#a1aa7ae992dc6cc9e482baf8d6cad91bd">   29</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classox_1_1Hideable.html#a1aa7ae992dc6cc9e482baf8d6cad91bd">Hideable</a>(Parameters parameters)</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        : <a class="code" href="structox_1_1Pair.html">SPair</a>&lt;<a class="code" href="classox_1_1Widget.html">Widget</a>, Widget_t&gt;{{}, parameters}</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        this-&gt;set_active_page(widget_index_);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        this-&gt;give_focus_on_change(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classox_1_1Hideable.html#abfdc7fa2fda24d82940a743472f5c1e6">   38</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Hideable.html#abfdc7fa2fda24d82940a743472f5c1e6">show</a>() { this-&gt;set_active_page(widget_index_); }</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classox_1_1Hideable.html#a6f0d5f7f404ee4da552a178746dc127f">   41</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Hideable.html#a6f0d5f7f404ee4da552a178746dc127f">hide</a>() { this-&gt;set_active_page(blank_index_); }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classox_1_1Hideable.html#a298c0c0930beeee5fc9d6ed200a6371d">   44</a></span>&#160;    [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classox_1_1Hideable.html#a298c0c0930beeee5fc9d6ed200a6371d">is_hidden</a>() const -&gt; <span class="keywordtype">bool</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">return</span> this-&gt;active_page_index() == blank_index_;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">static</span> constexpr <span class="keyword">auto</span> blank_index_  = 0uL;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">static</span> constexpr <span class="keyword">auto</span> widget_index_ = 1uL;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;};</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> W<span class="keywordtype">id</span>get_t&gt;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;[[nodiscard]] <span class="keyword">auto</span> hideable() -&gt; std::unique_ptr&lt;Hideable&lt;Widget_t&gt;&gt;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;Hideable&lt;Widget_t&gt;&gt;();</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> W<span class="keywordtype">id</span>get_t&gt;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;[[nodiscard]] <span class="keyword">auto</span> hideable(<span class="keyword">typename</span> Hideable&lt;Widget_t&gt;::Parameters parameters)</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    -&gt; std::unique_ptr&lt;Hideable&lt;Widget_t&gt;&gt;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;{</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;Hideable&lt;Widget_t&gt;&gt;(std::move(parameters));</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}  <span class="comment">// namespace ox</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_WIDGET_WIDGETS_HIDEABLE_HPP</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classox_1_1Hideable.html#aec2833d6bbdde951cbc50179c6738d5c">   29</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classox_1_1Hideable.html#aec2833d6bbdde951cbc50179c6738d5c">Hideable</a>(Parameters p) : <a class="code" href="structox_1_1Pair.html">SPair</a>&lt;<a class="code" href="classox_1_1Widget.html">Widget</a>, Widget_t&gt;{{}, p}</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        this-&gt;set_active_page(widget_index_);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        this-&gt;give_focus_on_change(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classox_1_1Hideable.html#abfdc7fa2fda24d82940a743472f5c1e6">   37</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Hideable.html#abfdc7fa2fda24d82940a743472f5c1e6">show</a>() { this-&gt;set_active_page(widget_index_); }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classox_1_1Hideable.html#a6f0d5f7f404ee4da552a178746dc127f">   40</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Hideable.html#a6f0d5f7f404ee4da552a178746dc127f">hide</a>() { this-&gt;set_active_page(blank_index_); }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classox_1_1Hideable.html#a298c0c0930beeee5fc9d6ed200a6371d">   43</a></span>&#160;    [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classox_1_1Hideable.html#a298c0c0930beeee5fc9d6ed200a6371d">is_hidden</a>() const -&gt; <span class="keywordtype">bool</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">return</span> this-&gt;active_page_index() == blank_index_;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">static</span> constexpr <span class="keyword">auto</span> blank_index_  = 0uL;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">static</span> constexpr <span class="keyword">auto</span> widget_index_ = 1uL;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;};</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> W<span class="keywordtype">id</span>get_t&gt;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;[[nodiscard]] <span class="keyword">auto</span> hideable() -&gt; std::unique_ptr&lt;Hideable&lt;Widget_t&gt;&gt;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;{</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;Hideable&lt;Widget_t&gt;&gt;();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> W<span class="keywordtype">id</span>get_t&gt;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;[[nodiscard]] <span class="keyword">auto</span> hideable(<span class="keyword">typename</span> Hideable&lt;Widget_t&gt;::Parameters p)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    -&gt; std::unique_ptr&lt;Hideable&lt;Widget_t&gt;&gt;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;{</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;Hideable&lt;Widget_t&gt;&gt;(std::move(p));</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}  <span class="comment">// namespace ox</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_WIDGET_WIDGETS_HIDEABLE_HPP</span></div>
 <div class="ttc" id="aclassox_1_1Hideable_html"><div class="ttname"><a href="classox_1_1Hideable.html">ox::Hideable</a></div><div class="ttdoc">Policy to make any Widget or Layout hideable with a hide() and show() method.</div><div class="ttdef"><b>Definition:</b> hideable.hpp:13</div></div>
-<div class="ttc" id="aclassox_1_1Hideable_html_a1aa7ae992dc6cc9e482baf8d6cad91bd"><div class="ttname"><a href="classox_1_1Hideable.html#a1aa7ae992dc6cc9e482baf8d6cad91bd">ox::Hideable::Hideable</a></div><div class="ttdeci">Hideable(Parameters parameters)</div><div class="ttdoc">Forward constructor Parameters for the Widget_t that is being wrapped.</div><div class="ttdef"><b>Definition:</b> hideable.hpp:29</div></div>
-<div class="ttc" id="aclassox_1_1Hideable_html_a298c0c0930beeee5fc9d6ed200a6371d"><div class="ttname"><a href="classox_1_1Hideable.html#a298c0c0930beeee5fc9d6ed200a6371d">ox::Hideable::is_hidden</a></div><div class="ttdeci">auto is_hidden() const -&gt; bool</div><div class="ttdoc">Return if w is hidden.</div><div class="ttdef"><b>Definition:</b> hideable.hpp:44</div></div>
-<div class="ttc" id="aclassox_1_1Hideable_html_a6f0d5f7f404ee4da552a178746dc127f"><div class="ttname"><a href="classox_1_1Hideable.html#a6f0d5f7f404ee4da552a178746dc127f">ox::Hideable::hide</a></div><div class="ttdeci">void hide()</div><div class="ttdoc">Display nothing on the widget space.</div><div class="ttdef"><b>Definition:</b> hideable.hpp:41</div></div>
-<div class="ttc" id="aclassox_1_1Hideable_html_abfdc7fa2fda24d82940a743472f5c1e6"><div class="ttname"><a href="classox_1_1Hideable.html#abfdc7fa2fda24d82940a743472f5c1e6">ox::Hideable::show</a></div><div class="ttdeci">void show()</div><div class="ttdoc">Display the held widget.</div><div class="ttdef"><b>Definition:</b> hideable.hpp:38</div></div>
+<div class="ttc" id="aclassox_1_1Hideable_html_a298c0c0930beeee5fc9d6ed200a6371d"><div class="ttname"><a href="classox_1_1Hideable.html#a298c0c0930beeee5fc9d6ed200a6371d">ox::Hideable::is_hidden</a></div><div class="ttdeci">auto is_hidden() const -&gt; bool</div><div class="ttdoc">Return if w is hidden.</div><div class="ttdef"><b>Definition:</b> hideable.hpp:43</div></div>
+<div class="ttc" id="aclassox_1_1Hideable_html_a6f0d5f7f404ee4da552a178746dc127f"><div class="ttname"><a href="classox_1_1Hideable.html#a6f0d5f7f404ee4da552a178746dc127f">ox::Hideable::hide</a></div><div class="ttdeci">void hide()</div><div class="ttdoc">Display nothing on the widget space.</div><div class="ttdef"><b>Definition:</b> hideable.hpp:40</div></div>
+<div class="ttc" id="aclassox_1_1Hideable_html_abfdc7fa2fda24d82940a743472f5c1e6"><div class="ttname"><a href="classox_1_1Hideable.html#abfdc7fa2fda24d82940a743472f5c1e6">ox::Hideable::show</a></div><div class="ttdeci">void show()</div><div class="ttdoc">Display the held widget.</div><div class="ttdef"><b>Definition:</b> hideable.hpp:37</div></div>
+<div class="ttc" id="aclassox_1_1Hideable_html_aec2833d6bbdde951cbc50179c6738d5c"><div class="ttname"><a href="classox_1_1Hideable.html#aec2833d6bbdde951cbc50179c6738d5c">ox::Hideable::Hideable</a></div><div class="ttdeci">Hideable(Parameters p)</div><div class="ttdoc">Forward constructor Parameters for the Widget_t that is being wrapped.</div><div class="ttdef"><b>Definition:</b> hideable.hpp:29</div></div>
 <div class="ttc" id="aclassox_1_1Widget_html"><div class="ttname"><a href="classox_1_1Widget.html">ox::Widget</a></div><div class="ttdef"><b>Definition:</b> widget.hpp:31</div></div>
 <div class="ttc" id="astructox_1_1Pair_html"><div class="ttname"><a href="structox_1_1Pair.html">ox::Pair</a></div><div class="ttdoc">Heterogeneous pair of Widgets within a Layout.</div><div class="ttdef"><b>Definition:</b> pair.hpp:14</div></div>
 </div><!-- fragment --></div><!-- contents -->

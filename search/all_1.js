@@ -2,10 +2,10 @@ var searchData=
 [
   ['background_5fcolor_18',['Background_color',['../structox_1_1Background__color.html',1,'ox']]],
   ['banner_19',['Banner',['../classox_1_1Banner.html',1,'ox']]],
-  ['bar_20',['bar',['../classox_1_1Accordion.html#a7b110abd72bc6b57eff1e2e0821427f2',1,'ox::Accordion']]],
+  ['bar_20',['bar',['../classox_1_1Accordion.html#a74f0b3363a8a4a468cf7d1604decf491',1,'ox::Accordion::bar() const -&gt; Bar_t const &amp;'],['../classox_1_1Accordion.html#a7b110abd72bc6b57eff1e2e0821427f2',1,'ox::Accordion::bar() -&gt; Bar_t &amp;']]],
   ['bar_21',['Bar',['../classox_1_1Bar.html',1,'ox']]],
   ['basic_5fqueue_22',['Basic_queue',['../classox_1_1detail_1_1Basic__queue.html',1,'ox::detail']]],
-  ['begin_23',['begin',['../classox_1_1detail_1_1Canvas.html#ac3fafa6c89a8f5499b94721e814932aa',1,'ox::detail::Canvas::begin() const -&gt; Buffer_t::const_iterator'],['../classox_1_1detail_1_1Canvas.html#a2d0f0dcf947dbaaf341a2adc863438b0',1,'ox::detail::Canvas::begin() -&gt; Buffer_t::iterator'],['../classox_1_1Timer.html#a9f94b2846be6d1c7173063fee9630ed3',1,'ox::Timer::begin()'],['../structox_1_1Range.html#a190a74f452e04c664ec06f77ca098afc',1,'ox::Range::begin()']]],
+  ['begin_23',['begin',['../classox_1_1detail_1_1Canvas.html#a2d0f0dcf947dbaaf341a2adc863438b0',1,'ox::detail::Canvas::begin() -&gt; Buffer_t::iterator'],['../classox_1_1detail_1_1Canvas.html#ac3fafa6c89a8f5499b94721e814932aa',1,'ox::detail::Canvas::begin() const -&gt; Buffer_t::const_iterator'],['../classox_1_1Timer.html#a9f94b2846be6d1c7173063fee9630ed3',1,'ox::Timer::begin()'],['../structox_1_1Range.html#a190a74f452e04c664ec06f77ca098afc',1,'ox::Range::begin()']]],
   ['begin_5fmax_24',['begin_max',['../classox_1_1layout_1_1detail_1_1Layout__span.html#ae2c9e5ad9cf977563be6ddb8a192cf10',1,'ox::layout::detail::Layout_span']]],
   ['begin_5fmin_25',['begin_min',['../classox_1_1layout_1_1detail_1_1Layout__span.html#adfb40c3e2f42cd8f7be920ae30d53467',1,'ox::layout::detail::Layout_span']]],
   ['border_26',['border',['../classox_1_1Bordered.html#ace847b98831ba4501f48ec09bb644908',1,'ox::Bordered']]],

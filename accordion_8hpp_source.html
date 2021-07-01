@@ -272,79 +272,85 @@ $(function() {
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
 <div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="classox_1_1Accordion.html#ae0ded31225e67b50fefd7f9d45203287">  207</a></span>&#160;    [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classox_1_1Accordion.html#ae0ded31225e67b50fefd7f9d45203287">wrapped</a>() -&gt; Widget_t&amp; { <span class="keywordflow">return</span> wrapped_; }</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
-<div class="line"><a name="l00210"></a><span class="lineno"><a class="line" href="classox_1_1Accordion.html#a7b110abd72bc6b57eff1e2e0821427f2">  210</a></span>&#160;    [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classox_1_1Accordion.html#a7b110abd72bc6b57eff1e2e0821427f2">bar</a>() -&gt; <a class="code" href="classox_1_1Bar.html">Bar_t</a>&amp; { <span class="keywordflow">return</span> bar_; }</div>
+<div class="line"><a name="l00210"></a><span class="lineno"><a class="line" href="classox_1_1Accordion.html#aa9c7fca24c80bd9b509def017a585281">  210</a></span>&#160;    [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classox_1_1Accordion.html#aa9c7fca24c80bd9b509def017a585281">wrapped</a>() const -&gt; Widget_t const&amp; { <span class="keywordflow">return</span> wrapped_; }</div>
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    Bar_t&amp; bar_;</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    Widget_t&amp; wrapped_;</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="keywordtype">bool</span> expanded_                     = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    std::unique_ptr&lt;Widget&gt; w_storage_ = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="keyword">static</span> <span class="keyword">auto</span> constexpr wrapped_index_ =</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        position == Bar_position::First ? 1 : 0;</div>
+<div class="line"><a name="l00213"></a><span class="lineno"><a class="line" href="classox_1_1Accordion.html#a7b110abd72bc6b57eff1e2e0821427f2">  213</a></span>&#160;    [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classox_1_1Accordion.html#a7b110abd72bc6b57eff1e2e0821427f2">bar</a>() -&gt; <a class="code" href="classox_1_1Bar.html">Bar_t</a>&amp; { <span class="keywordflow">return</span> bar_; }</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno"><a class="line" href="classox_1_1Accordion.html#a74f0b3363a8a4a468cf7d1604decf491">  216</a></span>&#160;    [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classox_1_1Accordion.html#a74f0b3363a8a4a468cf7d1604decf491">bar</a>() const -&gt; <a class="code" href="classox_1_1Bar.html">Bar_t</a> const&amp; { <span class="keywordflow">return</span> bar_; }</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160; </div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    Bar_t&amp; bar_;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    Widget_t&amp; wrapped_;</div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; </div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="keyword">static</span> <span class="keyword">auto</span> constexpr is_vertical = layout::is_vertical_v&lt;Layout_t&lt;Widget&gt;&gt;;</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keywordtype">void</span> reinsert_wrapped()</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    {</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        <span class="keywordflow">if</span> (w_storage_ == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        this-&gt;insert_child(std::move(w_storage_), wrapped_index_);</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        w_storage_ = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    }</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="keywordtype">void</span> extract_wrapped()</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    {</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        <span class="keywordflow">if</span> (w_storage_ == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            w_storage_ = this-&gt;remove_child_at(wrapped_index_);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="keywordtype">bool</span> expanded_                     = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    std::unique_ptr&lt;Widget&gt; w_storage_ = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keyword">static</span> <span class="keyword">auto</span> constexpr wrapped_index_ =</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        position == Bar_position::First ? 1 : 0;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="keyword">static</span> <span class="keyword">auto</span> constexpr is_vertical = layout::is_vertical_v&lt;Layout_t&lt;Widget&gt;&gt;;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="keywordtype">void</span> reinsert_wrapped()</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    {</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        <span class="keywordflow">if</span> (w_storage_ == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        this-&gt;insert_child(std::move(w_storage_), wrapped_index_);</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        w_storage_ = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    }</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;};</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">template</span> &lt;<span class="keyword">typename</span>&gt; <span class="keyword">typename</span> Layout_t,</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;          <span class="keyword">typename</span> Widget_t,</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;          Bar_position position = Bar_position::First,</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;          <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;[[nodiscard]] <span class="keyword">auto</span> accordion(Args&amp;&amp;... args)</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    -&gt; std::unique_ptr&lt;Accordion&lt;Layout_t, Widget_t, position&gt;&gt;</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;{</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;Accordion&lt;Layout_t, Widget_t, position&gt;&gt;(</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        std::forward&lt;Args&gt;(args)...);</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;}</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> W<span class="keywordtype">id</span>get_t, Bar_position position = Bar_position::First&gt;</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="keyword">using</span> HAccordion = Accordion&lt;layout::Horizontal, Widget_t, position&gt;;</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Widget_t,</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;          Bar_position position = Bar_position::First,</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;          <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;[[nodiscard]] <span class="keyword">auto</span> haccordion(Args&amp;&amp;... args)</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    -&gt; std::unique_ptr&lt;HAccordion&lt;Widget_t, position&gt;&gt;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;{</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;HAccordion&lt;Widget_t, position&gt;&gt;(</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        std::forward&lt;Args&gt;(args)...);</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;}</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> W<span class="keywordtype">id</span>get_t, Bar_position position = Bar_position::First&gt;</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="keyword">using</span> VAccordion = Accordion&lt;layout::Vertical, Widget_t, position&gt;;</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Widget_t,</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;          Bar_position position = Bar_position::First,</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;          <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;[[nodiscard]] <span class="keyword">auto</span> vaccordion(Args&amp;&amp;... args)</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    -&gt; std::unique_ptr&lt;VAccordion&lt;Widget_t, position&gt;&gt;</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;{</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;VAccordion&lt;Widget_t, position&gt;&gt;(</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        std::forward&lt;Args&gt;(args)...);</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;}</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;}  <span class="comment">// namespace ox</span></div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_WIDGET_WIDGETS_ACCORDION_HPP</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; </div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="keywordtype">void</span> extract_wrapped()</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    {</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        <span class="keywordflow">if</span> (w_storage_ == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            w_storage_ = this-&gt;remove_child_at(wrapped_index_);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    }</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;};</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">template</span> &lt;<span class="keyword">typename</span>&gt; <span class="keyword">typename</span> Layout_t,</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;          <span class="keyword">typename</span> Widget_t,</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;          Bar_position position = Bar_position::First,</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;          <span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;[[nodiscard]] <span class="keyword">auto</span> accordion(Args&amp;&amp;... args)</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    -&gt; std::unique_ptr&lt;Accordion&lt;Layout_t, Widget_t, position&gt;&gt;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;{</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;Accordion&lt;Layout_t, Widget_t, position&gt;&gt;(</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        std::forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;}</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> W<span class="keywordtype">id</span>get_t, Bar_position position = Bar_position::First&gt;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="keyword">using</span> HAccordion = Accordion&lt;layout::Horizontal, Widget_t, position&gt;;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Widget_t,</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;          Bar_position position = Bar_position::First,</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;          <span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;[[nodiscard]] <span class="keyword">auto</span> haccordion(Args&amp;&amp;... args)</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    -&gt; std::unique_ptr&lt;HAccordion&lt;Widget_t, position&gt;&gt;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;{</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;HAccordion&lt;Widget_t, position&gt;&gt;(</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        std::forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;}</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> W<span class="keywordtype">id</span>get_t, Bar_position position = Bar_position::First&gt;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="keyword">using</span> VAccordion = Accordion&lt;layout::Vertical, Widget_t, position&gt;;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Widget_t,</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;          Bar_position position = Bar_position::First,</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;          <span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;[[nodiscard]] <span class="keyword">auto</span> vaccordion(Args&amp;&amp;... args)</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    -&gt; std::unique_ptr&lt;VAccordion&lt;Widget_t, position&gt;&gt;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;{</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    <span class="keywordflow">return</span> std::make_unique&lt;VAccordion&lt;Widget_t, position&gt;&gt;(</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        std::forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;}</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;}  <span class="comment">// namespace ox</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_WIDGET_WIDGETS_ACCORDION_HPP</span></div>
 <div class="ttc" id="aclassox_1_1Accordion_html"><div class="ttname"><a href="classox_1_1Accordion.html">ox::Accordion</a></div><div class="ttdef"><b>Definition:</b> accordion.hpp:148</div></div>
 <div class="ttc" id="aclassox_1_1Accordion_html_a04e07dbf68875d5c9cacd63211e779de"><div class="ttname"><a href="classox_1_1Accordion.html#a04e07dbf68875d5c9cacd63211e779de">ox::Accordion::expand</a></div><div class="ttdeci">void expand()</div><div class="ttdoc">Enable the wrapped Widget.</div><div class="ttdef"><b>Definition:</b> accordion.hpp:181</div></div>
-<div class="ttc" id="aclassox_1_1Accordion_html_a7b110abd72bc6b57eff1e2e0821427f2"><div class="ttname"><a href="classox_1_1Accordion.html#a7b110abd72bc6b57eff1e2e0821427f2">ox::Accordion::bar</a></div><div class="ttdeci">auto bar() -&gt; Bar_t &amp;</div><div class="ttdoc">Return the titled Bar widget.</div><div class="ttdef"><b>Definition:</b> accordion.hpp:210</div></div>
+<div class="ttc" id="aclassox_1_1Accordion_html_a74f0b3363a8a4a468cf7d1604decf491"><div class="ttname"><a href="classox_1_1Accordion.html#a74f0b3363a8a4a468cf7d1604decf491">ox::Accordion::bar</a></div><div class="ttdeci">auto bar() const -&gt; Bar_t const &amp;</div><div class="ttdoc">Return the titled Bar widget.</div><div class="ttdef"><b>Definition:</b> accordion.hpp:216</div></div>
+<div class="ttc" id="aclassox_1_1Accordion_html_a7b110abd72bc6b57eff1e2e0821427f2"><div class="ttname"><a href="classox_1_1Accordion.html#a7b110abd72bc6b57eff1e2e0821427f2">ox::Accordion::bar</a></div><div class="ttdeci">auto bar() -&gt; Bar_t &amp;</div><div class="ttdoc">Return the titled Bar widget.</div><div class="ttdef"><b>Definition:</b> accordion.hpp:213</div></div>
 <div class="ttc" id="aclassox_1_1Accordion_html_a999c73cea5ebeb52b91215f1e407b337"><div class="ttname"><a href="classox_1_1Accordion.html#a999c73cea5ebeb52b91215f1e407b337">ox::Accordion::Accordion</a></div><div class="ttdeci">Accordion(Parameters p, Args &amp;&amp;... args)</div><div class="ttdoc">Create an Accordion with args... going to Widget_t constructor.</div><div class="ttdef"><b>Definition:</b> accordion.hpp:166</div></div>
+<div class="ttc" id="aclassox_1_1Accordion_html_aa9c7fca24c80bd9b509def017a585281"><div class="ttname"><a href="classox_1_1Accordion.html#aa9c7fca24c80bd9b509def017a585281">ox::Accordion::wrapped</a></div><div class="ttdeci">auto wrapped() const -&gt; Widget_t const &amp;</div><div class="ttdoc">Return the wrapped widget.</div><div class="ttdef"><b>Definition:</b> accordion.hpp:210</div></div>
 <div class="ttc" id="aclassox_1_1Accordion_html_ac81a4e91add31bc6eb22f5ea90534581"><div class="ttname"><a href="classox_1_1Accordion.html#ac81a4e91add31bc6eb22f5ea90534581">ox::Accordion::collapse</a></div><div class="ttdeci">void collapse()</div><div class="ttdoc">Disable the wrapped Widget.</div><div class="ttdef"><b>Definition:</b> accordion.hpp:190</div></div>
 <div class="ttc" id="aclassox_1_1Accordion_html_ae0ded31225e67b50fefd7f9d45203287"><div class="ttname"><a href="classox_1_1Accordion.html#ae0ded31225e67b50fefd7f9d45203287">ox::Accordion::wrapped</a></div><div class="ttdeci">auto wrapped() -&gt; Widget_t &amp;</div><div class="ttdoc">Return the wrapped widget.</div><div class="ttdef"><b>Definition:</b> accordion.hpp:207</div></div>
 <div class="ttc" id="aclassox_1_1Bar_html"><div class="ttname"><a href="classox_1_1Bar.html">ox::Bar</a></div><div class="ttdoc">Layout_t is the Layout to use for the Bar, not Accordion.</div><div class="ttdef"><b>Definition:</b> accordion.hpp:25</div></div>

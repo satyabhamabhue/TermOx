@@ -309,140 +309,140 @@ $(function() {
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    std::size_t end_;</div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;};</div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
-<div class="line"><a name="l00247"></a><span class="lineno"><a class="line" href="classox_1_1animator_1_1Random.html">  247</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1animator_1_1Random.html">Random</a> : <span class="keyword">public</span> <a class="code" href="classox_1_1animator_1_1Animator__base.html">Animator_base</a> {</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> operator()() -&gt; <a class="code" href="classox_1_1IP__range.html">IP_range</a>;</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="keywordtype">void</span> set_text_length(std::size_t x);</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    std::size_t end_;</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;};</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
-<div class="line"><a name="l00257"></a><span class="lineno"><a class="line" href="classox_1_1animator_1_1Scroll__base.html">  257</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1animator_1_1Scroll__base.html">Scroll_base</a> : <span class="keyword">public</span> <a class="code" href="classox_1_1animator_1_1Animator__base.html">Animator_base</a> {</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> operator()() -&gt; <a class="code" href="classox_1_1IP__range.html">IP_range</a>;</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keywordtype">void</span> set_text_length(std::size_t x);</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordtype">void</span> set_max_length(std::size_t x);</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;   <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    std::size_t begin_ = 0;</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    std::size_t hold_  = 0;</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keywordtype">void</span> reset_hold_length();</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    std::size_t hold_length_;</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;};</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160; </div>
-<div class="line"><a name="l00276"></a><span class="lineno"><a class="line" href="classox_1_1animator_1_1Scroll.html">  276</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1animator_1_1Scroll.html">Scroll</a> : <span class="keyword">public</span> <a class="code" href="classox_1_1animator_1_1Scroll__base.html">Scroll_base</a> {</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="keywordtype">void</span> set_text_length(std::size_t x);</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;};</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
-<div class="line"><a name="l00281"></a><span class="lineno"><a class="line" href="classox_1_1animator_1_1Conditional__scroll.html">  281</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1animator_1_1Conditional__scroll.html">Conditional_scroll</a> : <span class="keyword">public</span> <a class="code" href="classox_1_1animator_1_1Scroll__base.html">Scroll_base</a> {</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    <span class="keywordtype">void</span> set_text_length(std::size_t x);</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160; </div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    <span class="keywordtype">void</span> set_max_length(std::size_t x);</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> start_condition() <span class="keyword">const</span> -&gt; bool;</div>
+<div class="line"><a name="l00248"></a><span class="lineno"><a class="line" href="classox_1_1animator_1_1Random.html">  248</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1animator_1_1Random.html">Random</a> : <span class="keyword">public</span> <a class="code" href="classox_1_1animator_1_1Animator__base.html">Animator_base</a> {</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> operator()() -&gt; <a class="code" href="classox_1_1IP__range.html">IP_range</a>;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="keywordtype">void</span> set_text_length(std::size_t x);</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    std::size_t end_;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;};</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
+<div class="line"><a name="l00258"></a><span class="lineno"><a class="line" href="classox_1_1animator_1_1Scroll__base.html">  258</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1animator_1_1Scroll__base.html">Scroll_base</a> : <span class="keyword">public</span> <a class="code" href="classox_1_1animator_1_1Animator__base.html">Animator_base</a> {</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> operator()() -&gt; <a class="code" href="classox_1_1IP__range.html">IP_range</a>;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <span class="keywordtype">void</span> set_text_length(std::size_t x);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="keywordtype">void</span> set_max_length(std::size_t x);</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;   <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    std::size_t begin_ = 0;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    std::size_t hold_  = 0;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <span class="keywordtype">void</span> reset_hold_length();</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    std::size_t hold_length_;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;};</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
+<div class="line"><a name="l00278"></a><span class="lineno"><a class="line" href="classox_1_1animator_1_1Scroll.html">  278</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1animator_1_1Scroll.html">Scroll</a> : <span class="keyword">public</span> <a class="code" href="classox_1_1animator_1_1Scroll__base.html">Scroll_base</a> {</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="keywordtype">void</span> set_text_length(std::size_t x);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;};</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
+<div class="line"><a name="l00284"></a><span class="lineno"><a class="line" href="classox_1_1animator_1_1Conditional__scroll.html">  284</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1animator_1_1Conditional__scroll.html">Conditional_scroll</a> : <span class="keyword">public</span> <a class="code" href="classox_1_1animator_1_1Scroll__base.html">Scroll_base</a> {</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="keywordtype">void</span> set_text_length(std::size_t x);</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="keywordtype">void</span> set_max_length(std::size_t x);</div>
 <div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160; </div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> stop_condition() <span class="keyword">const</span> -&gt; bool;</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; </div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="keywordtype">void</span> stop_and_reset();</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;};</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> start_condition() <span class="keyword">const</span> -&gt; bool;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> stop_condition() <span class="keyword">const</span> -&gt; bool;</div>
 <div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
-<div class="line"><a name="l00295"></a><span class="lineno"><a class="line" href="classox_1_1animator_1_1Unscramble.html">  295</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1animator_1_1Unscramble.html">Unscramble</a> : <span class="keyword">public</span> <a class="code" href="classox_1_1animator_1_1Animator__base.html">Animator_base</a> {</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> operator()() -&gt; <a class="code" href="classox_1_1IP__range.html">IP_range</a>;</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    <span class="keywordtype">void</span> set_text_length(std::size_t x);</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160; </div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="keywordtype">int</span> sorted_to_;</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <span class="keywordtype">void</span> initialize_data();</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;};</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="keywordtype">void</span> stop_and_reset();</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;};</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160; </div>
+<div class="line"><a name="l00299"></a><span class="lineno"><a class="line" href="classox_1_1animator_1_1Unscramble.html">  299</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1animator_1_1Unscramble.html">Unscramble</a> : <span class="keyword">public</span> <a class="code" href="classox_1_1animator_1_1Animator__base.html">Animator_base</a> {</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> operator()() -&gt; <a class="code" href="classox_1_1IP__range.html">IP_range</a>;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="keywordtype">void</span> set_text_length(std::size_t x);</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160; </div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    <span class="keywordtype">int</span> sorted_to_;</div>
 <div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;}  <span class="comment">// namespace ox::animator</span></div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="keyword">namespace </span>ox {</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keywordtype">void</span> initialize_data();</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;};</div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;<span class="keyword">using</span> <a class="code" href="classox_1_1Banner.html">Scan_banner</a> = <a class="code" href="classox_1_1Banner.html">Banner&lt;animator::Scan&gt;</a>;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;}  <span class="comment">// namespace ox::animator</span></div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160; </div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;[[nodiscard]] <span class="keyword">auto</span> scan_banner(</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <a class="code" href="classox_1_1Glyph__string.html">Glyph_string</a> text                = U<span class="stringliteral">&quot;&quot;</span>,</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    Scan_banner::Interval_t interval = std::chrono::milliseconds{50},</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    animator::Scan animator = animator::Scan{}) -&gt; std::unique_ptr&lt;Scan_banner&gt;;</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;[[nodiscard]] <span class="keyword">auto</span> scan_banner(Scan_banner::Parameters p)</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    -&gt; std::unique_ptr&lt;Scan_banner&gt;;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;<span class="keyword">namespace </span>ox {</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;<span class="keyword">using</span> <a class="code" href="classox_1_1Banner.html">Scan_banner</a> = <a class="code" href="classox_1_1Banner.html">Banner&lt;animator::Scan&gt;</a>;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;[[nodiscard]] <span class="keyword">auto</span> scan_banner(</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    <a class="code" href="classox_1_1Glyph__string.html">Glyph_string</a> text                = U<span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    Scan_banner::Interval_t interval = std::chrono::milliseconds{50},</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    animator::Scan animator = animator::Scan{}) -&gt; std::unique_ptr&lt;Scan_banner&gt;;</div>
 <div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;<span class="keyword">using</span> Persistent_scan_banner = Banner&lt;animator::Persistent_scan&gt;;</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;[[nodiscard]] <span class="keyword">auto</span> persistent_scan_banner(</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    Glyph_string text                           = U<span class="stringliteral">&quot;&quot;</span>,</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    Persistent_scan_banner::Interval_t interval = std::chrono::milliseconds{50},</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    animator::Persistent_scan animator          = animator::Persistent_scan{})</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    -&gt; std::unique_ptr&lt;Persistent_scan_banner&gt;;</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;[[nodiscard]] <span class="keyword">auto</span> persistent_scan_banner(Persistent_scan_banner::Parameters p)</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;[[nodiscard]] <span class="keyword">auto</span> scan_banner(Scan_banner::Parameters p)</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    -&gt; std::unique_ptr&lt;Scan_banner&gt;;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; </div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;<span class="keyword">using</span> Persistent_scan_banner = Banner&lt;animator::Persistent_scan&gt;;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;[[nodiscard]] <span class="keyword">auto</span> persistent_scan_banner(</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    Glyph_string text                           = U<span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    Persistent_scan_banner::Interval_t interval = std::chrono::milliseconds{50},</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    animator::Persistent_scan animator          = animator::Persistent_scan{})</div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    -&gt; std::unique_ptr&lt;Persistent_scan_banner&gt;;</div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="keyword">using</span> Random_banner = Banner&lt;animator::Random&gt;;</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160; </div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;[[nodiscard]] <span class="keyword">auto</span> random_banner(</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    Glyph_string text                  = U<span class="stringliteral">&quot;&quot;</span>,</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    Random_banner::Interval_t interval = std::chrono::milliseconds{50},</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    animator::Random animator          = animator::Random{})</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    -&gt; std::unique_ptr&lt;Random_banner&gt;;</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160; </div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;[[nodiscard]] <span class="keyword">auto</span> random_banner(Random_banner::Parameters p)</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;[[nodiscard]] <span class="keyword">auto</span> persistent_scan_banner(Persistent_scan_banner::Parameters p)</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    -&gt; std::unique_ptr&lt;Persistent_scan_banner&gt;;</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160; </div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<span class="keyword">using</span> Random_banner = Banner&lt;animator::Random&gt;;</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; </div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;[[nodiscard]] <span class="keyword">auto</span> random_banner(</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    Glyph_string text                  = U<span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    Random_banner::Interval_t interval = std::chrono::milliseconds{50},</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    animator::Random animator          = animator::Random{})</div>
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    -&gt; std::unique_ptr&lt;Random_banner&gt;;</div>
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160; </div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="keyword">using</span> Scroll_banner = Banner&lt;animator::Scroll&gt;;</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;[[nodiscard]] <span class="keyword">auto</span> scroll_banner(</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    Glyph_string text                  = U<span class="stringliteral">&quot;&quot;</span>,</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    Scroll_banner::Interval_t interval = std::chrono::milliseconds{50},</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    animator::Scroll animator          = animator::Scroll{})</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    -&gt; std::unique_ptr&lt;Scroll_banner&gt;;</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160; </div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;[[nodiscard]] <span class="keyword">auto</span> scroll_banner(Scroll_banner::Parameters p)</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;[[nodiscard]] <span class="keyword">auto</span> random_banner(Random_banner::Parameters p)</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    -&gt; std::unique_ptr&lt;Random_banner&gt;;</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;<span class="keyword">using</span> Scroll_banner = Banner&lt;animator::Scroll&gt;;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160; </div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;[[nodiscard]] <span class="keyword">auto</span> scroll_banner(</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    Glyph_string text                  = U<span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    Scroll_banner::Interval_t interval = std::chrono::milliseconds{50},</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    animator::Scroll animator          = animator::Scroll{})</div>
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    -&gt; std::unique_ptr&lt;Scroll_banner&gt;;</div>
 <div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160; </div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="keyword">using</span> Conditional_scroll_banner = Banner&lt;animator::Conditional_scroll&gt;;</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160; </div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;[[nodiscard]] <span class="keyword">auto</span> conditional_scroll_banner(</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    Glyph_string text = U<span class="stringliteral">&quot;&quot;</span>,</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    Conditional_scroll_banner::Interval_t interval =</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        std::chrono::milliseconds{50},</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    animator::Conditional_scroll animator = animator::Conditional_scroll{})</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    -&gt; std::unique_ptr&lt;Conditional_scroll_banner&gt;;</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160; </div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;[[nodiscard]] <span class="keyword">auto</span> conditional_scroll_banner(</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    Conditional_scroll_banner::Parameters p)</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    -&gt; std::unique_ptr&lt;Conditional_scroll_banner&gt;;</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160; </div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="keyword">using</span> Unscramble_banner = Banner&lt;animator::Unscramble&gt;;</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160; </div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;[[nodiscard]] <span class="keyword">auto</span> unscramble_banner(</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    Glyph_string text                      = U<span class="stringliteral">&quot;&quot;</span>,</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    Unscramble_banner::Interval_t interval = std::chrono::milliseconds{50},</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    animator::Unscramble animator          = animator::Unscramble{})</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    -&gt; std::unique_ptr&lt;Unscramble_banner&gt;;</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160; </div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;[[nodiscard]] <span class="keyword">auto</span> unscramble_banner(Unscramble_banner::Parameters p)</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;[[nodiscard]] <span class="keyword">auto</span> scroll_banner(Scroll_banner::Parameters p)</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    -&gt; std::unique_ptr&lt;Scroll_banner&gt;;</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160; </div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="keyword">using</span> Conditional_scroll_banner = Banner&lt;animator::Conditional_scroll&gt;;</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160; </div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;[[nodiscard]] <span class="keyword">auto</span> conditional_scroll_banner(</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    Glyph_string text = U<span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    Conditional_scroll_banner::Interval_t interval =</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        std::chrono::milliseconds{50},</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    animator::Conditional_scroll animator = animator::Conditional_scroll{})</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    -&gt; std::unique_ptr&lt;Conditional_scroll_banner&gt;;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160; </div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;[[nodiscard]] <span class="keyword">auto</span> conditional_scroll_banner(</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    Conditional_scroll_banner::Parameters p)</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    -&gt; std::unique_ptr&lt;Conditional_scroll_banner&gt;;</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160; </div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;<span class="keyword">using</span> Unscramble_banner = Banner&lt;animator::Unscramble&gt;;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160; </div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;[[nodiscard]] <span class="keyword">auto</span> unscramble_banner(</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    Glyph_string text                      = U<span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    Unscramble_banner::Interval_t interval = std::chrono::milliseconds{50},</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    animator::Unscramble animator          = animator::Unscramble{})</div>
 <div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    -&gt; std::unique_ptr&lt;Unscramble_banner&gt;;</div>
 <div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160; </div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;}  <span class="comment">// namespace ox</span></div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_WIDGET_WIDGETS_BANNER_HPP</span></div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;[[nodiscard]] <span class="keyword">auto</span> unscramble_banner(Unscramble_banner::Parameters p)</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    -&gt; std::unique_ptr&lt;Unscramble_banner&gt;;</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160; </div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;}  <span class="comment">// namespace ox</span></div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_WIDGET_WIDGETS_BANNER_HPP</span></div>
 <div class="ttc" id="aclassox_1_1Banner_html"><div class="ttname"><a href="classox_1_1Banner.html">ox::Banner</a></div><div class="ttdoc">Animated Text Line/Label.</div><div class="ttdef"><b>Definition:</b> banner.hpp:45</div></div>
 <div class="ttc" id="aclassox_1_1Banner_html_a1fd045ef410897d8764fb62b92b1f35e"><div class="ttname"><a href="classox_1_1Banner.html#a1fd045ef410897d8764fb62b92b1f35e">ox::Banner::paint_event</a></div><div class="ttdeci">auto paint_event(Painter &amp;p) -&gt; bool override</div><div class="ttdoc">Handles Paint_event objects.</div><div class="ttdef"><b>Definition:</b> banner.hpp:108</div></div>
 <div class="ttc" id="aclassox_1_1Banner_html_a44a0036bc07b23abbb68958e78fed79c"><div class="ttname"><a href="classox_1_1Banner.html#a44a0036bc07b23abbb68958e78fed79c">ox::Banner::resize_event</a></div><div class="ttdeci">auto resize_event(Area new_size, Area old_size) -&gt; bool override</div><div class="ttdoc">Handles Resize_event objects.</div><div class="ttdef"><b>Definition:</b> banner.hpp:126</div></div>
@@ -461,13 +461,13 @@ $(function() {
 <div class="ttc" id="aclassox_1_1Widget_html_ad8c3788eda4c81e047f480496abb1676"><div class="ttname"><a href="classox_1_1Widget.html#ad8c3788eda4c81e047f480496abb1676">ox::Widget::disable_animation</a></div><div class="ttdeci">void disable_animation()</div><div class="ttdoc">Turn off animation, no more Timer_events will be sent to this Widget.</div><div class="ttdef"><b>Definition:</b> widget.cpp:155</div></div>
 <div class="ttc" id="aclassox_1_1animator_1_1Animator__base_html"><div class="ttname"><a href="classox_1_1animator_1_1Animator__base.html">ox::animator::Animator_base</a></div><div class="ttdef"><b>Definition:</b> banner.hpp:177</div></div>
 <div class="ttc" id="aclassox_1_1animator_1_1Animator__base_html_ac568b448df50b0ed9acd5885b6593f95"><div class="ttname"><a href="classox_1_1animator_1_1Animator__base.html#ac568b448df50b0ed9acd5885b6593f95">ox::animator::Animator_base::initialize_data</a></div><div class="ttdeci">void initialize_data()</div><div class="ttdoc">Incremented values, length of text.</div><div class="ttdef"><b>Definition:</b> banner.cpp:73</div></div>
-<div class="ttc" id="aclassox_1_1animator_1_1Conditional__scroll_html"><div class="ttname"><a href="classox_1_1animator_1_1Conditional__scroll.html">ox::animator::Conditional_scroll</a></div><div class="ttdef"><b>Definition:</b> banner.hpp:281</div></div>
+<div class="ttc" id="aclassox_1_1animator_1_1Conditional__scroll_html"><div class="ttname"><a href="classox_1_1animator_1_1Conditional__scroll.html">ox::animator::Conditional_scroll</a></div><div class="ttdoc">Same as Scroll if text length is longer that display length, else static.</div><div class="ttdef"><b>Definition:</b> banner.hpp:284</div></div>
 <div class="ttc" id="aclassox_1_1animator_1_1Persistent__scan_html"><div class="ttname"><a href="classox_1_1animator_1_1Persistent__scan.html">ox::animator::Persistent_scan</a></div><div class="ttdoc">Left to right reveal of text, then hold.</div><div class="ttdef"><b>Definition:</b> banner.hpp:237</div></div>
-<div class="ttc" id="aclassox_1_1animator_1_1Random_html"><div class="ttname"><a href="classox_1_1animator_1_1Random.html">ox::animator::Random</a></div><div class="ttdef"><b>Definition:</b> banner.hpp:247</div></div>
-<div class="ttc" id="aclassox_1_1animator_1_1Scan_html"><div class="ttname"><a href="classox_1_1animator_1_1Scan.html">ox::animator::Scan</a></div><div class="ttdoc">Left to right reveal of text, hold, left to right clearning of text.</div><div class="ttdef"><b>Definition:</b> banner.hpp:224</div></div>
-<div class="ttc" id="aclassox_1_1animator_1_1Scroll__base_html"><div class="ttname"><a href="classox_1_1animator_1_1Scroll__base.html">ox::animator::Scroll_base</a></div><div class="ttdef"><b>Definition:</b> banner.hpp:257</div></div>
-<div class="ttc" id="aclassox_1_1animator_1_1Scroll_html"><div class="ttname"><a href="classox_1_1animator_1_1Scroll.html">ox::animator::Scroll</a></div><div class="ttdef"><b>Definition:</b> banner.hpp:276</div></div>
-<div class="ttc" id="aclassox_1_1animator_1_1Unscramble_html"><div class="ttname"><a href="classox_1_1animator_1_1Unscramble.html">ox::animator::Unscramble</a></div><div class="ttdef"><b>Definition:</b> banner.hpp:295</div></div>
+<div class="ttc" id="aclassox_1_1animator_1_1Random_html"><div class="ttname"><a href="classox_1_1animator_1_1Random.html">ox::animator::Random</a></div><div class="ttdoc">Random indices are chosed and displayed one at a time.</div><div class="ttdef"><b>Definition:</b> banner.hpp:248</div></div>
+<div class="ttc" id="aclassox_1_1animator_1_1Scan_html"><div class="ttname"><a href="classox_1_1animator_1_1Scan.html">ox::animator::Scan</a></div><div class="ttdoc">Left to right reveal of text, hold, left to right clearing of text.</div><div class="ttdef"><b>Definition:</b> banner.hpp:224</div></div>
+<div class="ttc" id="aclassox_1_1animator_1_1Scroll__base_html"><div class="ttname"><a href="classox_1_1animator_1_1Scroll__base.html">ox::animator::Scroll_base</a></div><div class="ttdef"><b>Definition:</b> banner.hpp:258</div></div>
+<div class="ttc" id="aclassox_1_1animator_1_1Scroll_html"><div class="ttname"><a href="classox_1_1animator_1_1Scroll.html">ox::animator::Scroll</a></div><div class="ttdoc">Holds, then scrolls from left to right, then restarts.</div><div class="ttdef"><b>Definition:</b> banner.hpp:278</div></div>
+<div class="ttc" id="aclassox_1_1animator_1_1Unscramble_html"><div class="ttname"><a href="classox_1_1animator_1_1Unscramble.html">ox::animator::Unscramble</a></div><div class="ttdoc">Starts with scrambled text and sorts itself one Glyph at a time.</div><div class="ttdef"><b>Definition:</b> banner.hpp:299</div></div>
 <div class="ttc" id="astructox_1_1Banner_1_1Parameters_html"><div class="ttname"><a href="structox_1_1Banner_1_1Parameters.html">ox::Banner::Parameters</a></div><div class="ttdef"><b>Definition:</b> banner.hpp:49</div></div>
 <div class="ttc" id="astructox_1_1Index__and__position_html"><div class="ttname"><a href="structox_1_1Index__and__position.html">ox::Index_and_position</a></div><div class="ttdef"><b>Definition:</b> banner.hpp:19</div></div>
 </div><!-- fragment --></div><!-- contents -->

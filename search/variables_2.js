@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['focus_5fpolicy_1301',['focus_policy',['../classox_1_1Widget.html#afeb8b3a3141a10999f31243f71ca4394',1,'ox::Widget']]]
+  ['focus_5fpolicy_1311',['focus_policy',['../classox_1_1Widget.html#afeb8b3a3141a10999f31243f71ca4394',1,'ox::Widget']]]
 ];
