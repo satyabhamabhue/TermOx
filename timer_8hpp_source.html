@@ -81,41 +81,44 @@ $(function() {
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;   <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">using</span> Clock_t    = std::chrono::steady_clock;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">using</span> Time_point = Clock_t::time_point;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">using</span> Interval_t = std::chrono::milliseconds;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">using</span> Duration_t = std::chrono::milliseconds;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classox_1_1Timer.html#a48909fdbe6af1dc1668e81759b3e76fb">Timer</a>(Interval_t interval);</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classox_1_1Timer.html#aea4c5573066dcb1e88344f13b31fefc1">   18</a></span>&#160;    <span class="keyword">explicit</span> constexpr <a class="code" href="classox_1_1Timer.html#aea4c5573066dcb1e88344f13b31fefc1">Timer</a>(Duration_t interval) : interval_{interval} {}</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classox_1_1Timer.html#a48909fdbe6af1dc1668e81759b3e76fb">Timer</a>(<a class="code" href="structox_1_1FPS.html">FPS</a> fps);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Timer.html#a9f94b2846be6d1c7173063fee9630ed3">begin</a>();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classox_1_1Timer.html#a8c543868d0a00345ac96a323b0c07ec9">   21</a></span>&#160;    <span class="keyword">explicit</span> constexpr <a class="code" href="classox_1_1Timer.html#a8c543868d0a00345ac96a323b0c07ec9">Timer</a>(<a class="code" href="structox_1_1FPS.html">FPS</a> fps)</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        : interval_{fps_to_period&lt;Duration_t&gt;(fps)}</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    {}</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Timer.html#a9f94b2846be6d1c7173063fee9630ed3">begin</a>();</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Timer.html#ae6a1ed6ed01a893c4a6d10de1a6bfc21">wait</a>();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Timer.html#a453adfa756eb7f8a6e8122d2eafd7d18">set_interval</a>(Interval_t interval);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classox_1_1Timer.html#ac6c1d8bb2b6bcb5d877c84771efaf0a1">get_interval</a>() <span class="keyword">const</span> -&gt; Interval_t;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    Interval_t interval_;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    Time_point last_time_;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> get_sleep_time() <span class="keyword">const</span> -&gt; Clock_t::duration;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;};</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}  <span class="comment">// namespace ox</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_COMMON_TIMER_HPP</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Timer.html#ae6a1ed6ed01a893c4a6d10de1a6bfc21">wait</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Timer.html#abb15633e7fbe1d72bdb4f8bd2788c6f6">set_interval</a>(Duration_t interval);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classox_1_1Timer.html#a7596926b31846cc9b4bfb3bf005bd9ca">get_interval</a>() const -&gt; Duration_t;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;   private:</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    Duration_t interval_;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    Time_point last_time_;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;   private:</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    [[nodiscard]] auto get_sleep_time() const -&gt; Clock_t::duration;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;};</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}  <span class="comment">// namespace ox</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_COMMON_TIMER_HPP</span></div>
 <div class="ttc" id="aclassox_1_1Timer_html"><div class="ttname"><a href="classox_1_1Timer.html">ox::Timer</a></div><div class="ttdoc">Timer class where begin() and wait() are used to block for a given interval.</div><div class="ttdef"><b>Definition:</b> timer.hpp:10</div></div>
-<div class="ttc" id="aclassox_1_1Timer_html_a453adfa756eb7f8a6e8122d2eafd7d18"><div class="ttname"><a href="classox_1_1Timer.html#a453adfa756eb7f8a6e8122d2eafd7d18">ox::Timer::set_interval</a></div><div class="ttdeci">void set_interval(Interval_t interval)</div><div class="ttdoc">Set the amount of time to wait for from begin().</div><div class="ttdef"><b>Definition:</b> timer.cpp:17</div></div>
-<div class="ttc" id="aclassox_1_1Timer_html_a48909fdbe6af1dc1668e81759b3e76fb"><div class="ttname"><a href="classox_1_1Timer.html#a48909fdbe6af1dc1668e81759b3e76fb">ox::Timer::Timer</a></div><div class="ttdeci">Timer(Interval_t interval)</div><div class="ttdoc">Construct a Timer with the given interval.</div><div class="ttdef"><b>Definition:</b> timer.cpp:9</div></div>
-<div class="ttc" id="aclassox_1_1Timer_html_a9f94b2846be6d1c7173063fee9630ed3"><div class="ttname"><a href="classox_1_1Timer.html#a9f94b2846be6d1c7173063fee9630ed3">ox::Timer::begin</a></div><div class="ttdeci">void begin()</div><div class="ttdoc">Start the timer, returns immediately.</div><div class="ttdef"><b>Definition:</b> timer.cpp:13</div></div>
-<div class="ttc" id="aclassox_1_1Timer_html_ac6c1d8bb2b6bcb5d877c84771efaf0a1"><div class="ttname"><a href="classox_1_1Timer.html#ac6c1d8bb2b6bcb5d877c84771efaf0a1">ox::Timer::get_interval</a></div><div class="ttdeci">auto get_interval() const -&gt; Interval_t</div><div class="ttdoc">Return the currently set interval.</div><div class="ttdef"><b>Definition:</b> timer.cpp:19</div></div>
-<div class="ttc" id="aclassox_1_1Timer_html_ae6a1ed6ed01a893c4a6d10de1a6bfc21"><div class="ttname"><a href="classox_1_1Timer.html#ae6a1ed6ed01a893c4a6d10de1a6bfc21">ox::Timer::wait</a></div><div class="ttdeci">void wait()</div><div class="ttdoc">Sleep until the time interval is over, from last begin() call.</div><div class="ttdef"><b>Definition:</b> timer.cpp:15</div></div>
-<div class="ttc" id="astructox_1_1FPS_html"><div class="ttname"><a href="structox_1_1FPS.html">ox::FPS</a></div><div class="ttdoc">Frames Per Second.</div><div class="ttdef"><b>Definition:</b> fps.hpp:6</div></div>
+<div class="ttc" id="aclassox_1_1Timer_html_a7596926b31846cc9b4bfb3bf005bd9ca"><div class="ttname"><a href="classox_1_1Timer.html#a7596926b31846cc9b4bfb3bf005bd9ca">ox::Timer::get_interval</a></div><div class="ttdeci">auto get_interval() const -&gt; Duration_t</div><div class="ttdoc">Return the currently set interval.</div><div class="ttdef"><b>Definition:</b> timer.cpp:15</div></div>
+<div class="ttc" id="aclassox_1_1Timer_html_a8c543868d0a00345ac96a323b0c07ec9"><div class="ttname"><a href="classox_1_1Timer.html#a8c543868d0a00345ac96a323b0c07ec9">ox::Timer::Timer</a></div><div class="ttdeci">constexpr Timer(FPS fps)</div><div class="ttdoc">Construct a Timer with the given FPS interval.</div><div class="ttdef"><b>Definition:</b> timer.hpp:21</div></div>
+<div class="ttc" id="aclassox_1_1Timer_html_a9f94b2846be6d1c7173063fee9630ed3"><div class="ttname"><a href="classox_1_1Timer.html#a9f94b2846be6d1c7173063fee9630ed3">ox::Timer::begin</a></div><div class="ttdeci">void begin()</div><div class="ttdoc">Start the timer, returns immediately.</div><div class="ttdef"><b>Definition:</b> timer.cpp:9</div></div>
+<div class="ttc" id="aclassox_1_1Timer_html_abb15633e7fbe1d72bdb4f8bd2788c6f6"><div class="ttname"><a href="classox_1_1Timer.html#abb15633e7fbe1d72bdb4f8bd2788c6f6">ox::Timer::set_interval</a></div><div class="ttdeci">void set_interval(Duration_t interval)</div><div class="ttdoc">Set the amount of time to wait for from begin().</div><div class="ttdef"><b>Definition:</b> timer.cpp:13</div></div>
+<div class="ttc" id="aclassox_1_1Timer_html_ae6a1ed6ed01a893c4a6d10de1a6bfc21"><div class="ttname"><a href="classox_1_1Timer.html#ae6a1ed6ed01a893c4a6d10de1a6bfc21">ox::Timer::wait</a></div><div class="ttdeci">void wait()</div><div class="ttdoc">Sleep until the time interval is over, from last begin() call.</div><div class="ttdef"><b>Definition:</b> timer.cpp:11</div></div>
+<div class="ttc" id="aclassox_1_1Timer_html_aea4c5573066dcb1e88344f13b31fefc1"><div class="ttname"><a href="classox_1_1Timer.html#aea4c5573066dcb1e88344f13b31fefc1">ox::Timer::Timer</a></div><div class="ttdeci">constexpr Timer(Duration_t interval)</div><div class="ttdoc">Construct a Timer with the given interval.</div><div class="ttdef"><b>Definition:</b> timer.hpp:18</div></div>
+<div class="ttc" id="astructox_1_1FPS_html"><div class="ttname"><a href="structox_1_1FPS.html">ox::FPS</a></div><div class="ttdoc">Frames Per Second.</div><div class="ttdef"><b>Definition:</b> fps.hpp:8</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

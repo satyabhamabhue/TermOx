@@ -127,33 +127,36 @@ $(function() {
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
 <div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classox_1_1Listener__thread.html#a6cba31caa2deae529220978a5db89570">   66</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Listener__thread.html#a6cba31caa2deae529220978a5db89570">exit</a>()</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keyword">auto</span> <span class="keyword">const</span> lock = std::lock_guard{mtx_};</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        exit_           = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="classox_1_1Listener__thread.html#ad25aaa031958d54890ec7925a3ac6289">   73</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Listener__thread.html#ad25aaa031958d54890ec7925a3ac6289">wait</a>()</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        fut_.wait();</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">if</span> (fut_.valid())</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            fut_.get();</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">bool</span> exit_   = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">bool</span> notify_ = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    Function_t action_;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    std::mutex mtx_;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    std::condition_variable cv_;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    std::future&lt;void&gt; fut_;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;};</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}  <span class="comment">// namespace ox</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_COMMON_LISTENER_THREAD_HPP</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keyword">auto</span> <span class="keyword">const</span> lock = std::lock_guard{mtx_};</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            exit_           = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        cv_.notify_one();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classox_1_1Listener__thread.html#ad25aaa031958d54890ec7925a3ac6289">   76</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classox_1_1Listener__thread.html#ad25aaa031958d54890ec7925a3ac6289">wait</a>()</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        fut_.wait();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">if</span> (fut_.valid())</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            fut_.get();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">bool</span> exit_   = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">bool</span> notify_ = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    Function_t action_;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    std::mutex mtx_;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    std::condition_variable cv_;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    std::future&lt;void&gt; fut_;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;};</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}  <span class="comment">// namespace ox</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_COMMON_LISTENER_THREAD_HPP</span></div>
 <div class="ttc" id="aclassox_1_1Listener__thread_html"><div class="ttname"><a href="classox_1_1Listener__thread.html">ox::Listener_thread</a></div><div class="ttdoc">Thread that waits to be notified, then performs some action.</div><div class="ttdef"><b>Definition:</b> listener_thread.hpp:16</div></div>
 <div class="ttc" id="aclassox_1_1Listener__thread_html_a22b56f003255b3a0f79167d53a5de7eb"><div class="ttname"><a href="classox_1_1Listener__thread.html#a22b56f003255b3a0f79167d53a5de7eb">ox::Listener_thread::notify</a></div><div class="ttdeci">void notify()</div><div class="ttdoc">Wakes up the thread and has it run the action once.</div><div class="ttdef"><b>Definition:</b> listener_thread.hpp:56</div></div>
 <div class="ttc" id="aclassox_1_1Listener__thread_html_a58fc56bfa3b6a9fafea7198bad71e0aa"><div class="ttname"><a href="classox_1_1Listener__thread.html#a58fc56bfa3b6a9fafea7198bad71e0aa">ox::Listener_thread::~Listener_thread</a></div><div class="ttdeci">~Listener_thread()</div><div class="ttdoc">Shutdown the listener thread.</div><div class="ttdef"><b>Definition:</b> listener_thread.hpp:26</div></div>
 <div class="ttc" id="aclassox_1_1Listener__thread_html_a6cba31caa2deae529220978a5db89570"><div class="ttname"><a href="classox_1_1Listener__thread.html#a6cba31caa2deae529220978a5db89570">ox::Listener_thread::exit</a></div><div class="ttdeci">void exit()</div><div class="ttdoc">Notify the thread to exit.</div><div class="ttdef"><b>Definition:</b> listener_thread.hpp:66</div></div>
-<div class="ttc" id="aclassox_1_1Listener__thread_html_ad25aaa031958d54890ec7925a3ac6289"><div class="ttname"><a href="classox_1_1Listener__thread.html#ad25aaa031958d54890ec7925a3ac6289">ox::Listener_thread::wait</a></div><div class="ttdeci">void wait()</div><div class="ttdoc">Blocks until the thread is dead.</div><div class="ttdef"><b>Definition:</b> listener_thread.hpp:73</div></div>
+<div class="ttc" id="aclassox_1_1Listener__thread_html_ad25aaa031958d54890ec7925a3ac6289"><div class="ttname"><a href="classox_1_1Listener__thread.html#ad25aaa031958d54890ec7925a3ac6289">ox::Listener_thread::wait</a></div><div class="ttdeci">void wait()</div><div class="ttdoc">Blocks until the thread is dead.</div><div class="ttdef"><b>Definition:</b> listener_thread.hpp:76</div></div>
 <div class="ttc" id="aclassox_1_1Listener__thread_html_ade8fb1c776f426fb886f16f7a27d7a05"><div class="ttname"><a href="classox_1_1Listener__thread.html#ade8fb1c776f426fb886f16f7a27d7a05">ox::Listener_thread::Listener_thread</a></div><div class="ttdeci">Listener_thread(Function_t &amp;&amp;action)</div><div class="ttdoc">Launch the listener thread.</div><div class="ttdef"><b>Definition:</b> listener_thread.hpp:21</div></div>
 <div class="ttc" id="aclassox_1_1Listener__thread_html_ae0471a3ca5fb56b7351c3fbc55204c73"><div class="ttname"><a href="classox_1_1Listener__thread.html#ae0471a3ca5fb56b7351c3fbc55204c73">ox::Listener_thread::launch</a></div><div class="ttdeci">void launch()</div><div class="ttdoc">Start the thread that will wait for notification.</div><div class="ttdef"><b>Definition:</b> listener_thread.hpp:34</div></div>
 </div><!-- fragment --></div><!-- contents -->

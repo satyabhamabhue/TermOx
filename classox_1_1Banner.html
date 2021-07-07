@@ -97,15 +97,15 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a816660330596ab6073013bae4fecf6d6"><td class="memItemLeft" align="right" valign="top"><a id="a816660330596ab6073013bae4fecf6d6"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>Interval_t</b> = std::chrono::milliseconds</td></tr>
-<tr class="separator:a816660330596ab6073013bae4fecf6d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a213ea3ce478b31dd039ee65d6baef313"><td class="memItemLeft" align="right" valign="top"><a id="a213ea3ce478b31dd039ee65d6baef313"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>Duration_t</b> = std::chrono::milliseconds</td></tr>
+<tr class="separator:a213ea3ce478b31dd039ee65d6baef313"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aeb24368e82e96cc1ff1af8c6c5110df7"><td class="memItemLeft" align="right" valign="top"><a id="aeb24368e82e96cc1ff1af8c6c5110df7"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Banner</b> (<a class="el" href="classox_1_1Glyph__string.html">Glyph_string</a> text=U&quot;&quot;, Interval_t interval=std::chrono::milliseconds{50}, Animator animator=Animator{})</td></tr>
-<tr class="separator:aeb24368e82e96cc1ff1af8c6c5110df7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4e6814fce07fd49c390d64d274f500c"><td class="memItemLeft" align="right" valign="top"><a id="ab4e6814fce07fd49c390d64d274f500c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Banner</b> (<a class="el" href="classox_1_1Glyph__string.html">Glyph_string</a> text=U&quot;&quot;, Duration_t interval=std::chrono::milliseconds{50}, Animator animator=Animator{})</td></tr>
+<tr class="separator:ab4e6814fce07fd49c390d64d274f500c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6bbed4e93106e013ff1d9fbaa96b8a5b"><td class="memItemLeft" align="right" valign="top"><a id="a6bbed4e93106e013ff1d9fbaa96b8a5b"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Banner</b> (<a class="el" href="structox_1_1Banner_1_1Parameters.html">Parameters</a> p)</td></tr>
 <tr class="separator:a6bbed4e93106e013ff1d9fbaa96b8a5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -115,12 +115,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_text</b> (<a clas
 <tr class="memitem:adb134e8a4f8337ec5f908b1f4671680b"><td class="memItemLeft" align="right" valign="top"><a id="adb134e8a4f8337ec5f908b1f4671680b"></a>
 auto&#160;</td><td class="memItemRight" valign="bottom"><b>text</b> () const noexcept -&gt; <a class="el" href="classox_1_1Glyph__string.html">Glyph_string</a> const &amp;</td></tr>
 <tr class="separator:adb134e8a4f8337ec5f908b1f4671680b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6cd3fa35b4381ed6554f054158b69e7c"><td class="memItemLeft" align="right" valign="top"><a id="a6cd3fa35b4381ed6554f054158b69e7c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_interval</b> (Interval_t interval)</td></tr>
-<tr class="separator:a6cd3fa35b4381ed6554f054158b69e7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22fb8f13e2e2b08d22a09d729fc6ac69"><td class="memItemLeft" align="right" valign="top"><a id="a22fb8f13e2e2b08d22a09d729fc6ac69"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><b>interval</b> () const noexcept -&gt; Interval_t</td></tr>
-<tr class="separator:a22fb8f13e2e2b08d22a09d729fc6ac69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19d97d860de03aebacca1d955c5b270b"><td class="memItemLeft" align="right" valign="top"><a id="a19d97d860de03aebacca1d955c5b270b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_interval</b> (Duration_t interval)</td></tr>
+<tr class="separator:a19d97d860de03aebacca1d955c5b270b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee50d136d8c004cb5d7e5a0ad329197a"><td class="memItemLeft" align="right" valign="top"><a id="aee50d136d8c004cb5d7e5a0ad329197a"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>interval</b> () const noexcept -&gt; Duration_t</td></tr>
+<tr class="separator:aee50d136d8c004cb5d7e5a0ad329197a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab93b4e860df9ef623d9b3054c51f487c"><td class="memItemLeft" align="right" valign="top"><a id="ab93b4e860df9ef623d9b3054c51f487c"></a>
 auto&#160;</td><td class="memItemRight" valign="bottom"><b>animator</b> () const noexcept -&gt; Animator const &amp;</td></tr>
 <tr class="separator:ab93b4e860df9ef623d9b3054c51f487c"><td class="memSeparator" colspan="2">&#160;</td></tr>

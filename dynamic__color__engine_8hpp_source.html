@@ -85,7 +85,7 @@ $(function() {
 <div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classox_1_1Dynamic__color__engine.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="classox_1_1Dynamic__color__engine.html">Dynamic_color_engine</a> : <span class="keyword">private</span> <a class="code" href="classox_1_1Lockable.html">Lockable</a>&lt;std::mutex&gt; {</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;   <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">using</span> Clock_t    = Timer::Clock_t;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">using</span> Interval_t = Timer::Interval_t;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">using</span> Duration_t = Timer::Duration_t;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">using</span> Time_point = Timer::Time_point;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
 <div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structox_1_1Dynamic__color__engine_1_1Registered__data.html">   21</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structox_1_1Dynamic__color__engine_1_1Registered__data.html">Registered_data</a> {</div>
@@ -94,7 +94,7 @@ $(function() {
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        Time_point last_event_time;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    };</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">static</span> <span class="keyword">auto</span> constexpr default_interval = Interval_t{100};</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">static</span> <span class="keyword">auto</span> constexpr default_interval = Duration_t{100};</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;   <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>

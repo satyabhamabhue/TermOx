@@ -5,7 +5,7 @@ var searchData=
   ['text_5fview_1265',['Text_view',['../classox_1_1Text__view.html#ad9a21dfd59275160e939b235d99942d6',1,'ox::Text_view']]],
   ['textbox_1266',['Textbox',['../classox_1_1Textbox.html#a96f73e7b9e1c0a57c946579257a8ae71',1,'ox::Textbox']]],
   ['textbox_5fbase_1267',['Textbox_base',['../classox_1_1detail_1_1Textbox__base.html#a2498f5a08708ec21e232244bd33d13ec',1,'ox::detail::Textbox_base']]],
-  ['timer_1268',['Timer',['../classox_1_1Timer.html#a48909fdbe6af1dc1668e81759b3e76fb',1,'ox::Timer::Timer(Interval_t interval)'],['../classox_1_1Timer.html#ae0a88c1637b57cda4e1777d8354c3dc7',1,'ox::Timer::Timer(FPS fps)']]],
+  ['timer_1268',['Timer',['../classox_1_1Timer.html#aea4c5573066dcb1e88344f13b31fefc1',1,'ox::Timer::Timer(Duration_t interval)'],['../classox_1_1Timer.html#a8c543868d0a00345ac96a323b0c07ec9',1,'ox::Timer::Timer(FPS fps)']]],
   ['timer_5fevent_1269',['timer_event',['../classox_1_1Widget.html#a8790b4516ad0b728f9b28dbe9549b4c1',1,'ox::Widget::timer_event()'],['../classox_1_1Banner.html#aec0f6a123e85004d4ec5e747dcda7b21',1,'ox::Banner::timer_event()'],['../classox_1_1Notify__light.html#a65de5edac356ed9ba5be79b874cfb8e4',1,'ox::Notify_light::timer_event()'],['../classox_1_1Spinner.html#a94960e2cf24fe129e65ee9e705bbe230',1,'ox::Spinner::timer_event()']]],
   ['timer_5fevent_5ffilter_1270',['timer_event_filter',['../classox_1_1Widget.html#aad529032ecb4dd4b630e426f3ae6f1de',1,'ox::Widget']]],
   ['titlebar_1271',['Titlebar',['../classox_1_1Titlebar.html#a430885fff7cde326ae5a1eb7763096ad',1,'ox::Titlebar::Titlebar(Glyph_string title_text=U&quot;&quot;)'],['../classox_1_1Titlebar.html#a6b283cc64d574276e4e2b6ac58b477cd',1,'ox::Titlebar::Titlebar(Parameters p)']]],

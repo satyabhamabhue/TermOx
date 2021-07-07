@@ -107,20 +107,20 @@ $(function() {
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">using</span> Value_t = std::pair&lt;Priority, T&gt;;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">struct </span>Compare {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        [[nodiscard]] <span class="keyword">auto</span> operator()(Value_t <span class="keyword">const</span>&amp; x, Value_t <span class="keyword">const</span>&amp; y) <span class="keyword">const</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            -&gt; <span class="keywordtype">bool</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="keywordflow">return</span> x.first &lt; y.first;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    };</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">using</span> Queue_t = std::priority_queue&lt;Value_t, std::vector&lt;Value_t&gt;, Compare&gt;;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    Queue_t queue_;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;};</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}  <span class="comment">// namespace ox</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_COMMON_PRIORITY_QUEUE_HPP</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">struct </span>Compare {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        [[nodiscard]] <span class="keyword">auto</span> operator()(Value_t <span class="keyword">const</span>&amp; x, Value_t <span class="keyword">const</span>&amp; y) <span class="keyword">const</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            -&gt; <span class="keywordtype">bool</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keywordflow">return</span> x.first &lt; y.first;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    };</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">using</span> Queue_t = std::priority_queue&lt;Value_t, std::vector&lt;Value_t&gt;, Compare&gt;;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    Queue_t queue_;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;};</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}  <span class="comment">// namespace ox</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// TERMOX_COMMON_PRIORITY_QUEUE_HPP</span></div>
 <div class="ttc" id="aclassox_1_1Priority__queue_html"><div class="ttname"><a href="classox_1_1Priority__queue.html">ox::Priority_queue</a></div><div class="ttdoc">Wraps std::priority_queue to attach an int priority type to stored objects.</div><div class="ttdef"><b>Definition:</b> priority_queue.hpp:14</div></div>
 <div class="ttc" id="aclassox_1_1Priority__queue_html_a1ff01d0d6e9147c59a4c554db6e3d648"><div class="ttname"><a href="classox_1_1Priority__queue.html#a1ff01d0d6e9147c59a4c554db6e3d648">ox::Priority_queue::top</a></div><div class="ttdeci">auto top() const -&gt; T const &amp;</div><div class="ttdoc">Returns a const reference to the element with the highest priority.</div><div class="ttdef"><b>Definition:</b> priority_queue.hpp:20</div></div>
 <div class="ttc" id="aclassox_1_1Priority__queue_html_a38d755769045cf3b6eb3e49a9b048388"><div class="ttname"><a href="classox_1_1Priority__queue.html#a38d755769045cf3b6eb3e49a9b048388">ox::Priority_queue::size</a></div><div class="ttdeci">auto size() const -&gt; std::size_t</div><div class="ttdoc">Returns the number of elements currently in the queue.</div><div class="ttdef"><b>Definition:</b> priority_queue.hpp:26</div></div>

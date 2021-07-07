@@ -12,7 +12,7 @@ var searchData=
   ['get_5fevent_5ffilters_1038',['get_event_filters',['../classox_1_1Widget.html#a75e0ac14a8f04bc1911d383ed4aa1393',1,'ox::Widget']]],
   ['get_5ffade_1039',['get_fade',['../classox_1_1Notify__light.html#a19cc7ee9220fb5569374178e07684a55',1,'ox::Notify_light']]],
   ['get_5fincrement_1040',['get_increment',['../classox_1_1Number__edit.html#a30f3aa6b43ccb5ac95f2d3a6ff67476f',1,'ox::Number_edit']]],
-  ['get_5finterval_1041',['get_interval',['../classox_1_1Timer.html#ac6c1d8bb2b6bcb5d877c84771efaf0a1',1,'ox::Timer']]],
+  ['get_5finterval_1041',['get_interval',['../classox_1_1Timer.html#a7596926b31846cc9b4bfb3bf005bd9ca',1,'ox::Timer']]],
   ['get_5fnext_5fratio_1042',['get_next_ratio',['../classox_1_1dynamic_1_1Modulation__base.html#a3ab2d5cfce5fc4a472f776a13f2fc5fe',1,'ox::dynamic::Modulation_base']]],
   ['get_5foffset_1043',['get_offset',['../classox_1_1layout_1_1detail_1_1Unique__space.html#abf4582c265bd98d7f8b694ec18095176',1,'ox::layout::detail::Unique_space::get_offset()'],['../classox_1_1layout_1_1detail_1_1Shared__space.html#aa222001afb2cb7824d500c8190116370',1,'ox::layout::detail::Shared_space::get_offset()']]],
   ['get_5fpressed_5fcolor_1044',['get_pressed_color',['../classox_1_1Push__button.html#abf20e4304655dec93b9d18db2ec6b6b5',1,'ox::Push_button']]],

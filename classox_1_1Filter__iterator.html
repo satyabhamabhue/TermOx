@@ -99,9 +99,9 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>reference</b> = type
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:afadedc0ab94ae792d73194313b59bff0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Filter__iterator.html#afadedc0ab94ae792d73194313b59bff0">Filter_iterator</a> (Iter it, Iter_end end, F predicate)</td></tr>
-<tr class="memdesc:afadedc0ab94ae792d73194313b59bff0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pass in the iterator to begin at, end iter, and predicate to test with.  <a href="classox_1_1Filter__iterator.html#afadedc0ab94ae792d73194313b59bff0">More...</a><br /></td></tr>
-<tr class="separator:afadedc0ab94ae792d73194313b59bff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a617dd6a5bebc11f4812b9429e986c6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Filter__iterator.html#a8a617dd6a5bebc11f4812b9429e986c6">Filter_iterator</a> (Iter const it, Iter_end const end, F &amp;&amp;predicate)</td></tr>
+<tr class="memdesc:a8a617dd6a5bebc11f4812b9429e986c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pass in the iterator to begin at, end iter, and predicate to test with.  <a href="classox_1_1Filter__iterator.html#a8a617dd6a5bebc11f4812b9429e986c6">More...</a><br /></td></tr>
+<tr class="separator:a8a617dd6a5bebc11f4812b9429e986c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ca4b9141c27eba0ad6896b8d140ac7b"><td class="memItemLeft" align="right" valign="top"><a id="a2ca4b9141c27eba0ad6896b8d140ac7b"></a>
 auto&#160;</td><td class="memItemRight" valign="bottom"><b>operator++</b> () -&gt; <a class="el" href="classox_1_1Filter__iterator.html">Filter_iterator</a> &amp;</td></tr>
 <tr class="separator:a2ca4b9141c27eba0ad6896b8d140ac7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -132,8 +132,8 @@ class ox::Filter_iterator&lt; Iter, Iter_end, F &gt;</h3>
 
 <p>operator++ skips underlying elements of <code>it</code> that do not satisfy predicate. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="afadedc0ab94ae792d73194313b59bff0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afadedc0ab94ae792d73194313b59bff0">&#9670;&nbsp;</a></span>Filter_iterator()</h2>
+<a id="a8a617dd6a5bebc11f4812b9429e986c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a617dd6a5bebc11f4812b9429e986c6">&#9670;&nbsp;</a></span>Filter_iterator()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -146,19 +146,19 @@ template&lt;typename Iter , typename Iter_end , typename F &gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classox_1_1Filter__iterator.html">ox::Filter_iterator</a>&lt; Iter, Iter_end, F &gt;::<a class="el" href="classox_1_1Filter__iterator.html">Filter_iterator</a> </td>
           <td>(</td>
-          <td class="paramtype">Iter&#160;</td>
+          <td class="paramtype">Iter const&#160;</td>
           <td class="paramname"><em>it</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Iter_end&#160;</td>
+          <td class="paramtype">Iter_end const&#160;</td>
           <td class="paramname"><em>end</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">F&#160;</td>
+          <td class="paramtype">F &amp;&amp;&#160;</td>
           <td class="paramname"><em>predicate</em>&#160;</td>
         </tr>
         <tr>

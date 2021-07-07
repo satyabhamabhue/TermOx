@@ -100,19 +100,19 @@ Public Types</h2></td></tr>
 <tr class="memitem:a86a527e0e3198bbf00103fec5c87aa94"><td class="memItemLeft" align="right" valign="top"><a id="a86a527e0e3198bbf00103fec5c87aa94"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>Clock_t</b> = Timer::Clock_t</td></tr>
 <tr class="separator:a86a527e0e3198bbf00103fec5c87aa94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46425c5962269835b6ed978a1fabed98"><td class="memItemLeft" align="right" valign="top"><a id="a46425c5962269835b6ed978a1fabed98"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>Interval_t</b> = Timer::Interval_t</td></tr>
-<tr class="separator:a46425c5962269835b6ed978a1fabed98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5d721569c1bf0c9081ba51d796e6ae4"><td class="memItemLeft" align="right" valign="top"><a id="ad5d721569c1bf0c9081ba51d796e6ae4"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>Duration_t</b> = Timer::Duration_t</td></tr>
+<tr class="separator:ad5d721569c1bf0c9081ba51d796e6ae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19ec395b6d3462f33dd59d6d03fa354d"><td class="memItemLeft" align="right" valign="top"><a id="a19ec395b6d3462f33dd59d6d03fa354d"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>Time_point</b> = Timer::Time_point</td></tr>
 <tr class="separator:a19ec395b6d3462f33dd59d6d03fa354d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a09be0c5682c9346b6d824e7478fc5945"><td class="memItemLeft" align="right" valign="top"><a id="a09be0c5682c9346b6d824e7478fc5945"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Animation__engine.html#a09be0c5682c9346b6d824e7478fc5945">register_widget</a> (<a class="el" href="classox_1_1Widget.html">Widget</a> &amp;w, Interval_t interval)</td></tr>
-<tr class="memdesc:a09be0c5682c9346b6d824e7478fc5945"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register to start sending Timer_events to <code>w</code> every <code>interval</code>. <br /></td></tr>
-<tr class="separator:a09be0c5682c9346b6d824e7478fc5945"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a261fa78ff9d6d6ae3a47f2e38cd92ef0"><td class="memItemLeft" align="right" valign="top"><a id="a261fa78ff9d6d6ae3a47f2e38cd92ef0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Animation__engine.html#a261fa78ff9d6d6ae3a47f2e38cd92ef0">register_widget</a> (<a class="el" href="classox_1_1Widget.html">Widget</a> &amp;w, Duration_t interval)</td></tr>
+<tr class="memdesc:a261fa78ff9d6d6ae3a47f2e38cd92ef0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register to start sending Timer_events to <code>w</code> every <code>interval</code>. <br /></td></tr>
+<tr class="separator:a261fa78ff9d6d6ae3a47f2e38cd92ef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cc9d03f77ab04521af64f2d70b5f74d"><td class="memItemLeft" align="right" valign="top"><a id="a0cc9d03f77ab04521af64f2d70b5f74d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1Animation__engine.html#a0cc9d03f77ab04521af64f2d70b5f74d">register_widget</a> (<a class="el" href="classox_1_1Widget.html">Widget</a> &amp;w, <a class="el" href="structox_1_1FPS.html">FPS</a> fps)</td></tr>
 <tr class="memdesc:a0cc9d03f77ab04521af64f2d70b5f74d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register to start sending Timer_events to <code>w</code> at <code>fps</code>. <br /></td></tr>
@@ -141,7 +141,7 @@ auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:afffcaa93a13d0cd09b73d6b45dce7421"><td class="memItemLeft" align="right" valign="top"><a id="afffcaa93a13d0cd09b73d6b45dce7421"></a>
-static constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><b>default_interval</b> = Interval_t{100}</td></tr>
+static constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><b>default_interval</b> = Duration_t{100}</td></tr>
 <tr class="separator:afffcaa93a13d0cd09b73d6b45dce7421"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
