@@ -90,15 +90,82 @@ Inheritance diagram for ox::dynamic::Modulation_base:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a8f245bffc6685c35aafe288ba58faa49"><td class="memItemLeft" align="right" valign="top"><a id="a8f245bffc6685c35aafe288ba58faa49"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1dynamic_1_1Modulation__base.html#a8f245bffc6685c35aafe288ba58faa49">Modulation_base</a> (unsigned resolution)</td></tr>
-<tr class="memdesc:a8f245bffc6685c35aafe288ba58faa49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resolution is the number of steps to complete a full cycle. <br /></td></tr>
-<tr class="separator:a8f245bffc6685c35aafe288ba58faa49"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ab2d5cfce5fc4a472f776a13f2fc5fe"><td class="memItemLeft" align="right" valign="top"><a id="a3ab2d5cfce5fc4a472f776a13f2fc5fe"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1dynamic_1_1Modulation__base.html#a3ab2d5cfce5fc4a472f776a13f2fc5fe">get_next_ratio</a> () -&gt; double</td></tr>
-<tr class="memdesc:a3ab2d5cfce5fc4a472f776a13f2fc5fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the next ratio between from the current step and resolution. <br /></td></tr>
+<tr class="memitem:ac09bbf34518dcf87b5696302b227e83c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1dynamic_1_1Modulation__base.html#ac09bbf34518dcf87b5696302b227e83c">Modulation_base</a> (unsigned resolution, unsigned offset=0)</td></tr>
+<tr class="memdesc:ac09bbf34518dcf87b5696302b227e83c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resolution is the number of steps to complete a full cycle.  <a href="classox_1_1dynamic_1_1Modulation__base.html#ac09bbf34518dcf87b5696302b227e83c">More...</a><br /></td></tr>
+<tr class="separator:ac09bbf34518dcf87b5696302b227e83c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ab2d5cfce5fc4a472f776a13f2fc5fe"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classox_1_1dynamic_1_1Modulation__base.html#a3ab2d5cfce5fc4a472f776a13f2fc5fe">get_next_ratio</a> () -&gt; double</td></tr>
+<tr class="memdesc:a3ab2d5cfce5fc4a472f776a13f2fc5fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the next ratio between from the current step and resolution.  <a href="classox_1_1dynamic_1_1Modulation__base.html#a3ab2d5cfce5fc4a472f776a13f2fc5fe">More...</a><br /></td></tr>
 <tr class="separator:a3ab2d5cfce5fc4a472f776a13f2fc5fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ac09bbf34518dcf87b5696302b227e83c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac09bbf34518dcf87b5696302b227e83c">&#9670;&nbsp;</a></span>Modulation_base()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ox::dynamic::Modulation_base::Modulation_base </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>resolution</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>offset</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Resolution is the number of steps to complete a full cycle. </p>
+<p><code>offset</code> is the starting point, in range [0, resolution). </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a3ab2d5cfce5fc4a472f776a13f2fc5fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ab2d5cfce5fc4a472f776a13f2fc5fe">&#9670;&nbsp;</a></span>get_next_ratio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto ox::dynamic::Modulation_base::get_next_ratio </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt; double</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Finds the next ratio between from the current step and resolution. </p>
+<p>Returns a value between [0.0, 1.0]. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/github/workspace/include/termox/painter/<a class="el" href="dynamic__colors_8hpp_source.html">dynamic_colors.hpp</a></li>
 <li>/github/workspace/src/painter/dynamic_colors.cpp</li>

@@ -27,7 +27,7 @@ var searchData=
   ['minimum_5fexpanding_5fwidth_336',['Minimum_expanding_width',['../structox_1_1Minimum__expanding__width.html',1,'ox']]],
   ['minimum_5fheight_337',['Minimum_height',['../structox_1_1Minimum__height.html',1,'ox']]],
   ['minimum_5fwidth_338',['Minimum_width',['../structox_1_1Minimum__width.html',1,'ox']]],
-  ['modulation_5fbase_339',['Modulation_base',['../classox_1_1dynamic_1_1Modulation__base.html#a8f245bffc6685c35aafe288ba58faa49',1,'ox::dynamic::Modulation_base::Modulation_base()'],['../classox_1_1dynamic_1_1Modulation__base.html',1,'ox::dynamic::Modulation_base']]],
+  ['modulation_5fbase_339',['Modulation_base',['../classox_1_1dynamic_1_1Modulation__base.html#ac09bbf34518dcf87b5696302b227e83c',1,'ox::dynamic::Modulation_base::Modulation_base()'],['../classox_1_1dynamic_1_1Modulation__base.html',1,'ox::dynamic::Modulation_base']]],
   ['mouse_5fmove_5fevent_340',['mouse_move_event',['../classox_1_1Slider.html#ae95c9d3a2d014ff583f90723eb715b6d',1,'ox::Slider::mouse_move_event()'],['../classox_1_1Widget.html#a873cc4a0dde3a4449918db91826224cf',1,'ox::Widget::mouse_move_event()']]],
   ['mouse_5fmove_5fevent_341',['Mouse_move_event',['../structox_1_1Mouse__move__event.html',1,'ox']]],
   ['mouse_5fmove_5fevent_5ffilter_342',['mouse_move_event_filter',['../classox_1_1Widget.html#a82f530e0ffb87265e1921e47db0b7c75',1,'ox::Widget']]],
